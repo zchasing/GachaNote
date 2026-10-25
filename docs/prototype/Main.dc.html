@@ -198,8 +198,14 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 .tl{position:relative;height:200px;display:flex;align-items:flex-end;gap:1px;border-bottom:1px solid var(--border);margin-left:32px}
 .tl .grid{position:absolute;left:0;right:0;border-top:1px dashed var(--border)}
 .tl .ylab{position:absolute;left:-32px;width:28px;text-align:right;font-size:11px;color:var(--text2);transform:translateY(-50%);font-variant-numeric:tabular-nums}
-.tbar{flex:1 1 0;min-width:0;display:flex;flex-direction:column;position:relative;z-index:1}
-.tbar:hover{filter:brightness(1.12)}
+.tcol{flex:1 1 0;min-width:0;height:100%;display:flex;flex-direction:column;justify-content:flex-end;position:relative;z-index:1;cursor:crosshair}
+.tbar{display:flex;flex-direction:column;position:relative}
+.tcol.on .tbar{filter:brightness(1.12)}
+.vline{position:absolute;top:0;bottom:0;left:50%;border-left:1px dashed var(--text2);opacity:.7;pointer-events:none}
+.ttip{position:absolute;top:20%;z-index:4;min-width:150px;background:var(--surface);border:1px solid var(--border);border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.14);padding:10px 12px;font-size:13px;display:flex;flex-direction:column;gap:4px;pointer-events:none;margin-left:12px}
+.ttip.left{transform:translateX(-100%);margin-left:-12px}
+.trow2{display:flex;justify-content:space-between;gap:16px;align-items:center}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
 .tbar .pin{position:absolute;top:-24px;left:50%;transform:translateX(-50%);background:var(--bar3);color:#fff;font-size:11px;font-weight:600;border-radius:999px;padding:1px 7px;white-space:nowrap;font-variant-numeric:tabular-nums}
 .tticks{display:flex;justify-content:space-between;margin-left:32px;font-size:11px;color:var(--text2);font-variant-numeric:tabular-nums}
 .period{display:flex;flex-direction:column;gap:8px}
@@ -530,11 +536,18 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <sc-if value="{{trendDay}}" hint-placeholder-val="{{ true }}">
 <div class="row" style="justify-content: space-between"><div class="num" style="font-weight: 600">{{tl.range}}<span class="muted" style="font-weight: 400">（共 {{tl.total}} 抽）</span></div><div class="legend"><sc-for list="{{tl.legend}}" as="lg" hint-placeholder-count="3"><span><span class="sw" style="background: {{lg.color}}"></span>{{lg.label}}（{{lg.n}}）</span></sc-for></div></div>
 <div style="height: 18px"></div>
-<div class="tl">
+<div class="tl" onMouseLeave="{{tl.leave}}">
 <sc-for list="{{tl.ylabs}}" as="yl" hint-placeholder-count="3"><div class="grid" style="top: {{yl.top}}"></div><span class="ylab" style="top: {{yl.top}}">{{yl.v}}</span></sc-for>
 <sc-for list="{{days}}" as="dy" hint-placeholder-count="60">
-<div class="tbar" style="height: {{dy.h}}%" title="{{dy.tip}}"><sc-if value="{{dy.isPeak}}" hint-placeholder-val="{{ false }}"><span class="pin">{{dy.pulls}}</span></sc-if><div style="flex: {{dy.g}} 0 0; min-height: {{dy.gMin}}; background: var(--bar5); border-radius: 2px 2px 0 0"></div><div style="flex: {{dy.p}} 0 0; background: var(--bar4)"></div><div style="flex: {{dy.b}} 0 0; background: var(--bar3)"></div></div>
+<div class="tcol {{dy.cls}}" onMouseEnter="{{dy.hover}}" onClick="{{dy.hover}}" aria-label="{{dy.tip}}"><sc-if value="{{dy.on}}" hint-placeholder-val="{{ false }}"><div class="vline"></div></sc-if><div class="tbar" style="height: {{dy.h}}%"><sc-if value="{{dy.isPeak}}" hint-placeholder-val="{{ false }}"><span class="pin">{{dy.pulls}}</span></sc-if><div style="flex: {{dy.g}} 0 0; min-height: {{dy.gMin}}; background: var(--bar5); border-radius: 2px 2px 0 0"></div><div style="flex: {{dy.p}} 0 0; background: var(--bar4)"></div><div style="flex: {{dy.b}} 0 0; background: var(--bar3)"></div></div></div>
 </sc-for>
+<sc-if value="{{tip.show}}" hint-placeholder-val="{{ false }}">
+<div class="ttip {{tip.side}}" style="left: {{tip.left}}%" role="status">
+<div class="muted num">{{tip.date}}</div>
+<div class="trow2"><span>当日抽卡次数</span><b class="num">{{tip.pulls}}</b></div>
+<sc-for list="{{tip.rows}}" as="tr" hint-placeholder-count="3"><div class="trow2"><span><span class="dot" style="background: {{tr.color}}"></span>{{tr.label}}</span><b class="num">{{tr.n}}</b></div></sc-for>
+</div>
+</sc-if>
 </div>
 <div class="tticks"><sc-for list="{{tl.ticks}}" as="tk" hint-placeholder-count="7"><span>{{tk.t}}</span></sc-for></div>
 <div class="muted" style="font-size: 12px">每根柱是一天，按星级堆叠；悬停查看当天明细，最高的一天标出抽数。</div>
@@ -822,7 +835,7 @@ class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.state = { view: 'overview', acc: 0, pool: -1, tab: 'stats', dark: false, filter: 'all', importOpen: false, step: 1, method: 'url', shown: [], addOpen: false,
-      lastAcc: {}, emptyGame: null, accMenu: false, more: false, expanded: {}, n: 10, distTable: false, showSkipped: false, trend: 'day',
+      lastAcc: {}, emptyGame: null, accMenu: false, more: false, expanded: {}, n: 10, distTable: false, showSkipped: false, trend: 'day', hoverDay: null,
       importGame: null, loggedIn: false, dd: null, onlyGold: false, recPage: 1, pageSize: 20, rarity: ['5', '4', '3', '2'], range: 'all', lang: 'zh', shareOpen: false, shareHide: true, shareDark: false, toast: '' };
   }
   flash(text) { var self = this; this.setState({ toast: text }); clearTimeout(this._t); this._t = setTimeout(function () { self.setState({ toast: '' }); }, 3000); }
@@ -974,12 +987,18 @@ class Component extends DCLogic {
         { label: rl[1], color: 'var(--bar4)', count: nP, pct: pctTxt(nP), hasSub: false, sub: '' },
         { label: rl[2], color: 'var(--bar3)', count: nB.toLocaleString('en-US'), pct: pctTxt(nB), hasSub: false, sub: '' }] };
     var yMax = Math.max(10, Math.ceil(peak * 1.1 / 10) * 10);
-    days.forEach(function (x, i) { x.tip = x.date + ' · ' + x.pulls + ' 抽（' + rl[0] + ' ' + x.g + ' / ' + rl[1] + ' ' + x.p + ' / ' + rl[2] + ' ' + x.b + '）'; x.h = (x.pulls / yMax * 100).toFixed(1); x.isPeak = i === peakI && peak > 0; x.gMin = x.g ? '3px' : '0'; });
+    days.forEach(function (x, i) { x.tip = x.date + ' · ' + x.pulls + ' 抽（' + rl[0] + ' ' + x.g + ' / ' + rl[1] + ' ' + x.p + ' / ' + rl[2] + ' ' + x.b + '）'; x.h = (x.pulls / yMax * 100).toFixed(1); x.isPeak = i === peakI && peak > 0; x.gMin = x.g ? '3px' : '0';
+      x.on = s.hoverDay === i; x.cls = x.on ? 'on' : ''; x.hover = function () { if (self.state.hoverDay !== i) self.setState({ hoverDay: i }); }; });
+    // 悬停浮框：右半边时显示在虚线左侧，避免出界
+    var hd = s.hoverDay !== null && s.hoverDay < days.length ? days[s.hoverDay] : null;
+    var tip = { show: !!hd, left: hd ? ((s.hoverDay + 0.5) / days.length * 100).toFixed(2) : 0, side: hd && s.hoverDay / days.length > 0.6 ? 'left' : '',
+      date: hd ? hd.date : '', pulls: hd ? hd.pulls : 0,
+      rows: hd ? [{ label: rl[0], n: hd.g, color: 'var(--bar5)' }, { label: rl[1], n: hd.p, color: 'var(--bar4)' }, { label: rl[2], n: hd.b, color: 'var(--bar3)' }] : [] };
     var ticks = [];
     for (var ti = 0; ti < 7; ti++) ticks.push({ t: days[Math.round(ti * (nDays - 1) / 6)].date.slice(5) });
     var tl = { range: days[0].date + ' – ' + days[nDays - 1].date, total: (dSum[0] + dSum[1] + dSum[2]).toLocaleString('en-US'),
       legend: [{ label: rl[2], n: dSum[2].toLocaleString('en-US'), color: 'var(--bar3)' }, { label: rl[1], n: dSum[1], color: 'var(--bar4)' }, { label: rl[0], n: dSum[0], color: 'var(--bar5)' }],
-      ylabs: [{ v: yMax, top: '0%' }, { v: yMax / 2, top: '50%' }, { v: 0, top: '100%' }], ticks: ticks };
+      ylabs: [{ v: yMax, top: '0%' }, { v: yMax / 2, top: '50%' }, { v: 0, top: '100%' }], ticks: ticks, leave: function () { self.setState({ hoverDay: null }); } };
     var periods = pool.periods.map(function (pe) {
       var joined = pe[2] > 0;
       return { dates: pe[0], ups: pe[1], pulls: pe[2], joined: joined, skippedShown: !joined && s.showSkipped, noGold: pe[3].length === 0,
@@ -1056,7 +1075,7 @@ class Component extends DCLogic {
       nChips: [10, 20, 50, 90].map(function (v) { return { label: v + ' 抽', cls: n === v ? 'on' : '', pick: set({ n: v }) }; }),
       dist: dist, distChart: !s.distTable, distTable: s.distTable, distToggleLabel: s.distTable ? '显示图表' : '数据表',
       comp: comp, achs: achs, hasAchs: achs.length > 0, achTotal: achs.length, achDone: achs.filter(function (x) { return x.done; }).length,
-      days: days, tl: tl, trendDay: s.trend === 'day', trendMonth: s.trend === 'month',
+      days: days, tl: tl, tip: tip, trendDay: s.trend === 'day', trendMonth: s.trend === 'month',
       trendDayCls: s.trend === 'day' ? 'on' : '', trendMonthCls: s.trend === 'month' ? 'on' : '', setTrendDay: set({ trend: 'day' }), setTrendMonth: set({ trend: 'month' }),
       toggleDistTable: function () { self.setState({ distTable: !self.state.distTable }); },
       months: months, periods: periods, showSkipped: s.showSkipped,
