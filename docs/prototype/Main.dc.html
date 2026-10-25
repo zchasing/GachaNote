@@ -59,6 +59,9 @@ a{color:#3B6FE0}a:hover{color:#2A55B8}
 .fill{height:6px;border-radius:999px;background:var(--primary)}
 .badge{font-size:12px;border-radius:999px;padding:0 8px;line-height:20px;border:1px solid var(--border);color:var(--text2)}
 .badge.big{border-color:var(--gold);color:var(--gold)}
+.gtag{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;line-height:22px;padding:0 9px 0 7px;border-radius:999px;white-space:nowrap}
+.gtag.big{background:var(--goldbg);color:var(--gold);box-shadow:inset 0 0 0 1px var(--goldline)}
+.gtag.small{background:var(--track);color:var(--text2)}
 .linkbtn{font:inherit;font-size:12px;border:0;background:transparent;color:var(--primary);padding:0;cursor:pointer;align-self:flex-start;min-height:24px}
 .foot{display:flex;gap:16px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:10px;font-size:12px;color:var(--text2)}
 .foot b{color:var(--text);font-weight:600}
@@ -202,8 +205,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </div>
 <sc-for list="{{c.pools}}" as="p" hint-placeholder-count="2">
 <div class="pool" style="padding-left: 4px">
-<div class="poolhead"><span>{{p.name}}</span><span class="num" style="margin-left: auto"><b>{{p.pity}}</b> / {{p.hard}}</span>
-<sc-if value="{{p.big}}" hint-placeholder-val="{{ false }}"><span class="badge big">大保底</span></sc-if>
+<div class="poolhead"><span>{{p.name}}</span><sc-if value="{{p.isBig}}" hint-placeholder-val="{{ false }}"><span class="gtag big"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"></path></svg>大保底</span></sc-if><sc-if value="{{p.isSmall}}" hint-placeholder-val="{{ false }}"><span class="gtag small"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" stroke-linejoin="round"></path></svg>小保底</span></sc-if><span class="num" style="margin-left: auto"><b>{{p.pity}}</b> / {{p.hard}}</span>
 </div>
 <div class="track"><div class="fill" style="width: {{p.pct}}%"></div></div>
 </div>
@@ -295,7 +297,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="card">
 <div class="row" style="justify-content: space-between"><div class="ct">{{pc.name}}</div><button class="btn small" onClick="{{pc.open}}">查看详情</button></div>
 <div class="row" style="align-items: baseline; gap: 8px"><span class="big" style="font-size: 28px">{{pc.pity}}</span><span class="muted">/ {{pc.hard}} 当前保底</span>
-<sc-if value="{{pc.big}}" hint-placeholder-val="{{ false }}"><span class="badge big" style="margin-left: auto">大保底</span></sc-if>
+<sc-if value="{{pc.isBig}}" hint-placeholder-val="{{ false }}"><span class="gtag big" style="margin-left: auto; align-self: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"></path></svg>大保底</span></sc-if><sc-if value="{{pc.isSmall}}" hint-placeholder-val="{{ false }}"><span class="gtag small" style="margin-left: auto; align-self: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" stroke-linejoin="round"></path></svg>小保底</span></sc-if>
 </div>
 <div class="track"><div class="fill" style="width: {{pc.pct}}%"></div></div>
 <div class="foot"><span>总抽数 <b>{{pc.total}}</b></span><span>{{pc.k2}} <b>{{pc.v2}}</b></span><span>{{pc.k3}} <b>{{pc.v3}}</b></span></div>
@@ -307,7 +309,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="metrics">
 <sc-for list="{{metrics}}" as="m" hint-placeholder-count="3">
 <div class="card">
-<div class="muted">{{m.label}}</div>
+<div class="row" style="justify-content: space-between; min-height: 22px"><div class="muted">{{m.label}}</div><sc-if value="{{m.isBig}}" hint-placeholder-val="{{ false }}"><span class="gtag big"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"></path></svg>大保底</span></sc-if><sc-if value="{{m.isSmall}}" hint-placeholder-val="{{ false }}"><span class="gtag small"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" stroke-linejoin="round"></path></svg>小保底</span></sc-if></div>
 <div class="big">{{m.big}}<small> {{m.small}}</small></div>
 <sc-if value="{{m.hasBar}}" hint-placeholder-val="{{ false }}"><div class="track"><div class="fill" style="width: {{m.pct}}%; background: {{m.barColor}}"></div></div></sc-if>
 <div class="muted">{{m.sub}}</div>
@@ -657,8 +659,8 @@ var ACCS = [
       hist: [['示例武器 C', 64, 1, '2026-09-21 08:08']], periods: [] }
   ] }
 ];
-var LIGHT = { bg: '#F7F7F8', surface: '#FFFFFF', border: '#E4E4E7', text: '#18181B', text2: '#5F5F68', primary: '#3B6FE0', onprimary: '#FFFFFF', selected: '#EAF0FC', hover: '#F2F2F4', track: '#EDEDF0', gold: '#9A6700', up: '#1F7A4D', upbg: '#E3F4EA', loss: '#C23434', lossbg: '#FBE7E7', overlay: 'rgba(15,15,20,0.45)' };
-var DARK = { bg: '#141518', surface: '#1D1F23', border: '#2E3036', text: '#ECECEE', text2: '#A0A0AA', primary: '#7B9CF2', onprimary: '#0B0C0E', selected: '#232C40', hover: '#26282D', track: '#2A2C31', gold: '#E3A43B', up: '#5CCB94', upbg: '#183528', loss: '#F07A7A', lossbg: '#3A1E1E', overlay: 'rgba(0,0,0,0.6)' };
+var LIGHT = { bg: '#F7F7F8', surface: '#FFFFFF', border: '#E4E4E7', text: '#18181B', text2: '#5F5F68', primary: '#3B6FE0', onprimary: '#FFFFFF', selected: '#EAF0FC', hover: '#F2F2F4', track: '#EDEDF0', gold: '#9A6700', up: '#1F7A4D', upbg: '#E3F4EA', goldbg: '#FBF1DC', goldline: '#EBCF94', loss: '#C23434', lossbg: '#FBE7E7', overlay: 'rgba(15,15,20,0.45)' };
+var DARK = { bg: '#141518', surface: '#1D1F23', border: '#2E3036', text: '#ECECEE', text2: '#A0A0AA', primary: '#7B9CF2', onprimary: '#0B0C0E', selected: '#232C40', hover: '#26282D', track: '#2A2C31', gold: '#E3A43B', up: '#5CCB94', upbg: '#183528', goldbg: '#33280F', goldline: '#5C4618', loss: '#F07A7A', lossbg: '#3A1E1E', overlay: 'rgba(0,0,0,0.6)' };
 // 每款游戏在导入弹窗里可用的方式
 var IMP = {
   ys: { methods: ['url', 'file'], formats: 'UIGF v4（兼容旧版 UIGF）', found: '已在游戏缓存中找到抽卡链接（国服，UID 1****6789）', pool: '角色活动祈愿' },
@@ -721,6 +723,7 @@ class Component extends DCLogic {
       var m = M[p.m];
       var gr = p.gold && p.total ? (p.gold / Number(String(p.total).replace(/,/g, '')) * 100).toFixed(1) + '%' : '—';
       return Object.assign({}, p, { hard: m.hard, theory: m.theory.toFixed(1), theoryPct: Math.round(m.theory / m.hard * 100), pct: Math.round(p.pity / m.hard * 100), left: m.hard - p.pity, goldRate: gr,
+        isBig: p.tpl === 'hoyo' && p.big, isSmall: p.tpl === 'hoyo' && !p.big,
         stateShort: m.up === null ? '常驻池，无 UP' : (m.guar ? (p.big ? '大保底' : '小保底') : '无大保底') });
     };
     var cards = [];
@@ -749,7 +752,8 @@ class Component extends DCLogic {
     ACCS.forEach(function (x, i) { if (x.game === a.game) accOptions.push({ alias: x.alias, uid: x.uid, cls: i === s.acc ? 'on' : '', pick: openAcc(i) }); });
     // 核心指标卡由规则模板决定
     var pityCard = { label: '当前保底', big: pool.pity, small: '/ ' + m.hard, hasBar: true, pct: pool.pct, barColor: 'var(--primary)',
-      sub: pool.tpl === 'hoyo' ? (pool.big ? '大保底：下一个金必为 UP' : '小保底') + ' · 距硬保底还差 ' + pool.left + ' 抽'
+      isBig: pool.isBig, isSmall: pool.isSmall,
+      sub: pool.tpl === 'hoyo' ? (pool.big ? '下一个金必为 UP · ' : '下一个金 ' + Math.round(m.up * 100) + '% 为 UP · ') + '距硬保底还差 ' + pool.left + ' 抽'
         : (pool.tpl === 'std' ? '距硬保底还差 ' + pool.left + ' 抽' : '第 ' + (m.soft + 1) + ' 抽起每抽概率 +2%') };
     var upCard = { label: '平均出 UP', big: pool.avgUp, small: '抽', hasBar: false, sub: '共 ' + pool.upCount + ' 个 UP' };
     var metrics;
@@ -760,7 +764,7 @@ class Component extends DCLogic {
     var poolCards = a.pools.map(function (p0, i) {
       var pv = poolView(p0);
       var kv = p0.tpl === 'std' ? ['平均出金', p0.avgGold + ' 抽', '出金数', String(p0.gold)] : (p0.tpl === 'akLim' ? ['平均出 UP', p0.avgUp + ' 抽', '井', p0.spark + ' / ' + p0.sparkMax] : ['平均出 UP', p0.avgUp + ' 抽', '歪率', p0.loss]);
-      return { name: p0.name, pity: p0.pity, hard: pv.hard, pct: pv.pct, big: p0.big, total: p0.total, k2: kv[0], v2: kv[1], k3: kv[2], v3: kv[3], open: set({ pool: i, tab: 'stats' }) };
+      return { name: p0.name, pity: p0.pity, hard: pv.hard, pct: pv.pct, big: p0.big, isBig: pv.isBig, isSmall: pv.isSmall, total: p0.total, k2: kv[0], v2: kv[1], k3: kv[2], v3: kv[3], open: set({ pool: i, tab: 'stats' }) };
     });
     var allHist = [];
     a.pools.forEach(function (p0) { p0.hist.forEach(function (h) { var tg = tagOf(h[2]); allHist.push({ name: h[0], pulls: h[1], time: h[3], date: h[3].slice(0, 10), pool: p0.short, tag: tg.tag, cls: tg.cls }); }); });
