@@ -723,7 +723,7 @@ class Component extends DCLogic {
     super(props);
     this.state = { view: 'overview', acc: 0, pool: -1, tab: 'stats', dark: false, filter: 'all', importOpen: false, step: 1, method: 'url', shown: [], addOpen: false,
       lastAcc: {}, emptyGame: null, accMenu: false, more: false, expanded: {}, n: 10, distTable: false, showSkipped: false,
-      importGame: null, loggedIn: false, dd: null, onlyGold: false, recPage: 1, pageSize: 20, rarity: ['5', '4', '3'], range: 'all', lang: 'zh', shareOpen: false, shareHide: true, shareDark: false, toast: '' };
+      importGame: null, loggedIn: false, dd: null, onlyGold: false, recPage: 1, pageSize: 20, rarity: ['5', '4', '3', '2'], range: 'all', lang: 'zh', shareOpen: false, shareHide: true, shareDark: false, toast: '' };
   }
   flash(text) { var self = this; this.setState({ toast: text }); clearTimeout(this._t); this._t = setTimeout(function () { self.setState({ toast: '' }); }, 3000); }
   renderVals() {
@@ -825,7 +825,7 @@ class Component extends DCLogic {
     var mkDD = function (key, opts, multi) {
       var sel = s[key];
       var isOn = function (v) { return multi ? sel.indexOf(v) >= 0 : sel === v; };
-      var label = multi ? (sel.length === opts.length ? '全部' : (sel.length ? opts.filter(function (o) { return isOn(o[0]); }).map(function (o) { return o[1]; }).join('、') : '未选择')) : opts.filter(function (o) { return isOn(o[0]); })[0][1];
+      var label = multi ? (opts.every(function (o) { return isOn(o[0]); }) ? '全部' : (sel.length ? opts.filter(function (o) { return isOn(o[0]); }).map(function (o) { return o[1]; }).join('、') : '未选择')) : opts.filter(function (o) { return isOn(o[0]); })[0][1];
       return { open: s.dd === key, cls: s.dd === key ? 'open' : '', label: label,
         toggle: function () { self.setState({ dd: self.state.dd === key ? null : key }); },
         opts: opts.map(function (o) { return { label: o[1], on: isOn(o[0]), cls: isOn(o[0]) ? 'on' : '', pick: function () {
@@ -908,7 +908,8 @@ class Component extends DCLogic {
       shareSave: function () { self.setState({ shareOpen: false }); self.flash('已保存 PNG（原型）'); },
       shareCopy: function () { self.flash('已复制到剪贴板（原型）'); },
       toastOn: !!s.toast, toastText: s.toast,
-      ddRarity: mkDDr('rarity', [['5', '最高星'], ['4', '次高星'], ['3', '三星及以下']], true),
+      // 星级选项按各游戏实际叫法：方舟、终末地 6–3 星，绝区零 S / A / B 级，其余 5–3 星
+      ddRarity: mkDDr('rarity', a.game === 'ak' || a.game === 'ef' ? [['5', '6 星'], ['4', '5 星'], ['3', '4 星'], ['2', '3 星']] : (a.game === 'zzz' ? [['5', 'S 级'], ['4', 'A 级'], ['3', 'B 级']] : [['5', '5 星'], ['4', '4 星'], ['3', '3 星']]), true),
       ddRange: mkDD('range', [['all', '全部时间'], ['30d', '最近 30 天'], ['6m', '最近 6 个月'], ['1y', '最近 1 年']], false),
       ddLang: mkDD('lang', [['zh', '简体中文'], ['en', 'English']], false),
       importOpen: s.importOpen,
