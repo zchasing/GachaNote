@@ -94,7 +94,15 @@ a{color:#3B6FE0}a:hover{color:#2A55B8}
 .tag.loss{background:var(--lossbg);color:var(--loss)}
 .tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--border);border-radius:8px}
 table{border-collapse:collapse;width:100%;min-width:640px;font-size:13px}
-th{text-align:left;font-weight:600;color:var(--text2);padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
+th{text-align:left;font-weight:600;color:var(--text2);padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap;background:var(--thead)}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--hover)}
+.purple{color:var(--purple);font-weight:600}
+.pager{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.pbtn{font:inherit;font-size:13px;min-width:32px;height:32px;padding:0 8px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);cursor:pointer;font-variant-numeric:tabular-nums}
+.pbtn:hover{background:var(--hover)}
+.pbtn.on{background:var(--primary);border-color:var(--primary);color:var(--onprimary);font-weight:600}
+.pbtn:disabled{opacity:.4;cursor:default}
 td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 .namecell{display:flex;align-items:center;gap:8px}
 .field{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--text2)}
@@ -344,18 +352,27 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="field"><span>星级</span><div class="anchor"><button class="select {{ddRarity.cls}}" onClick="{{ddRarity.toggle}}" aria-haspopup="listbox" aria-label="星级"><span>{{ddRarity.label}}</span><svg class="chev" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></button><sc-if value="{{ddRarity.open}}" hint-placeholder-val="{{ false }}"><div class="menu" role="listbox" style="min-width: 100%"><sc-for list="{{ddRarity.opts}}" as="o" hint-placeholder-count="3"><button class="mi {{o.cls}}" role="option" onClick="{{o.pick}}"><span class="ck"><sc-if value="{{o.on}}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"></path></svg></sc-if></span>{{o.label}}</button></sc-for></div></sc-if></div></div>
 <div class="field"><span>时间范围</span><div class="anchor"><button class="select {{ddRange.cls}}" onClick="{{ddRange.toggle}}" aria-haspopup="listbox" aria-label="时间范围"><span>{{ddRange.label}}</span><svg class="chev" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></button><sc-if value="{{ddRange.open}}" hint-placeholder-val="{{ false }}"><div class="menu" role="listbox" style="min-width: 100%"><sc-for list="{{ddRange.opts}}" as="o" hint-placeholder-count="3"><button class="mi {{o.cls}}" role="option" onClick="{{o.pick}}"><span class="ck"><sc-if value="{{o.on}}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"></path></svg></sc-if></span>{{o.label}}</button></sc-for></div></sc-if></div></div>
 <label class="field" style="flex: 1 1 200px">搜索名称<input class="input" type="search" placeholder="输入角色或武器名"></label>
-<label class="check"><input type="checkbox" checked="{{ true }}">只看金</label>
+<label class="check"><input type="checkbox" checked="{{onlyGold}}" onChange="{{toggleGold}}">只看金</label>
 </div>
 <div class="muted">筛选后 {{recordCount}} 条</div>
 <div class="tablebox">
 <table>
 <thead><tr><th scope="col">时间</th><th scope="col">卡池</th><th scope="col">名称</th><th scope="col">星级</th><th scope="col">当次抽数</th><th scope="col">UP / 歪</th></tr></thead>
 <tbody>
-<sc-for list="{{history}}" as="h" hint-placeholder-count="4">
-<tr><td class="num">{{h.time}}</td><td>{{pool.name}}</td><td><span class="namecell"><span class="islot" aria-hidden="true"></span><span class="gold">{{h.name}}</span></span></td><td>{{acc.topRarity}}</td><td class="num">{{h.pulls}}</td><td><span class="tag {{h.cls}}">{{h.tag}}</span></td></tr>
+<sc-for list="{{pageRows}}" as="r" hint-placeholder-count="8">
+<tr><td class="num">{{r.time}}</td><td>{{pool.name}}</td><td><span class="namecell"><span class="islot" aria-hidden="true"></span><span class="{{r.rcls}}">{{r.name}}</span></span></td><td>{{r.star}}</td><td class="num">{{r.pulls}}</td><td><sc-if value="{{r.hasTag}}" hint-placeholder-val="{{ true }}"><span class="tag {{r.cls}}">{{r.tag}}</span></sc-if><sc-if value="{{r.noTag}}" hint-placeholder-val="{{ false }}"><span class="muted">—</span></sc-if></td></tr>
 </sc-for>
 </tbody>
 </table>
+</div>
+<div class="pager">
+<span class="muted">共 {{recordCount}} 条 · 第 {{pg.cur}} / {{pg.count}} 页</span>
+<div class="row" style="gap: 4px">
+<button class="pbtn" disabled="{{pg.first}}" onClick="{{pg.prev}}" aria-label="上一页"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 4l-4 4 4 4"></path></svg></button>
+<sc-for list="{{pg.nums}}" as="pn" hint-placeholder-count="3"><button class="pbtn {{pn.cls}}" onClick="{{pn.pick}}" aria-label="第 {{pn.n}} 页">{{pn.n}}</button></sc-for>
+<button class="pbtn" disabled="{{pg.last}}" onClick="{{pg.next}}" aria-label="下一页"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 4l4 4-4 4"></path></svg></button>
+</div>
+<div class="row" style="gap: 8px"><span class="muted">每页</span><div class="anchor"><button class="select {{ddSize.cls}}" style="min-width: 88px" onClick="{{ddSize.toggle}}" aria-haspopup="listbox" aria-label="每页条数"><span>{{ddSize.label}}</span><svg class="chev" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></button><sc-if value="{{ddSize.open}}" hint-placeholder-val="{{ false }}"><div class="menu right" role="listbox" style="min-width: 100%; top: auto; bottom: calc(100% + 4px)"><sc-for list="{{ddSize.opts}}" as="o" hint-placeholder-count="3"><button class="mi {{o.cls}}" role="option" onClick="{{o.pick}}"><span class="ck"><sc-if value="{{o.on}}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"></path></svg></sc-if></span>{{o.label}}</button></sc-for></div></sc-if></div></div>
 </div>
 </sc-if>
 <sc-if value="{{tabAnalysis}}" hint-placeholder-val="{{ false }}">
@@ -667,8 +684,8 @@ var ACCS = [
       hist: [['示例武器 C', 64, 1, '2026-09-21 08:08']], periods: [] }
   ] }
 ];
-var LIGHT = { bg: '#F7F7F8', surface: '#FFFFFF', border: '#E4E4E7', text: '#18181B', text2: '#5F5F68', primary: '#3B6FE0', onprimary: '#FFFFFF', selected: '#EAF0FC', hover: '#F2F2F4', track: '#EDEDF0', gold: '#9A6700', up: '#1F7A4D', upbg: '#E3F4EA', goldbg: '#FBF1DC', goldline: '#EBCF94', loss: '#C23434', lossbg: '#FBE7E7', overlay: 'rgba(15,15,20,0.45)' };
-var DARK = { bg: '#141518', surface: '#1D1F23', border: '#2E3036', text: '#ECECEE', text2: '#A0A0AA', primary: '#7B9CF2', onprimary: '#0B0C0E', selected: '#232C40', hover: '#26282D', track: '#2A2C31', gold: '#E3A43B', up: '#5CCB94', upbg: '#183528', goldbg: '#33280F', goldline: '#5C4618', loss: '#F07A7A', lossbg: '#3A1E1E', overlay: 'rgba(0,0,0,0.6)' };
+var LIGHT = { bg: '#F7F7F8', surface: '#FFFFFF', border: '#E4E4E7', text: '#18181B', text2: '#5F5F68', primary: '#3B6FE0', onprimary: '#FFFFFF', selected: '#EAF0FC', hover: '#F2F2F4', track: '#EDEDF0', gold: '#9A6700', up: '#1F7A4D', upbg: '#E3F4EA', thead: '#F1F1F4', purple: '#7445C9', goldbg: '#FBF1DC', goldline: '#EBCF94', loss: '#C23434', lossbg: '#FBE7E7', overlay: 'rgba(15,15,20,0.45)' };
+var DARK = { bg: '#141518', surface: '#1D1F23', border: '#2E3036', text: '#ECECEE', text2: '#A0A0AA', primary: '#7B9CF2', onprimary: '#0B0C0E', selected: '#232C40', hover: '#26282D', track: '#2A2C31', gold: '#E3A43B', up: '#5CCB94', upbg: '#183528', thead: '#25272C', purple: '#B595F2', goldbg: '#33280F', goldline: '#5C4618', loss: '#F07A7A', lossbg: '#3A1E1E', overlay: 'rgba(0,0,0,0.6)' };
 // 每款游戏在导入弹窗里可用的方式
 var IMP = {
   ys: { methods: ['url', 'file'], formats: 'UIGF v4（兼容旧版 UIGF）', found: '已在游戏缓存中找到抽卡链接（国服，UID 1****6789）', pool: '角色活动祈愿' },
@@ -706,7 +723,7 @@ class Component extends DCLogic {
     super(props);
     this.state = { view: 'overview', acc: 0, pool: -1, tab: 'stats', dark: false, filter: 'all', importOpen: false, step: 1, method: 'url', shown: [], addOpen: false,
       lastAcc: {}, emptyGame: null, accMenu: false, more: false, expanded: {}, n: 10, distTable: false, showSkipped: false,
-      importGame: null, loggedIn: false, dd: null, rarity: ['5', '4', '3'], range: 'all', lang: 'zh', shareOpen: false, shareHide: true, shareDark: false, toast: '' };
+      importGame: null, loggedIn: false, dd: null, onlyGold: false, recPage: 1, pageSize: 20, rarity: ['5', '4', '3'], range: 'all', lang: 'zh', shareOpen: false, shareHide: true, shareDark: false, toast: '' };
   }
   flash(text) { var self = this; this.setState({ toast: text }); clearTimeout(this._t); this._t = setTimeout(function () { self.setState({ toast: '' }); }, 3000); }
   renderVals() {
@@ -818,6 +835,20 @@ class Component extends DCLogic {
           self.setState(patch);
         } }; }) };
     };
+    var mkDDr = function (key, opts, multi) { var d = mkDD(key, opts, multi); d.opts.forEach(function (o) { var f = o.pick; o.pick = function () { f(); self.setState({ recPage: 1 }); }; }); return d; };
+    // 记录页示例数据：出金 + 生成的四星记录，按时间倒序，分页显示
+    var fmt = function (d) { var z = function (x) { return (x < 10 ? '0' : '') + x; }; return d.getFullYear() + '-' + z(d.getMonth() + 1) + '-' + z(d.getDate()) + ' ' + z(d.getHours()) + ':' + z(d.getMinutes()); };
+    var top = a.topRarity, sub = top === '6 星' ? '5 星' : '4 星';
+    var all = history.map(function (h) { return { time: h.time, name: h.name, star: top, r: '5', rcls: 'gold', pulls: h.pulls, hasTag: h.cls !== 'std', noTag: h.cls === 'std', tag: h.tag, cls: h.cls }; });
+    var nFour = 20 + (a.seed * 7 + pi * 11) % 40;
+    for (var q = 0; q < nFour; q++) { all.push({ time: fmt(new Date(2026, 9, 20 - q * 5, 9 + (q * 5) % 13, (q * 17) % 60)), name: '示例' + (top === '6 星' ? '五星' : '四星') + ' ' + String.fromCharCode(65 + q % 12), star: sub, r: '4', rcls: 'purple', pulls: 1 + (q * 3) % 10, hasTag: false, noTag: true, tag: '', cls: '' }); }
+    all.sort(function (x, y) { return x.time < y.time ? 1 : -1; });
+    var recs = all.filter(function (x) { return (!s.onlyGold || x.r === '5') && s.rarity.indexOf(x.r) >= 0; });
+    var size = s.pageSize, pcount = Math.max(1, Math.ceil(recs.length / size)), cur = Math.min(s.recPage, pcount);
+    var pageRows = recs.slice((cur - 1) * size, cur * size);
+    var nums = [];
+    for (var pn = 1; pn <= pcount; pn++) nums.push({ n: pn, cls: pn === cur ? 'on' : '', pick: set({ recPage: pn }) });
+    var pg = { cur: cur, count: pcount, first: cur <= 1, last: cur >= pcount, nums: nums, prev: set({ recPage: Math.max(1, cur - 1) }), next: set({ recPage: Math.min(pcount, cur + 1) }) };
     var ig = s.importGame ? gameOf(s.importGame) : null, imp = s.importGame ? IMP[s.importGame] : null;
     var impGames = GAMES.map(function (x) {
       var mm = IMP[x.key].methods;
@@ -835,7 +866,9 @@ class Component extends DCLogic {
     return {
       rootStyle: vars(t),
       ovSummary: ACCS.length + ' 个账号 · ' + GAMES.filter(function (x) { return ACCS.some(function (y) { return y.game === x.key; }); }).length + ' 款游戏',
-      games: games, filters: filters, cards: cards, pools: pools, pool: pool, metrics: metrics, history: history, recordCount: history.length,
+      games: games, filters: filters, cards: cards, pools: pools, pool: pool, metrics: metrics, history: history, recordCount: recs.length, pageRows: pageRows, pg: pg, onlyGold: s.onlyGold,
+      toggleGold: function () { self.setState({ onlyGold: !self.state.onlyGold, recPage: 1 }); },
+      ddSize: mkDD('pageSize', [[20, '20 条'], [50, '50 条'], [100, '100 条']], false),
       hiddenGames: hiddenGames, noHidden: hiddenGames.length === 0, addOpen: s.addOpen,
       addLabel: s.addOpen ? '收起' : '+ 添加游戏',
       toggleAdd: function () { self.setState({ addOpen: !self.state.addOpen }); },
@@ -875,7 +908,7 @@ class Component extends DCLogic {
       shareSave: function () { self.setState({ shareOpen: false }); self.flash('已保存 PNG（原型）'); },
       shareCopy: function () { self.flash('已复制到剪贴板（原型）'); },
       toastOn: !!s.toast, toastText: s.toast,
-      ddRarity: mkDD('rarity', [['5', '最高星'], ['4', '次高星'], ['3', '三星及以下']], true),
+      ddRarity: mkDDr('rarity', [['5', '最高星'], ['4', '次高星'], ['3', '三星及以下']], true),
       ddRange: mkDD('range', [['all', '全部时间'], ['30d', '最近 30 天'], ['6m', '最近 6 个月'], ['1y', '最近 1 年']], false),
       ddLang: mkDD('lang', [['zh', '简体中文'], ['en', 'English']], false),
       importOpen: s.importOpen,
