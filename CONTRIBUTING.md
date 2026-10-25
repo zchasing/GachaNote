@@ -1,5 +1,48 @@
 # 贡献指南
 
+## 本地开发
+
+### 环境准备
+
+- Rust stable（≥ 1.90）
+- Node.js 22 与 pnpm（`corepack enable` 后会按 `ui/package.json` 的 `packageManager` 自动使用对应版本）
+- Windows 10/11 自带 WebView2；其他系统按 [Tauri 前置条件](https://v2.tauri.app/start/prerequisites/) 安装系统库
+
+### 目录结构
+
+| 目录 | 内容 |
+| --- | --- |
+| `crates/gachanote-core` | 领域模型、插件 trait、统计引擎、`Redacted<T>` 脱敏类型 |
+| `crates/gachanote-store` | SQLite 存储与迁移 |
+| `crates/gachanote-games` | 六款游戏插件 |
+| `crates/gachanote-formats` | UIGF / SRGF / GNJ / CSV 编解码 |
+| `crates/gachanote-meta` | 卡池元数据包 |
+| `src-tauri` | Tauri 外壳（crate 名 `gachanote-app`）：命令、日志、窗口 |
+| `ui` | Vue 3 + Vite + TypeScript 前端 |
+
+### 常用命令
+
+```sh
+cd ui
+pnpm install
+pnpm tauri dev        # 启动应用（同时启动 Vite，并刷新 ui/src/bindings.ts）
+pnpm tauri build      # 构建 NSIS 安装包
+```
+
+提交前在本地跑一遍与 CI 相同的检查：
+
+```sh
+cargo fmt --all --check
+cargo clippy --workspace --all-targets --locked -- -D warnings
+cargo test --workspace --locked
+cd ui && pnpm lint && pnpm type-check && pnpm test && pnpm build
+```
+
+新增或修改 Tauri 命令后，运行 `cargo test -p gachanote-app export_bindings` 重新生成
+`ui/src/bindings.ts` 并一起提交。日志写在数据目录的 `GachaNote/logs/`（Windows 为
+`%APPDATA%\GachaNote\logs\`），可用环境变量 `RUST_LOG` 调整级别；URL、UID、token
+写日志前必须包一层 `Redacted`。
+
 ## 分支与合并
 
 - `main` 始终保持可构建、CI 全绿。
