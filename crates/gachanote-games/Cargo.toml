@@ -1,0 +1,15 @@
+[package]
+name = "gachanote-games"
+description = "六款游戏插件：规则模板、拉取器与卡池类型映射"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+repository.workspace = true
+
+[dependencies]
+gachanote-core.workspace = true
+gachanote-formats.workspace = true
+
+[lints]
+workspace = true

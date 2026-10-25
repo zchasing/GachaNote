@@ -1,0 +1,35 @@
+[workspace]
+resolver = "2"
+members = ["crates/*", "src-tauri"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.90"
+publish = false
+repository = "https://github.com/zchasing/GachaNote"
+
+[workspace.dependencies]
+gachanote-core = { path = "crates/gachanote-core" }
+gachanote-formats = { path = "crates/gachanote-formats" }
+gachanote-games = { path = "crates/gachanote-games" }
+gachanote-meta = { path = "crates/gachanote-meta" }
+gachanote-store = { path = "crates/gachanote-store" }
+
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+specta = "=2.0.0-rc.26"
+specta-typescript = "=0.0.13"
+tauri = "2"
+tauri-build = "2"
+tauri-specta = { version = "=2.0.0-rc.26", features = ["derive", "typescript"] }
+tracing = "0.1"
+tracing-appender = "0.2"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
