@@ -549,6 +549,8 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </div>
 </div>
 </sc-if>
+</sc-if>
+<sc-if value="{{tabTimeline}}" hint-placeholder-val="{{ false }}">
 <div class="card">
 <div class="row" style="justify-content: space-between"><div class="ct">抽卡时间线</div><div class="seg" role="group" aria-label="时间粒度"><button class="segb {{trendDayCls}}" onClick="{{setTrendDay}}">按日</button><button class="segb {{trendMonthCls}}" onClick="{{setTrendMonth}}">按月</button></div></div>
 <sc-if value="{{trendDay}}" hint-placeholder-val="{{ true }}">
@@ -594,8 +596,6 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="xlabs"><sc-for list="{{months}}" as="mo" hint-placeholder-count="12"><span>{{mo.label}}</span></sc-for></div>
 </sc-if>
 </div>
-</sc-if>
-<sc-if value="{{tabTimeline}}" hint-placeholder-val="{{ false }}">
 <div class="row" style="justify-content: space-between">
 <div class="muted">最新一期在上 · {{pool.name}}</div>
 <label class="check"><input type="checkbox" checked="{{showSkipped}}" onChange="{{toggleSkipped}}">显示未参与的卡池</label>
