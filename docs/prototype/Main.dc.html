@@ -323,10 +323,10 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <button class="mini minibtn" onClick="{{goAnalysis}}"><div class="muted">预测与评价 · v0.2 · 点击查看分析</div><div class="v">下一抽出金 {{pred.next}} · {{luckShort}}</div></button>
 </div>
 <div class="card">
-<div class="row" style="justify-content: space-between"><div class="ct">出金历史</div><div class="muted">最近在上 · 条长 = 花费抽数 · 左侧为预留头像位</div></div>
+<div class="row" style="justify-content: space-between"><div class="ct">出金历史</div><div class="legend"><span>最近在上 · 条长 = 花费抽数</span><span><span class="sw" style="background: {{luckLegend.good}}"></span>欧</span><span><span class="sw" style="background: {{luckLegend.mid}}"></span>理论平均 {{pool.theory}} 抽</span><span><span class="sw" style="background: {{luckLegend.bad}}"></span>非</span></div></div>
 <div class="hist">
 <sc-for list="{{history}}" as="h" hint-placeholder-count="4">
-<div class="hrow"><span class="islot" aria-hidden="true"></span><span class="gold">{{h.name}}</span><div class="track" style="height: 10px"><div class="hbar" style="width: {{h.pct}}%"></div></div><span class="num">{{h.pulls}} 抽</span><span class="tag {{h.cls}}">{{h.tag}}</span></div>
+<div class="hrow"><span class="islot" aria-hidden="true"></span><span class="gold">{{h.name}}</span><div class="track" style="height: 10px"><div class="hbar" style="width: {{h.pct}}%; background: {{h.color}}; opacity: 1"></div></div><span class="num">{{h.pulls}} 抽</span><span class="tag {{h.cls}}">{{h.tag}}</span></div>
 </sc-for>
 </div>
 </div>
@@ -773,7 +773,11 @@ class Component extends DCLogic {
     var sumGold = a.pools.reduce(function (n0, p0) { return n0 + p0.gold; }, 0);
     var accSum = { total: sumTotal.toLocaleString('en-US'), gold: sumGold, avgGold: sumGold ? (sumTotal / sumGold).toFixed(1) : '—',
       range: allHist.length ? allHist[allHist.length - 1].date + ' – ' + allHist[0].date : '—' };
-    var history = pool.hist.map(function (h) { var tg = tagOf(h[2]); return { name: h[0], pulls: h[1], time: h[3], pct: Math.round(h[1] / m.hard * 100), tag: tg.tag, cls: tg.cls }; });
+    // 抽数条颜色：低于理论平均偏绿（欧），高于偏红（非），接近平均为黄
+    var luckColor = function (t) { t = Math.max(0, Math.min(1, t)); return 'hsl(' + Math.round(130 * (1 - t)) + ', ' + (s.dark ? '60%, 55%' : '62%, 42%') + ')'; };
+    var luckT = function (pulls) { return 0.5 + (pulls - m.theory) / (m.hard * 0.5); };
+    var luckLegend = { good: luckColor(0), mid: luckColor(0.5), bad: luckColor(1) };
+    var history = pool.hist.map(function (h) { var tg = tagOf(h[2]); return { name: h[0], pulls: h[1], time: h[3], pct: Math.round(h[1] / m.hard * 100), color: luckColor(luckT(h[1])), tag: tg.tag, cls: tg.cls }; });
     var n = Math.max(1, Math.min(300, Number(s.n) || 1));
     var p1 = predict(m, pool.pity, pool.big, 1), pn = predict(m, pool.pity, pool.big, n);
     var hasUp = m.up !== null && pool.tpl !== 'std';
@@ -824,7 +828,7 @@ class Component extends DCLogic {
       isOverview: s.view === 'overview', isDetail: s.view === 'detail', isSettings: s.view === 'settings', isEmptyGame: s.view === 'empty',
       navOverview: s.view === 'overview' ? 'on' : '', navSettings: s.view === 'settings' ? 'on' : '',
       tabSummary: summary, showSeg: true, segPools: segPools,
-      poolCards: poolCards, accRecent: allHist.slice(0, 8), accSum: accSum,
+      luckLegend: luckLegend, poolCards: poolCards, accRecent: allHist.slice(0, 8), accSum: accSum,
       tabStats: tab === 'stats' && !summary, tabRecords: tab === 'records', tabAnalysis: tab === 'analysis', tabTimeline: tab === 'timeline',
       tabStatsCls: tab === 'stats' ? 'on' : '', tabRecCls: tab === 'records' ? 'on' : '', tabAnaCls: tab === 'analysis' ? 'on' : '', tabTlCls: tab === 'timeline' ? 'on' : '',
       goStats: set({ tab: 'stats' }), goRecords: set({ tab: 'records' }), goAnalysis: set({ tab: 'analysis' }), goTimeline: set({ tab: 'timeline' }),
