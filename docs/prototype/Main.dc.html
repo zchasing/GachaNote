@@ -14,7 +14,13 @@ a{color:#3B6FE0}a:hover{color:#2A55B8}
 .app{display:flex;flex-wrap:wrap;min-height:820px;background:var(--bg);color:var(--text);font-family:"Microsoft YaHei UI","Segoe UI","PingFang SC",system-ui,sans-serif;font-size:14px;line-height:1.5;position:relative}
 .side{flex:0 0 240px;box-sizing:border-box;background:var(--surface);border-right:1px solid var(--border);padding:16px 12px;display:flex;flex-direction:column;gap:4px}
 .brand{font-size:17px;font-weight:600;padding:4px 8px 12px}
-.main{flex:999 1 560px;min-width:0;box-sizing:border-box;padding:24px 32px 48px}
+.main{flex:999 1 560px;min-width:0;box-sizing:border-box;display:flex;flex-direction:column}
+.topbar{position:sticky;top:0;z-index:3;background:var(--surface);border-bottom:1px solid var(--border);padding:16px 32px}
+.topbar .wrap{gap:12px}
+.topbar.withtabs{padding-bottom:0}
+.topbar .tabs{border-bottom:0;margin-bottom:-1px}
+.content{flex:1 1 auto;padding:24px 32px 48px}
+@media (min-width:768px){.app{height:100vh;min-height:600px}.main{overflow-y:auto}.side{overflow-y:auto}}
 .wrap{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
 .btn{font:inherit;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);padding:0 14px;min-height:36px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 .btn:hover{background:var(--hover)}
@@ -171,7 +177,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </aside>
 <main class="main">
 <sc-if value="{{isOverview}}" hint-placeholder-val="{{ true }}">
-<div class="wrap">
+<div class="topbar"><div class="wrap">
 <div class="row" style="justify-content: space-between">
 <h1 class="h1">总览</h1>
 <button class="btn" onClick="{{noop}}">全部刷新</button>
@@ -181,6 +187,8 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <button class="chip {{f.cls}}" onClick="{{f.pick}}">{{f.label}}</button>
 </sc-for>
 </div>
+</div></div>
+<div class="content"><div class="wrap">
 <div class="grid3">
 <sc-for list="{{cards}}" as="c" hint-placeholder-count="4">
 <div class="card">
@@ -204,19 +212,21 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </div>
 </sc-for>
 </div>
-</div>
+</div></div>
 </sc-if>
 <sc-if value="{{isEmptyGame}}" hint-placeholder-val="{{ false }}">
-<div class="wrap">
+<div class="topbar"><div class="wrap">
 <div class="row" style="gap: 10px"><span class="gicon lg" style="background: {{emptyGame.color}}; color: {{emptyGame.ink}}" aria-hidden="true">{{emptyGame.mono}}</span><h1 class="h1">{{emptyGame.name}}</h1></div>
+</div></div>
+<div class="content"><div class="wrap">
 <div class="empty">
 <div>还没有{{emptyGame.name}}的抽卡记录。导入或拉取后会自动创建账号。</div>
 <div class="row" style="justify-content: center"><button class="btn primary" onClick="{{openImportHere}}">从游戏拉取</button><button class="btn" onClick="{{openImportHere}}">导入文件</button></div>
 </div>
-</div>
+</div></div>
 </sc-if>
 <sc-if value="{{isDetail}}" hint-placeholder-val="{{ false }}">
-<div class="wrap">
+<div class="topbar withtabs"><div class="wrap">
 <div class="row" style="justify-content: space-between; align-items: flex-start">
 <div class="row" style="gap: 10px; align-items: flex-start">
 <span class="gicon lg" style="background: {{acc.color}}; color: {{acc.ink}}; margin-top: 2px" aria-hidden="true">{{acc.mono}}</span>
@@ -261,6 +271,8 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <button class="tab {{tabAnaCls}}" role="tab" onClick="{{goAnalysis}}">分析<span class="ver">v0.2</span></button>
 <button class="tab {{tabTlCls}}" role="tab" onClick="{{goTimeline}}">时间线<span class="ver">v0.3</span></button>
 </div>
+</div></div>
+<div class="content"><div class="wrap">
 <div class="seg" role="group" aria-label="卡池类型">
 <sc-for list="{{pools}}" as="p" hint-placeholder-count="3">
 <button class="segb {{p.cls}}" onClick="{{p.pick}}">{{p.short}}<span class="pn">{{p.pity}}</span></button>
@@ -407,11 +419,13 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </sc-for>
 <div class="muted">没有卡池数据包时按记录时间自动分段，标题显示为「2026-10-01 – 10-21 的记录」。</div>
 </sc-if>
-</div>
+</div></div>
 </sc-if>
 <sc-if value="{{isSettings}}" hint-placeholder-val="{{ false }}">
-<div class="wrap">
+<div class="topbar"><div class="wrap">
 <h1 class="h1">设置</h1>
+</div></div>
+<div class="content"><div class="wrap">
 <div class="settings">
 <div class="card">
 <div class="ct">通用</div>
@@ -435,7 +449,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="srow"><div><div>鹰角账号 token</div><div class="muted">v0.2 · 加密保存在本机，不显示内容</div></div><button class="btn small" onClick="{{noop}}" style="color: var(--loss)">清除</button></div>
 </div>
 </div>
-</div>
+</div></div>
 </sc-if>
 </main>
 <sc-if value="{{importOpen}}" hint-placeholder-val="{{ false }}">

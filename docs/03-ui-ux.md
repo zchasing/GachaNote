@@ -37,7 +37,7 @@ flowchart LR
 
 ## 3. 主要页面
 
-每页的区域从上到下列出；可点击的样子见 [GachaNote 原型](https://claude.ai/artifact/YU8T1foMKWdjiNqu3PRe98)（源文件在 [prototype/](prototype/)）（示例数据，可切换深浅色）。窗口结构统一为：左侧边栏 240 px（可收起到 64 px 只显示图标）+ 右侧内容区，内容区最大宽度 1200 px 居中。
+每页的区域从上到下列出；可点击的样子见 [GachaNote 原型](https://claude.ai/artifact/YU8T1foMKWdjiNqu3PRe98)（源文件在 [prototype/](prototype/)）（示例数据，可切换深浅色）。窗口结构统一为：左侧边栏 240 px（可收起到 64 px 只显示图标）+ 右侧内容区，内容区最大宽度 1200 px 居中。右侧内容区分上下两块：上方是固定顶栏（页面标题、账号切换、页面操作按钮；账号详情还包括标签页），白底并以分割线和下方隔开，不随内容滚动；下方是可滚动的内容。边栏也独立滚动。
 
 ### 3.1 左侧边栏
 
