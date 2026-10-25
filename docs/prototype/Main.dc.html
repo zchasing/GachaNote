@@ -65,9 +65,9 @@ a{color:#3B6FE0}a:hover{color:#2A55B8}
 .fill{height:6px;border-radius:999px;background:var(--primary)}
 .badge{font-size:12px;border-radius:999px;padding:0 8px;line-height:20px;border:1px solid var(--border);color:var(--text2)}
 .badge.big{border-color:var(--gold);color:var(--gold)}
-.gtag{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:500;line-height:22px;padding:0 9px 0 7px;border-radius:999px;white-space:nowrap}
-.gtag.gt-big{background:var(--goldbg);color:var(--gold);box-shadow:inset 0 0 0 1px var(--goldline)}
-.gtag.gt-small{background:var(--track);color:var(--text2)}
+.gtag{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;line-height:22px;padding:0 9px 0 7px;border-radius:999px;white-space:nowrap}
+.gtag.gt-big{background:linear-gradient(135deg,#F7D27A 0%,#E2A73C 100%);color:#4A3000;box-shadow:0 1px 2px rgba(160,110,20,.35),inset 0 1px 0 rgba(255,255,255,.45);letter-spacing:.5px}
+.gtag.gt-small{background:transparent;color:var(--text2);box-shadow:inset 0 0 0 1px var(--border);letter-spacing:.5px}
 .linkbtn{font:inherit;font-size:12px;border:0;background:transparent;color:var(--primary);padding:0;cursor:pointer;align-self:flex-start;min-height:24px}
 .foot{display:flex;gap:16px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:10px;font-size:12px;color:var(--text2)}
 .foot b{color:var(--text);font-weight:600}
@@ -239,7 +239,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="opools">
 <sc-for list="{{c.pools}}" as="p" hint-placeholder-count="2">
 <div class="opool">
-<div class="poolhead"><span>{{p.name}}</span><sc-if value="{{p.isBig}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-big"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"></path></svg>大保底</span></sc-if><sc-if value="{{p.isSmall}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-small"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" stroke-linejoin="round"></path></svg>小保底</span></sc-if><span class="num" style="margin-left: auto"><b style="font-size: 16px">{{p.pity}}</b><span class="muted"> / {{p.hard}}</span></span>
+<div class="poolhead"><span>{{p.name}}</span><sc-if value="{{p.isBig}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-big"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z" fill="currentColor"></path><path d="M8.2 12.2l2.6 2.6 5-5.2" fill="none" stroke="#FFF6DD" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>大保底</span></sc-if><sc-if value="{{p.isSmall}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-small"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z"></path></svg>小保底</span></sc-if><span class="num" style="margin-left: auto"><b style="font-size: 16px">{{p.pity}}</b><span class="muted"> / {{p.hard}}</span></span>
 </div>
 <div class="track" style="height: 8px; background: var(--surface)"><div class="fill" style="height: 8px; width: {{p.pct}}%; background: {{c.color}}"></div></div>
 </div>
@@ -336,7 +336,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="card">
 <div class="row" style="justify-content: space-between"><div class="ct">{{pc.name}}</div><button class="btn small" onClick="{{pc.open}}">查看详情</button></div>
 <div class="row" style="align-items: baseline; gap: 8px"><span class="big" style="font-size: 28px">{{pc.pity}}</span><span class="muted">/ {{pc.hard}} 当前保底</span>
-<sc-if value="{{pc.isBig}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-big" style="margin-left: auto; align-self: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"></path></svg>大保底</span></sc-if><sc-if value="{{pc.isSmall}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-small" style="margin-left: auto; align-self: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" stroke-linejoin="round"></path></svg>小保底</span></sc-if>
+<sc-if value="{{pc.isBig}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-big" style="margin-left: auto; align-self: center"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z" fill="currentColor"></path><path d="M8.2 12.2l2.6 2.6 5-5.2" fill="none" stroke="#FFF6DD" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>大保底</span></sc-if><sc-if value="{{pc.isSmall}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-small" style="margin-left: auto; align-self: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z"></path></svg>小保底</span></sc-if>
 </div>
 <div class="track"><div class="fill" style="width: {{pc.pct}}%"></div></div>
 <div class="foot"><span>总抽数 <b>{{pc.total}}</b></span><span>{{pc.k2}} <b>{{pc.v2}}</b></span><span>{{pc.k3}} <b>{{pc.v3}}</b></span></div>
@@ -348,7 +348,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="metrics">
 <sc-for list="{{metrics}}" as="m" hint-placeholder-count="3">
 <div class="card">
-<div class="row" style="justify-content: space-between; min-height: 22px"><div class="muted">{{m.label}}</div><sc-if value="{{m.isBig}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-big"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"></path></svg>大保底</span></sc-if><sc-if value="{{m.isSmall}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-small"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" stroke-linejoin="round"></path></svg>小保底</span></sc-if></div>
+<div class="row" style="justify-content: space-between; min-height: 22px"><div class="muted">{{m.label}}</div><sc-if value="{{m.isBig}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-big"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z" fill="currentColor"></path><path d="M8.2 12.2l2.6 2.6 5-5.2" fill="none" stroke="#FFF6DD" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>大保底</span></sc-if><sc-if value="{{m.isSmall}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-small"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z"></path></svg>小保底</span></sc-if></div>
 <div class="big">{{m.big}}<small> {{m.small}}</small></div>
 <sc-if value="{{m.hasBar}}" hint-placeholder-val="{{ false }}"><div class="track"><div class="fill" style="width: {{m.pct}}%; background: {{m.barColor}}"></div></div></sc-if>
 <div class="muted">{{m.sub}}</div>
