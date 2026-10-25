@@ -248,7 +248,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <button class="linkbtn" style="font-size: 12px; align-self: flex-start" onClick="{{c.toggle}}">{{c.extraLabel}}</button>
 </sc-if>
 </div>
-<div class="ostats">
+<div class="ostats" style="background: {{c.tint}}; border-top-color: {{c.tintLine}}">
 <div><div class="muted">总抽数</div><div class="osv">{{c.total}}</div></div>
 <div><div class="muted">平均出 UP</div><div class="osv">{{c.avgUp}}</div></div>
 <div><div class="muted">歪率</div><div class="osv">{{c.loss}}</div></div>
@@ -782,7 +782,7 @@ class Component extends DCLogic {
       var rest = a.pools.filter(function (p) { return lim.indexOf(p) < 0; });
       var open = !!s.expanded[i];
       var main = lim[0] || a.pools[0];
-      cards.push({ game: g.name, color: g.color, mono: g.mono, ink: g.ink, alias: a.alias, uid: a.uid, updated: a.updated, open: openAcc(i),
+      cards.push({ game: g.name, color: g.color, tint: g.color + '17', tintLine: g.color + '40', mono: g.mono, ink: g.ink, alias: a.alias, uid: a.uid, updated: a.updated, open: openAcc(i),
         pools: (open ? lim.concat(rest) : lim).map(poolView), hasExtra: rest.length > 0, extraLabel: open ? '收起' : '展开其余 ' + rest.length + ' 个卡池',
         toggle: function () { var e = Object.assign({}, self.state.expanded); e[i] = !e[i]; self.setState({ expanded: e }); },
         total: a.pools.reduce(function (n, p) { return n + Number(String(p.total).replace(/,/g, '')); }, 0).toLocaleString('en-US'),
