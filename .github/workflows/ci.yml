@@ -41,8 +41,8 @@ jobs:
       has_ui: ${{ steps.exists.outputs.ui }}
       has_metadata: ${{ steps.exists.outputs.metadata }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: dorny/paths-filter@v3
+      - uses: actions/checkout@v7
+      - uses: dorny/paths-filter@v4
         id: filter
         with:
           filters: .github/path-filters.yml
@@ -63,7 +63,7 @@ jobs:
     if: needs.changes.outputs.rust == 'true' && needs.changes.outputs.has_cargo == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-rust
       - run: cargo fmt --all --check
       - run: cargo clippy --workspace --all-targets --locked
@@ -78,7 +78,7 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-rust
       - run: cargo test --workspace --locked
 
@@ -88,7 +88,7 @@ jobs:
     if: needs.changes.outputs.rust == 'true' && needs.changes.outputs.has_core == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-rust
         with:
           components: llvm-tools-preview
@@ -110,7 +110,7 @@ jobs:
     if: needs.changes.outputs.bindings == 'true' && needs.changes.outputs.has_app == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-rust
       # 约定：src-tauri 中名为 export_bindings 的测试负责写出 ui/src/bindings.ts
       - run: cargo test -p gachanote-app --locked export_bindings
@@ -126,7 +126,7 @@ jobs:
       run:
         working-directory: ui
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-node
       - run: pnpm run --if-present lint
       - run: pnpm run --if-present type-check
@@ -139,8 +139,8 @@ jobs:
     if: needs.changes.outputs.metadata == 'true' && needs.changes.outputs.has_metadata == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - name: JSON Schema 校验
@@ -157,8 +157,8 @@ jobs:
     if: needs.changes.outputs.docs == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: DavidAnson/markdownlint-cli2-action@v20
+      - uses: actions/checkout@v7
+      - uses: DavidAnson/markdownlint-cli2-action@v24
         with:
           globs: |
             **/*.md
@@ -171,7 +171,7 @@ jobs:
     if: needs.changes.outputs.workflows == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: actionlint
         shell: bash
         run: |
