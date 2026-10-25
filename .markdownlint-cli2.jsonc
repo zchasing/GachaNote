@@ -1,10 +1,11 @@
 {
-  // 中文文档不限制行宽；允许内联 HTML 与重复的小节标题
+  // 中文文档不限制行宽；允许内联 HTML、重复的小节标题和单独一行的加粗小标签
   "config": {
     "default": true,
     "MD013": false,
     "MD024": { "siblings_only": true },
     "MD033": false,
+    "MD036": false,
     "MD041": false
   },
   "ignores": ["**/node_modules/**", "**/target/**", "**/CHANGELOG.md"]
