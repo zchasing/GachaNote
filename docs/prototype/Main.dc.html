@@ -181,6 +181,27 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 .xlabs span{flex:1 1 0;min-width:10px;text-align:center;overflow:hidden;white-space:nowrap}
 .legend{display:flex;gap:14px;font-size:12px;color:var(--text2);flex-wrap:wrap;align-items:center}
 .sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.comp{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.clist{flex:1 1 200px;display:flex;flex-direction:column;gap:6px;font-size:13px}
+.crow{display:grid;grid-template-columns:1fr auto 56px;gap:12px;align-items:center}
+.crow .num{text-align:right}
+.csub{font-size:12px;padding-left:14px;margin-top:-4px}
+.achs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.ach{display:flex;gap:12px;align-items:center;border:1px solid var(--border);border-radius:10px;padding:12px}
+.ach.done{border-color:var(--goldline);background:var(--goldbg)}
+.ach.locked{opacity:.6}
+.achico{flex:0 0 36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;background:var(--track);color:var(--text2)}
+.ach.done .achico{background:var(--gold);color:var(--surface)}
+.achn{font-weight:600;display:flex;align-items:center;gap:6px}
+.achok{font-size:11px;font-weight:500;color:var(--gold)}
+.achd{font-size:12px}
+.tl{position:relative;height:200px;display:flex;align-items:flex-end;gap:1px;border-bottom:1px solid var(--border);margin-left:32px}
+.tl .grid{position:absolute;left:0;right:0;border-top:1px dashed var(--border)}
+.tl .ylab{position:absolute;left:-32px;width:28px;text-align:right;font-size:11px;color:var(--text2);transform:translateY(-50%);font-variant-numeric:tabular-nums}
+.tbar{flex:1 1 0;min-width:0;display:flex;flex-direction:column;position:relative;z-index:1}
+.tbar:hover{filter:brightness(1.12)}
+.tbar .pin{position:absolute;top:-24px;left:50%;transform:translateX(-50%);background:var(--bar3);color:#fff;font-size:11px;font-weight:600;border-radius:999px;padding:1px 7px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tticks{display:flex;justify-content:space-between;margin-left:32px;font-size:11px;color:var(--text2);font-variant-numeric:tabular-nums}
 .period{display:flex;flex-direction:column;gap:8px}
 .gotrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:13px}
 .skipped{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 16px;border:1px dashed var(--border);border-radius:8px;font-size:13px;color:var(--text2)}
@@ -440,6 +461,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </div>
 </div>
 </div>
+<div class="two">
 <div class="card">
 <div class="ct">欧非评价</div>
 <sc-if value="{{luck.has}}" hint-placeholder-val="{{ true }}">
@@ -452,6 +474,28 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <sc-if value="{{luck.none}}" hint-placeholder-val="{{ false }}">
 <div class="muted">样本不足（少于 5 个金），只显示数值：平均出金 {{pool.avgGold}} 抽，理论平均 {{pool.theory}} 抽。</div>
 </sc-if>
+</div>
+<div class="card">
+<div class="row" style="justify-content: space-between"><div class="ct">抽卡构成</div><div class="muted">已垫 {{pool.pity}} 抽</div></div>
+<div class="comp">
+<svg viewBox="0 0 42 42" width="128" height="128" role="img" aria-label="各星级占比环形图">
+<g transform="rotate(-90 21 21)">
+<circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--bar3)" stroke-width="6" stroke-dasharray="{{comp.b.dash}}" stroke-dashoffset="{{comp.b.off}}"></circle>
+<circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--bar4)" stroke-width="6" stroke-dasharray="{{comp.p.dash}}" stroke-dashoffset="{{comp.p.off}}"></circle>
+<circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--bar5)" stroke-width="6" stroke-dasharray="{{comp.g.dash}}" stroke-dashoffset="{{comp.g.off}}"></circle>
+</g>
+<text x="21" y="21" text-anchor="middle" font-size="6.5" font-weight="700" fill="var(--text)">{{pool.total}}</text>
+<text x="21" y="27.5" text-anchor="middle" font-size="3.8" fill="var(--text2)">总抽数</text>
+</svg>
+<div class="clist">
+<sc-for list="{{comp.rows}}" as="cr" hint-placeholder-count="3">
+<div class="crow"><span><span class="sw" style="background: {{cr.color}}"></span>{{cr.label}}</span><span class="num">{{cr.count}}</span><span class="num muted">{{cr.pct}}</span></div>
+<sc-if value="{{cr.hasSub}}" hint-placeholder-val="{{ false }}"><div class="csub muted">{{cr.sub}}</div></sc-if>
+</sc-for>
+<div class="muted" style="font-size: 12px; margin-top: 4px">平均每 {{pool.avgGold}} 抽出一个{{comp.top}}</div>
+</div>
+</div>
+</div>
 </div>
 <div class="card">
 <div class="row" style="justify-content: space-between"><div class="ct">出金分布</div><button class="btn small" onClick="{{toggleDistTable}}">{{distToggleLabel}}</button></div>
@@ -471,14 +515,39 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </tbody></table></div>
 </sc-if>
 </div>
+<sc-if value="{{hasAchs}}" hint-placeholder-val="{{ true }}">
 <div class="card">
-<div class="row" style="justify-content: space-between"><div class="ct">月度趋势</div><div class="muted">最近 12 个月 · 柱 = 抽数 · 数字 = 出金数</div></div>
+<div class="row" style="justify-content: space-between"><div class="ct">成就</div><div class="muted">已达成 {{achDone}} / {{achTotal}} · 按本卡池记录计算</div></div>
+<div class="achs">
+<sc-for list="{{achs}}" as="ac" hint-placeholder-count="4">
+<div class="ach {{ac.cls}}"><span class="achico" aria-hidden="true">{{ac.ico}}</span><div style="min-width: 0"><div class="achn">{{ac.name}}<sc-if value="{{ac.done}}" hint-placeholder-val="{{ true }}"><span class="achok">已达成</span></sc-if></div><div class="muted achd">{{ac.desc}}</div></div></div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<div class="card">
+<div class="row" style="justify-content: space-between"><div class="ct">抽卡时间线</div><div class="seg" role="group" aria-label="时间粒度"><button class="segb {{trendDayCls}}" onClick="{{setTrendDay}}">按日</button><button class="segb {{trendMonthCls}}" onClick="{{setTrendMonth}}">按月</button></div></div>
+<sc-if value="{{trendDay}}" hint-placeholder-val="{{ true }}">
+<div class="row" style="justify-content: space-between"><div class="num" style="font-weight: 600">{{tl.range}}<span class="muted" style="font-weight: 400">（共 {{tl.total}} 抽）</span></div><div class="legend"><sc-for list="{{tl.legend}}" as="lg" hint-placeholder-count="3"><span><span class="sw" style="background: {{lg.color}}"></span>{{lg.label}}（{{lg.n}}）</span></sc-for></div></div>
+<div style="height: 18px"></div>
+<div class="tl">
+<sc-for list="{{tl.ylabs}}" as="yl" hint-placeholder-count="3"><div class="grid" style="top: {{yl.top}}"></div><span class="ylab" style="top: {{yl.top}}">{{yl.v}}</span></sc-for>
+<sc-for list="{{days}}" as="dy" hint-placeholder-count="60">
+<div class="tbar" style="height: {{dy.h}}%" title="{{dy.tip}}"><sc-if value="{{dy.isPeak}}" hint-placeholder-val="{{ false }}"><span class="pin">{{dy.pulls}}</span></sc-if><div style="flex: {{dy.g}} 0 0; min-height: {{dy.gMin}}; background: var(--bar5); border-radius: 2px 2px 0 0"></div><div style="flex: {{dy.p}} 0 0; background: var(--bar4)"></div><div style="flex: {{dy.b}} 0 0; background: var(--bar3)"></div></div>
+</sc-for>
+</div>
+<div class="tticks"><sc-for list="{{tl.ticks}}" as="tk" hint-placeholder-count="7"><span>{{tk.t}}</span></sc-for></div>
+<div class="muted" style="font-size: 12px">每根柱是一天，按星级堆叠；悬停查看当天明细，最高的一天标出抽数。</div>
+</sc-if>
+<sc-if value="{{trendMonth}}" hint-placeholder-val="{{ false }}">
+<div class="muted">最近 12 个月 · 柱 = 抽数 · 数字 = 出金数</div>
 <div class="chart" style="height: 150px">
 <sc-for list="{{months}}" as="mo" hint-placeholder-count="12">
 <div class="bar month" style="height: {{mo.h}}%"><span class="barlab">{{mo.gold}}</span></div>
 </sc-for>
 </div>
 <div class="xlabs"><sc-for list="{{months}}" as="mo" hint-placeholder-count="12"><span>{{mo.label}}</span></sc-for></div>
+</sc-if>
 </div>
 </sc-if>
 <sc-if value="{{tabTimeline}}" hint-placeholder-val="{{ false }}">
@@ -715,8 +784,8 @@ var ACCS = [
       hist: [['示例武器 C', 64, 1, '2026-09-21 08:08']], periods: [] }
   ] }
 ];
-var LIGHT = { bg: '#F7F7F8', surface: '#FFFFFF', border: '#E4E4E7', text: '#18181B', text2: '#5F5F68', primary: '#3B6FE0', onprimary: '#FFFFFF', selected: '#EAF0FC', hover: '#F2F2F4', track: '#EDEDF0', gold: '#9A6700', up: '#1F7A4D', upbg: '#E3F4EA', thead: '#F1F1F4', purple: '#7445C9', goldbg: '#FBF1DC', goldline: '#EBCF94', loss: '#C23434', lossbg: '#FBE7E7', overlay: 'rgba(15,15,20,0.45)' };
-var DARK = { bg: '#141518', surface: '#1D1F23', border: '#2E3036', text: '#ECECEE', text2: '#A0A0AA', primary: '#7B9CF2', onprimary: '#0B0C0E', selected: '#232C40', hover: '#26282D', track: '#2A2C31', gold: '#E3A43B', up: '#5CCB94', upbg: '#183528', thead: '#25272C', purple: '#B595F2', goldbg: '#33280F', goldline: '#5C4618', loss: '#F07A7A', lossbg: '#3A1E1E', overlay: 'rgba(0,0,0,0.6)' };
+var LIGHT = { bg: '#F7F7F8', surface: '#FFFFFF', border: '#E4E4E7', text: '#18181B', text2: '#5F5F68', primary: '#3B6FE0', onprimary: '#FFFFFF', selected: '#EAF0FC', hover: '#F2F2F4', track: '#EDEDF0', gold: '#9A6700', up: '#1F7A4D', upbg: '#E3F4EA', thead: '#F1F1F4', purple: '#7445C9', bar3: '#4A90E2', bar4: '#9B5DE5', bar5: '#F5B83D', goldbg: '#FBF1DC', goldline: '#EBCF94', loss: '#C23434', lossbg: '#FBE7E7', overlay: 'rgba(15,15,20,0.45)' };
+var DARK = { bg: '#141518', surface: '#1D1F23', border: '#2E3036', text: '#ECECEE', text2: '#A0A0AA', primary: '#7B9CF2', onprimary: '#0B0C0E', selected: '#232C40', hover: '#26282D', track: '#2A2C31', gold: '#E3A43B', up: '#5CCB94', upbg: '#183528', thead: '#25272C', purple: '#B595F2', bar3: '#5A9BEA', bar4: '#A97AF0', bar5: '#F2C14E', goldbg: '#33280F', goldline: '#5C4618', loss: '#F07A7A', lossbg: '#3A1E1E', overlay: 'rgba(0,0,0,0.6)' };
 // 每款游戏在导入弹窗里可用的方式
 var IMP = {
   ys: { methods: ['url', 'file'], formats: 'UIGF v4（兼容旧版 UIGF）', found: '已在游戏缓存中找到抽卡链接（国服，UID 1****6789）', pool: '角色活动祈愿' },
@@ -753,7 +822,7 @@ class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.state = { view: 'overview', acc: 0, pool: -1, tab: 'stats', dark: false, filter: 'all', importOpen: false, step: 1, method: 'url', shown: [], addOpen: false,
-      lastAcc: {}, emptyGame: null, accMenu: false, more: false, expanded: {}, n: 10, distTable: false, showSkipped: false,
+      lastAcc: {}, emptyGame: null, accMenu: false, more: false, expanded: {}, n: 10, distTable: false, showSkipped: false, trend: 'day',
       importGame: null, loggedIn: false, dd: null, onlyGold: false, recPage: 1, pageSize: 20, rarity: ['5', '4', '3', '2'], range: 'all', lang: 'zh', shareOpen: false, shareHide: true, shareDark: false, toast: '' };
   }
   flash(text) { var self = this; this.setState({ toast: text }); clearTimeout(this._t); this._t = setTimeout(function () { self.setState({ toast: '' }); }, 3000); }
@@ -846,6 +915,71 @@ class Component extends DCLogic {
     var months = [], maxP = 1;
     for (var i = 0; i < 12; i++) { var pulls = 30 + ((a.seed * 37 + i * 53) % 170); maxP = Math.max(maxP, pulls); months.push({ label: (((i + 10) % 12) + 1) + '月', pulls: pulls, gold: Math.round(pulls / 68) }); }
     months.forEach(function (x) { x.h = Math.round(x.pulls / maxP * 100); });
+    // 抽卡构成：三档星级按各游戏叫法，最高星再分 UP / 歪
+    var rl = a.game === 'ak' || a.game === 'ef' ? ['6 星', '5 星', '4 星及以下'] : (a.game === 'zzz' ? ['S 级', 'A 级', 'B 级'] : ['5 星', '4 星', '3 星']);
+    var totalN = Number(String(pool.total).replace(/,/g, ''));
+    var nG = pool.gold, nP = Math.round(totalN * (a.game === 'ak' || a.game === 'ef' ? 0.08 : 0.13)), nB = Math.max(0, totalN - nG - nP);
+    // 成就：按本卡池的出金记录计算，没达成的显示进度
+    var chron = pool.hist.slice().reverse();
+    var achs = [];
+    if (chron.length) {
+      var lo = chron.reduce(function (x, y) { return y[1] < x[1] ? y : x; }), hi = chron.reduce(function (x, y) { return y[1] > x[1] ? y : x; });
+      var loLine = Math.round(m.hard * 0.35);
+      achs.push({ ico: '欧', name: '欧皇时刻', done: lo[1] <= loLine, desc: lo[1] <= loLine ? lo[0] + ' 只用了 ' + lo[1] + ' 抽' : '最快 ' + lo[1] + ' 抽出金 · 需 ≤ ' + loLine + ' 抽' });
+      achs.push({ ico: '非', name: '非酋时刻', done: hi[1] > m.soft + 4, desc: hi[1] > m.soft + 4 ? hi[0] + ' 抽了 ' + hi[1] + ' 抽' : '最慢 ' + hi[1] + ' 抽出金 · 进入软保底后才算' });
+      if (pool.tpl !== 'std') {
+        var run = 0, best = 0;
+        chron.forEach(function (h) { run = h[2] === 1 ? run + 1 : 0; best = Math.max(best, run); });
+        achs.push({ ico: '连', name: '不歪连胜', done: best >= 3, desc: best >= 3 ? '连续 ' + best + ' 个金都是 UP' : '最长连续 ' + best + ' 个 UP · 需 3 个' });
+      }
+      var gap = 0;
+      for (var gi = 1; gi < chron.length; gi++) gap = Math.max(gap, Math.round((new Date(chron[gi][3].slice(0, 10)) - new Date(chron[gi - 1][3].slice(0, 10))) / 864e5));
+      achs.push({ ico: '等', name: '漫长等待', done: gap >= 45, desc: chron.length < 2 ? '至少需要 2 个金' : (gap >= 45 ? '两次出金相隔 ' + gap + ' 天' : '最长间隔 ' + gap + ' 天 · 需 45 天') });
+    }
+    achs.forEach(function (x) { x.cls = x.done ? 'done' : 'locked'; });
+    // 按日时间图：从首条记录到今天，每天一根柱，按星级堆叠；示例数据按卡池总抽数缩放
+    var dayMs = 864e5, endD = new Date('2026-10-25'), startD = chron.length ? new Date(chron[0][3].slice(0, 10)) : new Date('2026-09-01');
+    startD = new Date(startD - 9 * dayMs);
+    var nDays = Math.round((endD - startD) / dayMs) + 1, w = [], sumW = 0;
+    var goldDays = {};
+    chron.forEach(function (h) { goldDays[h[3].slice(0, 10)] = (goldDays[h[3].slice(0, 10)] || 0) + 1; });
+    var ymd = function (d) { return d.toISOString().slice(0, 10); };
+    for (var di = 0; di < nDays; di++) {
+      var r = ((di + 1) * 2654435761 + a.seed * 97 + pi * 31) % 1000 / 1000, key = ymd(new Date(+startD + di * dayMs));
+      var wt = goldDays[key] ? 60 + r * 40 : (r < 0.62 ? 0 : (r < 0.86 ? 1 + r * 6 : (r < 0.97 ? 10 + r * 15 : 50 + r * 60)));
+      w.push(wt); sumW += wt;
+    }
+    var days = [], extra = Math.max(0, nG - chron.length), peak = 0, peakI = 0, dSum = [0, 0, 0];
+    var order = w.map(function (x, i) { return i; }).sort(function (x, y) { return w[y] - w[x]; });
+    var extraDays = {};
+    order.filter(function (i) { return !goldDays[ymd(new Date(+startD + i * dayMs))]; }).slice(0, extra).forEach(function (i) { extraDays[i] = 1; });
+    for (var dj = 0; dj < nDays; dj++) {
+      var dd = new Date(+startD + dj * dayMs), k2 = ymd(dd);
+      var pp = sumW ? Math.round(w[dj] / sumW * totalN) : 0;
+      var gg = Math.min(pp, (goldDays[k2] || 0) + (extraDays[dj] ? 1 : 0)), pu = Math.min(pp - gg, Math.round(pp * (nP / Math.max(1, totalN)))), bb = pp - gg - pu;
+      dSum[0] += gg; dSum[1] += pu; dSum[2] += bb;
+      if (pp > peak) { peak = pp; peakI = dj; }
+      days.push({ date: k2, pulls: pp, g: gg, p: pu, b: bb });
+    }
+    // 四舍五入的零头补到最高的一天，保证合计与卡池总抽数一致
+    if (nDays && totalN) { var diff = totalN - dSum[0] - dSum[1] - dSum[2]; days[peakI].b += diff; days[peakI].pulls += diff; dSum[2] += diff; peak = days[peakI].pulls; }
+    nP = dSum[1]; nB = dSum[2];
+    var share = function (x) { return totalN ? x / totalN * 100 : 0; };
+    var pctTxt = function (x) { return totalN ? share(x).toFixed(1) + '%' : '—'; };
+    var upN = pool.tpl === 'std' ? 0 : Math.min(pool.upCount, nG);
+    var arc = function (x, before) { var l = share(x); return { dash: l.toFixed(2) + ' ' + (100 - l).toFixed(2), off: (-share(before)).toFixed(2) }; };
+    var comp = { top: rl[0], g: arc(nG, 0), p: arc(nP, nG), b: arc(nB, nG + nP),
+      rows: [
+        { label: rl[0], color: 'var(--bar5)', count: nG, pct: pctTxt(nG), hasSub: pool.tpl !== 'std' && nG > 0, sub: '其中 UP ' + upN + ' · 歪 ' + (nG - upN) },
+        { label: rl[1], color: 'var(--bar4)', count: nP, pct: pctTxt(nP), hasSub: false, sub: '' },
+        { label: rl[2], color: 'var(--bar3)', count: nB.toLocaleString('en-US'), pct: pctTxt(nB), hasSub: false, sub: '' }] };
+    var yMax = Math.max(10, Math.ceil(peak * 1.1 / 10) * 10);
+    days.forEach(function (x, i) { x.tip = x.date + ' · ' + x.pulls + ' 抽（' + rl[0] + ' ' + x.g + ' / ' + rl[1] + ' ' + x.p + ' / ' + rl[2] + ' ' + x.b + '）'; x.h = (x.pulls / yMax * 100).toFixed(1); x.isPeak = i === peakI && peak > 0; x.gMin = x.g ? '3px' : '0'; });
+    var ticks = [];
+    for (var ti = 0; ti < 7; ti++) ticks.push({ t: days[Math.round(ti * (nDays - 1) / 6)].date.slice(5) });
+    var tl = { range: days[0].date + ' – ' + days[nDays - 1].date, total: (dSum[0] + dSum[1] + dSum[2]).toLocaleString('en-US'),
+      legend: [{ label: rl[2], n: dSum[2].toLocaleString('en-US'), color: 'var(--bar3)' }, { label: rl[1], n: dSum[1], color: 'var(--bar4)' }, { label: rl[0], n: dSum[0], color: 'var(--bar5)' }],
+      ylabs: [{ v: yMax, top: '0%' }, { v: yMax / 2, top: '50%' }, { v: 0, top: '100%' }], ticks: ticks };
     var periods = pool.periods.map(function (pe) {
       var joined = pe[2] > 0;
       return { dates: pe[0], ups: pe[1], pulls: pe[2], joined: joined, skippedShown: !joined && s.showSkipped, noGold: pe[3].length === 0,
@@ -921,6 +1055,9 @@ class Component extends DCLogic {
       onN: function (e) { self.setState({ n: e.target.value }); },
       nChips: [10, 20, 50, 90].map(function (v) { return { label: v + ' 抽', cls: n === v ? 'on' : '', pick: set({ n: v }) }; }),
       dist: dist, distChart: !s.distTable, distTable: s.distTable, distToggleLabel: s.distTable ? '显示图表' : '数据表',
+      comp: comp, achs: achs, hasAchs: achs.length > 0, achTotal: achs.length, achDone: achs.filter(function (x) { return x.done; }).length,
+      days: days, tl: tl, trendDay: s.trend === 'day', trendMonth: s.trend === 'month',
+      trendDayCls: s.trend === 'day' ? 'on' : '', trendMonthCls: s.trend === 'month' ? 'on' : '', setTrendDay: set({ trend: 'day' }), setTrendMonth: set({ trend: 'month' }),
       toggleDistTable: function () { self.setState({ distTable: !self.state.distTable }); },
       months: months, periods: periods, showSkipped: s.showSkipped,
       toggleSkipped: function () { self.setState({ showSkipped: !self.state.showSkipped }); },
