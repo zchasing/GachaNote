@@ -275,12 +275,42 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </div>
 </div></div>
 <div class="content"><div class="wrap">
+<sc-if value="{{showSeg}}" hint-placeholder-val="{{ true }}">
 <div class="seg" role="group" aria-label="卡池类型">
-<sc-for list="{{pools}}" as="p" hint-placeholder-count="3">
+<sc-for list="{{segPools}}" as="p" hint-placeholder-count="3">
 <button class="segb {{p.cls}}" onClick="{{p.pick}}">{{p.short}}<span class="pn">{{p.pity}}</span></button>
 </sc-for>
 </div>
-<sc-if value="{{tabStats}}" hint-placeholder-val="{{ true }}">
+</sc-if>
+<sc-if value="{{tabSummary}}" hint-placeholder-val="{{ true }}">
+<div class="sec">
+<div class="mini"><div class="muted">总抽数（全部卡池）</div><div class="v">{{accSum.total}}</div></div>
+<div class="mini"><div class="muted">出金数</div><div class="v">{{accSum.gold}}</div></div>
+<div class="mini"><div class="muted">平均出金</div><div class="v">{{accSum.avgGold}} 抽</div></div>
+<div class="mini"><div class="muted">记录时间范围</div><div class="v" style="font-size: 15px">{{accSum.range}}</div></div>
+</div>
+<div class="grid3">
+<sc-for list="{{poolCards}}" as="pc" hint-placeholder-count="3">
+<div class="card">
+<div class="row" style="justify-content: space-between"><div class="ct">{{pc.name}}</div><button class="btn small" onClick="{{pc.open}}">查看详情</button></div>
+<div class="row" style="align-items: baseline; gap: 8px"><span class="big" style="font-size: 28px">{{pc.pity}}</span><span class="muted">/ {{pc.hard}} 当前保底</span>
+<sc-if value="{{pc.big}}" hint-placeholder-val="{{ false }}"><span class="badge big" style="margin-left: auto">大保底</span></sc-if>
+</div>
+<div class="track"><div class="fill" style="width: {{pc.pct}}%"></div></div>
+<div class="foot"><span>总抽数 <b>{{pc.total}}</b></span><span>{{pc.k2}} <b>{{pc.v2}}</b></span><span>{{pc.k3}} <b>{{pc.v3}}</b></span></div>
+</div>
+</sc-for>
+</div>
+<div class="card">
+<div class="row" style="justify-content: space-between"><div class="ct">最近出金（全部卡池）</div><div class="muted">最近在上</div></div>
+<div class="hist">
+<sc-for list="{{accRecent}}" as="h" hint-placeholder-count="5">
+<div class="hrow" style="grid-template-columns: 24px 120px 1fr 48px 44px 96px"><span class="islot" aria-hidden="true"></span><span class="gold">{{h.name}}</span><span class="muted">{{h.pool}}</span><span class="num">{{h.pulls}} 抽</span><span class="tag {{h.cls}}">{{h.tag}}</span><span class="muted num">{{h.date}}</span></div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{tabStats}}" hint-placeholder-val="{{ false }}">
 <div class="metrics">
 <sc-for list="{{metrics}}" as="m" hint-placeholder-count="3">
 <div class="card">
@@ -671,7 +701,7 @@ function tagOf(f) { return f === 1 ? { tag: 'UP', cls: 'up' } : (f === 0 ? { tag
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { view: 'overview', acc: 0, pool: 0, tab: 'stats', dark: false, filter: 'all', importOpen: false, step: 1, method: 'url', shown: [], addOpen: false,
+    this.state = { view: 'overview', acc: 0, pool: -1, tab: 'stats', dark: false, filter: 'all', importOpen: false, step: 1, method: 'url', shown: [], addOpen: false,
       lastAcc: {}, emptyGame: null, accMenu: false, more: false, expanded: {}, n: 10, distTable: false, showSkipped: false,
       importGame: null, loggedIn: false, shareOpen: false, shareHide: true, shareDark: false, toast: '' };
   }
@@ -681,7 +711,7 @@ class Component extends DCLogic {
     var s = this.state;
     var t = s.dark ? DARK : LIGHT;
     var set = function (patch) { return function () { self.setState(patch); }; };
-    var openAcc = function (i) { return function () { var la = Object.assign({}, self.state.lastAcc); la[ACCS[i].game] = i; self.setState({ view: 'detail', acc: i, pool: 0, accMenu: false, more: false, lastAcc: la }); }; };
+    var openAcc = function (i) { return function () { var la = Object.assign({}, self.state.lastAcc); la[ACCS[i].game] = i; self.setState({ view: 'detail', acc: i, pool: -1, accMenu: false, more: false, lastAcc: la }); }; };
     var games = GAMES.map(function (g) {
       var idx = [];
       ACCS.forEach(function (a, i) { if (a.game === g.key) idx.push(i); });
@@ -716,10 +746,12 @@ class Component extends DCLogic {
     });
     var a = ACCS[s.acc];
     var g = gameOf(a.game);
-    var pi = Math.min(s.pool, a.pools.length - 1);
+    var pi = Math.max(0, Math.min(s.pool, a.pools.length - 1));
+    var summary = s.tab === 'stats' && s.pool < 0;
     var pool = poolView(a.pools[pi]);
     var m = M[pool.m];
-    var pools = a.pools.map(function (p, i) { return { name: p.name, short: p.short, pity: p.pity, cls: i === pi ? 'on' : '', pick: set({ pool: i }) }; });
+    var pools = a.pools.map(function (p, i) { return { name: p.name, short: p.short, pity: p.pity, cls: (i === pi && !summary) ? 'on' : '', pick: set({ pool: i }) }; });
+    var segPools = (s.tab === 'stats' ? [{ short: '总览', pity: '', cls: summary ? 'on' : '', pick: set({ pool: -1 }) }] : []).concat(pools);
     var accOptions = [];
     ACCS.forEach(function (x, i) { if (x.game === a.game) accOptions.push({ alias: x.alias, uid: x.uid, cls: i === s.acc ? 'on' : '', pick: openAcc(i) }); });
     // 核心指标卡由规则模板决定
@@ -732,6 +764,18 @@ class Component extends DCLogic {
     else if (pool.tpl === 'akStd') metrics = [pityCard, upCard, { label: '歪率', big: pool.loss, small: '', hasBar: false, sub: pool.lossFrac + ' 次 6 星不是 UP · 无大保底' }];
     else if (pool.tpl === 'akLim') metrics = [pityCard, upCard, { label: '井（寻访凭证）', big: pool.spark, small: '/ ' + pool.sparkMax, hasBar: true, pct: Math.round(pool.spark / pool.sparkMax * 100), barColor: 'var(--gold)', sub: '再抽 ' + (pool.sparkMax - pool.spark) + ' 次可直接兑换 UP 干员' }];
     else metrics = [pityCard, { label: '平均出金', big: pool.avgGold, small: '抽', hasBar: false, sub: '共 ' + pool.gold + ' 个金' }];
+    var poolCards = a.pools.map(function (p0, i) {
+      var pv = poolView(p0);
+      var kv = p0.tpl === 'std' ? ['平均出金', p0.avgGold + ' 抽', '出金数', String(p0.gold)] : (p0.tpl === 'akLim' ? ['平均出 UP', p0.avgUp + ' 抽', '井', p0.spark + ' / ' + p0.sparkMax] : ['平均出 UP', p0.avgUp + ' 抽', '歪率', p0.loss]);
+      return { name: p0.name, pity: p0.pity, hard: pv.hard, pct: pv.pct, big: p0.big, total: p0.total, k2: kv[0], v2: kv[1], k3: kv[2], v3: kv[3], open: set({ pool: i, tab: 'stats' }) };
+    });
+    var allHist = [];
+    a.pools.forEach(function (p0) { p0.hist.forEach(function (h) { var tg = tagOf(h[2]); allHist.push({ name: h[0], pulls: h[1], time: h[3], date: h[3].slice(0, 10), pool: p0.short, tag: tg.tag, cls: tg.cls }); }); });
+    allHist.sort(function (x, y) { return x.time < y.time ? 1 : -1; });
+    var sumTotal = a.pools.reduce(function (n0, p0) { return n0 + Number(String(p0.total).replace(/,/g, '')); }, 0);
+    var sumGold = a.pools.reduce(function (n0, p0) { return n0 + p0.gold; }, 0);
+    var accSum = { total: sumTotal.toLocaleString('en-US'), gold: sumGold, avgGold: sumGold ? (sumTotal / sumGold).toFixed(1) : '—',
+      range: allHist.length ? allHist[allHist.length - 1].date + ' – ' + allHist[0].date : '—' };
     var history = pool.hist.map(function (h) { var tg = tagOf(h[2]); return { name: h[0], pulls: h[1], time: h[3], pct: Math.round(h[1] / m.hard * 100), tag: tg.tag, cls: tg.cls }; });
     var n = Math.max(1, Math.min(300, Number(s.n) || 1));
     var p1 = predict(m, pool.pity, pool.big, 1), pn = predict(m, pool.pity, pool.big, n);
@@ -782,7 +826,9 @@ class Component extends DCLogic {
       copyUid: function () { self.flash('已复制 UID'); },
       isOverview: s.view === 'overview', isDetail: s.view === 'detail', isSettings: s.view === 'settings', isEmptyGame: s.view === 'empty',
       navOverview: s.view === 'overview' ? 'on' : '', navSettings: s.view === 'settings' ? 'on' : '',
-      tabStats: tab === 'stats', tabRecords: tab === 'records', tabAnalysis: tab === 'analysis', tabTimeline: tab === 'timeline',
+      tabSummary: summary, showSeg: true, segPools: segPools,
+      poolCards: poolCards, accRecent: allHist.slice(0, 8), accSum: accSum,
+      tabStats: tab === 'stats' && !summary, tabRecords: tab === 'records', tabAnalysis: tab === 'analysis', tabTimeline: tab === 'timeline',
       tabStatsCls: tab === 'stats' ? 'on' : '', tabRecCls: tab === 'records' ? 'on' : '', tabAnaCls: tab === 'analysis' ? 'on' : '', tabTlCls: tab === 'timeline' ? 'on' : '',
       goStats: set({ tab: 'stats' }), goRecords: set({ tab: 'records' }), goAnalysis: set({ tab: 'analysis' }), goTimeline: set({ tab: 'timeline' }),
       pred: pred, curve: curve, luck: luck, luckShort: pool.luck ? pool.luck.short : '样本不足', n: n,
@@ -818,7 +864,7 @@ class Component extends DCLogic {
       fileHint: imp ? '支持格式：' + imp.formats : '自动识别 UIGF / GNJ / CSV 及其中包含的游戏', closeImport: set({ importOpen: false, step: 1 }),
       back: function () { var st = self.state.step; self.setState({ step: (st === 3 && !self.state.importGame) ? 1 : Math.max(1, st - 1) }); },
       start: set({ step: 4 }), finish: set({ step: 5 }),
-      viewAccount: set({ importOpen: false, step: 1, view: 'detail', acc: 0, pool: 0, tab: 'stats' }),
+      viewAccount: set({ importOpen: false, step: 1, view: 'detail', acc: 0, pool: -1, tab: 'stats' }),
       step1: step === 1, stepMethod: step === 2, step2Url: step === 3 && s.method === 'url', step2File: step === 3 && s.method === 'file', step2Token: step === 3 && s.method === 'token', step2Login: step === 3 && s.method === 'login' && !s.loggedIn, step2LoginDone: step === 3 && s.method === 'login' && s.loggedIn,
       fakeLogin: set({ loggedIn: true }),
       step4: step === 4, step5: step === 5,
