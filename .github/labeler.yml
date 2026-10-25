@@ -1,0 +1,31 @@
+# 按改动路径自动打 area/* 与 game/* 标签（对应开发计划第 8 节）
+area/core:
+  - changed-files: [{ any-glob-to-any-file: 'crates/gachanote-core/**' }]
+area/store:
+  - changed-files: [{ any-glob-to-any-file: 'crates/gachanote-store/**' }]
+area/formats:
+  - changed-files: [{ any-glob-to-any-file: 'crates/gachanote-formats/**' }]
+area/games:
+  - changed-files: [{ any-glob-to-any-file: 'crates/gachanote-games/**' }]
+area/meta:
+  - changed-files: [{ any-glob-to-any-file: ['crates/gachanote-meta/**', 'metadata/**'] }]
+area/app:
+  - changed-files: [{ any-glob-to-any-file: 'src-tauri/**' }]
+area/ui:
+  - changed-files: [{ any-glob-to-any-file: 'ui/**' }]
+area/ci:
+  - changed-files: [{ any-glob-to-any-file: ['.github/**', 'scripts/**', 'deny.toml'] }]
+area/docs:
+  - changed-files: [{ any-glob-to-any-file: ['docs/**', '*.md'] }]
+game/genshin:
+  - changed-files: [{ any-glob-to-any-file: ['crates/gachanote-games/src/genshin/**', 'metadata/genshin.json'] }]
+game/starrail:
+  - changed-files: [{ any-glob-to-any-file: ['crates/gachanote-games/src/starrail/**', 'metadata/starrail.json'] }]
+game/zzz:
+  - changed-files: [{ any-glob-to-any-file: ['crates/gachanote-games/src/zzz/**', 'metadata/zzz.json'] }]
+game/arknights:
+  - changed-files: [{ any-glob-to-any-file: ['crates/gachanote-games/src/arknights/**', 'metadata/arknights.json'] }]
+game/endfield:
+  - changed-files: [{ any-glob-to-any-file: ['crates/gachanote-games/src/endfield/**', 'metadata/endfield.json'] }]
+game/wuwa:
+  - changed-files: [{ any-glob-to-any-file: ['crates/gachanote-games/src/wuwa/**', 'metadata/wuwa.json'] }]

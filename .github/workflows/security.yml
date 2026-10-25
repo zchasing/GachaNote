@@ -1,0 +1,52 @@
+# 依赖安全与许可证检查：依赖清单变化时、每周一定时运行。
+name: 依赖安全
+
+on:
+  pull_request:
+    paths:
+      - 'Cargo.toml'
+      - 'Cargo.lock'
+      - '**/Cargo.toml'
+      - 'deny.toml'
+      - 'ui/package.json'
+      - 'ui/pnpm-lock.yaml'
+      - '.github/workflows/security.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Cargo.lock'
+      - 'ui/pnpm-lock.yaml'
+  schedule:
+    - cron: '0 1 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cargo-deny:
+    name: Rust 依赖（漏洞 / 许可证 / 来源）
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 检查是否已有 Rust 工程
+        id: ready
+        run: if [ -f Cargo.toml ]; then echo "ok=true" >> "$GITHUB_OUTPUT"; else echo "ok=false" >> "$GITHUB_OUTPUT"; fi
+      - if: steps.ready.outputs.ok == 'true'
+        uses: EmbarkStudios/cargo-deny-action@v2
+        with:
+          command: check advisories licenses bans sources
+
+  pnpm-audit:
+    name: 前端依赖漏洞
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 检查是否已有前端工程
+        id: ready
+        run: if [ -f ui/pnpm-lock.yaml ]; then echo "ok=true" >> "$GITHUB_OUTPUT"; else echo "ok=false" >> "$GITHUB_OUTPUT"; fi
+      - if: steps.ready.outputs.ok == 'true'
+        uses: ./.github/actions/setup-node
+      - if: steps.ready.outputs.ok == 'true'
+        working-directory: ui
+        run: pnpm audit --prod --audit-level high

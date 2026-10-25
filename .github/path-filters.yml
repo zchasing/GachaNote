@@ -1,0 +1,39 @@
+# ci.yml 用来判断要运行哪些检查。工作流或公共 action 改动时全部重跑。
+shared: &shared
+  - .github/workflows/ci.yml
+  - .github/actions/**
+  - .github/path-filters.yml
+
+rust:
+  - *shared
+  - 'Cargo.toml'
+  - 'Cargo.lock'
+  - 'rust-toolchain.toml'
+  - 'rustfmt.toml'
+  - 'clippy.toml'
+  - 'crates/**'
+  - 'src-tauri/**'
+
+bindings:
+  - *shared
+  - 'crates/**'
+  - 'src-tauri/**'
+  - 'ui/src/bindings.ts'
+
+ui:
+  - *shared
+  - 'ui/**'
+
+metadata:
+  - *shared
+  - 'metadata/**'
+  - 'scripts/check_metadata.py'
+
+docs:
+  - *shared
+  - '**/*.md'
+  - '.markdownlint-cli2.jsonc'
+
+workflows:
+  - '.github/workflows/**'
+  - '.github/actions/**'

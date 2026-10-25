@@ -1,0 +1,22 @@
+name: 准备 Rust 环境
+description: 安装 stable 工具链、缓存依赖，Linux 上安装 Tauri 编译所需的系统库
+inputs:
+  components:
+    description: 额外的 rustup 组件
+    required: false
+    default: ''
+runs:
+  using: composite
+  steps:
+    - uses: dtolnay/rust-toolchain@stable
+      with:
+        components: rustfmt, clippy${{ inputs.components && format(', {0}', inputs.components) || '' }}
+    - uses: Swatinem/rust-cache@v2
+    - name: Tauri 系统依赖（Linux）
+      if: runner.os == 'Linux' && hashFiles('src-tauri/Cargo.toml') != ''
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y --no-install-recommends \
+          libwebkit2gtk-4.1-dev libxdo-dev libssl-dev \
+          libayatana-appindicator3-dev librsvg2-dev
