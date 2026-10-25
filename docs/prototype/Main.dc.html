@@ -219,12 +219,11 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 .bmini span{flex:1 1 0;min-width:0;background:var(--bar3);opacity:.45}
 .bmask{position:absolute;top:0;bottom:0;background:var(--track);opacity:.75;pointer-events:none}
 .bwin{position:absolute;top:0;bottom:0;border:1.5px solid var(--primary);border-radius:6px;background:rgba(59,111,224,.08);pointer-events:none;box-sizing:border-box}
-.brange{position:absolute;inset:0;width:100%;height:100%;margin:0;background:transparent;-webkit-appearance:none;appearance:none;pointer-events:none}
-.brange::-webkit-slider-runnable-track{background:transparent;height:100%}
-.brange::-moz-range-track{background:transparent}
-.brange::-webkit-slider-thumb{-webkit-appearance:none;pointer-events:auto;width:10px;height:30px;margin-top:6px;border-radius:4px;background:var(--surface);border:1.5px solid var(--primary);cursor:ew-resize;box-shadow:0 1px 3px rgba(0,0,0,.2)}
-.brange::-moz-range-thumb{pointer-events:auto;width:10px;height:30px;border-radius:4px;background:var(--surface);border:1.5px solid var(--primary);cursor:ew-resize}
-.brange:focus-visible::-webkit-slider-thumb{outline:2px solid var(--primary);outline-offset:2px}
+.bhandle{position:absolute;top:6px;bottom:6px;width:12px;margin-left:-6px;border-radius:4px;background:var(--surface);border:1.5px solid var(--primary);box-sizing:border-box;cursor:ew-resize;z-index:3;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.bhandle span{width:2px;height:12px;border-left:1px solid var(--primary);border-right:1px solid var(--primary);box-sizing:border-box}
+.bhandle:hover,.bhandle:active{background:var(--selected)}
+.bhandle:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.brush.dragging{cursor:grabbing;user-select:none}
 .chip.small{min-height:26px;font-size:12px;padding:0 10px}
 .tticks{display:flex;justify-content:space-between;margin-left:32px;font-size:11px;color:var(--text2);font-variant-numeric:tabular-nums}
 .period{display:flex;flex-direction:column;gap:8px}
@@ -570,13 +569,13 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </div>
 <div class="tticks"><sc-for list="{{tl.ticks}}" as="tk" hint-placeholder-count="7"><span>{{tk.t}}</span></sc-for></div>
 <div class="brushrow"><button class="panbtn {{tl.panLCls}}" onClick="{{tl.panL}}" aria-label="选区向前移动"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 3.5L5.5 8 10 12.5"></path></svg></button>
-<div class="brush" aria-label="时间范围" onMouseMove="{{tl.move}}" onMouseUp="{{tl.up}}" onMouseLeave="{{tl.up}}">
+<div class="brush {{tl.brushCls}}" aria-label="时间范围" onMouseMove="{{tl.move}}" onMouseUp="{{tl.up}}" onMouseLeave="{{tl.up}}">
 <div class="bmini"><sc-for list="{{tl.mini}}" as="mb" hint-placeholder-count="60"><span style="height: {{mb.h}}%"></span></sc-for></div>
 <div class="bmask" style="left: 0; width: {{tl.maskL}}%"></div>
 <div class="bmask" style="right: 0; width: {{tl.maskR}}%"></div>
 <div class="bwin {{tl.winCls}}" style="left: {{tl.maskL}}%; right: {{tl.maskR}}%" onMouseDown="{{tl.down}}" onKeyDown="{{tl.key}}" tabindex="0" role="slider" aria-label="拖动平移选区，或按左右方向键"></div>
-<input class="brange" type="range" min="0" max="{{tl.max}}" value="{{tl.start}}" onChange="{{tl.onStart}}" aria-label="开始日期">
-<input class="brange" type="range" min="0" max="{{tl.max}}" value="{{tl.end}}" onChange="{{tl.onEnd}}" aria-label="结束日期">
+<div class="bhandle" style="left: {{tl.maskL}}%" onMouseDown="{{tl.downL}}" onKeyDown="{{tl.keyL}}" tabindex="0" role="slider" aria-label="开始日期" aria-valuetext="{{tl.startDate}}"><span></span></div>
+<div class="bhandle" style="right: {{tl.maskR}}%; transform: translateX(50%)" onMouseDown="{{tl.downR}}" onKeyDown="{{tl.keyR}}" tabindex="0" role="slider" aria-label="结束日期" aria-valuetext="{{tl.endDate}}"><span></span></div>
 </div>
 <button class="panbtn {{tl.panRCls}}" onClick="{{tl.panR}}" aria-label="选区向后移动"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 3.5L10.5 8 6 12.5"></path></svg></button></div>
 <div class="row" style="justify-content: space-between; margin-left: 32px">
@@ -1036,6 +1035,11 @@ class Component extends DCLogic {
     var ticks = [], nT = Math.min(7, vis.length);
     for (var ti = 0; ti < nT; ti++) ticks.push({ t: vis[nT === 1 ? 0 : Math.round(ti * (vis.length - 1) / (nT - 1))].date.slice(5) });
     var setRange = function (from, to) { self.setState({ rFrom: from, rTo: to, hoverDay: null }); };
+    // 按起止下标设置选区；覆盖全部日期时记为「全部」
+    var setEdges = function (a0, b0) { setRange(a0 === 0 && b0 === nDays - 1 ? null : nDays - 1 - a0, nDays - 1 - b0); };
+    // 拖动：手柄 l / r 调整一端，选区框 pan 整体平移；宽度取缩略图容器
+    var startDrag = function (e, mode) { var el = e.currentTarget; while (el && !(el.classList && el.classList.contains('brush'))) el = el.parentNode; var box = el ? el.getBoundingClientRect() : { width: 600 };
+      self.drag = { mode: mode, x0: e.clientX, w: box.width, s0: rStart, e0: rEnd }; if (e.preventDefault) e.preventDefault(); if (e.stopPropagation) e.stopPropagation(); self.setState({ dragging: true }); };
     var pan = function (k) { var w0 = rEnd - rStart, ns = Math.max(0, Math.min(nDays - 1 - w0, rStart + k)); if (ns !== rStart && w0 < nDays - 1) setRange(nDays - 1 - ns, nDays - 1 - (ns + w0)); };
     var quick = [['近 30 天', 30], ['近 90 天', 90], ['近半年', 182], ['全部', 0]].map(function (q) {
       var on = q[1] ? (s.rFrom === q[1] - 1 && !s.rTo) : s.rFrom === null && !s.rTo;
@@ -1050,15 +1054,19 @@ class Component extends DCLogic {
       max: nDays - 1, start: rStart, end: rEnd,
       maskL: (rStart / nDays * 100).toFixed(2), maskR: ((nDays - 1 - rEnd) / nDays * 100).toFixed(2),
       startDate: days[rStart].date, endDate: days[rEnd].date, firstDate: days[0].date, lastDate: days[nDays - 1].date, days: vis.length,
-      onStart: function (e) { var v = Math.min(Number(e.target.value), rEnd); setRange(v === 0 && rEnd === nDays - 1 ? null : nDays - 1 - v, nDays - 1 - rEnd); },
-      onEnd: function (e) { var v = Math.max(Number(e.target.value), rStart); setRange(rStart === 0 && v === nDays - 1 ? null : nDays - 1 - rStart, nDays - 1 - v); },
       quick: quick,
       // 平移：拖动选区框，或用两侧箭头按半个选区移动；全部选中时不能平移
       canPan: vis.length < nDays, panL: function () { pan(-Math.max(1, Math.round(vis.length / 2))); }, panR: function () { pan(Math.max(1, Math.round(vis.length / 2))); },
       panLCls: rStart > 0 ? '' : 'off', panRCls: rEnd < nDays - 1 ? '' : 'off', winCls: vis.length < nDays ? 'pan' : '',
-      down: function (e) { if (vis.length >= nDays) return; var box = e.currentTarget.parentNode.getBoundingClientRect(); self.drag = { x0: e.clientX, w: box.width, s0: rStart, e0: rEnd }; if (e.preventDefault) e.preventDefault(); },
-      move: function (e) { var d = self.drag; if (!d) return; var k = Math.round((e.clientX - d.x0) / d.w * nDays); var ns = Math.max(0, Math.min(nDays - 1 - (d.e0 - d.s0), d.s0 + k)); if (ns !== rStart) setRange(nDays - 1 - ns, nDays - 1 - (ns + d.e0 - d.s0)); },
-      up: function () { self.drag = null; },
+      down: function (e) { if (vis.length >= nDays) return; startDrag(e, 'pan'); },
+      downL: function (e) { startDrag(e, 'l'); }, downR: function (e) { startDrag(e, 'r'); },
+      keyL: function (e) { var k = e.key === 'ArrowLeft' ? -1 : (e.key === 'ArrowRight' ? 1 : 0); if (k) setEdges(Math.max(0, Math.min(rEnd, rStart + k)), rEnd); },
+      keyR: function (e) { var k = e.key === 'ArrowLeft' ? -1 : (e.key === 'ArrowRight' ? 1 : 0); if (k) setEdges(rStart, Math.max(rStart, Math.min(nDays - 1, rEnd + k))); },
+      move: function (e) { var d = self.drag; if (!d) return; var k = Math.round((e.clientX - d.x0) / d.w * nDays);
+        if (d.mode === 'pan') { var ns = Math.max(0, Math.min(nDays - 1 - (d.e0 - d.s0), d.s0 + k)); if (ns !== rStart) setEdges(ns, ns + d.e0 - d.s0); }
+        else if (d.mode === 'l') { var a0 = Math.max(0, Math.min(d.e0, d.s0 + k)); if (a0 !== rStart) setEdges(a0, d.e0); }
+        else { var b0 = Math.max(d.s0, Math.min(nDays - 1, d.e0 + k)); if (b0 !== rEnd) setEdges(d.s0, b0); } },
+      up: function () { if (self.drag) { self.drag = null; self.setState({ dragging: false }); } }, brushCls: s.dragging ? 'dragging' : '',
       key: function (e) { if (e.key === 'ArrowLeft') pan(-1); if (e.key === 'ArrowRight') pan(1); } };
     var periods = pool.periods.map(function (pe) {
       var joined = pe[2] > 0;
