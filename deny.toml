@@ -31,10 +31,6 @@ allow = [
   "CDLA-Permissive-2.0",
 ]
 
-# 本仓库的 crate 不发布到 crates.io，不需要许可证字段
-[licenses.private]
-ignore = true
-
 [bans]
 multiple-versions = "warn"
 wildcards = "deny"
