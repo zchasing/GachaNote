@@ -15,9 +15,11 @@ a{color:#3B6FE0}a:hover{color:#2A55B8}
 .side{flex:0 0 240px;box-sizing:border-box;background:var(--surface);border-right:1px solid var(--border);padding:16px 12px;display:flex;flex-direction:column;gap:4px}
 .brand{font-size:17px;font-weight:600;padding:4px 8px 12px}
 .main{flex:999 1 560px;min-width:0;box-sizing:border-box;display:flex;flex-direction:column}
-.topbar{position:sticky;top:0;z-index:3;background:var(--surface);border-bottom:1px solid var(--border);padding:16px 32px}
+.topbar{position:sticky;top:0;z-index:3;background:var(--surface);border-bottom:1px solid var(--border);padding:16px 32px 0;height:120px;box-sizing:border-box;flex:0 0 auto}
 .topbar .wrap{gap:12px}
-.topbar.withtabs{padding-bottom:0}
+.thead{min-height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.trow{height:40px;display:flex;align-items:center}
+.topbar .h1,.topbar .acctbtn{font-size:22px}
 .topbar .tabs{border-bottom:0;margin-bottom:-1px}
 .content{flex:1 1 auto;padding:24px 32px 48px}
 @media (min-width:768px){.app{height:100vh;min-height:600px}.main{overflow-y:auto}.side{overflow-y:auto}}
@@ -178,11 +180,11 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <main class="main">
 <sc-if value="{{isOverview}}" hint-placeholder-val="{{ true }}">
 <div class="topbar"><div class="wrap">
-<div class="row" style="justify-content: space-between">
-<h1 class="h1">总览</h1>
+<div class="thead">
+<div class="row" style="gap: 10px"><span class="gicon lg" style="background: var(--selected); color: var(--primary)" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg></span><div><h1 class="h1">总览</h1><div class="muted">{{ovSummary}}</div></div></div>
 <button class="btn" onClick="{{noop}}">全部刷新</button>
 </div>
-<div class="chips">
+<div class="chips trow">
 <sc-for list="{{filters}}" as="f" hint-placeholder-count="5">
 <button class="chip {{f.cls}}" onClick="{{f.pick}}">{{f.label}}</button>
 </sc-for>
@@ -216,7 +218,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </sc-if>
 <sc-if value="{{isEmptyGame}}" hint-placeholder-val="{{ false }}">
 <div class="topbar"><div class="wrap">
-<div class="row" style="gap: 10px"><span class="gicon lg" style="background: {{emptyGame.color}}; color: {{emptyGame.ink}}" aria-hidden="true">{{emptyGame.mono}}</span><h1 class="h1">{{emptyGame.name}}</h1></div>
+<div class="thead"><div class="row" style="gap: 10px"><span class="gicon lg" style="background: {{emptyGame.color}}; color: {{emptyGame.ink}}" aria-hidden="true">{{emptyGame.mono}}</span><div><h1 class="h1">{{emptyGame.name}}</h1><div class="muted">暂无账号</div></div></div></div>
 </div></div>
 <div class="content"><div class="wrap">
 <div class="empty">
@@ -226,8 +228,8 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </div></div>
 </sc-if>
 <sc-if value="{{isDetail}}" hint-placeholder-val="{{ false }}">
-<div class="topbar withtabs"><div class="wrap">
-<div class="row" style="justify-content: space-between; align-items: flex-start">
+<div class="topbar"><div class="wrap">
+<div class="thead" style="align-items: flex-start">
 <div class="row" style="gap: 10px; align-items: flex-start">
 <span class="gicon lg" style="background: {{acc.color}}; color: {{acc.ink}}; margin-top: 2px" aria-hidden="true">{{acc.mono}}</span>
 <div>
@@ -423,7 +425,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </sc-if>
 <sc-if value="{{isSettings}}" hint-placeholder-val="{{ false }}">
 <div class="topbar"><div class="wrap">
-<h1 class="h1">设置</h1>
+<div class="thead"><div><h1 class="h1">设置</h1><div class="muted">通用 · 数据 · 卡池数据包 · 凭证</div></div></div>
 </div></div>
 <div class="content"><div class="wrap">
 <div class="settings">
@@ -766,6 +768,7 @@ class Component extends DCLogic {
     var tab = s.tab;
     return {
       rootStyle: vars(t),
+      ovSummary: ACCS.length + ' 个账号 · ' + GAMES.filter(function (x) { return ACCS.some(function (y) { return y.game === x.key; }); }).length + ' 款游戏',
       games: games, filters: filters, cards: cards, pools: pools, pool: pool, metrics: metrics, history: history, recordCount: history.length,
       hiddenGames: hiddenGames, noHidden: hiddenGames.length === 0, addOpen: s.addOpen,
       addLabel: s.addOpen ? '收起' : '+ 添加游戏',
