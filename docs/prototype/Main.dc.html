@@ -13,24 +13,40 @@ body{margin:0}
 a{color:#3B6FE0}a:hover{color:#2A55B8}
 .app{display:flex;flex-wrap:wrap;min-height:820px;background:var(--bg);color:var(--text);font-family:"Microsoft YaHei UI","Segoe UI","PingFang SC",system-ui,sans-serif;font-size:14px;line-height:1.5;position:relative}
 .side{flex:0 0 240px;box-sizing:border-box;background:var(--surface);border-right:1px solid var(--border);padding:16px 12px;display:flex;flex-direction:column;gap:4px}
-.brand{font-size:17px;font-weight:600;padding:4px 8px 12px}
-.main{flex:999 1 560px;min-width:0;box-sizing:border-box;padding:24px 32px 48px}
+.brand{font-size:17px;font-weight:700;padding:2px 6px 14px;display:flex;align-items:center;gap:8px;letter-spacing:.2px}
+.logo{flex:0 0 30px;filter:drop-shadow(0 1px 2px rgba(60,100,170,.25))}
+.navico{background:var(--track);color:var(--text2)}
+.nav.on .navico{background:var(--primary);color:var(--onprimary)}
+.addico{border:1.5px dashed var(--border);box-sizing:border-box;color:var(--text2)}
+.main{flex:999 1 560px;min-width:0;box-sizing:border-box;display:flex;flex-direction:column}
+.topbar{position:sticky;top:0;z-index:3;background:var(--surface);border-bottom:1px solid var(--border);padding:16px 32px 0;height:120px;box-sizing:border-box;flex:0 0 auto}
+.topbar .wrap{gap:12px}
+.thead{min-height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.trow{height:40px;display:flex;align-items:center}
+.topbar .h1,.topbar .acctbtn{font-size:22px}
+.topbar .tabs{border-bottom:0;margin-bottom:-1px}
+.content{flex:1 1 auto;padding:24px 32px 48px}
+@media (min-width:768px){.app{height:100vh;min-height:600px}.main{overflow-y:auto}.side{overflow-y:auto}}
 .wrap{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
-.btn{font:inherit;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);padding:0 14px;min-height:36px;cursor:pointer}
+.btn{font:inherit;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);padding:0 14px;min-height:36px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 .btn:hover{background:var(--hover)}
-.btn.primary{background:var(--primary);border-color:var(--primary);color:var(--onprimary);font-weight:600}
+.btn.primary{background:var(--primary);border-color:var(--primary);color:var(--onprimary);font-weight:600;justify-content:center}
 .btn.small{min-height:32px;padding:0 10px;font-size:13px}
 .nav{font:inherit;text-align:left;border:0;background:transparent;color:var(--text);border-radius:6px;padding:0 10px;min-height:36px;cursor:pointer;display:flex;align-items:center;gap:8px;width:100%}
 .nav:hover{background:var(--hover)}
-.nav.on{background:var(--selected);color:var(--primary);font-weight:600}
-.nav.sub{padding-left:30px;font-size:13px;min-height:32px}
-.grp{font-size:12px;color:var(--text2);padding:12px 10px 4px}
-.game{display:flex;align-items:center;gap:8px;padding:6px 10px;font-size:13px;color:var(--text2)}
-.dot{width:8px;height:8px;border-radius:999px;flex:0 0 8px}
+.nav.on{background:var(--selected);color:var(--primary);font-weight:600;box-shadow:inset 3px 0 0 var(--primary)}
+.nav.dim{color:var(--text2)}
+.iconrow{display:flex;gap:4px;padding:0 4px}
+.iconbtn{font:inherit;border:0;background:transparent;color:var(--text2);border-radius:6px;width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.iconbtn:hover{background:var(--hover);color:var(--text)}
+.iconbtn.on{background:var(--selected);color:var(--primary)}
+.grp{font-size:11px;font-weight:600;letter-spacing:1px;color:var(--text2);padding:14px 10px 6px;border-top:1px solid var(--border);margin-top:8px}
+.dot{width:8px;height:8px;border-radius:999px;flex:0 0 8px;display:inline-block}
 .gicon{width:24px;height:24px;flex:0 0 24px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
 .gicon.lg{width:32px;height:32px;flex-basis:32px;border-radius:8px;font-size:16px}
 .addbox{border:1px solid var(--border);border-radius:8px;padding:4px;margin:0 4px}
-.cnt{margin-left:auto;font-size:12px}
+.cnt{margin-left:auto;font-size:11px;color:var(--text2);font-weight:500;background:var(--track);border-radius:999px;padding:0 7px;line-height:18px;font-variant-numeric:tabular-nums}
+.nav.on .cnt{background:var(--surface);color:var(--primary)}
 .spacer{flex:1 1 auto;min-height:24px}
 .h1{font-size:20px;font-weight:600;margin:0}
 .muted{color:var(--text2);font-size:12px}
@@ -39,8 +55,8 @@ a{color:#3B6FE0}a:hover{color:#2A55B8}
 .chip{font:inherit;font-size:13px;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:999px;padding:0 14px;min-height:32px;cursor:pointer}
 .chip.on{border-color:var(--primary);color:var(--primary);background:var(--selected);font-weight:600}
 .grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden}
-.stripe{position:absolute;left:0;top:0;bottom:0;width:4px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:12px;position:relative}
+.stripe{position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
 .ct{font-size:15px;font-weight:600}
 .pool{display:flex;flex-direction:column;gap:4px}
 .poolhead{display:flex;align-items:center;gap:8px;font-size:13px}
@@ -49,37 +65,76 @@ a{color:#3B6FE0}a:hover{color:#2A55B8}
 .fill{height:6px;border-radius:999px;background:var(--primary)}
 .badge{font-size:12px;border-radius:999px;padding:0 8px;line-height:20px;border:1px solid var(--border);color:var(--text2)}
 .badge.big{border-color:var(--gold);color:var(--gold)}
+.gtag{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;line-height:22px;padding:0 9px 0 7px;border-radius:999px;white-space:nowrap}
+.gtag.gt-big{background:linear-gradient(135deg,#F7D27A 0%,#E2A73C 100%);color:#4A3000;box-shadow:0 1px 2px rgba(160,110,20,.35),inset 0 1px 0 rgba(255,255,255,.45);letter-spacing:.5px}
+.gtag.gt-small{background:transparent;color:var(--text2);box-shadow:inset 0 0 0 1px var(--border);letter-spacing:.5px}
+.linkbtn{font:inherit;font-size:12px;border:0;background:transparent;color:var(--primary);padding:0;cursor:pointer;align-self:flex-start;min-height:24px}
 .foot{display:flex;gap:16px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:10px;font-size:12px;color:var(--text2)}
 .foot b{color:var(--text);font-weight:600}
-.tabs{display:flex;gap:4px;border-bottom:1px solid var(--border)}
-.tab{font:inherit;border:0;background:transparent;color:var(--text2);padding:0 14px;min-height:40px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.card > .foot{margin-top:auto}
+.ocard{padding:0;gap:0;overflow:hidden}
+.ohead{display:flex;align-items:center;gap:10px;padding:14px 12px 12px 16px}
+.opools{display:flex;flex-direction:column;gap:8px;padding:0 16px 16px}
+.opool{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.ostats{margin-top:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--border);background:var(--bg)}
+.ostats > div{padding:10px 16px;display:flex;flex-direction:column;gap:2px}
+.ostats > div + div{border-left:1px solid var(--border)}
+.osv{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.tab{font:inherit;border:0;background:transparent;color:var(--text2);padding:0 14px;min-height:40px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;display:inline-flex;align-items:center;gap:6px}
 .tab.on{color:var(--primary);border-bottom-color:var(--primary);font-weight:600}
-.tab:disabled{cursor:not-allowed;opacity:.6}
-.seg{display:inline-flex;border:1px solid var(--border);border-radius:6px;overflow:hidden;flex-wrap:wrap}
-.segb{font:inherit;font-size:13px;border:0;border-right:1px solid var(--border);background:var(--surface);color:var(--text);padding:0 14px;min-height:34px;cursor:pointer}
-.segb.on{background:var(--selected);color:var(--primary);font-weight:600}
+.ver{font-size:11px;color:var(--text2);border:1px solid var(--border);border-radius:999px;padding:0 6px;line-height:16px;font-weight:400}
+.seg{display:inline-flex;align-self:flex-start;gap:2px;padding:3px;background:var(--track);border-radius:8px;flex-wrap:wrap}
+.segb{font:inherit;font-size:13px;border:0;border-radius:6px;background:transparent;color:var(--text2);padding:0 12px;min-height:32px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background 150ms,color 150ms}
+.segb:hover{color:var(--text)}
+.segb.on{background:var(--surface);color:var(--text);font-weight:600;box-shadow:0 1px 2px rgba(15,15,20,.12),0 0 0 1px var(--border)}
+.segb .pn{font-variant-numeric:tabular-nums;font-weight:600;font-size:12px;min-width:20px;text-align:center;padding:0 6px;line-height:20px;border-radius:999px;background:var(--surface);color:var(--text2)}
+.segb .pn:empty{display:none}
+.segb.on .pn{background:var(--selected);color:var(--primary)}
+@media (prefers-reduced-motion:reduce){.segb{transition:none}}
 .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
 .big{font-size:36px;font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums}
 .big small{font-size:16px;color:var(--text2);font-weight:400}
 .sec{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .mini{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
 .mini .v{font-size:18px;font-weight:600;font-variant-numeric:tabular-nums}
+.minibtn{font:inherit;text-align:left;color:var(--text);cursor:pointer;grid-column:span 2}
+.minibtn:hover{border-color:var(--primary)}
 .hist{display:flex;flex-direction:column;gap:8px}
-.hrow{display:grid;grid-template-columns:140px 1fr 48px 44px;align-items:center;gap:12px;font-size:13px}
+.hrow{display:grid;grid-template-columns:24px 120px 1fr 48px 44px;align-items:center;gap:12px;font-size:13px}
+.islot{width:24px;height:24px;border-radius:6px;border:1px dashed var(--border);box-sizing:border-box;display:inline-block;flex:0 0 24px}
 .hbar{height:10px;border-radius:999px;background:var(--gold);opacity:.85}
 .gold{color:var(--gold);font-weight:600}
-.tag{font-size:12px;border-radius:999px;padding:0 8px;line-height:20px;text-align:center}
+.tag{font-size:12px;border-radius:999px;padding:0 8px;line-height:20px;text-align:center;white-space:nowrap}
 .tag.up{background:var(--upbg);color:var(--up)}
 .tag.loss{background:var(--lossbg);color:var(--loss)}
 .tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--border);border-radius:8px}
 table{border-collapse:collapse;width:100%;min-width:640px;font-size:13px}
-th{text-align:left;font-weight:600;color:var(--text2);padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
+th{text-align:left;font-weight:600;color:var(--text2);padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap;background:var(--thead)}
+tbody tr:last-child td{border-bottom:0}
+.tscroll{max-height:max(320px, calc(100vh - 380px));overflow:auto}
+.tscroll th{position:sticky;top:0;z-index:1}
+.app, .app *{scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.app ::-webkit-scrollbar{width:8px;height:8px}
+.app ::-webkit-scrollbar-track{background:transparent}
+.app ::-webkit-scrollbar-thumb{background:var(--border);border-radius:999px;border:2px solid transparent;background-clip:content-box}
+.app ::-webkit-scrollbar-thumb:hover{background:var(--text2);background-clip:content-box}
+.app ::-webkit-scrollbar-corner{background:transparent}
+tbody tr:hover td{background:var(--hover)}
+.purple{color:var(--purple);font-weight:600}
+.pager{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.pbtn{font:inherit;font-size:13px;min-width:32px;height:32px;padding:0 8px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);cursor:pointer;font-variant-numeric:tabular-nums}
+.pbtn:hover{background:var(--hover)}
+.pbtn.on{background:var(--primary);border-color:var(--primary);color:var(--onprimary);font-weight:600}
+.pbtn:disabled{opacity:.4;cursor:default}
 td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
+.namecell{display:flex;align-items:center;gap:8px}
 .field{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--text2)}
 .input{font:inherit;font-size:13px;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:6px;min-height:34px;padding:0 10px;box-sizing:border-box}
 .check{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text)}
 .overlay{position:absolute;inset:0;background:var(--overlay);display:flex;align-items:flex-start;justify-content:center;padding:72px 16px;box-sizing:border-box;z-index:5}
 .modal{width:100%;max-width:640px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:16px;box-sizing:border-box}
+.modal.wide{max-width:900px}
 .steps{display:flex;gap:8px;font-size:12px;color:var(--text2);flex-wrap:wrap}
 .step.on{color:var(--primary);font-weight:600}
 .methods{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
@@ -93,25 +148,114 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 .srow{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--border)}
 .srow:last-child{border-bottom:0}
 .empty{background:var(--surface);border:1px dashed var(--border);border-radius:8px;padding:40px;text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center}
+.anchor{position:relative}
+.menu{position:absolute;top:calc(100% + 4px);left:0;min-width:220px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:4px;z-index:4;display:flex;flex-direction:column;box-shadow:0 8px 24px rgba(15,15,20,.12);box-sizing:border-box}
+.select{font:inherit;font-size:13px;min-height:34px;min-width:150px;padding:0 10px 0 12px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);display:inline-flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;white-space:nowrap}
+.select:hover{border-color:var(--text2)}
+.select.open{border-color:var(--primary);box-shadow:0 0 0 3px var(--selected)}
+.select .chev{color:var(--text2);transition:transform 150ms}
+.select.open .chev{transform:rotate(180deg)}
+.ck{width:16px;flex:0 0 16px;display:inline-flex;color:var(--primary)}
+@media (prefers-reduced-motion:reduce){.select .chev{transition:none}}
+.menu.right{left:auto;right:0}
+.mi{font:inherit;font-size:13px;text-align:left;border:0;background:transparent;color:var(--text);border-radius:6px;padding:0 10px;min-height:34px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.mi:hover{background:var(--hover)}
+.mi.on{color:var(--primary);font-weight:600}
+.mi.danger{color:var(--loss)}
+.msep{height:1px;background:var(--border);margin:4px 0}
+.acctbtn{font:inherit;border:0;background:transparent;color:var(--text);padding:0;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:20px;font-weight:600;min-height:32px}
+.acctbtn:disabled{cursor:default}
+.copy{font:inherit;font-size:12px;border:0;background:transparent;color:var(--text2);padding:0;cursor:pointer;text-decoration:underline dotted}
+.toast{position:absolute;right:24px;bottom:24px;background:var(--text);color:var(--surface);border-radius:6px;padding:8px 14px;font-size:13px;z-index:6}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.chart{position:relative;height:180px;display:flex;align-items:flex-end;gap:6px;border-bottom:1px solid var(--border);padding-top:8px}
+.bar{flex:1 1 0;min-width:10px;border-radius:4px 4px 0 0;position:relative}
+.bar.up{background:var(--up)}
+.bar.loss{background:var(--loss)}
+.bar.std{background:var(--text2)}
+.bar.month{background:var(--primary);opacity:.75}
+.barlab{position:absolute;top:-18px;left:0;right:0;text-align:center;font-size:11px;color:var(--text2);font-variant-numeric:tabular-nums}
+.avgline{position:absolute;left:0;right:0;border-top:1.5px dashed var(--gold)}
+.avglab{position:absolute;right:0;top:-18px;font-size:11px;color:var(--gold)}
+.xlabs{display:flex;gap:6px;font-size:11px;color:var(--text2)}
+.xlabs span{flex:1 1 0;min-width:10px;text-align:center;overflow:hidden;white-space:nowrap}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--text2);flex-wrap:wrap;align-items:center}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.comp{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.comp.vert{flex-direction:column;align-items:stretch;gap:16px}
+.comp.vert .donut{align-self:center}
+.donut{position:relative;width:128px;height:128px;flex:0 0 128px}
+.dcenter{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+.dcenter b{font-size:20px;line-height:1.1;color:var(--text)}
+.dcenter span{font-size:12px;color:var(--text2)}
+.statrow{display:grid;grid-template-columns:minmax(240px,1fr) minmax(0,2fr);gap:16px;align-items:start}
+@media (max-width:900px){.statrow{grid-template-columns:1fr}}
+.clist{flex:1 1 200px;display:flex;flex-direction:column;gap:6px;font-size:13px}
+.crow{display:grid;grid-template-columns:1fr auto 56px;gap:12px;align-items:center}
+.crow .num{text-align:right}
+.csub{font-size:12px;padding-left:14px;margin-top:-4px}
+.achs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.ach{display:flex;gap:12px;align-items:center;border:1px solid var(--border);border-radius:10px;padding:12px}
+.ach.done{border-color:var(--goldline);background:var(--goldbg)}
+.ach.locked{opacity:.6}
+.achico{flex:0 0 36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;background:var(--track);color:var(--text2)}
+.ach.done .achico{background:var(--gold);color:var(--surface)}
+.achn{font-weight:600;display:flex;align-items:center;gap:6px}
+.achok{font-size:11px;font-weight:500;color:var(--gold)}
+.achd{font-size:12px}
+.tl{position:relative;height:200px;display:flex;align-items:flex-end;gap:1px;border-bottom:1px solid var(--border);margin-left:32px}
+.tl .grid{position:absolute;left:0;right:0;border-top:1px dashed var(--border)}
+.tl .ylab{position:absolute;left:-32px;width:28px;text-align:right;font-size:11px;color:var(--text2);transform:translateY(-50%);font-variant-numeric:tabular-nums}
+.tcol{flex:1 1 0;min-width:0;height:100%;display:flex;flex-direction:column;justify-content:flex-end;position:relative;z-index:1;cursor:crosshair}
+.tbar{display:flex;flex-direction:column;position:relative}
+.tcol.on .tbar{filter:brightness(1.12)}
+.vline{position:absolute;top:0;bottom:0;left:50%;border-left:1px dashed var(--text2);opacity:.7;pointer-events:none}
+.ttip{position:absolute;top:20%;z-index:4;min-width:150px;background:var(--surface);border:1px solid var(--border);border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.14);padding:10px 12px;font-size:13px;display:flex;flex-direction:column;gap:4px;pointer-events:none;margin-left:12px}
+.ttip.left{transform:translateX(-100%);margin-left:-12px}
+.trow2{display:flex;justify-content:space-between;gap:16px;align-items:center}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.tbar .pin{position:absolute;top:-24px;left:50%;transform:translateX(-50%);background:var(--bar3);color:#fff;font-size:11px;font-weight:600;border-radius:999px;padding:1px 7px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.brushrow{display:flex;gap:6px;align-items:center;margin-left:4px}
+.panbtn{flex:0 0 22px;height:44px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+.panbtn:hover{color:var(--primary);border-color:var(--primary)}
+.panbtn.off{opacity:.35;pointer-events:none}
+.bwin.pan{pointer-events:auto;cursor:grab}
+.bwin.pan:active{cursor:grabbing;background:rgba(59,111,224,.16)}
+.bwin:focus-visible{outline:2px solid var(--primary);outline-offset:1px}
+.brush{position:relative;height:44px;flex:1 1 auto;min-width:0;border:1px solid var(--border);border-radius:6px;background:var(--bg);overflow:hidden}
+.bmini{position:absolute;inset:6px 0 0;display:flex;align-items:flex-end;gap:0}
+.bmini span{flex:1 1 0;min-width:0;background:var(--bar3);opacity:.45}
+.bmask{position:absolute;top:0;bottom:0;background:var(--track);opacity:.75;pointer-events:none}
+.bwin{position:absolute;top:0;bottom:0;border:1.5px solid var(--primary);border-radius:6px;background:rgba(59,111,224,.08);pointer-events:none;box-sizing:border-box}
+.bhandle{position:absolute;top:6px;bottom:6px;width:12px;margin-left:-6px;border-radius:4px;background:var(--surface);border:1.5px solid var(--primary);box-sizing:border-box;cursor:ew-resize;z-index:3;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.bhandle span{width:2px;height:12px;border-left:1px solid var(--primary);border-right:1px solid var(--primary);box-sizing:border-box}
+.bhandle:hover,.bhandle:active{background:var(--selected)}
+.bhandle:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.brush.dragging{cursor:grabbing;user-select:none}
+.chip.small{min-height:26px;font-size:12px;padding:0 10px}
+.tticks{display:flex;justify-content:space-between;margin-left:32px;font-size:11px;color:var(--text2);font-variant-numeric:tabular-nums}
+.period{display:flex;flex-direction:column;gap:8px}
+.gotrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:13px}
+.skipped{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 16px;border:1px dashed var(--border);border-radius:8px;font-size:13px;color:var(--text2)}
+.share{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(220px,1fr);gap:20px}
+.shot{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:14px;color:var(--text)}
+.shotm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.shotm .v{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.shotlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 16px;font-size:12px}
+.shotlist div{display:flex;justify-content:space-between;gap:8px}
 </style>
 </helmet>
 <div class="app" style="{{rootStyle}}">
 <aside class="side" aria-label="主导航">
-<div class="brand">GachaNote</div>
-<button class="btn primary" onClick="{{openImport}}">导入 / 拉取</button>
+<div class="brand"><svg class="logo" width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="gemFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4FAFF"></stop><stop offset="0.55" stop-color="#B9DBFA"></stop><stop offset="1" stop-color="#6FA8E8"></stop></linearGradient></defs><path d="M16 2.5 L20 12 L29.5 16 L20 20 L16 29.5 L12 20 L2.5 16 L12 12 Z" fill="url(#gemFill)" stroke="#C8A464" stroke-width="1.4" stroke-linejoin="round"></path><path d="M16 2.5 L16 29.5 M2.5 16 L29.5 16" stroke="#FFFFFF" stroke-width="0.9" opacity="0.8"></path><path d="M12 12 L20 20 M20 12 L12 20" stroke="#5B8FD0" stroke-width="0.6" opacity="0.45"></path><circle cx="16" cy="16" r="1.6" fill="#FFFFFF"></circle></svg><span>GachaNote</span><span class="ver" style="margin-left: auto">v0.1</span></div>
+<button class="btn primary" style="min-height: 38px" onClick="{{openImport}}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7L8 10.5 11.5 7M3 13.5h10"></path></svg>导入 / 拉取</button>
 <div style="height: 8px"></div>
-<button class="nav {{navOverview}}" onClick="{{goOverview}}">总览</button>
-<div class="grp">游戏与账号</div>
+<button class="nav {{navOverview}}" onClick="{{goOverview}}"><span class="gicon navico" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg></span>总览</button>
+<div class="grp">游戏</div>
 <sc-for list="{{games}}" as="g" hint-placeholder-count="4">
-<div class="game"><span class="gicon" style="background: {{g.color}}; color: {{g.ink}}" aria-hidden="true">{{g.mono}}</span><span>{{g.name}}</span><span class="cnt">{{g.count}}</span></div>
-<sc-for list="{{g.accounts}}" as="a" hint-placeholder-count="1">
-<button class="nav sub {{a.navCls}}" onClick="{{a.open}}">{{a.alias}}</button>
+<button class="nav {{g.cls}}" onClick="{{g.open}}"><span class="gicon" style="background: {{g.color}}; color: {{g.ink}}" aria-hidden="true">{{g.mono}}</span><span>{{g.name}}</span><span class="cnt">{{g.countLabel}}</span></button>
 </sc-for>
-<sc-if value="{{g.empty}}" hint-placeholder-val="{{ false }}">
-<button class="nav sub" style="color: var(--text2)" onClick="{{openImport}}">暂无账号 · 去导入</button>
-</sc-if>
-</sc-for>
-<button class="nav" style="color: var(--text2); font-size: 13px" onClick="{{toggleAdd}}">{{addLabel}}</button>
+<button class="nav dim" style="font-size: 13px" onClick="{{toggleAdd}}"><span class="gicon addico" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 3v10M3 8h10"></path></svg></span>{{addLabel}}</button>
 <sc-if value="{{addOpen}}" hint-placeholder-val="{{ false }}">
 <div class="addbox">
 <sc-for list="{{hiddenGames}}" as="h" hint-placeholder-count="2">
@@ -121,128 +265,426 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </div>
 </sc-if>
 <div class="spacer"></div>
-<button class="nav {{navSettings}}" onClick="{{goSettings}}">设置</button>
-<button class="nav" onClick="{{toggleTheme}}">{{themeLabel}}</button>
+<div class="iconrow">
+<button class="iconbtn {{navSettings}}" onClick="{{goSettings}}" aria-label="设置" title="设置（Ctrl+,）"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></button>
+<button class="iconbtn" onClick="{{toggleTheme}}" aria-label="{{themeLabel}}" title="{{themeLabel}}">
+<sc-if value="{{isLight}}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></sc-if>
+<sc-if value="{{isDark}}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg></sc-if>
+</button>
+</div>
 <div class="muted" style="padding: 8px 10px 0">原型 · 示例数据</div>
 </aside>
 <main class="main">
 <sc-if value="{{isOverview}}" hint-placeholder-val="{{ true }}">
-<div class="wrap">
-<div class="row" style="justify-content: space-between">
-<h1 class="h1">总览</h1>
+<div class="topbar"><div class="wrap">
+<div class="thead">
+<div class="row" style="gap: 10px"><span class="gicon lg" style="background: var(--selected); color: var(--primary)" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg></span><div><h1 class="h1">总览</h1><div class="muted">{{ovSummary}}</div></div></div>
 <button class="btn" onClick="{{noop}}">全部刷新</button>
 </div>
-<div class="chips">
+<div class="tabs" role="tablist" aria-label="按游戏筛选">
 <sc-for list="{{filters}}" as="f" hint-placeholder-count="5">
-<button class="chip {{f.cls}}" onClick="{{f.pick}}">{{f.label}}</button>
+<button class="tab {{f.cls}}" role="tab" onClick="{{f.pick}}"><sc-if value="{{f.hasDot}}" hint-placeholder-val="{{ false }}"><span class="dot" style="background: {{f.color}}" aria-hidden="true"></span></sc-if>{{f.label}}</button>
 </sc-for>
 </div>
+</div></div>
+<div class="content"><div class="wrap">
 <div class="grid3">
 <sc-for list="{{cards}}" as="c" hint-placeholder-count="4">
-<div class="card">
-<div class="stripe" style="background: {{c.color}}"></div>
-<div class="row" style="justify-content: space-between; padding-left: 4px">
-<div class="row" style="gap: 10px"><span class="gicon lg" style="background: {{c.color}}; color: {{c.ink}}" aria-hidden="true">{{c.mono}}</span><div><div class="ct">{{c.game}} · {{c.alias}}</div><div class="muted">UID {{c.uid}} · {{c.updated}}更新</div></div></div>
-<button class="btn small" onClick="{{c.open}}">详情</button>
+<div class="card ocard">
+<div style="height: 3px; background: {{c.color}}"></div>
+<div class="ohead">
+<span class="gicon lg" style="background: {{c.color}}; color: {{c.ink}}" aria-hidden="true">{{c.mono}}</span>
+<div style="min-width: 0; flex: 1 1 auto"><div class="ct">{{c.game}} · {{c.alias}}</div><div class="muted">UID {{c.uid}} · {{c.updated}}更新</div></div>
+<button class="iconbtn" onClick="{{c.open}}" aria-label="查看 {{c.game}} {{c.alias}} 详情" title="查看详情"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 4l4 4-4 4"></path></svg></button>
 </div>
+<div class="opools">
 <sc-for list="{{c.pools}}" as="p" hint-placeholder-count="2">
-<div class="pool" style="padding-left: 4px">
-<div class="poolhead"><span>{{p.name}}</span><span class="num" style="margin-left: auto"><b>{{p.pity}}</b> / {{p.hard}}</span>
-<sc-if value="{{p.big}}" hint-placeholder-val="{{ false }}"><span class="badge big">大保底</span></sc-if>
+<div class="opool">
+<div class="poolhead"><span>{{p.name}}</span><sc-if value="{{p.isBig}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-big"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z" fill="currentColor"></path><path d="M8.2 12.2l2.6 2.6 5-5.2" fill="none" stroke="#FFF6DD" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>大保底</span></sc-if><sc-if value="{{p.isSmall}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-small"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z"></path></svg>小保底</span></sc-if><span class="num" style="margin-left: auto"><b style="font-size: 16px">{{p.pity}}</b><span class="muted"> / {{p.hard}}</span></span>
 </div>
-<div class="track"><div class="fill" style="width: {{p.pct}}%"></div></div>
-</div>
-</sc-for>
-<div class="foot" style="padding-left: 4px"><span>总抽数 <b>{{c.total}}</b></span><span>平均出 UP <b>{{c.avgUp}}</b></span><span>歪率 <b>{{c.loss}}</b></span></div>
+<div class="track" style="height: 8px; background: var(--surface)"><div class="fill" style="height: 8px; width: {{p.pct}}%; background: {{c.color}}"></div></div>
 </div>
 </sc-for>
+<sc-if value="{{c.hasExtra}}" hint-placeholder-val="{{ false }}">
+<button class="linkbtn" style="font-size: 12px; align-self: flex-start" onClick="{{c.toggle}}">{{c.extraLabel}}</button>
+</sc-if>
+</div>
+<div class="ostats" style="background: {{c.tint}}; border-top-color: {{c.tintLine}}">
+<div><div class="muted">总抽数</div><div class="osv">{{c.total}}</div></div>
+<div><div class="muted">平均出 UP</div><div class="osv">{{c.avgUp}}</div></div>
+<div><div class="muted">歪率</div><div class="osv">{{c.loss}}</div></div>
 </div>
 </div>
+</sc-for>
+</div>
+</div></div>
+</sc-if>
+<sc-if value="{{isEmptyGame}}" hint-placeholder-val="{{ false }}">
+<div class="topbar"><div class="wrap">
+<div class="thead"><div class="row" style="gap: 10px"><span class="gicon lg" style="background: {{emptyGame.color}}; color: {{emptyGame.ink}}" aria-hidden="true">{{emptyGame.mono}}</span><div><h1 class="h1">{{emptyGame.name}}</h1><div class="muted">暂无账号</div></div></div></div>
+</div></div>
+<div class="content"><div class="wrap">
+<div class="empty">
+<div>还没有{{emptyGame.name}}的抽卡记录。导入或拉取后会自动创建账号。</div>
+<div class="row" style="justify-content: center"><button class="btn primary" onClick="{{openImportHere}}">从游戏拉取</button><button class="btn" onClick="{{openImportHere}}">导入文件</button></div>
+</div>
+</div></div>
 </sc-if>
 <sc-if value="{{isDetail}}" hint-placeholder-val="{{ false }}">
-<div class="wrap">
-<div class="row" style="justify-content: space-between">
-<div class="row" style="gap: 10px">
-<span class="gicon lg" style="background: {{acc.color}}; color: {{acc.ink}}" aria-hidden="true">{{acc.mono}}</span>
-<div><h1 class="h1">{{acc.game}} · {{acc.alias}}</h1><div class="muted">UID {{acc.uid}} · 最后更新 {{acc.updated}}</div></div>
+<div class="topbar"><div class="wrap">
+<div class="thead" style="align-items: flex-start">
+<div class="row" style="gap: 10px; align-items: flex-start">
+<span class="gicon lg" style="background: {{acc.color}}; color: {{acc.ink}}; margin-top: 2px" aria-hidden="true">{{acc.mono}}</span>
+<div>
+<div class="anchor">
+<button class="acctbtn" onClick="{{toggleAccMenu}}" disabled="{{singleAcc}}" aria-haspopup="menu" aria-label="切换账号">{{acc.game}} · {{acc.alias}}
+<sc-if value="{{multiAcc}}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></sc-if>
+</button>
+<sc-if value="{{accMenuOpen}}" hint-placeholder-val="{{ false }}">
+<div class="menu" role="menu">
+<sc-for list="{{accOptions}}" as="o" hint-placeholder-count="2">
+<button class="mi {{o.cls}}" role="menuitem" onClick="{{o.pick}}"><span>{{o.alias}}</span><span class="muted num" style="margin-left: auto">UID {{o.uid}}</span></button>
+</sc-for>
+<div class="msep"></div>
+<button class="mi" role="menuitem" onClick="{{openImportHere}}">+ 导入新账号</button>
+</div>
+</sc-if>
+</div>
+<div class="muted">UID {{acc.uid}} <button class="copy" onClick="{{copyUid}}">复制</button> · 最后更新 {{acc.updated}}</div>
+</div>
 </div>
 <div class="row">
-<button class="btn" onClick="{{openImport}}">更新记录</button>
-<button class="btn" onClick="{{noop}}">导出</button>
+<button class="btn" onClick="{{openImportHere}}">更新记录</button>
+<div class="anchor">
+<button class="btn" onClick="{{toggleMore}}" aria-haspopup="menu">更多
+<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></button>
+<sc-if value="{{moreOpen}}" hint-placeholder-val="{{ false }}">
+<div class="menu right" role="menu">
+<button class="mi" role="menuitem" onClick="{{closeMenus}}">导出…</button>
+<button class="mi" role="menuitem" onClick="{{openShare}}">生成分享图<span class="ver" style="margin-left: auto">v0.3</span></button>
+<button class="mi" role="menuitem" onClick="{{closeMenus}}">重命名</button>
+<div class="msep"></div>
+<button class="mi danger" role="menuitem" onClick="{{closeMenus}}">删除账号…</button>
+</div>
+</sc-if>
+</div>
 </div>
 </div>
 <div class="tabs" role="tablist">
 <button class="tab {{tabStatsCls}}" role="tab" onClick="{{goStats}}">统计</button>
 <button class="tab {{tabRecCls}}" role="tab" onClick="{{goRecords}}">记录</button>
-<button class="tab" role="tab" disabled="{{ true }}">分析 · v0.2</button>
+<button class="tab {{tabAnaCls}}" role="tab" onClick="{{goAnalysis}}">分析<span class="ver">v0.2</span></button>
+<button class="tab {{tabTlCls}}" role="tab" onClick="{{goTimeline}}">时间线<span class="ver">v0.3</span></button>
 </div>
+</div></div>
+<div class="content"><div class="wrap">
+<sc-if value="{{showSeg}}" hint-placeholder-val="{{ true }}">
 <div class="seg" role="group" aria-label="卡池类型">
-<sc-for list="{{pools}}" as="p" hint-placeholder-count="3">
-<button class="segb {{p.cls}}" onClick="{{p.pick}}">{{p.name}}</button>
+<sc-for list="{{segPools}}" as="p" hint-placeholder-count="3">
+<button class="segb {{p.cls}}" onClick="{{p.pick}}">{{p.short}}<span class="pn">{{p.pity}}</span></button>
 </sc-for>
 </div>
-<sc-if value="{{tabStats}}" hint-placeholder-val="{{ true }}">
+</sc-if>
+<sc-if value="{{tabSummary}}" hint-placeholder-val="{{ true }}">
+<div class="sec">
+<div class="mini"><div class="muted">总抽数（全部卡池）</div><div class="v">{{accSum.total}}</div></div>
+<div class="mini"><div class="muted">出金数</div><div class="v">{{accSum.gold}}</div></div>
+<div class="mini"><div class="muted">平均出金</div><div class="v">{{accSum.avgGold}} 抽</div></div>
+<div class="mini"><div class="muted">记录时间范围</div><div class="v" style="font-size: 15px">{{accSum.range}}</div></div>
+</div>
+<div class="card">
+<div class="row" style="justify-content: space-between"><div class="ct">抽卡构成（全部卡池）</div><div class="muted">{{accSum.range}}</div></div>
+<div class="comp">
+<div class="donut">
+<svg viewBox="0 0 42 42" width="128" height="128" role="img" aria-label="各星级占比环形图">
+<g transform="rotate(-90 21 21)">
+<circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--track)" stroke-width="6"></circle>
+<circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--bar3)" stroke-width="6" stroke-dasharray="{{accComp.b.dash}}" stroke-dashoffset="{{accComp.b.off}}"></circle>
+<circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--bar4)" stroke-width="6" stroke-dasharray="{{accComp.p.dash}}" stroke-dashoffset="{{accComp.p.off}}"></circle>
+<circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--bar5)" stroke-width="6" stroke-dasharray="{{accComp.g.dash}}" stroke-dashoffset="{{accComp.g.off}}"></circle>
+</g>
+</svg>
+<div class="dcenter"><b class="num">{{accComp.total}}</b><span>总抽数</span></div>
+</div>
+<div class="clist">
+<sc-for list="{{accComp.rows}}" as="cr" hint-placeholder-count="3">
+<div class="crow"><span><span class="sw" style="background: {{cr.color}}"></span>{{cr.label}}</span><span class="num">{{cr.count}}</span><span class="num muted">{{cr.pct}}</span></div>
+<sc-if value="{{cr.hasSub}}" hint-placeholder-val="{{ false }}"><div class="csub muted">{{cr.sub}}</div></sc-if>
+</sc-for>
+<div class="muted" style="font-size: 12px; margin-top: 4px">平均每 {{accComp.avg}} 抽出一个{{accComp.top}}</div>
+</div>
+</div>
+</div>
+<div class="grid3">
+<sc-for list="{{poolCards}}" as="pc" hint-placeholder-count="3">
+<div class="card">
+<div class="row" style="justify-content: space-between"><div class="ct">{{pc.name}}</div><button class="btn small" onClick="{{pc.open}}">查看详情</button></div>
+<div class="row" style="align-items: baseline; gap: 8px"><span class="big" style="font-size: 28px">{{pc.pity}}</span><span class="muted">/ {{pc.hard}} 当前保底</span>
+<sc-if value="{{pc.isBig}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-big" style="margin-left: auto; align-self: center"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z" fill="currentColor"></path><path d="M8.2 12.2l2.6 2.6 5-5.2" fill="none" stroke="#FFF6DD" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>大保底</span></sc-if><sc-if value="{{pc.isSmall}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-small" style="margin-left: auto; align-self: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z"></path></svg>小保底</span></sc-if>
+</div>
+<div class="track"><div class="fill" style="width: {{pc.pct}}%"></div></div>
+<div class="foot"><span>总抽数 <b>{{pc.total}}</b></span><span>{{pc.k2}} <b>{{pc.v2}}</b></span><span>{{pc.k3}} <b>{{pc.v3}}</b></span></div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{tabStats}}" hint-placeholder-val="{{ false }}">
 <div class="metrics">
+<sc-for list="{{metrics}}" as="m" hint-placeholder-count="3">
 <div class="card">
-<div class="muted">当前保底</div>
-<div class="big">{{pool.pity}}<small> / {{pool.hard}}</small></div>
-<div class="track"><div class="fill" style="width: {{pool.pct}}%"></div></div>
-<div class="muted">{{pool.state}} · 距硬保底还差 {{pool.left}} 抽</div>
+<div class="row" style="justify-content: space-between; min-height: 22px"><div class="muted">{{m.label}}</div><sc-if value="{{m.isBig}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-big"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z" fill="currentColor"></path><path d="M8.2 12.2l2.6 2.6 5-5.2" fill="none" stroke="#FFF6DD" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>大保底</span></sc-if><sc-if value="{{m.isSmall}}" hint-placeholder-val="{{ false }}"><span class="gtag gt-small"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z"></path></svg>小保底</span></sc-if></div>
+<div class="big">{{m.big}}<small> {{m.small}}</small></div>
+<sc-if value="{{m.hasBar}}" hint-placeholder-val="{{ false }}"><div class="track"><div class="fill" style="width: {{m.pct}}%; background: {{m.barColor}}"></div></div></sc-if>
+<div class="muted">{{m.sub}}</div>
 </div>
-<div class="card">
-<div class="muted">平均出 UP</div>
-<div class="big">{{pool.avgUp}}<small> 抽</small></div>
-<div class="muted">共 {{pool.upCount}} 个 UP</div>
-</div>
-<div class="card">
-<div class="muted">小保底歪率</div>
-<div class="big">{{pool.loss}}</div>
-<div class="muted">{{pool.lossFrac}} 次小保底歪了</div>
-</div>
+</sc-for>
 </div>
 <div class="sec">
 <div class="mini"><div class="muted">总抽数</div><div class="v">{{pool.total}}</div></div>
-<div class="mini"><div class="muted">出金数</div><div class="v">{{pool.gold}}</div></div>
+<div class="mini"><div class="muted">出金数 / 占比</div><div class="v">{{pool.gold}} <span class="muted">{{pool.goldRate}}</span></div></div>
 <div class="mini"><div class="muted">平均出金</div><div class="v">{{pool.avgGold}} 抽</div></div>
-<div class="mini"><div class="muted">欧非评级 · v0.2</div><div class="v" style="color: var(--text2)">—</div></div>
+<button class="mini minibtn" onClick="{{goAnalysis}}"><div class="muted">预测与评价 · v0.2 · 点击查看分析</div><div class="v">下一抽出金 {{pred.next}} · {{luckShort}}</div></button>
+</div>
+<div class="statrow">
+<div class="card">
+<div class="ct">抽卡构成</div>
+<div class="comp vert">
+<div class="donut">
+<svg viewBox="0 0 42 42" width="128" height="128" role="img" aria-label="各星级占比环形图">
+<g transform="rotate(-90 21 21)">
+<circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--track)" stroke-width="6"></circle>
+<circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--bar3)" stroke-width="6" stroke-dasharray="{{comp.b.dash}}" stroke-dashoffset="{{comp.b.off}}"></circle>
+<circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--bar4)" stroke-width="6" stroke-dasharray="{{comp.p.dash}}" stroke-dashoffset="{{comp.p.off}}"></circle>
+<circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--bar5)" stroke-width="6" stroke-dasharray="{{comp.g.dash}}" stroke-dashoffset="{{comp.g.off}}"></circle>
+</g>
+</svg>
+<div class="dcenter"><b class="num">{{comp.total}}</b><span>总抽数</span></div>
+</div>
+<div class="clist">
+<sc-for list="{{comp.rows}}" as="cr" hint-placeholder-count="3">
+<div class="crow"><span><span class="sw" style="background: {{cr.color}}"></span>{{cr.label}}</span><span class="num">{{cr.count}}</span><span class="num muted">{{cr.pct}}</span></div>
+<sc-if value="{{cr.hasSub}}" hint-placeholder-val="{{ false }}"><div class="csub muted">{{cr.sub}}</div></sc-if>
+</sc-for>
+<div class="muted" style="font-size: 12px; margin-top: 4px">平均每 {{comp.avg}} 抽出一个{{comp.top}}</div>
+</div>
+</div>
 </div>
 <div class="card">
-<div class="row" style="justify-content: space-between"><div class="ct">出金历史</div><div class="muted">最近在上 · 条长 = 花费抽数</div></div>
+<div class="row" style="justify-content: space-between"><div class="ct">出金历史</div><div class="legend"><span>最近在上 · 条长 = 花费抽数</span><span><span class="sw" style="background: {{luckLegend.good}}"></span>欧</span><span><span class="sw" style="background: {{luckLegend.mid}}"></span>接近理论平均 {{pool.theory}} 抽</span><span><span class="sw" style="background: {{luckLegend.bad}}"></span>非</span></div></div>
 <div class="hist">
 <sc-for list="{{history}}" as="h" hint-placeholder-count="4">
-<div class="hrow"><span class="gold">{{h.name}}</span><div class="track" style="height: 10px"><div class="hbar" style="width: {{h.pct}}%"></div></div><span class="num">{{h.pulls}} 抽</span><span class="tag {{h.cls}}">{{h.tag}}</span></div>
+<div class="hrow"><span class="islot" aria-hidden="true"></span><span class="gold">{{h.name}}</span><div class="track" style="height: 10px"><div class="hbar" style="width: {{h.pct}}%; background: {{h.color}}; opacity: 1"></div></div><span class="num">{{h.pulls}} 抽</span><span class="tag {{h.cls}}">{{h.tag}}</span></div>
 </sc-for>
+</div>
 </div>
 </div>
 </sc-if>
 <sc-if value="{{tabRecords}}" hint-placeholder-val="{{ false }}">
 <div class="row" style="align-items: flex-end">
-<label class="field">星级<select class="input"><option>全部</option><option>最高星</option><option>次高星</option></select></label>
-<label class="field">时间范围<select class="input"><option>全部时间</option><option>最近 30 天</option><option>最近 6 个月</option></select></label>
+<div class="field"><span>星级</span><div class="anchor"><button class="select {{ddRarity.cls}}" onClick="{{ddRarity.toggle}}" aria-haspopup="listbox" aria-label="星级"><span>{{ddRarity.label}}</span><svg class="chev" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></button><sc-if value="{{ddRarity.open}}" hint-placeholder-val="{{ false }}"><div class="menu" role="listbox" style="min-width: 100%"><sc-for list="{{ddRarity.opts}}" as="o" hint-placeholder-count="3"><button class="mi {{o.cls}}" role="option" onClick="{{o.pick}}"><span class="ck"><sc-if value="{{o.on}}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"></path></svg></sc-if></span>{{o.label}}</button></sc-for></div></sc-if></div></div>
+<div class="field"><span>时间范围</span><div class="anchor"><button class="select {{ddRange.cls}}" onClick="{{ddRange.toggle}}" aria-haspopup="listbox" aria-label="时间范围"><span>{{ddRange.label}}</span><svg class="chev" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></button><sc-if value="{{ddRange.open}}" hint-placeholder-val="{{ false }}"><div class="menu" role="listbox" style="min-width: 100%"><sc-for list="{{ddRange.opts}}" as="o" hint-placeholder-count="3"><button class="mi {{o.cls}}" role="option" onClick="{{o.pick}}"><span class="ck"><sc-if value="{{o.on}}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"></path></svg></sc-if></span>{{o.label}}</button></sc-for></div></sc-if></div></div>
 <label class="field" style="flex: 1 1 200px">搜索名称<input class="input" type="search" placeholder="输入角色或武器名"></label>
-<label class="check"><input type="checkbox" checked="{{ true }}">只看金</label>
+<label class="check"><input type="checkbox" checked="{{onlyGold}}" onChange="{{toggleGold}}">只看金</label>
 </div>
 <div class="muted">筛选后 {{recordCount}} 条</div>
-<div class="tablebox">
+<div class="tablebox tscroll">
 <table>
 <thead><tr><th scope="col">时间</th><th scope="col">卡池</th><th scope="col">名称</th><th scope="col">星级</th><th scope="col">当次抽数</th><th scope="col">UP / 歪</th></tr></thead>
 <tbody>
-<sc-for list="{{history}}" as="h" hint-placeholder-count="4">
-<tr><td class="num">{{h.time}}</td><td>{{pool.name}}</td><td class="gold">{{h.name}}</td><td>{{acc.topRarity}}</td><td class="num">{{h.pulls}}</td><td><span class="tag {{h.cls}}">{{h.tag}}</span></td></tr>
+<sc-for list="{{pageRows}}" as="r" hint-placeholder-count="8">
+<tr><td class="num">{{r.time}}</td><td>{{pool.name}}</td><td><span class="namecell"><span class="islot" aria-hidden="true"></span><span class="{{r.rcls}}">{{r.name}}</span></span></td><td>{{r.star}}</td><td class="num">{{r.pulls}}</td><td><sc-if value="{{r.hasTag}}" hint-placeholder-val="{{ true }}"><span class="tag {{r.cls}}">{{r.tag}}</span></sc-if><sc-if value="{{r.noTag}}" hint-placeholder-val="{{ false }}"><span class="muted">—</span></sc-if></td></tr>
 </sc-for>
 </tbody>
 </table>
 </div>
-</sc-if>
+<div class="pager">
+<span class="muted">共 {{recordCount}} 条 · 第 {{pg.cur}} / {{pg.count}} 页</span>
+<div class="row" style="gap: 4px">
+<button class="pbtn" disabled="{{pg.first}}" onClick="{{pg.prev}}" aria-label="上一页"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 4l-4 4 4 4"></path></svg></button>
+<sc-for list="{{pg.nums}}" as="pn" hint-placeholder-count="3"><button class="pbtn {{pn.cls}}" onClick="{{pn.pick}}" aria-label="第 {{pn.n}} 页">{{pn.n}}</button></sc-for>
+<button class="pbtn" disabled="{{pg.last}}" onClick="{{pg.next}}" aria-label="下一页"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 4l4 4-4 4"></path></svg></button>
+</div>
+<div class="row" style="gap: 8px"><span class="muted">每页</span><div class="anchor"><button class="select {{ddSize.cls}}" style="min-width: 88px" onClick="{{ddSize.toggle}}" aria-haspopup="listbox" aria-label="每页条数"><span>{{ddSize.label}}</span><svg class="chev" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></button><sc-if value="{{ddSize.open}}" hint-placeholder-val="{{ false }}"><div class="menu right" role="listbox" style="min-width: 100%; top: auto; bottom: calc(100% + 4px)"><sc-for list="{{ddSize.opts}}" as="o" hint-placeholder-count="3"><button class="mi {{o.cls}}" role="option" onClick="{{o.pick}}"><span class="ck"><sc-if value="{{o.on}}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"></path></svg></sc-if></span>{{o.label}}</button></sc-for></div></sc-if></div></div>
 </div>
 </sc-if>
+<sc-if value="{{tabAnalysis}}" hint-placeholder-val="{{ false }}">
+<div class="card">
+<div class="row" style="justify-content: space-between"><div class="ct">概率预测</div><div class="muted">当前已垫 {{pool.pity}} 抽 · {{pool.stateShort}}</div></div>
+<div class="two">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div class="row" style="gap: 32px; align-items: flex-start">
+<div><div class="muted">下一抽出金</div><div class="big">{{pred.next}}</div></div>
+<sc-if value="{{pred.hasUp}}" hint-placeholder-val="{{ true }}"><div><div class="muted">下一抽出 UP</div><div class="big">{{pred.nextUp}}</div></div></sc-if>
+</div>
+<div class="row" style="align-items: flex-end">
+<label class="field">未来 N 抽<input class="input num" type="number" min="1" max="300" value="{{n}}" onChange="{{onN}}" style="width: 96px"></label>
+<div class="chips">
+<sc-for list="{{nChips}}" as="q" hint-placeholder-count="4"><button class="chip {{q.cls}}" onClick="{{q.pick}}">{{q.label}}</button></sc-for>
+</div>
+</div>
+<div class="row" style="gap: 32px">
+<div><div class="muted">{{n}} 抽内出金</div><div class="mini v" style="border: 0; padding: 0">{{pred.withinGold}}</div></div>
+<sc-if value="{{pred.hasUp}}" hint-placeholder-val="{{ true }}"><div><div class="muted">{{n}} 抽内出 UP</div><div class="mini v" style="border: 0; padding: 0">{{pred.withinUp}}</div></div></sc-if>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div class="muted">累计出金概率（横轴：再抽多少抽）</div>
+<svg viewBox="0 0 300 140" width="100%" height="160" role="img" aria-label="累计出金概率曲线">
+<line x1="0" y1="130" x2="300" y2="130" stroke="var(--border)"></line>
+<line x1="0" y1="10" x2="300" y2="10" stroke="var(--border)" stroke-dasharray="3 3"></line>
+<polyline points="{{curve.points}}" fill="none" stroke="var(--primary)" stroke-width="2"></polyline>
+<line x1="{{curve.nx}}" y1="10" x2="{{curve.nx}}" y2="130" stroke="var(--gold)" stroke-width="1.5"></line>
+<text x="{{curve.tx}}" y="24" font-size="10" fill="var(--gold)">N = {{n}}</text>
+<text x="2" y="8" font-size="9" fill="var(--text2)" dominant-baseline="hanging">100%</text>
+</svg>
+<div class="row muted" style="justify-content: space-between"><span>0</span><span>{{curve.maxLabel}} 抽（必出）</span></div>
+</div>
+</div>
+</div>
+<div class="two">
+<div class="card">
+<div class="ct">欧非评价</div>
+<sc-if value="{{luck.has}}" hint-placeholder-val="{{ true }}">
+<div class="row" style="gap: 32px; align-items: flex-end">
+<div><div class="muted">评级</div><div class="big">{{luck.grade}}</div></div>
+<div><div class="muted">百分位</div><div class="v mini" style="border: 0; padding: 0">{{luck.text}}</div></div>
+<div><div class="muted">你的平均出金 / 理论平均</div><div class="v mini" style="border: 0; padding: 0">{{pool.avgGold}} / {{pool.theory}} 抽</div></div>
+</div>
+</sc-if>
+<sc-if value="{{luck.none}}" hint-placeholder-val="{{ false }}">
+<div class="muted">样本不足（少于 5 个金），只显示数值：平均出金 {{pool.avgGold}} 抽，理论平均 {{pool.theory}} 抽。</div>
+</sc-if>
+</div>
+<div class="card">
+<div class="row" style="justify-content: space-between"><div class="ct">抽卡构成</div><div class="muted">已垫 {{pool.pity}} 抽</div></div>
+<div class="comp">
+<div class="donut">
+<svg viewBox="0 0 42 42" width="128" height="128" role="img" aria-label="各星级占比环形图">
+<g transform="rotate(-90 21 21)">
+<circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--track)" stroke-width="6"></circle>
+<circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--bar3)" stroke-width="6" stroke-dasharray="{{comp.b.dash}}" stroke-dashoffset="{{comp.b.off}}"></circle>
+<circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--bar4)" stroke-width="6" stroke-dasharray="{{comp.p.dash}}" stroke-dashoffset="{{comp.p.off}}"></circle>
+<circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--bar5)" stroke-width="6" stroke-dasharray="{{comp.g.dash}}" stroke-dashoffset="{{comp.g.off}}"></circle>
+</g>
+</svg>
+<div class="dcenter"><b class="num">{{comp.total}}</b><span>总抽数</span></div>
+</div>
+<div class="clist">
+<sc-for list="{{comp.rows}}" as="cr" hint-placeholder-count="3">
+<div class="crow"><span><span class="sw" style="background: {{cr.color}}"></span>{{cr.label}}</span><span class="num">{{cr.count}}</span><span class="num muted">{{cr.pct}}</span></div>
+<sc-if value="{{cr.hasSub}}" hint-placeholder-val="{{ false }}"><div class="csub muted">{{cr.sub}}</div></sc-if>
+</sc-for>
+<div class="muted" style="font-size: 12px; margin-top: 4px">平均每 {{comp.avg}} 抽出一个{{comp.top}}</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="row" style="justify-content: space-between"><div class="ct">出金分布</div><button class="btn small" onClick="{{toggleDistTable}}">{{distToggleLabel}}</button></div>
+<sc-if value="{{distChart}}" hint-placeholder-val="{{ true }}">
+<div class="legend"><span><span class="sw" style="background: var(--up)"></span>UP</span><span><span class="sw" style="background: var(--loss)"></span>歪</span><span><span class="sw" style="background: var(--text2)"></span>常驻</span><span style="color: var(--gold)">--- 理论平均 {{pool.theory}} 抽</span></div>
+<div class="chart">
+<div class="avgline" style="bottom: {{pool.theoryPct}}%"></div>
+<sc-for list="{{dist}}" as="d" hint-placeholder-count="4">
+<div class="bar {{d.cls}}" style="height: {{d.h}}%; max-width: 48px"><span class="barlab">{{d.pulls}}</span></div>
+</sc-for>
+</div>
+<div class="xlabs"><sc-for list="{{dist}}" as="d" hint-placeholder-count="4"><span style="max-width: 48px">{{d.name}}</span></sc-for></div>
+</sc-if>
+<sc-if value="{{distTable}}" hint-placeholder-val="{{ false }}">
+<div class="tablebox"><table style="min-width: 0"><thead><tr><th scope="col">时间</th><th scope="col">名称</th><th scope="col">抽数</th><th scope="col">UP / 歪</th></tr></thead><tbody>
+<sc-for list="{{dist}}" as="d" hint-placeholder-count="4"><tr><td class="num">{{d.time}}</td><td class="gold">{{d.name}}</td><td class="num">{{d.pulls}}</td><td><span class="tag {{d.cls}}">{{d.tag}}</span></td></tr></sc-for>
+</tbody></table></div>
+</sc-if>
+</div>
+<sc-if value="{{hasAchs}}" hint-placeholder-val="{{ true }}">
+<div class="card">
+<div class="row" style="justify-content: space-between"><div class="ct">成就</div><div class="muted">已达成 {{achDone}} / {{achTotal}} · 按本卡池记录计算</div></div>
+<div class="achs">
+<sc-for list="{{achs}}" as="ac" hint-placeholder-count="4">
+<div class="ach {{ac.cls}}"><span class="achico" aria-hidden="true">{{ac.ico}}</span><div style="min-width: 0"><div class="achn">{{ac.name}}<sc-if value="{{ac.done}}" hint-placeholder-val="{{ true }}"><span class="achok">已达成</span></sc-if></div><div class="muted achd">{{ac.desc}}</div></div></div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</sc-if>
+<sc-if value="{{tabTimeline}}" hint-placeholder-val="{{ false }}">
+<div class="card">
+<div class="row" style="justify-content: space-between"><div class="ct">抽卡时间线</div><div class="seg" role="group" aria-label="时间粒度"><button class="segb {{trendDayCls}}" onClick="{{setTrendDay}}">按日</button><button class="segb {{trendMonthCls}}" onClick="{{setTrendMonth}}">按月</button></div></div>
+<sc-if value="{{trendDay}}" hint-placeholder-val="{{ true }}">
+<div class="row" style="justify-content: space-between"><div class="num" style="font-weight: 600">{{tl.range}}<span class="muted" style="font-weight: 400">（共 {{tl.total}} 抽）</span></div><div class="legend"><sc-for list="{{tl.legend}}" as="lg" hint-placeholder-count="3"><span><span class="sw" style="background: {{lg.color}}"></span>{{lg.label}}（{{lg.n}}）</span></sc-for></div></div>
+<div style="height: 18px"></div>
+<div class="tl" onMouseLeave="{{tl.leave}}">
+<sc-for list="{{tl.ylabs}}" as="yl" hint-placeholder-count="3"><div class="grid" style="top: {{yl.top}}"></div><span class="ylab" style="top: {{yl.top}}">{{yl.v}}</span></sc-for>
+<sc-for list="{{days}}" as="dy" hint-placeholder-count="60">
+<div class="tcol {{dy.cls}}" onMouseEnter="{{dy.hover}}" onClick="{{dy.hover}}" aria-label="{{dy.tip}}"><sc-if value="{{dy.on}}" hint-placeholder-val="{{ false }}"><div class="vline"></div></sc-if><div class="tbar" style="height: {{dy.h}}%"><sc-if value="{{dy.isPeak}}" hint-placeholder-val="{{ false }}"><span class="pin">{{dy.pulls}}</span></sc-if><div style="flex: {{dy.g}} 0 0; min-height: {{dy.gMin}}; background: var(--bar5); border-radius: 2px 2px 0 0"></div><div style="flex: {{dy.p}} 0 0; background: var(--bar4)"></div><div style="flex: {{dy.b}} 0 0; background: var(--bar3)"></div></div></div>
+</sc-for>
+<sc-if value="{{tip.show}}" hint-placeholder-val="{{ false }}">
+<div class="ttip {{tip.side}}" style="left: {{tip.left}}%" role="status">
+<div class="muted num">{{tip.date}}</div>
+<div class="trow2"><span>当日抽卡次数</span><b class="num">{{tip.pulls}}</b></div>
+<sc-for list="{{tip.rows}}" as="tr" hint-placeholder-count="3"><div class="trow2"><span><span class="dot" style="background: {{tr.color}}"></span>{{tr.label}}</span><b class="num">{{tr.n}}</b></div></sc-for>
+</div>
+</sc-if>
+</div>
+<div class="tticks"><sc-for list="{{tl.ticks}}" as="tk" hint-placeholder-count="7"><span>{{tk.t}}</span></sc-for></div>
+<div class="brushrow"><button class="panbtn {{tl.panLCls}}" onClick="{{tl.panL}}" aria-label="选区向前移动"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 3.5L5.5 8 10 12.5"></path></svg></button>
+<div class="brush {{tl.brushCls}}" aria-label="时间范围" onMouseMove="{{tl.move}}" onMouseUp="{{tl.up}}" onMouseLeave="{{tl.up}}">
+<div class="bmini"><sc-for list="{{tl.mini}}" as="mb" hint-placeholder-count="60"><span style="height: {{mb.h}}%"></span></sc-for></div>
+<div class="bmask" style="left: 0; width: {{tl.maskL}}%"></div>
+<div class="bmask" style="right: 0; width: {{tl.maskR}}%"></div>
+<div class="bwin {{tl.winCls}}" style="left: {{tl.maskL}}%; right: {{tl.maskR}}%" onMouseDown="{{tl.down}}" onKeyDown="{{tl.key}}" tabindex="0" role="slider" aria-label="拖动平移选区，或按左右方向键"></div>
+<div class="bhandle" style="left: {{tl.maskL}}%" onMouseDown="{{tl.downL}}" onKeyDown="{{tl.keyL}}" tabindex="0" role="slider" aria-label="开始日期" aria-valuetext="{{tl.startDate}}"><span></span></div>
+<div class="bhandle" style="right: {{tl.maskR}}%; transform: translateX(50%)" onMouseDown="{{tl.downR}}" onKeyDown="{{tl.keyR}}" tabindex="0" role="slider" aria-label="结束日期" aria-valuetext="{{tl.endDate}}"><span></span></div>
+</div>
+<button class="panbtn {{tl.panRCls}}" onClick="{{tl.panR}}" aria-label="选区向后移动"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 3.5L10.5 8 6 12.5"></path></svg></button></div>
+<div class="row" style="justify-content: space-between; margin-left: 32px">
+<div class="chips"><sc-for list="{{tl.quick}}" as="q" hint-placeholder-count="4"><button class="chip small {{q.cls}}" onClick="{{q.pick}}">{{q.label}}</button></sc-for></div>
+<div class="muted num" style="font-size: 12px">已选 {{tl.startDate}} – {{tl.endDate}} · {{tl.days}} 天（记录范围 {{tl.firstDate}} – {{tl.lastDate}}）</div>
+</div>
+<div class="muted" style="font-size: 12px">每根柱是一天，按星级堆叠；悬停查看当天明细，最高的一天标出抽数。</div>
+</sc-if>
+<sc-if value="{{trendMonth}}" hint-placeholder-val="{{ false }}">
+<div class="muted">最近 12 个月 · 柱 = 抽数 · 数字 = 出金数</div>
+<div class="chart" style="height: 150px">
+<sc-for list="{{months}}" as="mo" hint-placeholder-count="12">
+<div class="bar month" style="height: {{mo.h}}%"><span class="barlab">{{mo.gold}}</span></div>
+</sc-for>
+</div>
+<div class="xlabs"><sc-for list="{{months}}" as="mo" hint-placeholder-count="12"><span>{{mo.label}}</span></sc-for></div>
+</sc-if>
+</div>
+<div class="row" style="justify-content: space-between">
+<div class="muted">最新一期在上 · {{pool.name}}</div>
+<label class="check"><input type="checkbox" checked="{{showSkipped}}" onChange="{{toggleSkipped}}">显示未参与的卡池</label>
+</div>
+<sc-for list="{{periods}}" as="pe" hint-placeholder-count="3">
+<sc-if value="{{pe.joined}}" hint-placeholder-val="{{ true }}">
+<div class="card period">
+<div class="row" style="justify-content: space-between"><div class="row" style="gap: 8px"><span class="gold">{{pe.ups}}</span></div><span class="muted num">{{pe.dates}}</span></div>
+<div class="gotrow"><span>本期 <b class="num">{{pe.pulls}}</b> 抽</span><span class="muted">·</span>
+<sc-for list="{{pe.golds}}" as="go" hint-placeholder-count="1"><span class="gold">{{go.name}}</span><span class="num muted">{{go.pulls}} 抽</span><span class="tag {{go.cls}}">{{go.tag}}</span></sc-for>
+<sc-if value="{{pe.noGold}}" hint-placeholder-val="{{ false }}"><span class="muted">本期未出金</span></sc-if>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{pe.skippedShown}}" hint-placeholder-val="{{ false }}">
+<div class="skipped"><span>{{pe.ups}} · 未参与</span><span class="num">{{pe.dates}}</span></div>
+</sc-if>
+</sc-for>
+<div class="muted">没有卡池数据包时按记录时间自动分段，标题显示为「2026-10-01 – 10-21 的记录」。</div>
+</sc-if>
+</div></div>
+</sc-if>
 <sc-if value="{{isSettings}}" hint-placeholder-val="{{ false }}">
-<div class="wrap">
-<h1 class="h1">设置</h1>
+<div class="topbar"><div class="wrap">
+<div class="thead"><div><h1 class="h1">设置</h1><div class="muted">通用 · 数据 · 卡池数据包 · 凭证</div></div></div>
+</div></div>
+<div class="content"><div class="wrap">
 <div class="settings">
 <div class="card">
 <div class="ct">通用</div>
-<div class="srow"><span>界面语言</span><select class="input" aria-label="界面语言"><option>简体中文</option><option>English</option></select></div>
+<div class="srow"><span>界面语言</span><div><div class="anchor"><button class="select {{ddLang.cls}}" onClick="{{ddLang.toggle}}" aria-haspopup="listbox" aria-label="界面语言"><span>{{ddLang.label}}</span><svg class="chev" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></button><sc-if value="{{ddLang.open}}" hint-placeholder-val="{{ false }}"><div class="menu right" role="listbox" style="min-width: 100%"><sc-for list="{{ddLang.opts}}" as="o" hint-placeholder-count="3"><button class="mi {{o.cls}}" role="option" onClick="{{o.pick}}"><span class="ck"><sc-if value="{{o.on}}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"></path></svg></sc-if></span>{{o.label}}</button></sc-for></div></sc-if></div></div></div>
 <div class="srow"><span>主题</span>
 <div class="seg" role="group" aria-label="主题"><button class="segb {{lightCls}}" onClick="{{setLight}}">浅色</button><button class="segb {{darkCls}}" onClick="{{setDark}}">深色</button><button class="segb" onClick="{{noop}}">跟随系统</button></div>
 </div>
@@ -262,29 +704,41 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="srow"><div><div>鹰角账号 token</div><div class="muted">v0.2 · 加密保存在本机，不显示内容</div></div><button class="btn small" onClick="{{noop}}" style="color: var(--loss)">清除</button></div>
 </div>
 </div>
-</div>
+</div></div>
 </sc-if>
 </main>
 <sc-if value="{{importOpen}}" hint-placeholder-val="{{ false }}">
 <div class="overlay">
 <div class="modal" role="dialog" aria-modal="true" aria-label="导入或拉取">
 <div class="row" style="justify-content: space-between"><div class="ct" style="font-size: 17px">导入 / 拉取</div><button class="btn small" onClick="{{closeImport}}" aria-label="关闭">关闭</button></div>
-<div class="steps"><span class="step {{s1Cls}}">1 选择方式</span><span>›</span><span class="step {{s2Cls}}">2 准备</span><span>›</span><span class="step {{s3Cls}}">3 进行中</span><span>›</span><span class="step {{s4Cls}}">4 报告</span></div>
+<div class="steps"><span class="step {{s1Cls}}">1 选择游戏</span><span>›</span><span class="step {{s2Cls}}">2 选择方式</span><span>›</span><span class="step {{s3Cls}}">3 准备</span><span>›</span><span class="step {{s4Cls}}">4 进行中</span><span>›</span><span class="step {{s5Cls}}">5 报告</span></div>
+<sc-if value="{{impHeader}}" hint-placeholder-val="{{ false }}">
+<div class="row" style="gap: 8px"><span class="gicon" style="background: {{impGame.color}}; color: {{impGame.ink}}" aria-hidden="true">{{impGame.mono}}</span><b>{{impGame.name}}</b><button class="linkbtn" style="align-self: center" onClick="{{changeGame}}">更换游戏</button></div>
+</sc-if>
 <sc-if value="{{step1}}" hint-placeholder-val="{{ true }}">
-<div class="methods">
-<button class="method" onClick="{{pickUrl}}"><b>从游戏拉取</b><span class="muted">米哈游三款、鸣潮。先在游戏里打开一次抽卡历史。</span></button>
-<button class="method" onClick="{{pickFile}}"><b>导入文件</b><span class="muted">UIGF、GNJ、CSV，自动识别格式。</span></button>
-<button class="method" onClick="{{pickToken}}"><b>鹰角账号 token</b><span class="muted">明日方舟、终末地 · v0.2</span></button>
+<div class="methods" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr))">
+<sc-for list="{{impGames}}" as="ig" hint-placeholder-count="6">
+<button class="method" style="min-height: 72px; flex-direction: row; align-items: center; gap: 10px" onClick="{{ig.pick}}"><span class="gicon lg" style="background: {{ig.color}}; color: {{ig.ink}}" aria-hidden="true">{{ig.mono}}</span><span style="display: flex; flex-direction: column; min-width: 0"><b style="white-space: nowrap">{{ig.name}}</b><span class="muted">{{ig.hint}}</span></span></button>
+</sc-for>
 </div>
+<div class="muted">文件里有多款游戏？<button class="linkbtn" style="font-size: 12px" onClick="{{pickFileAuto}}">直接导入文件，自动识别游戏</button></div>
+</sc-if>
+<sc-if value="{{stepMethod}}" hint-placeholder-val="{{ false }}">
+<div class="methods">
+<sc-for list="{{impMethods}}" as="im" hint-placeholder-count="2">
+<button class="method" onClick="{{im.pick}}"><b>{{im.title}}</b><span class="muted">{{im.desc}}</span></button>
+</sc-for>
+</div>
+<div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{back}}">上一步</button></div>
 </sc-if>
 <sc-if value="{{step2Url}}" hint-placeholder-val="{{ false }}">
-<label class="field">游戏<select class="input"><option>原神</option><option>崩坏：星穹铁道</option><option>绝区零</option><option>鸣潮</option></select></label>
-<div class="ok">已在游戏缓存中找到抽卡链接（国服，UID 1****6789）</div>
+<div class="ok">{{impGame.found}}</div>
 <label class="field">或手动粘贴链接<input class="input" type="url" placeholder="https://…"></label>
 <label class="check"><input type="checkbox">全量拉取（默认只拉新增）</label>
 <div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{back}}">上一步</button><button class="btn primary" onClick="{{start}}">开始拉取</button></div>
 </sc-if>
 <sc-if value="{{step2File}}" hint-placeholder-val="{{ false }}">
+<div class="muted">{{fileHint}}</div>
 <div class="drop">把文件拖到这里，或 <button class="btn small" onClick="{{noop}}">选择文件</button></div>
 <div class="tablebox"><table style="min-width: 0"><thead><tr><th scope="col">导入</th><th scope="col">游戏</th><th scope="col">UID</th><th scope="col">条数</th></tr></thead><tbody>
 <tr><td><input type="checkbox" checked="{{ true }}" aria-label="导入原神"></td><td>原神</td><td class="num">1****6789</td><td class="num">2,341</td></tr>
@@ -293,19 +747,40 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="muted">示例：一个 UIGF v4 文件包含两款游戏</div>
 <div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{back}}">上一步</button><button class="btn primary" onClick="{{start}}">确认导入</button></div>
 </sc-if>
+<sc-if value="{{step2Login}}" hint-placeholder-val="{{ false }}">
+<div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden">
+<div class="row" style="justify-content: space-between; padding: 8px 12px; background: var(--hover); font-size: 12px"><span>鹰角网络 · 账号登录（独立窗口）</span><span class="muted">[鹰角官网登录地址]</span></div>
+<div class="muted" style="padding: 8px 12px; border-bottom: 1px solid var(--border)">登录在鹰角官网页面完成，GachaNote 不接触密码，只保存登录后的 token。</div>
+<div style="padding: 28px; text-align: center; color: var(--text2); display: flex; flex-direction: column; gap: 12px; align-items: center">
+<div>[ 鹰角官网登录页 ]</div>
+<button class="btn small" onClick="{{fakeLogin}}">（原型）模拟登录成功</button>
+</div>
+</div>
+<div class="muted">关闭窗口或 5 分钟未登录会回到上一步，可改用手动粘贴 token。</div>
+<div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{back}}">上一步</button></div>
+</sc-if>
+<sc-if value="{{step2LoginDone}}" hint-placeholder-val="{{ false }}">
+<div class="ok">已获取 token，找到该账号下的角色</div>
+<div class="tablebox"><table style="min-width: 0"><thead><tr><th scope="col">拉取</th><th scope="col">游戏</th><th scope="col">服务器</th><th scope="col">UID</th></tr></thead><tbody>
+<tr><td><input type="checkbox" checked="{{ true }}" aria-label="拉取明日方舟"></td><td>明日方舟</td><td>官服</td><td class="num">8****1024</td></tr>
+<tr><td><input type="checkbox" checked="{{ true }}" aria-label="拉取终末地"></td><td>明日方舟：终末地</td><td>官服</td><td class="num">2****5810</td></tr>
+</tbody></table></div>
+<label class="check"><input type="checkbox" checked="{{ true }}">记住 token（加密保存在本机）</label>
+<div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{back}}">上一步</button><button class="btn primary" onClick="{{start}}">开始拉取</button></div>
+</sc-if>
 <sc-if value="{{step2Token}}" hint-placeholder-val="{{ false }}">
 <ol style="margin: 0; padding-left: 20px; font-size: 13px; color: var(--text2)"><li>在浏览器登录鹰角网络官网</li><li>打开账号信息接口页面</li><li>复制 content 字段的内容（不含引号）</li></ol>
 <label class="field">token<textarea class="input" style="min-height: 72px; padding: 8px 10px" placeholder="粘贴 token"></textarea></label>
 <label class="check"><input type="checkbox" checked="{{ true }}">记住 token（加密保存在本机）</label>
 <div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{back}}">上一步</button><button class="btn primary" onClick="{{start}}">开始拉取</button></div>
 </sc-if>
-<sc-if value="{{step3}}" hint-placeholder-val="{{ false }}">
-<div>正在拉取：角色活动祈愿</div>
+<sc-if value="{{step4}}" hint-placeholder-val="{{ false }}">
+<div>正在拉取：{{impGame.pool}}</div>
 <div class="track" style="height: 8px"><div class="fill" style="height: 8px; width: 60%"></div></div>
 <div class="muted">已获取 120 条 · 每次请求间隔 300 ms</div>
 <div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{back}}">取消</button><button class="btn primary" onClick="{{finish}}">（原型）跳到完成</button></div>
 </sc-if>
-<sc-if value="{{step4}}" hint-placeholder-val="{{ false }}">
+<sc-if value="{{step5}}" hint-placeholder-val="{{ false }}">
 <div class="report">
 <div class="mini"><div class="muted">新增</div><div class="v">128</div></div>
 <div class="mini"><div class="muted">重复（已跳过）</div><div class="v">2,213</div></div>
@@ -317,6 +792,35 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </div>
 </div>
 </sc-if>
+<sc-if value="{{shareOpen}}" hint-placeholder-val="{{ false }}">
+<div class="overlay">
+<div class="modal wide" role="dialog" aria-modal="true" aria-label="生成分享图">
+<div class="row" style="justify-content: space-between"><div class="ct" style="font-size: 17px">生成分享图</div><button class="btn small" onClick="{{closeShare}}" aria-label="关闭">关闭</button></div>
+<div class="share">
+<div class="shot" style="{{shareStyle}}">
+<div class="row" style="gap: 10px"><span class="gicon lg" style="background: {{acc.color}}; color: {{acc.ink}}" aria-hidden="true">{{acc.mono}}</span><div><div class="ct">{{acc.game}} · {{acc.alias}}</div><div class="muted">{{shareUid}} · {{pool.name}}</div></div></div>
+<div class="shotm">
+<sc-for list="{{metrics}}" as="m" hint-placeholder-count="3"><div><div class="muted">{{m.label}}</div><div class="v">{{m.big}}<span class="muted"> {{m.small}}</span></div></div></sc-for>
+</div>
+<div class="muted">最近 10 个出金</div>
+<div class="shotlist">
+<sc-for list="{{shareHist}}" as="h" hint-placeholder-count="4"><div><span class="gold">{{h.name}}</span><span class="num">{{h.pulls}} 抽 <span class="tag {{h.cls}}">{{h.tag}}</span></span></div></sc-for>
+</div>
+<div class="row muted" style="justify-content: space-between; border-top: 1px solid var(--border); padding-top: 10px"><span>2026-10-25</span><span>GachaNote</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<label class="check"><input type="checkbox" checked="{{shareHide}}" onChange="{{toggleShareHide}}">隐藏 UID</label>
+<div class="field">背景<div class="seg" role="group" aria-label="分享图背景"><button class="segb {{shareLightCls}}" onClick="{{shareLight}}">浅色</button><button class="segb {{shareDarkCls}}" onClick="{{shareDark}}">深色</button></div></div>
+<div class="field">卡池<div class="seg" role="group" aria-label="分享图卡池"><sc-for list="{{pools}}" as="p" hint-placeholder-count="3"><button class="segb {{p.cls}}" onClick="{{p.pick}}">{{p.short}}</button></sc-for></div></div>
+<div class="muted">导出为 1080 px 宽的 PNG</div>
+<div class="spacer"></div>
+<div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{shareCopy}}">复制到剪贴板</button><button class="btn primary" onClick="{{shareSave}}">保存 PNG</button></div>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{toastOn}}" hint-placeholder-val="{{ false }}"><div class="toast" role="status">{{toastText}}</div></sc-if>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":820}}'>
@@ -328,106 +832,425 @@ var GAMES = [
   { key: 'ef', name: '明日方舟：终末地', color: '#F2C200', mono: '终', ink: '#1A1500' },
   { key: 'ww', name: '鸣潮', color: '#3FBFA8', mono: '潮', ink: '#06201B' }
 ];
+// 规则模型：base 基础概率，soft 软保底起点，step 每抽增量，hard 硬保底，up UP 概率（null 为常驻），guar 歪后是否大保底
+var M = {
+  ysChar: { base: 0.006, soft: 73, step: 0.06, hard: 90, up: 0.5, guar: true, theory: 62.3 },
+  ysWeap: { base: 0.007, soft: 62, step: 0.07, hard: 80, up: 0.75, guar: true, theory: 53.2 },
+  ysStd: { base: 0.006, soft: 73, step: 0.06, hard: 90, up: null, guar: false, theory: 62.3 },
+  srChar: { base: 0.006, soft: 73, step: 0.06, hard: 90, up: 0.5, guar: true, theory: 62.3 },
+  srCone: { base: 0.008, soft: 65, step: 0.07, hard: 80, up: 0.75, guar: true, theory: 54.6 },
+  akStd: { base: 0.02, soft: 50, step: 0.02, hard: 99, up: 0.5, guar: false, theory: 34.6 },
+  akLim: { base: 0.02, soft: 50, step: 0.02, hard: 99, up: 0.7, guar: false, theory: 34.6 },
+  wwChar: { base: 0.008, soft: 65, step: 0.055, hard: 80, up: 0.5, guar: true, theory: 56.0 },
+  wwWeap: { base: 0.008, soft: 65, step: 0.055, hard: 80, up: 1, guar: true, theory: 56.0 }
+};
+// 指标模板：hoyo = 保底 / 平均出 UP / 歪率；std = 保底 / 平均出金；akStd = 无大保底；akLim = 第三张换成「井」
 var ACCS = [
-  { game: 'ys', alias: '主号', uid: '1****6789', updated: '3 小时前', topRarity: '5 星', pools: [
-    { name: '角色活动祈愿', pity: 37, hard: 90, big: true, avgUp: '88.4', upCount: 12, loss: '41.7%', lossFrac: '5 / 12', total: '1,642', gold: 19, avgGold: '62.1',
-      hist: [['示例角色 A', 77, 1, '2026-10-02 20:14'], ['示例角色 B', 81, 0, '2026-08-21 11:03'], ['示例角色 C', 24, 1, '2026-07-30 22:41'], ['示例角色 D', 76, 0, '2026-06-18 19:20']] },
-    { name: '武器活动祈愿', pity: 12, hard: 80, big: false, avgUp: '101.5', upCount: 4, loss: '25.0%', lossFrac: '1 / 4', total: '512', gold: 8, avgGold: '55.0',
-      hist: [['示例武器 A', 63, 1, '2026-09-11 21:02'], ['示例武器 B', 66, 0, '2026-05-04 12:30']] },
-    { name: '常驻祈愿', pity: 55, hard: 90, big: false, avgUp: '—', upCount: 0, loss: '—', lossFrac: '—', total: '187', gold: 3, avgGold: '62.3',
-      hist: [['示例角色 E', 72, 2, '2026-04-01 09:12']] }
+  { game: 'ys', alias: '主号', uid: '1****6789', updated: '3 小时前', topRarity: '5 星', seed: 3, pools: [
+    { name: '角色活动祈愿', short: '角色', limited: true, tpl: 'hoyo', m: 'ysChar', pity: 37, big: true, avgUp: '88.4', upCount: 12, loss: '41.7%', lossFrac: '5 / 12', total: '1,642', gold: 19, avgGold: '62.1',
+      luck: { grade: '欧', text: '比 78% 的人运气好', short: '欧 · 前 22%' },
+      hist: [['示例角色 A', 77, 1, '2026-10-02 20:14'], ['示例角色 B', 81, 0, '2026-08-21 11:03'], ['示例角色 C', 24, 1, '2026-07-30 22:41'], ['示例角色 D', 76, 0, '2026-06-18 19:20'], ['示例角色 I', 62, 1, '2026-05-02 10:40'], ['示例角色 J', 84, 0, '2026-03-11 21:30']],
+      periods: [['2026-10-14 – 11-04', '示例角色 K', 37, []], ['2026-09-23 – 10-14', '示例角色 A', 77, [['示例角色 A', 77, 1]]], ['2026-09-02 – 09-23', '示例角色 L', 0, []], ['2026-08-12 – 09-02', '示例角色 C', 81, [['示例角色 B', 81, 0]]], ['2026-07-22 – 08-12', '示例角色 C', 24, [['示例角色 C', 24, 1]]]] },
+    { name: '武器活动祈愿', short: '武器', limited: true, tpl: 'hoyo', m: 'ysWeap', pity: 12, big: false, avgUp: '101.5', upCount: 4, loss: '25.0%', lossFrac: '1 / 4', total: '512', gold: 8, avgGold: '55.0',
+      luck: { grade: '平', text: '比 46% 的人运气好', short: '平 · 前 54%' },
+      hist: [['示例武器 A', 63, 1, '2026-09-11 21:02'], ['示例武器 B', 66, 0, '2026-05-04 12:30']],
+      periods: [['2026-09-23 – 10-14', '示例武器 A', 63, [['示例武器 A', 63, 1]]], ['2026-04-22 – 05-13', '示例武器 C', 66, [['示例武器 B', 66, 0]]]] },
+    { name: '集录祈愿', short: '集录', limited: false, tpl: 'std', m: 'ysStd', pity: 8, big: false, avgUp: '—', upCount: 0, loss: '—', lossFrac: '—', total: '96', gold: 1, avgGold: '88.0', luck: null,
+      hist: [['示例角色 M', 88, 2, '2026-02-14 15:00']], periods: [] },
+    { name: '常驻祈愿', short: '常驻', limited: false, tpl: 'std', m: 'ysStd', pity: 55, big: false, avgUp: '—', upCount: 0, loss: '—', lossFrac: '—', total: '187', gold: 3, avgGold: '62.3', luck: null,
+      hist: [['示例角色 E', 72, 2, '2026-04-01 09:12']], periods: [] }
   ] },
-  { game: 'sr', alias: '主号', uid: '1****2345', updated: '昨天', topRarity: '5 星', pools: [
-    { name: '角色活动跃迁', pity: 66, hard: 90, big: false, avgUp: '92.0', upCount: 6, loss: '50.0%', lossFrac: '3 / 6', total: '902', gold: 10, avgGold: '64.5',
-      hist: [['示例角色 F', 74, 1, '2026-10-10 20:00'], ['示例角色 G', 79, 0, '2026-09-01 18:22']] },
-    { name: '光锥活动跃迁', pity: 3, hard: 80, big: false, avgUp: '70.0', upCount: 2, loss: '0.0%', lossFrac: '0 / 2', total: '200', gold: 3, avgGold: '58.0',
-      hist: [['示例光锥 A', 66, 1, '2026-10-11 10:10']] }
+  { game: 'ys', alias: '小号', uid: '1****1357', updated: '12 天前', topRarity: '5 星', seed: 7, pools: [
+    { name: '角色活动祈愿', short: '角色', limited: true, tpl: 'hoyo', m: 'ysChar', pity: 64, big: false, avgUp: '95.0', upCount: 2, loss: '50.0%', lossFrac: '1 / 2', total: '254', gold: 3, avgGold: '63.3', luck: null,
+      hist: [['示例角色 A', 70, 1, '2026-10-01 12:00'], ['示例角色 E', 74, 0, '2026-07-01 12:00']], periods: [['2026-09-23 – 10-14', '示例角色 A', 70, [['示例角色 A', 70, 1]]]] },
+    { name: '常驻祈愿', short: '常驻', limited: false, tpl: 'std', m: 'ysStd', pity: 20, big: false, avgUp: '—', upCount: 0, loss: '—', lossFrac: '—', total: '40', gold: 0, avgGold: '—', luck: null, hist: [], periods: [] }
   ] },
-  { game: 'ak', alias: '官服', uid: '8****1024', updated: '5 天前', topRarity: '6 星', pools: [
-    { name: '标准寻访', pity: 23, hard: 99, big: false, avgUp: '68.2', upCount: 5, loss: '54.5%', lossFrac: '6 / 11', total: '1,230', gold: 21, avgGold: '33.0',
-      hist: [['示例干员 A', 41, 1, '2026-10-15 13:00'], ['示例干员 B', 12, 0, '2026-09-29 23:50']] },
-    { name: '限定寻访', pity: 0, hard: 99, big: false, avgUp: '75.0', upCount: 2, loss: '33.3%', lossFrac: '1 / 3', total: '310', gold: 5, avgGold: '35.1',
-      hist: [['示例干员 C', 58, 1, '2026-08-01 16:16']] }
+  { game: 'sr', alias: '主号', uid: '1****2345', updated: '昨天', topRarity: '5 星', seed: 5, pools: [
+    { name: '角色活动跃迁', short: '角色', limited: true, tpl: 'hoyo', m: 'srChar', pity: 66, big: false, avgUp: '92.0', upCount: 6, loss: '50.0%', lossFrac: '3 / 6', total: '902', gold: 10, avgGold: '64.5',
+      luck: { grade: '非', text: '比 31% 的人运气好', short: '非 · 前 69%' },
+      hist: [['示例角色 F', 74, 1, '2026-10-10 20:00'], ['示例角色 G', 79, 0, '2026-09-01 18:22']],
+      periods: [['2026-10-08 – 10-29', '示例角色 F', 74, [['示例角色 F', 74, 1]]], ['2026-08-27 – 09-17', '示例角色 N', 79, [['示例角色 G', 79, 0]]]] },
+    { name: '光锥活动跃迁', short: '光锥', limited: true, tpl: 'hoyo', m: 'srCone', pity: 3, big: false, avgUp: '70.0', upCount: 2, loss: '0.0%', lossFrac: '0 / 2', total: '200', gold: 3, avgGold: '58.0', luck: null,
+      hist: [['示例光锥 A', 66, 1, '2026-10-11 10:10']], periods: [['2026-10-08 – 10-29', '示例光锥 A', 66, [['示例光锥 A', 66, 1]]]] }
   ] },
-  { game: 'ww', alias: '主号', uid: '1****0777', updated: '2 天前', topRarity: '5 星', pools: [
-    { name: '角色活动唤取', pity: 71, hard: 80, big: false, avgUp: '79.3', upCount: 3, loss: '33.3%', lossFrac: '1 / 3', total: '560', gold: 7, avgGold: '61.0',
-      hist: [['示例角色 H', 68, 1, '2026-09-20 21:21']] },
-    { name: '武器活动唤取', pity: 20, hard: 80, big: false, avgUp: '64.0', upCount: 1, loss: '—', lossFrac: '—', total: '84', gold: 1, avgGold: '64.0',
-      hist: [['示例武器 C', 64, 1, '2026-09-21 08:08']] }
+  { game: 'ak', alias: '官服', uid: '8****1024', updated: '5 天前', topRarity: '6 星', seed: 9, pools: [
+    { name: '限定寻访', short: '限定', limited: true, tpl: 'akLim', m: 'akLim', pity: 0, big: false, spark: 180, sparkMax: 300, avgUp: '75.0', upCount: 2, loss: '33.3%', lossFrac: '1 / 3', total: '310', gold: 5, avgGold: '35.1', luck: { grade: '欧', text: '比 64% 的人运气好', short: '欧 · 前 36%' },
+      hist: [['示例干员 C', 58, 1, '2026-08-01 16:16'], ['示例干员 D', 22, 0, '2026-07-28 13:02']], periods: [['2026-07-25 – 08-08', '示例干员 C', 180, [['示例干员 D', 22, 0], ['示例干员 C', 58, 1]]]] },
+    { name: '标准寻访', short: '标准', limited: true, tpl: 'akStd', m: 'akStd', pity: 23, big: false, avgUp: '68.2', upCount: 5, loss: '54.5%', lossFrac: '6 / 11', total: '1,230', gold: 21, avgGold: '33.0',
+      luck: { grade: '平', text: '比 52% 的人运气好', short: '平 · 前 48%' },
+      hist: [['示例干员 A', 41, 1, '2026-10-15 13:00'], ['示例干员 B', 12, 0, '2026-09-29 23:50']], periods: [['2026-10-15 – 10-29', '示例干员 A', 64, [['示例干员 A', 41, 1]]], ['2026-09-29 – 10-13', '示例干员 E', 12, [['示例干员 B', 12, 0]]]] }
+  ] },
+  { game: 'ww', alias: '主号', uid: '1****0777', updated: '2 天前', topRarity: '5 星', seed: 4, pools: [
+    { name: '角色活动唤取', short: '角色', limited: true, tpl: 'hoyo', m: 'wwChar', pity: 71, big: false, avgUp: '79.3', upCount: 3, loss: '33.3%', lossFrac: '1 / 3', total: '560', gold: 7, avgGold: '61.0', luck: { grade: '平', text: '比 49% 的人运气好', short: '平 · 前 51%' },
+      hist: [['示例角色 H', 68, 1, '2026-09-20 21:21']], periods: [['2026-09-18 – 10-09', '示例角色 H', 68, [['示例角色 H', 68, 1]]]] },
+    { name: '武器活动唤取', short: '武器', limited: true, tpl: 'std', m: 'wwWeap', pity: 20, big: false, avgUp: '64.0', upCount: 1, loss: '—', lossFrac: '—', total: '84', gold: 1, avgGold: '64.0', luck: null,
+      hist: [['示例武器 C', 64, 1, '2026-09-21 08:08']], periods: [] }
   ] }
 ];
-var LIGHT = { bg: '#F7F7F8', surface: '#FFFFFF', border: '#E4E4E7', text: '#18181B', text2: '#5F5F68', primary: '#3B6FE0', onprimary: '#FFFFFF', selected: '#EAF0FC', hover: '#F2F2F4', track: '#EDEDF0', gold: '#9A6700', up: '#1F7A4D', upbg: '#E3F4EA', loss: '#C23434', lossbg: '#FBE7E7', overlay: 'rgba(15,15,20,0.45)' };
-var DARK = { bg: '#141518', surface: '#1D1F23', border: '#2E3036', text: '#ECECEE', text2: '#A0A0AA', primary: '#7B9CF2', onprimary: '#0B0C0E', selected: '#232C40', hover: '#26282D', track: '#2A2C31', gold: '#E3A43B', up: '#5CCB94', upbg: '#183528', loss: '#F07A7A', lossbg: '#3A1E1E', overlay: 'rgba(0,0,0,0.6)' };
+var LIGHT = { bg: '#F7F7F8', surface: '#FFFFFF', border: '#E4E4E7', text: '#18181B', text2: '#5F5F68', primary: '#3B6FE0', onprimary: '#FFFFFF', selected: '#EAF0FC', hover: '#F2F2F4', track: '#EDEDF0', gold: '#9A6700', up: '#1F7A4D', upbg: '#E3F4EA', thead: '#F1F1F4', purple: '#7445C9', bar3: '#4A90E2', bar4: '#9B5DE5', bar5: '#F5B83D', goldbg: '#FBF1DC', goldline: '#EBCF94', loss: '#C23434', lossbg: '#FBE7E7', overlay: 'rgba(15,15,20,0.45)' };
+var DARK = { bg: '#141518', surface: '#1D1F23', border: '#2E3036', text: '#ECECEE', text2: '#A0A0AA', primary: '#7B9CF2', onprimary: '#0B0C0E', selected: '#232C40', hover: '#26282D', track: '#2A2C31', gold: '#E3A43B', up: '#5CCB94', upbg: '#183528', thead: '#25272C', purple: '#B595F2', bar3: '#5A9BEA', bar4: '#A97AF0', bar5: '#F2C14E', goldbg: '#33280F', goldline: '#5C4618', loss: '#F07A7A', lossbg: '#3A1E1E', overlay: 'rgba(0,0,0,0.6)' };
+// 每款游戏在导入弹窗里可用的方式
+var IMP = {
+  ys: { methods: ['url', 'file'], formats: 'UIGF v4（兼容旧版 UIGF）', found: '已在游戏缓存中找到抽卡链接（国服，UID 1****6789）', pool: '角色活动祈愿' },
+  sr: { methods: ['url', 'file'], formats: 'UIGF v4（兼容 SRGF）', found: '已在游戏缓存中找到抽卡链接（国服，UID 1****2345）', pool: '角色活动跃迁' },
+  zzz: { methods: ['url', 'file'], formats: 'UIGF v4', found: '已在游戏缓存中找到抽卡链接（国服）', pool: '独家频段' },
+  ww: { methods: ['url', 'file'], formats: 'GNJ（GachaNote JSON）', found: '已在 Client.log 中找到唤取记录链接（UID 1****0777）', pool: '角色活动唤取' },
+  ak: { methods: ['login', 'token', 'file'], formats: 'CSV（兼容现有导出工具）、GNJ', found: '', pool: '限定寻访' },
+  ef: { methods: ['login', 'token', 'file'], formats: 'CSV、GNJ', found: '', pool: '限定寻访' }
+};
 function gameOf(key) { for (var i = 0; i < GAMES.length; i++) { if (GAMES[i].key === key) return GAMES[i]; } return GAMES[0]; }
+function vars(t) { return Object.keys(t).map(function (k) { return '--' + k + ':' + t[k]; }).join(';'); }
+function pct(x) { return (x * 100 < 10 ? (x * 100).toFixed(1) : Math.round(x * 100)) + '%'; }
+function prob(m, n) { if (n >= m.hard) return 1; if (n <= m.soft) return m.base; return Math.min(1, m.base + m.step * (n - m.soft)); }
+// 未来 k 抽内至少出一次金 / 出一次 UP 的概率（逐抽推演）
+function predict(m, pity, big, k) {
+  var gold = 1, mass = {}, upHit = 0;
+  for (var i = 1; i <= k; i++) { if (pity + i <= m.hard) gold *= 1 - prob(m, pity + i); }
+  mass[pity + ':' + (big ? 1 : 0)] = 1;
+  for (var j = 0; j < k; j++) {
+    var next = {};
+    Object.keys(mass).forEach(function (key) {
+      var c = Number(key.split(':')[0]), g = Number(key.split(':')[1]), w = mass[key];
+      var q = prob(m, c + 1), upP = (g || m.up === null) ? 1 : m.up;
+      upHit += w * q * upP;
+      if (m.up !== null && !g) { var lk = '0:' + (m.guar ? 1 : 0); next[lk] = (next[lk] || 0) + w * q * (1 - upP); }
+      var nk = (c + 1) + ':' + g; next[nk] = (next[nk] || 0) + w * (1 - q);
+    });
+    mass = next;
+  }
+  return { gold: 1 - gold, up: upHit };
+}
+function tagOf(f) { return f === 1 ? { tag: 'UP', cls: 'up' } : (f === 0 ? { tag: '歪', cls: 'loss' } : { tag: '常驻', cls: 'std' }); }
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { view: 'overview', acc: 0, pool: 0, tab: 'stats', dark: false, filter: 'all', importOpen: false, step: 1, method: 'url', shown: [], addOpen: false };
+    this.state = { view: 'overview', acc: 0, pool: -1, tab: 'stats', dark: false, filter: 'all', importOpen: false, step: 1, method: 'url', shown: [], addOpen: false,
+      lastAcc: {}, emptyGame: null, accMenu: false, more: false, expanded: {}, n: 10, distTable: false, showSkipped: false, trend: 'day', hoverDay: null, rFrom: null, rTo: 0,
+      importGame: null, loggedIn: false, dd: null, onlyGold: false, recPage: 1, pageSize: 20, rarity: ['5', '4', '3', '2'], range: 'all', lang: 'zh', shareOpen: false, shareHide: true, shareDark: false, toast: '' };
   }
+  flash(text) { var self = this; this.setState({ toast: text }); clearTimeout(this._t); this._t = setTimeout(function () { self.setState({ toast: '' }); }, 3000); }
   renderVals() {
     var self = this;
     var s = this.state;
     var t = s.dark ? DARK : LIGHT;
-    var rootStyle = Object.keys(t).map(function (k) { return '--' + k + ':' + t[k]; }).join(';');
     var set = function (patch) { return function () { self.setState(patch); }; };
-    var openAcc = function (i) { return function () { self.setState({ view: 'detail', acc: i, pool: 0, tab: 'stats' }); }; };
+    var openAcc = function (i) { return function () { var la = Object.assign({}, self.state.lastAcc); la[ACCS[i].game] = i; self.setState({ view: 'detail', acc: i, pool: -1, accMenu: false, more: false, lastAcc: la }); }; };
     var games = GAMES.map(function (g) {
-      var accounts = [];
-      ACCS.forEach(function (a, i) { if (a.game === g.key) accounts.push({ alias: a.alias + ' · ' + a.uid.slice(-4), open: openAcc(i), navCls: (s.view === 'detail' && s.acc === i) ? 'on' : '' }); });
-      return { key: g.key, name: g.name, color: g.color, mono: g.mono, ink: g.ink, count: accounts.length, accounts: accounts, empty: accounts.length === 0 };
+      var idx = [];
+      ACCS.forEach(function (a, i) { if (a.game === g.key) idx.push(i); });
+      var active = (s.view === 'detail' && ACCS[s.acc].game === g.key) || (s.view === 'empty' && s.emptyGame === g.key);
+      return { key: g.key, name: g.name, color: g.color, mono: g.mono, ink: g.ink, count: idx.length, countLabel: idx.length ? idx.length : '暂无账号', cls: active ? 'on' : (idx.length ? '' : 'dim'),
+        open: idx.length ? openAcc(s.lastAcc[g.key] !== undefined ? s.lastAcc[g.key] : idx[0]) : set({ view: 'empty', emptyGame: g.key }) };
     });
     var hiddenGames = games.filter(function (g) { return g.count === 0 && s.shown.indexOf(g.key) < 0; })
-      .map(function (g) { return { name: g.name, color: g.color, mono: g.mono, ink: g.ink, add: function () { self.setState({ shown: self.state.shown.concat([g.key]), addOpen: false }); } }; });
+      .map(function (g) { return { name: g.name, color: g.color, mono: g.mono, ink: g.ink, add: function () { self.setState({ shown: self.state.shown.concat([g.key]), addOpen: false, view: 'empty', emptyGame: g.key }); } }; });
     games = games.filter(function (g) { return g.count > 0 || s.shown.indexOf(g.key) >= 0; });
-    var filters = [{ key: 'all', label: '全部' }].concat(GAMES.filter(function (g) { return ACCS.some(function (a) { return a.game === g.key; }); }).map(function (g) { return { key: g.key, label: g.name }; }))
-      .map(function (f) { return { label: f.label, cls: s.filter === f.key ? 'on' : '', pick: set({ filter: f.key }) }; });
+    var filters = [{ key: 'all', label: '全部' }].concat(GAMES.filter(function (g) { return ACCS.some(function (a) { return a.game === g.key; }); }).map(function (g) { return { key: g.key, label: g.name, color: g.color }; }))
+      .map(function (f) { return { label: f.label, color: f.color || '', hasDot: !!f.color, cls: s.filter === f.key ? 'on' : '', pick: set({ filter: f.key }) }; });
     var poolView = function (p) {
-      return Object.assign({}, p, { pct: Math.round(p.pity / p.hard * 100), left: p.hard - p.pity, state: p.big ? '大保底：下一个金必为 UP' : '小保底' });
+      var m = M[p.m];
+      var gr = p.gold && p.total ? (p.gold / Number(String(p.total).replace(/,/g, '')) * 100).toFixed(1) + '%' : '—';
+      return Object.assign({}, p, { hard: m.hard, theory: m.theory.toFixed(1), theoryPct: Math.round(m.theory / m.hard * 100), pct: Math.round(p.pity / m.hard * 100), left: m.hard - p.pity, goldRate: gr,
+        isBig: p.tpl === 'hoyo' && p.big, isSmall: p.tpl === 'hoyo' && !p.big,
+        stateShort: m.up === null ? '常驻池，无 UP' : (m.guar ? (p.big ? '大保底' : '小保底') : '无大保底') });
     };
     var cards = [];
     ACCS.forEach(function (a, i) {
       if (s.filter !== 'all' && s.filter !== a.game) return;
       var g = gameOf(a.game);
-      var main = a.pools[0];
-      cards.push({ game: g.name, color: g.color, mono: g.mono, ink: g.ink, alias: a.alias, uid: a.uid, updated: a.updated, open: openAcc(i),
-        pools: a.pools.slice(0, 2).map(poolView), total: a.pools.reduce(function (n, p) { return n + Number(String(p.total).replace(/,/g, '')); }, 0).toLocaleString('en-US'),
+      var lim = a.pools.filter(function (p) { return p.limited; }).slice(0, 2);
+      var rest = a.pools.filter(function (p) { return lim.indexOf(p) < 0; });
+      var open = !!s.expanded[i];
+      var main = lim[0] || a.pools[0];
+      cards.push({ game: g.name, color: g.color, tint: g.color + '17', tintLine: g.color + '40', mono: g.mono, ink: g.ink, alias: a.alias, uid: a.uid, updated: a.updated, open: openAcc(i),
+        pools: (open ? lim.concat(rest) : lim).map(poolView), hasExtra: rest.length > 0, extraLabel: open ? '收起' : '展开其余 ' + rest.length + ' 个卡池',
+        toggle: function () { var e = Object.assign({}, self.state.expanded); e[i] = !e[i]; self.setState({ expanded: e }); },
+        total: a.pools.reduce(function (n, p) { return n + Number(String(p.total).replace(/,/g, '')); }, 0).toLocaleString('en-US'),
         avgUp: main.avgUp + ' 抽', loss: main.loss });
     });
     var a = ACCS[s.acc];
     var g = gameOf(a.game);
-    var pool = poolView(a.pools[s.pool] || a.pools[0]);
-    var pools = a.pools.map(function (p, i) { return { name: p.name, cls: i === s.pool ? 'on' : '', pick: set({ pool: i }) }; });
-    var history = pool.hist.map(function (h) {
-      return { name: h[0], pulls: h[1], time: h[3], pct: Math.round(h[1] / pool.hard * 100), tag: h[2] === 1 ? 'UP' : (h[2] === 0 ? '歪' : '常驻'), cls: h[2] === 1 ? 'up' : (h[2] === 0 ? 'loss' : '') };
+    var pi = Math.max(0, Math.min(s.pool, a.pools.length - 1));
+    var summary = s.tab === 'stats' && s.pool < 0;
+    var pool = poolView(a.pools[pi]);
+    var m = M[pool.m];
+    var pools = a.pools.map(function (p, i) { return { name: p.name, short: p.short, pity: p.pity, cls: (i === pi && !summary) ? 'on' : '', pick: set({ pool: i }) }; });
+    var segPools = (s.tab === 'stats' ? [{ short: '总览', pity: '', cls: summary ? 'on' : '', pick: set({ pool: -1 }) }] : []).concat(pools);
+    var accOptions = [];
+    ACCS.forEach(function (x, i) { if (x.game === a.game) accOptions.push({ alias: x.alias, uid: x.uid, cls: i === s.acc ? 'on' : '', pick: openAcc(i) }); });
+    // 核心指标卡由规则模板决定
+    var pityCard = { label: '当前保底', big: pool.pity, small: '/ ' + m.hard, hasBar: true, pct: pool.pct, barColor: 'var(--primary)',
+      isBig: pool.isBig, isSmall: pool.isSmall,
+      sub: pool.tpl === 'hoyo' ? (pool.big ? '下一个金必为 UP · ' : '下一个金 ' + Math.round(m.up * 100) + '% 为 UP · ') + '距硬保底还差 ' + pool.left + ' 抽'
+        : (pool.tpl === 'std' ? '距硬保底还差 ' + pool.left + ' 抽' : '第 ' + (m.soft + 1) + ' 抽起每抽概率 +2%') };
+    var upCard = { label: '平均出 UP', big: pool.avgUp, small: '抽', hasBar: false, sub: '共 ' + pool.upCount + ' 个 UP' };
+    var metrics;
+    if (pool.tpl === 'hoyo') metrics = [pityCard, upCard, { label: '小保底歪率', big: pool.loss, small: '', hasBar: false, sub: pool.lossFrac + ' 次小保底歪了' }];
+    else if (pool.tpl === 'akStd') metrics = [pityCard, upCard, { label: '歪率', big: pool.loss, small: '', hasBar: false, sub: pool.lossFrac + ' 次 6 星不是 UP · 无大保底' }];
+    else if (pool.tpl === 'akLim') metrics = [pityCard, upCard, { label: '井（寻访凭证）', big: pool.spark, small: '/ ' + pool.sparkMax, hasBar: true, pct: Math.round(pool.spark / pool.sparkMax * 100), barColor: 'var(--gold)', sub: '再抽 ' + (pool.sparkMax - pool.spark) + ' 次可直接兑换 UP 干员' }];
+    else metrics = [pityCard, { label: '平均出金', big: pool.avgGold, small: '抽', hasBar: false, sub: '共 ' + pool.gold + ' 个金' }];
+    var poolCards = a.pools.map(function (p0, i) {
+      var pv = poolView(p0);
+      var kv = p0.tpl === 'std' ? ['平均出金', p0.avgGold + ' 抽', '出金数', String(p0.gold)] : (p0.tpl === 'akLim' ? ['平均出 UP', p0.avgUp + ' 抽', '井', p0.spark + ' / ' + p0.sparkMax] : ['平均出 UP', p0.avgUp + ' 抽', '歪率', p0.loss]);
+      return { name: p0.name, pity: p0.pity, hard: pv.hard, pct: pv.pct, big: p0.big, isBig: pv.isBig, isSmall: pv.isSmall, total: p0.total, k2: kv[0], v2: kv[1], k3: kv[2], v3: kv[3], open: set({ pool: i, tab: 'stats' }) };
+    });
+    var allHist = [];
+    a.pools.forEach(function (p0) { p0.hist.forEach(function (h) { var tg = tagOf(h[2]); allHist.push({ name: h[0], pulls: h[1], time: h[3], date: h[3].slice(0, 10), pool: p0.short, tag: tg.tag, cls: tg.cls }); }); });
+    allHist.sort(function (x, y) { return x.time < y.time ? 1 : -1; });
+    var sumTotal = a.pools.reduce(function (n0, p0) { return n0 + Number(String(p0.total).replace(/,/g, '')); }, 0);
+    var sumGold = a.pools.reduce(function (n0, p0) { return n0 + p0.gold; }, 0);
+    var accSum = { total: sumTotal.toLocaleString('en-US'), gold: sumGold, avgGold: sumGold ? (sumTotal / sumGold).toFixed(1) : '—',
+      range: allHist.length ? allHist[allHist.length - 1].date + ' – ' + allHist[0].date : '—' };
+    // 抽数条三色：低于理论平均 85% 为绿（欧），高于 115% 为红（非），其余为黄
+    var luckLegend = { good: '#22C55E', mid: '#FBBF24', bad: '#F43F5E' };
+    var luckColor = function (pulls) { return pulls < m.theory * 0.85 ? luckLegend.good : (pulls > m.theory * 1.15 ? luckLegend.bad : luckLegend.mid); };
+    var history = pool.hist.map(function (h) { var tg = tagOf(h[2]); return { name: h[0], pulls: h[1], time: h[3], pct: Math.round(h[1] / m.hard * 100), color: luckColor(h[1]), tag: tg.tag, cls: tg.cls }; });
+    var n = Math.max(1, Math.min(300, Number(s.n) || 1));
+    var p1 = predict(m, pool.pity, pool.big, 1), pn = predict(m, pool.pity, pool.big, n);
+    var hasUp = m.up !== null && pool.tpl !== 'std';
+    var pred = { next: pct(p1.gold), nextUp: pct(p1.up), withinGold: pct(pn.gold), withinUp: pct(pn.up), hasUp: hasUp };
+    var span = m.hard - pool.pity, pts = [];
+    for (var k = 0; k <= span; k++) { var c = k === 0 ? 0 : predict(m, pool.pity, pool.big, k).gold; pts.push((k / span * 300).toFixed(1) + ',' + (130 - c * 120).toFixed(1)); }
+    var nx = Math.min(300, n / span * 300);
+    var curve = { points: pts.join(' '), nx: nx.toFixed(1), tx: (nx > 240 ? nx - 44 : nx + 4).toFixed(1), maxLabel: span };
+    var luck = { has: !!pool.luck, none: !pool.luck, grade: pool.luck ? pool.luck.grade : '', text: pool.luck ? pool.luck.text : '' };
+    var dist = history.slice().reverse().map(function (h) { return Object.assign({}, h, { h: Math.round(h.pulls / m.hard * 100) }); });
+    var months = [], maxP = 1;
+    for (var i = 0; i < 12; i++) { var pulls = 30 + ((a.seed * 37 + i * 53) % 170); maxP = Math.max(maxP, pulls); months.push({ label: (((i + 10) % 12) + 1) + '月', pulls: pulls, gold: Math.round(pulls / 68) }); }
+    months.forEach(function (x) { x.h = Math.round(x.pulls / maxP * 100); });
+    // 抽卡构成：三档星级按各游戏叫法，最高星再分 UP / 歪
+    var rl = a.game === 'ak' || a.game === 'ef' ? ['6 星', '5 星', '4 星及以下'] : (a.game === 'zzz' ? ['S 级', 'A 级', 'B 级'] : ['5 星', '4 星', '3 星']);
+    var totalN = Number(String(pool.total).replace(/,/g, ''));
+    var p4 = a.game === 'ak' || a.game === 'ef' ? 0.08 : 0.13;
+    var splitOf = function (p0) { var tN = Number(String(p0.total).replace(/,/g, '')), g0 = p0.gold, q0 = Math.round(tN * p0.p4); return [g0, q0, Math.max(0, tN - g0 - q0)]; };
+    var nG = pool.gold, nP = Math.round(totalN * p4), nB = Math.max(0, totalN - nG - nP);
+    // 环形图 + 明细：统计页、总览、分析页共用
+    var compOf = function (g0, q0, b0, up0, hasUp0, avg0, sub0) {
+      var tN = g0 + q0 + b0, sh = function (x) { return tN ? x / tN * 100 : 0; }, pt = function (x) { return tN ? sh(x).toFixed(1) + '%' : '—'; };
+      var arc0 = function (x, before) { var l = sh(x); return { dash: l.toFixed(2) + ' ' + (100 - l).toFixed(2), off: (-sh(before)).toFixed(2) }; };
+      return { top: rl[0], total: tN.toLocaleString('en-US'), avg: avg0, g: arc0(g0, 0), p: arc0(q0, g0), b: arc0(b0, g0 + q0),
+        rows: [
+          { label: rl[0], color: 'var(--bar5)', count: g0, pct: pt(g0), hasSub: hasUp0 && g0 > 0, sub: sub0 || '其中 UP ' + up0 + ' · 歪 ' + (g0 - up0) },
+          { label: rl[1], color: 'var(--bar4)', count: q0.toLocaleString('en-US'), pct: pt(q0), hasSub: false, sub: '' },
+          { label: rl[2], color: 'var(--bar3)', count: b0.toLocaleString('en-US'), pct: pt(b0), hasSub: false, sub: '' }] };
+    };
+    var accSplit = [0, 0, 0], accUp = 0, accLoss = 0, accHasUp = false;
+    a.pools.forEach(function (p0) { var sp = splitOf(Object.assign({ p4: p4 }, p0)); accSplit[0] += sp[0]; accSplit[1] += sp[1]; accSplit[2] += sp[2]; if (p0.tpl !== 'std') { var u0 = Math.min(p0.upCount, p0.gold); accUp += u0; accLoss += p0.gold - u0; accHasUp = true; } });
+    var accComp = compOf(accSplit[0], accSplit[1], accSplit[2], accUp, accHasUp, accSum.avgGold, '其中 UP ' + accUp + ' · 歪 ' + accLoss + ' · 常驻池 ' + (accSplit[0] - accUp - accLoss));
+    // 成就：按本卡池的出金记录计算，没达成的显示进度
+    var chron = pool.hist.slice().reverse();
+    var achs = [];
+    if (chron.length) {
+      var lo = chron.reduce(function (x, y) { return y[1] < x[1] ? y : x; }), hi = chron.reduce(function (x, y) { return y[1] > x[1] ? y : x; });
+      var loLine = Math.round(m.hard * 0.35);
+      achs.push({ ico: '欧', name: '欧皇时刻', done: lo[1] <= loLine, desc: lo[1] <= loLine ? lo[0] + ' 只用了 ' + lo[1] + ' 抽' : '最快 ' + lo[1] + ' 抽出金 · 需 ≤ ' + loLine + ' 抽' });
+      achs.push({ ico: '非', name: '非酋时刻', done: hi[1] > m.soft + 4, desc: hi[1] > m.soft + 4 ? hi[0] + ' 抽了 ' + hi[1] + ' 抽' : '最慢 ' + hi[1] + ' 抽出金 · 进入软保底后才算' });
+      if (pool.tpl !== 'std') {
+        var run = 0, best = 0;
+        chron.forEach(function (h) { run = h[2] === 1 ? run + 1 : 0; best = Math.max(best, run); });
+        achs.push({ ico: '连', name: '不歪连胜', done: best >= 3, desc: best >= 3 ? '连续 ' + best + ' 个金都是 UP' : '最长连续 ' + best + ' 个 UP · 需 3 个' });
+      }
+      var gap = 0;
+      for (var gi = 1; gi < chron.length; gi++) gap = Math.max(gap, Math.round((new Date(chron[gi][3].slice(0, 10)) - new Date(chron[gi - 1][3].slice(0, 10))) / 864e5));
+      achs.push({ ico: '等', name: '漫长等待', done: gap >= 45, desc: chron.length < 2 ? '至少需要 2 个金' : (gap >= 45 ? '两次出金相隔 ' + gap + ' 天' : '最长间隔 ' + gap + ' 天 · 需 45 天') });
+    }
+    achs.forEach(function (x) { x.cls = x.done ? 'done' : 'locked'; });
+    // 按日时间图：从首条记录到今天，每天一根柱，按星级堆叠；示例数据按卡池总抽数缩放
+    var dayMs = 864e5, endD = new Date('2026-10-25'), startD = chron.length ? new Date(chron[0][3].slice(0, 10)) : new Date('2026-09-01');
+    startD = new Date(startD - 9 * dayMs);
+    var nDays = Math.round((endD - startD) / dayMs) + 1, w = [], sumW = 0;
+    var goldDays = {};
+    chron.forEach(function (h) { goldDays[h[3].slice(0, 10)] = (goldDays[h[3].slice(0, 10)] || 0) + 1; });
+    var ymd = function (d) { return d.toISOString().slice(0, 10); };
+    for (var di = 0; di < nDays; di++) {
+      var r = ((di + 1) * 2654435761 + a.seed * 97 + pi * 31) % 1000 / 1000, key = ymd(new Date(+startD + di * dayMs));
+      var wt = goldDays[key] ? 60 + r * 40 : (r < 0.62 ? 0 : (r < 0.86 ? 1 + r * 6 : (r < 0.97 ? 10 + r * 15 : 50 + r * 60)));
+      w.push(wt); sumW += wt;
+    }
+    var days = [], extra = Math.max(0, nG - chron.length), peak = 0, peakI = 0, dSum = [0, 0, 0];
+    var order = w.map(function (x, i) { return i; }).sort(function (x, y) { return w[y] - w[x]; });
+    var extraDays = {};
+    order.filter(function (i) { return !goldDays[ymd(new Date(+startD + i * dayMs))]; }).slice(0, extra).forEach(function (i) { extraDays[i] = 1; });
+    for (var dj = 0; dj < nDays; dj++) {
+      var dd = new Date(+startD + dj * dayMs), k2 = ymd(dd);
+      var pp = sumW ? Math.round(w[dj] / sumW * totalN) : 0;
+      var gg = Math.min(pp, (goldDays[k2] || 0) + (extraDays[dj] ? 1 : 0)), pu = Math.min(pp - gg, Math.round(pp * (nP / Math.max(1, totalN)))), bb = pp - gg - pu;
+      dSum[0] += gg; dSum[1] += pu; dSum[2] += bb;
+      if (pp > peak) { peak = pp; peakI = dj; }
+      days.push({ date: k2, pulls: pp, g: gg, p: pu, b: bb });
+    }
+    // 四舍五入的零头补到最高的一天，保证合计与卡池总抽数一致
+    // 四星总数对齐构成图：差值在最高的一天里与三星互换
+    if (nDays && totalN) { var dP = nP - dSum[1];
+      order.forEach(function (ix) { var d0 = days[ix], mv = dP > 0 ? Math.min(dP, d0.b) : Math.max(dP, -d0.p); d0.p += mv; d0.b -= mv; dSum[1] += mv; dSum[2] -= mv; dP -= mv; }); }
+    if (nDays && totalN) { var diff = totalN - dSum[0] - dSum[1] - dSum[2]; days[peakI].b += diff; days[peakI].pulls += diff; dSum[2] += diff; peak = days[peakI].pulls; }
+    var comp = compOf(nG, nP, nB, pool.tpl === 'std' ? 0 : Math.min(pool.upCount, nG), pool.tpl !== 'std', pool.avgGold);
+    // 时间筛选：选区按「距今天几天」保存，切换卡池后仍然有效；null 表示全部
+    var rEnd = Math.max(0, nDays - 1 - (s.rTo || 0)), rStart = s.rFrom === null ? 0 : Math.max(0, Math.min(rEnd, nDays - 1 - s.rFrom));
+    var vis = days.slice(rStart, rEnd + 1), vSum = [0, 0, 0], vPeak = 0, vPeakI = 0, allPeak = 1;
+    days.forEach(function (x) { allPeak = Math.max(allPeak, x.pulls); });
+    vis.forEach(function (x, i) { vSum[0] += x.g; vSum[1] += x.p; vSum[2] += x.b; if (x.pulls > vPeak) { vPeak = x.pulls; vPeakI = i; } });
+    var yMax = Math.max(10, Math.ceil(vPeak * 1.1 / 10) * 10);
+    vis.forEach(function (x, i) { x.h = (x.pulls / yMax * 100).toFixed(1); x.isPeak = i === vPeakI && vPeak > 0; x.gMin = x.g ? '3px' : '0';
+      x.tip = x.date + ' · ' + x.pulls + ' 抽（' + rl[0] + ' ' + x.g + ' / ' + rl[1] + ' ' + x.p + ' / ' + rl[2] + ' ' + x.b + '）';
+      x.on = s.hoverDay === i; x.cls = x.on ? 'on' : ''; x.hover = function () { if (self.state.hoverDay !== i) self.setState({ hoverDay: i }); }; });
+    // 悬停浮框：右侧 40% 时显示在虚线左边，避免出界
+    var hd = s.hoverDay !== null && s.hoverDay < vis.length ? vis[s.hoverDay] : null;
+    var tip = { show: !!hd, left: hd ? ((s.hoverDay + 0.5) / vis.length * 100).toFixed(2) : 0, side: hd && s.hoverDay / vis.length > 0.6 ? 'left' : '',
+      date: hd ? hd.date : '', pulls: hd ? hd.pulls : 0,
+      rows: hd ? [{ label: rl[0], n: hd.g, color: 'var(--bar5)' }, { label: rl[1], n: hd.p, color: 'var(--bar4)' }, { label: rl[2], n: hd.b, color: 'var(--bar3)' }] : [] };
+    var ticks = [], nT = Math.min(7, vis.length);
+    for (var ti = 0; ti < nT; ti++) ticks.push({ t: vis[nT === 1 ? 0 : Math.round(ti * (vis.length - 1) / (nT - 1))].date.slice(5) });
+    var setRange = function (from, to) { self.setState({ rFrom: from, rTo: to, hoverDay: null }); };
+    // 按起止下标设置选区；覆盖全部日期时记为「全部」
+    var setEdges = function (a0, b0) { setRange(a0 === 0 && b0 === nDays - 1 ? null : nDays - 1 - a0, nDays - 1 - b0); };
+    // 拖动：手柄 l / r 调整一端，选区框 pan 整体平移；宽度取缩略图容器
+    var startDrag = function (e, mode) { var el = e.currentTarget; while (el && !(el.classList && el.classList.contains('brush'))) el = el.parentNode; var box = el ? el.getBoundingClientRect() : { width: 600 };
+      self.drag = { mode: mode, x0: e.clientX, w: box.width, s0: rStart, e0: rEnd }; if (e.preventDefault) e.preventDefault(); if (e.stopPropagation) e.stopPropagation(); self.setState({ dragging: true }); };
+    var pan = function (k) { var w0 = rEnd - rStart, ns = Math.max(0, Math.min(nDays - 1 - w0, rStart + k)); if (ns !== rStart && w0 < nDays - 1) setRange(nDays - 1 - ns, nDays - 1 - (ns + w0)); };
+    var quick = [['近 30 天', 30], ['近 90 天', 90], ['近半年', 182], ['全部', 0]].map(function (q) {
+      var on = q[1] ? (s.rFrom === q[1] - 1 && !s.rTo) : s.rFrom === null && !s.rTo;
+      return { label: q[0], cls: on ? 'on' : '', pick: function () { setRange(q[1] ? q[1] - 1 : null, 0); } };
+    });
+    var tl = { range: vis[0].date + ' – ' + vis[vis.length - 1].date, total: (vSum[0] + vSum[1] + vSum[2]).toLocaleString('en-US'),
+      legend: [{ label: rl[2], n: vSum[2].toLocaleString('en-US'), color: 'var(--bar3)' }, { label: rl[1], n: vSum[1], color: 'var(--bar4)' }, { label: rl[0], n: vSum[0], color: 'var(--bar5)' }],
+      ylabs: [{ v: yMax, top: '0%' }, { v: yMax / 2, top: '50%' }, { v: 0, top: '100%' }], ticks: ticks,
+      leave: function () { self.setState({ hoverDay: null }); },
+      // 缩略图：全部日期的迷你柱 + 选区外遮罩 + 两个滑块
+      mini: days.map(function (x) { return { h: (x.pulls / allPeak * 100).toFixed(1) }; }),
+      max: nDays - 1, start: rStart, end: rEnd,
+      maskL: (rStart / nDays * 100).toFixed(2), maskR: ((nDays - 1 - rEnd) / nDays * 100).toFixed(2),
+      startDate: days[rStart].date, endDate: days[rEnd].date, firstDate: days[0].date, lastDate: days[nDays - 1].date, days: vis.length,
+      quick: quick,
+      // 平移：拖动选区框，或用两侧箭头按半个选区移动；全部选中时不能平移
+      canPan: vis.length < nDays, panL: function () { pan(-Math.max(1, Math.round(vis.length / 2))); }, panR: function () { pan(Math.max(1, Math.round(vis.length / 2))); },
+      panLCls: rStart > 0 ? '' : 'off', panRCls: rEnd < nDays - 1 ? '' : 'off', winCls: vis.length < nDays ? 'pan' : '',
+      down: function (e) { if (vis.length >= nDays) return; startDrag(e, 'pan'); },
+      downL: function (e) { startDrag(e, 'l'); }, downR: function (e) { startDrag(e, 'r'); },
+      keyL: function (e) { var k = e.key === 'ArrowLeft' ? -1 : (e.key === 'ArrowRight' ? 1 : 0); if (k) setEdges(Math.max(0, Math.min(rEnd, rStart + k)), rEnd); },
+      keyR: function (e) { var k = e.key === 'ArrowLeft' ? -1 : (e.key === 'ArrowRight' ? 1 : 0); if (k) setEdges(rStart, Math.max(rStart, Math.min(nDays - 1, rEnd + k))); },
+      move: function (e) { var d = self.drag; if (!d) return; var k = Math.round((e.clientX - d.x0) / d.w * nDays);
+        if (d.mode === 'pan') { var ns = Math.max(0, Math.min(nDays - 1 - (d.e0 - d.s0), d.s0 + k)); if (ns !== rStart) setEdges(ns, ns + d.e0 - d.s0); }
+        else if (d.mode === 'l') { var a0 = Math.max(0, Math.min(d.e0, d.s0 + k)); if (a0 !== rStart) setEdges(a0, d.e0); }
+        else { var b0 = Math.max(d.s0, Math.min(nDays - 1, d.e0 + k)); if (b0 !== rEnd) setEdges(d.s0, b0); } },
+      up: function () { if (self.drag) { self.drag = null; self.setState({ dragging: false }); } }, brushCls: s.dragging ? 'dragging' : '',
+      key: function (e) { if (e.key === 'ArrowLeft') pan(-1); if (e.key === 'ArrowRight') pan(1); } };
+    var periods = pool.periods.map(function (pe) {
+      var joined = pe[2] > 0;
+      return { dates: pe[0], ups: pe[1], pulls: pe[2], joined: joined, skippedShown: !joined && s.showSkipped, noGold: pe[3].length === 0,
+        golds: pe[3].map(function (x) { var tg = tagOf(x[2]); return { name: x[0], pulls: x[1], tag: tg.tag, cls: tg.cls }; }) };
     });
     var step = s.step;
+    // 自绘下拉框：单选选中后收起，多选保持展开
+    var mkDD = function (key, opts, multi) {
+      var sel = s[key];
+      var isOn = function (v) { return multi ? sel.indexOf(v) >= 0 : sel === v; };
+      var label = multi ? (opts.every(function (o) { return isOn(o[0]); }) ? '全部' : (sel.length ? opts.filter(function (o) { return isOn(o[0]); }).map(function (o) { return o[1]; }).join('、') : '未选择')) : opts.filter(function (o) { return isOn(o[0]); })[0][1];
+      return { open: s.dd === key, cls: s.dd === key ? 'open' : '', label: label,
+        toggle: function () { self.setState({ dd: self.state.dd === key ? null : key }); },
+        opts: opts.map(function (o) { return { label: o[1], on: isOn(o[0]), cls: isOn(o[0]) ? 'on' : '', pick: function () {
+          var patch = {};
+          if (multi) { var cur = self.state[key].slice(), i = cur.indexOf(o[0]); if (i >= 0) cur.splice(i, 1); else cur.push(o[0]); patch[key] = cur; }
+          else { patch[key] = o[0]; patch.dd = null; }
+          self.setState(patch);
+        } }; }) };
+    };
+    var mkDDr = function (key, opts, multi) { var d = mkDD(key, opts, multi); d.opts.forEach(function (o) { var f = o.pick; o.pick = function () { f(); self.setState({ recPage: 1 }); }; }); return d; };
+    // 记录页示例数据：出金 + 生成的四星记录，按时间倒序，分页显示
+    var fmt = function (d) { var z = function (x) { return (x < 10 ? '0' : '') + x; }; return d.getFullYear() + '-' + z(d.getMonth() + 1) + '-' + z(d.getDate()) + ' ' + z(d.getHours()) + ':' + z(d.getMinutes()); };
+    var top = a.topRarity, sub = top === '6 星' ? '5 星' : '4 星';
+    var all = history.map(function (h) { return { time: h.time, name: h.name, star: top, r: '5', rcls: 'gold', pulls: h.pulls, hasTag: h.cls !== 'std', noTag: h.cls === 'std', tag: h.tag, cls: h.cls }; });
+    var nFour = 20 + (a.seed * 7 + pi * 11) % 40;
+    for (var q = 0; q < nFour; q++) { all.push({ time: fmt(new Date(2026, 9, 20 - q * 5, 9 + (q * 5) % 13, (q * 17) % 60)), name: '示例' + (top === '6 星' ? '五星' : '四星') + ' ' + String.fromCharCode(65 + q % 12), star: sub, r: '4', rcls: 'purple', pulls: 1 + (q * 3) % 10, hasTag: false, noTag: true, tag: '', cls: '' }); }
+    all.sort(function (x, y) { return x.time < y.time ? 1 : -1; });
+    var recs = all.filter(function (x) { return (!s.onlyGold || x.r === '5') && s.rarity.indexOf(x.r) >= 0; });
+    var size = s.pageSize, pcount = Math.max(1, Math.ceil(recs.length / size)), cur = Math.min(s.recPage, pcount);
+    var pageRows = recs.slice((cur - 1) * size, cur * size);
+    var nums = [];
+    for (var pn = 1; pn <= pcount; pn++) nums.push({ n: pn, cls: pn === cur ? 'on' : '', pick: set({ recPage: pn }) });
+    var pg = { cur: cur, count: pcount, first: cur <= 1, last: cur >= pcount, nums: nums, prev: set({ recPage: Math.max(1, cur - 1) }), next: set({ recPage: Math.min(pcount, cur + 1) }) };
+    var ig = s.importGame ? gameOf(s.importGame) : null, imp = s.importGame ? IMP[s.importGame] : null;
+    var impGames = GAMES.map(function (x) {
+      var mm = IMP[x.key].methods;
+      return { name: x.name, color: x.color, mono: x.mono, ink: x.ink, hint: mm[0] === 'url' ? '拉取链接 · 文件' : '登录鹰角账号 · 文件', pick: set({ importGame: x.key, step: 2 }) };
+    });
+    var MD = {
+      url: { title: '从游戏拉取', desc: s.importGame === 'ww' ? '先在游戏里打开一次唤取记录，从 Client.log 自动查找链接；找不到时可粘贴。' : '先在游戏里打开一次抽卡历史，自动查找链接；找不到时可粘贴。' },
+      login: { title: '登录鹰角账号（推荐）· v0.2', desc: '弹出鹰角官网登录窗口，登录后自动获取 token，一次拉取明日方舟和终末地。' },
+      token: { title: '手动粘贴 token · v0.2', desc: '自动获取失效时使用：从鹰角官网复制 token 粘贴进来。' },
+      file: { title: '导入文件', desc: imp ? '支持 ' + imp.formats : '' }
+    };
+    var impMethods = imp ? imp.methods.map(function (k) { return { title: MD[k].title, desc: MD[k].desc, pick: set({ step: 3, method: k, loggedIn: false }) }; }) : [];
+    var ctxGame = s.view === 'detail' ? ACCS[s.acc].game : (s.view === 'empty' ? (s.emptyGame || 'zzz') : null);
+    var tab = s.tab;
     return {
-      rootStyle: rootStyle,
-      games: games, filters: filters, cards: cards, pools: pools, pool: pool, history: history, recordCount: history.length,
+      rootStyle: vars(t),
+      ovSummary: ACCS.length + ' 个账号 · ' + GAMES.filter(function (x) { return ACCS.some(function (y) { return y.game === x.key; }); }).length + ' 款游戏',
+      games: games, filters: filters, cards: cards, pools: pools, pool: pool, metrics: metrics, history: history, recordCount: recs.length, pageRows: pageRows, pg: pg, onlyGold: s.onlyGold,
+      toggleGold: function () { self.setState({ onlyGold: !self.state.onlyGold, recPage: 1 }); },
+      ddSize: mkDD('pageSize', [[20, '20 条'], [50, '50 条'], [100, '100 条']], false),
       hiddenGames: hiddenGames, noHidden: hiddenGames.length === 0, addOpen: s.addOpen,
-      addLabel: s.addOpen ? '收起' : '+ 添加游戏',
+      addLabel: s.addOpen ? '收起' : '添加游戏',
       toggleAdd: function () { self.setState({ addOpen: !self.state.addOpen }); },
       acc: { game: g.name, color: g.color, mono: g.mono, ink: g.ink, alias: a.alias, uid: a.uid, updated: a.updated, topRarity: a.topRarity },
-      isOverview: s.view === 'overview', isDetail: s.view === 'detail', isSettings: s.view === 'settings',
+      emptyGame: gameOf(s.emptyGame || 'zzz'),
+      accOptions: accOptions, multiAcc: accOptions.length > 1, singleAcc: accOptions.length < 2, accMenuOpen: s.accMenu, moreOpen: s.more,
+      toggleAccMenu: function () { self.setState({ accMenu: !self.state.accMenu, more: false }); },
+      toggleMore: function () { self.setState({ more: !self.state.more, accMenu: false }); },
+      closeMenus: set({ more: false, accMenu: false }),
+      copyUid: function () { self.flash('已复制 UID'); },
+      isOverview: s.view === 'overview', isDetail: s.view === 'detail', isSettings: s.view === 'settings', isEmptyGame: s.view === 'empty',
       navOverview: s.view === 'overview' ? 'on' : '', navSettings: s.view === 'settings' ? 'on' : '',
-      tabStats: s.tab === 'stats', tabRecords: s.tab === 'records',
-      tabStatsCls: s.tab === 'stats' ? 'on' : '', tabRecCls: s.tab === 'records' ? 'on' : '',
-      themeLabel: s.dark ? '切换到浅色' : '切换到深色',
+      tabSummary: summary, showSeg: true, segPools: segPools,
+      luckLegend: luckLegend, poolCards: poolCards, accRecent: allHist.slice(0, 8), accSum: accSum,
+      tabStats: tab === 'stats' && !summary, tabRecords: tab === 'records', tabAnalysis: tab === 'analysis', tabTimeline: tab === 'timeline',
+      tabStatsCls: tab === 'stats' ? 'on' : '', tabRecCls: tab === 'records' ? 'on' : '', tabAnaCls: tab === 'analysis' ? 'on' : '', tabTlCls: tab === 'timeline' ? 'on' : '',
+      goStats: set({ tab: 'stats' }), goRecords: set({ tab: 'records' }), goAnalysis: set({ tab: 'analysis' }), goTimeline: set({ tab: 'timeline' }),
+      pred: pred, curve: curve, luck: luck, luckShort: pool.luck ? pool.luck.short : '样本不足', n: n,
+      onN: function (e) { self.setState({ n: e.target.value }); },
+      nChips: [10, 20, 50, 90].map(function (v) { return { label: v + ' 抽', cls: n === v ? 'on' : '', pick: set({ n: v }) }; }),
+      dist: dist, distChart: !s.distTable, distTable: s.distTable, distToggleLabel: s.distTable ? '显示图表' : '数据表',
+      comp: comp, accComp: accComp, achs: achs, hasAchs: achs.length > 0, achTotal: achs.length, achDone: achs.filter(function (x) { return x.done; }).length,
+      days: vis, tl: tl, tip: tip, trendDay: s.trend === 'day', trendMonth: s.trend === 'month',
+      trendDayCls: s.trend === 'day' ? 'on' : '', trendMonthCls: s.trend === 'month' ? 'on' : '', setTrendDay: set({ trend: 'day' }), setTrendMonth: set({ trend: 'month' }),
+      toggleDistTable: function () { self.setState({ distTable: !self.state.distTable }); },
+      months: months, periods: periods, showSkipped: s.showSkipped,
+      toggleSkipped: function () { self.setState({ showSkipped: !self.state.showSkipped }); },
+      themeLabel: s.dark ? '切换到浅色' : '切换到深色', isLight: !s.dark, isDark: s.dark,
       lightCls: s.dark ? '' : 'on', darkCls: s.dark ? 'on' : '',
       goOverview: set({ view: 'overview' }), goSettings: set({ view: 'settings' }),
-      goStats: set({ tab: 'stats' }), goRecords: set({ tab: 'records' }),
       toggleTheme: function () { self.setState({ dark: !self.state.dark }); },
       setLight: set({ dark: false }), setDark: set({ dark: true }),
       noop: function () {},
+      shareOpen: s.shareOpen, openShare: set({ shareOpen: true, more: false }), closeShare: set({ shareOpen: false }),
+      shareStyle: vars(s.shareDark ? DARK : LIGHT), shareUid: s.shareHide ? 'UID 已隐藏' : 'UID ' + a.uid, shareHide: s.shareHide,
+      shareHist: history.slice(0, 10),
+      toggleShareHide: function () { self.setState({ shareHide: !self.state.shareHide }); },
+      shareLight: set({ shareDark: false }), shareDark: set({ shareDark: true }),
+      shareLightCls: s.shareDark ? '' : 'on', shareDarkCls: s.shareDark ? 'on' : '',
+      shareSave: function () { self.setState({ shareOpen: false }); self.flash('已保存 PNG（原型）'); },
+      shareCopy: function () { self.flash('已复制到剪贴板（原型）'); },
+      toastOn: !!s.toast, toastText: s.toast,
+      // 星级选项按各游戏实际叫法：方舟、终末地 6–3 星，绝区零 S / A / B 级，其余 5–3 星
+      ddRarity: mkDDr('rarity', a.game === 'ak' || a.game === 'ef' ? [['5', '6 星'], ['4', '5 星'], ['3', '4 星'], ['2', '3 星']] : (a.game === 'zzz' ? [['5', 'S 级'], ['4', 'A 级'], ['3', 'B 级']] : [['5', '5 星'], ['4', '4 星'], ['3', '3 星']]), true),
+      ddRange: mkDD('range', [['all', '全部时间'], ['30d', '最近 30 天'], ['6m', '最近 6 个月'], ['1y', '最近 1 年']], false),
+      ddLang: mkDD('lang', [['zh', '简体中文'], ['en', 'English']], false),
       importOpen: s.importOpen,
-      openImport: set({ importOpen: true, step: 1 }), closeImport: set({ importOpen: false, step: 1 }),
-      pickUrl: set({ step: 2, method: 'url' }), pickFile: set({ step: 2, method: 'file' }), pickToken: set({ step: 2, method: 'token' }),
-      back: function () { self.setState({ step: Math.max(1, self.state.step - 1) }); },
-      start: set({ step: 3 }), finish: set({ step: 4 }),
-      viewAccount: set({ importOpen: false, step: 1, view: 'detail', acc: 0, pool: 0, tab: 'stats' }),
-      step1: step === 1, step2Url: step === 2 && s.method === 'url', step2File: step === 2 && s.method === 'file', step2Token: step === 2 && s.method === 'token',
-      step3: step === 3, step4: step === 4,
-      s1Cls: step === 1 ? 'on' : '', s2Cls: step === 2 ? 'on' : '', s3Cls: step === 3 ? 'on' : '', s4Cls: step === 4 ? 'on' : ''
+      openImport: set({ importOpen: true, step: 1, importGame: null, accMenu: false }),
+      openImportHere: set({ importOpen: true, step: ctxGame ? 2 : 1, importGame: ctxGame, accMenu: false }),
+      impGames: impGames, impMethods: impMethods,
+      impGame: { name: ig ? ig.name : '', color: ig ? ig.color : '', mono: ig ? ig.mono : '', ink: ig ? ig.ink : '', found: imp ? imp.found : '', pool: imp ? imp.pool : '各卡池' },
+      impHeader: !!ig && step >= 2 && step <= 3,
+      changeGame: set({ step: 1, importGame: null }),
+      pickFileAuto: set({ step: 3, method: 'file', importGame: null }),
+      fileHint: imp ? '支持格式：' + imp.formats : '自动识别 UIGF / GNJ / CSV 及其中包含的游戏', closeImport: set({ importOpen: false, step: 1 }),
+      back: function () { var st = self.state.step; self.setState({ step: (st === 3 && !self.state.importGame) ? 1 : Math.max(1, st - 1) }); },
+      start: set({ step: 4 }), finish: set({ step: 5 }),
+      viewAccount: set({ importOpen: false, step: 1, view: 'detail', acc: 0, pool: -1, tab: 'stats' }),
+      step1: step === 1, stepMethod: step === 2, step2Url: step === 3 && s.method === 'url', step2File: step === 3 && s.method === 'file', step2Token: step === 3 && s.method === 'token', step2Login: step === 3 && s.method === 'login' && !s.loggedIn, step2LoginDone: step === 3 && s.method === 'login' && s.loggedIn,
+      fakeLogin: set({ loggedIn: true }),
+      step4: step === 4, step5: step === 5,
+      s1Cls: step === 1 ? 'on' : '', s2Cls: step === 2 ? 'on' : '', s3Cls: step === 3 ? 'on' : '', s4Cls: step === 4 ? 'on' : '', s5Cls: step === 5 ? 'on' : ''
     };
   }
 }
