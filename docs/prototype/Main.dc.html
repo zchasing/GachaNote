@@ -37,6 +37,7 @@ a{color:#3B6FE0}a:hover{color:#2A55B8}
 .iconbtn:hover{background:var(--hover);color:var(--text)}
 .iconbtn.on{background:var(--selected);color:var(--primary)}
 .grp{font-size:12px;color:var(--text2);padding:12px 10px 4px}
+.dot{width:8px;height:8px;border-radius:999px;flex:0 0 8px;display:inline-block}
 .gicon{width:24px;height:24px;flex:0 0 24px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
 .gicon.lg{width:32px;height:32px;flex-basis:32px;border-radius:8px;font-size:16px}
 .addbox{border:1px solid var(--border);border-radius:8px;padding:4px;margin:0 4px}
@@ -188,9 +189,9 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="row" style="gap: 10px"><span class="gicon lg" style="background: var(--selected); color: var(--primary)" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg></span><div><h1 class="h1">总览</h1><div class="muted">{{ovSummary}}</div></div></div>
 <button class="btn" onClick="{{noop}}">全部刷新</button>
 </div>
-<div class="chips trow">
+<div class="tabs" role="tablist" aria-label="按游戏筛选">
 <sc-for list="{{filters}}" as="f" hint-placeholder-count="5">
-<button class="chip {{f.cls}}" onClick="{{f.pick}}">{{f.label}}</button>
+<button class="tab {{f.cls}}" role="tab" onClick="{{f.pick}}"><sc-if value="{{f.hasDot}}" hint-placeholder-val="{{ false }}"><span class="dot" style="background: {{f.color}}" aria-hidden="true"></span></sc-if>{{f.label}}</button>
 </sc-for>
 </div>
 </div></div>
@@ -717,8 +718,8 @@ class Component extends DCLogic {
     var hiddenGames = games.filter(function (g) { return g.count === 0 && s.shown.indexOf(g.key) < 0; })
       .map(function (g) { return { name: g.name, color: g.color, mono: g.mono, ink: g.ink, add: function () { self.setState({ shown: self.state.shown.concat([g.key]), addOpen: false, view: 'empty', emptyGame: g.key }); } }; });
     games = games.filter(function (g) { return g.count > 0 || s.shown.indexOf(g.key) >= 0; });
-    var filters = [{ key: 'all', label: '全部' }].concat(GAMES.filter(function (g) { return ACCS.some(function (a) { return a.game === g.key; }); }).map(function (g) { return { key: g.key, label: g.name }; }))
-      .map(function (f) { return { label: f.label, cls: s.filter === f.key ? 'on' : '', pick: set({ filter: f.key }) }; });
+    var filters = [{ key: 'all', label: '全部' }].concat(GAMES.filter(function (g) { return ACCS.some(function (a) { return a.game === g.key; }); }).map(function (g) { return { key: g.key, label: g.name, color: g.color }; }))
+      .map(function (f) { return { label: f.label, color: f.color || '', hasDot: !!f.color, cls: s.filter === f.key ? 'on' : '', pick: set({ filter: f.key }) }; });
     var poolView = function (p) {
       var m = M[p.m];
       var gr = p.gold && p.total ? (p.gold / Number(String(p.total).replace(/,/g, '')) * 100).toFixed(1) + '%' : '—';
