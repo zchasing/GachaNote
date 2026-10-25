@@ -447,9 +447,9 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="row" style="gap: 8px"><span class="gicon" style="background: {{impGame.color}}; color: {{impGame.ink}}" aria-hidden="true">{{impGame.mono}}</span><b>{{impGame.name}}</b><button class="linkbtn" style="align-self: center" onClick="{{changeGame}}">更换游戏</button></div>
 </sc-if>
 <sc-if value="{{step1}}" hint-placeholder-val="{{ true }}">
-<div class="methods">
+<div class="methods" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr))">
 <sc-for list="{{impGames}}" as="ig" hint-placeholder-count="6">
-<button class="method" style="min-height: 72px; flex-direction: row; align-items: center; gap: 10px" onClick="{{ig.pick}}"><span class="gicon lg" style="background: {{ig.color}}; color: {{ig.ink}}" aria-hidden="true">{{ig.mono}}</span><span style="display: flex; flex-direction: column"><b>{{ig.name}}</b><span class="muted">{{ig.hint}}</span></span></button>
+<button class="method" style="min-height: 72px; flex-direction: row; align-items: center; gap: 10px" onClick="{{ig.pick}}"><span class="gicon lg" style="background: {{ig.color}}; color: {{ig.ink}}" aria-hidden="true">{{ig.mono}}</span><span style="display: flex; flex-direction: column; min-width: 0"><b style="white-space: nowrap">{{ig.name}}</b><span class="muted">{{ig.hint}}</span></span></button>
 </sc-for>
 </div>
 <div class="muted">文件里有多款游戏？<button class="linkbtn" style="font-size: 12px" onClick="{{pickFileAuto}}">直接导入文件，自动识别游戏</button></div>
