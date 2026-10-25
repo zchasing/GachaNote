@@ -16,21 +16,19 @@ a{color:#3B6FE0}a:hover{color:#2A55B8}
 .brand{font-size:17px;font-weight:600;padding:4px 8px 12px}
 .main{flex:999 1 560px;min-width:0;box-sizing:border-box;padding:24px 32px 48px}
 .wrap{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
-.btn{font:inherit;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);padding:0 14px;min-height:36px;cursor:pointer}
+.btn{font:inherit;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);padding:0 14px;min-height:36px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 .btn:hover{background:var(--hover)}
-.btn.primary{background:var(--primary);border-color:var(--primary);color:var(--onprimary);font-weight:600}
+.btn.primary{background:var(--primary);border-color:var(--primary);color:var(--onprimary);font-weight:600;justify-content:center}
 .btn.small{min-height:32px;padding:0 10px;font-size:13px}
 .nav{font:inherit;text-align:left;border:0;background:transparent;color:var(--text);border-radius:6px;padding:0 10px;min-height:36px;cursor:pointer;display:flex;align-items:center;gap:8px;width:100%}
 .nav:hover{background:var(--hover)}
 .nav.on{background:var(--selected);color:var(--primary);font-weight:600}
-.nav.sub{padding-left:30px;font-size:13px;min-height:32px}
+.nav.dim{color:var(--text2)}
 .grp{font-size:12px;color:var(--text2);padding:12px 10px 4px}
-.game{display:flex;align-items:center;gap:8px;padding:6px 10px;font-size:13px;color:var(--text2)}
-.dot{width:8px;height:8px;border-radius:999px;flex:0 0 8px}
 .gicon{width:24px;height:24px;flex:0 0 24px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
 .gicon.lg{width:32px;height:32px;flex-basis:32px;border-radius:8px;font-size:16px}
 .addbox{border:1px solid var(--border);border-radius:8px;padding:4px;margin:0 4px}
-.cnt{margin-left:auto;font-size:12px}
+.cnt{margin-left:auto;font-size:12px;color:var(--text2);font-weight:400}
 .spacer{flex:1 1 auto;min-height:24px}
 .h1{font-size:20px;font-weight:600;margin:0}
 .muted{color:var(--text2);font-size:12px}
@@ -39,8 +37,8 @@ a{color:#3B6FE0}a:hover{color:#2A55B8}
 .chip{font:inherit;font-size:13px;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:999px;padding:0 14px;min-height:32px;cursor:pointer}
 .chip.on{border-color:var(--primary);color:var(--primary);background:var(--selected);font-weight:600}
 .grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden}
-.stripe{position:absolute;left:0;top:0;bottom:0;width:4px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:12px;position:relative}
+.stripe{position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
 .ct{font-size:15px;font-weight:600}
 .pool{display:flex;flex-direction:column;gap:4px}
 .poolhead{display:flex;align-items:center;gap:8px;font-size:13px}
@@ -49,37 +47,45 @@ a{color:#3B6FE0}a:hover{color:#2A55B8}
 .fill{height:6px;border-radius:999px;background:var(--primary)}
 .badge{font-size:12px;border-radius:999px;padding:0 8px;line-height:20px;border:1px solid var(--border);color:var(--text2)}
 .badge.big{border-color:var(--gold);color:var(--gold)}
+.linkbtn{font:inherit;font-size:12px;border:0;background:transparent;color:var(--primary);padding:0;cursor:pointer;align-self:flex-start;min-height:24px}
 .foot{display:flex;gap:16px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:10px;font-size:12px;color:var(--text2)}
 .foot b{color:var(--text);font-weight:600}
-.tabs{display:flex;gap:4px;border-bottom:1px solid var(--border)}
-.tab{font:inherit;border:0;background:transparent;color:var(--text2);padding:0 14px;min-height:40px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.tab{font:inherit;border:0;background:transparent;color:var(--text2);padding:0 14px;min-height:40px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;display:inline-flex;align-items:center;gap:6px}
 .tab.on{color:var(--primary);border-bottom-color:var(--primary);font-weight:600}
-.tab:disabled{cursor:not-allowed;opacity:.6}
+.ver{font-size:11px;color:var(--text2);border:1px solid var(--border);border-radius:999px;padding:0 6px;line-height:16px;font-weight:400}
 .seg{display:inline-flex;border:1px solid var(--border);border-radius:6px;overflow:hidden;flex-wrap:wrap}
-.segb{font:inherit;font-size:13px;border:0;border-right:1px solid var(--border);background:var(--surface);color:var(--text);padding:0 14px;min-height:34px;cursor:pointer}
+.segb{font:inherit;font-size:13px;border:0;border-right:1px solid var(--border);background:var(--surface);color:var(--text);padding:0 14px;min-height:34px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.segb:last-child{border-right:0}
 .segb.on{background:var(--selected);color:var(--primary);font-weight:600}
+.segb .pn{font-variant-numeric:tabular-nums;font-weight:600}
 .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
 .big{font-size:36px;font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums}
 .big small{font-size:16px;color:var(--text2);font-weight:400}
 .sec{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .mini{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
 .mini .v{font-size:18px;font-weight:600;font-variant-numeric:tabular-nums}
+.minibtn{font:inherit;text-align:left;color:var(--text);cursor:pointer;grid-column:span 2}
+.minibtn:hover{border-color:var(--primary)}
 .hist{display:flex;flex-direction:column;gap:8px}
-.hrow{display:grid;grid-template-columns:140px 1fr 48px 44px;align-items:center;gap:12px;font-size:13px}
+.hrow{display:grid;grid-template-columns:24px 120px 1fr 48px 44px;align-items:center;gap:12px;font-size:13px}
+.islot{width:24px;height:24px;border-radius:6px;border:1px dashed var(--border);box-sizing:border-box;display:inline-block;flex:0 0 24px}
 .hbar{height:10px;border-radius:999px;background:var(--gold);opacity:.85}
 .gold{color:var(--gold);font-weight:600}
-.tag{font-size:12px;border-radius:999px;padding:0 8px;line-height:20px;text-align:center}
+.tag{font-size:12px;border-radius:999px;padding:0 8px;line-height:20px;text-align:center;white-space:nowrap}
 .tag.up{background:var(--upbg);color:var(--up)}
 .tag.loss{background:var(--lossbg);color:var(--loss)}
 .tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--border);border-radius:8px}
 table{border-collapse:collapse;width:100%;min-width:640px;font-size:13px}
 th{text-align:left;font-weight:600;color:var(--text2);padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
+.namecell{display:flex;align-items:center;gap:8px}
 .field{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--text2)}
 .input{font:inherit;font-size:13px;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:6px;min-height:34px;padding:0 10px;box-sizing:border-box}
 .check{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text)}
 .overlay{position:absolute;inset:0;background:var(--overlay);display:flex;align-items:flex-start;justify-content:center;padding:72px 16px;box-sizing:border-box;z-index:5}
 .modal{width:100%;max-width:640px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:16px;box-sizing:border-box}
+.modal.wide{max-width:900px}
 .steps{display:flex;gap:8px;font-size:12px;color:var(--text2);flex-wrap:wrap}
 .step.on{color:var(--primary);font-weight:600}
 .methods{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
@@ -93,6 +99,41 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 .srow{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--border)}
 .srow:last-child{border-bottom:0}
 .empty{background:var(--surface);border:1px dashed var(--border);border-radius:8px;padding:40px;text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center}
+.anchor{position:relative}
+.menu{position:absolute;top:calc(100% + 4px);left:0;min-width:220px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:4px;z-index:4;display:flex;flex-direction:column}
+.menu.right{left:auto;right:0}
+.mi{font:inherit;font-size:13px;text-align:left;border:0;background:transparent;color:var(--text);border-radius:6px;padding:0 10px;min-height:34px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.mi:hover{background:var(--hover)}
+.mi.on{color:var(--primary);font-weight:600}
+.mi.danger{color:var(--loss)}
+.msep{height:1px;background:var(--border);margin:4px 0}
+.acctbtn{font:inherit;border:0;background:transparent;color:var(--text);padding:0;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:20px;font-weight:600;min-height:32px}
+.acctbtn:disabled{cursor:default}
+.copy{font:inherit;font-size:12px;border:0;background:transparent;color:var(--text2);padding:0;cursor:pointer;text-decoration:underline dotted}
+.toast{position:absolute;right:24px;bottom:24px;background:var(--text);color:var(--surface);border-radius:6px;padding:8px 14px;font-size:13px;z-index:6}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.chart{position:relative;height:180px;display:flex;align-items:flex-end;gap:6px;border-bottom:1px solid var(--border);padding-top:8px}
+.bar{flex:1 1 0;min-width:10px;border-radius:4px 4px 0 0;position:relative}
+.bar.up{background:var(--up)}
+.bar.loss{background:var(--loss)}
+.bar.std{background:var(--text2)}
+.bar.month{background:var(--primary);opacity:.75}
+.barlab{position:absolute;top:-18px;left:0;right:0;text-align:center;font-size:11px;color:var(--text2);font-variant-numeric:tabular-nums}
+.avgline{position:absolute;left:0;right:0;border-top:1.5px dashed var(--gold)}
+.avglab{position:absolute;right:0;top:-18px;font-size:11px;color:var(--gold)}
+.xlabs{display:flex;gap:6px;font-size:11px;color:var(--text2)}
+.xlabs span{flex:1 1 0;min-width:10px;text-align:center;overflow:hidden;white-space:nowrap}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--text2);flex-wrap:wrap;align-items:center}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.period{display:flex;flex-direction:column;gap:8px}
+.gotrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:13px}
+.skipped{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 16px;border:1px dashed var(--border);border-radius:8px;font-size:13px;color:var(--text2)}
+.share{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(220px,1fr);gap:20px}
+.shot{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:14px;color:var(--text)}
+.shotm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.shotm .v{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.shotlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 16px;font-size:12px}
+.shotlist div{display:flex;justify-content:space-between;gap:8px}
 </style>
 </helmet>
 <div class="app" style="{{rootStyle}}">
@@ -101,17 +142,11 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <button class="btn primary" onClick="{{openImport}}">导入 / 拉取</button>
 <div style="height: 8px"></div>
 <button class="nav {{navOverview}}" onClick="{{goOverview}}">总览</button>
-<div class="grp">游戏与账号</div>
+<div class="grp">游戏</div>
 <sc-for list="{{games}}" as="g" hint-placeholder-count="4">
-<div class="game"><span class="gicon" style="background: {{g.color}}; color: {{g.ink}}" aria-hidden="true">{{g.mono}}</span><span>{{g.name}}</span><span class="cnt">{{g.count}}</span></div>
-<sc-for list="{{g.accounts}}" as="a" hint-placeholder-count="1">
-<button class="nav sub {{a.navCls}}" onClick="{{a.open}}">{{a.alias}}</button>
+<button class="nav {{g.cls}}" onClick="{{g.open}}"><span class="gicon" style="background: {{g.color}}; color: {{g.ink}}" aria-hidden="true">{{g.mono}}</span><span>{{g.name}}</span><span class="cnt">{{g.countLabel}}</span></button>
 </sc-for>
-<sc-if value="{{g.empty}}" hint-placeholder-val="{{ false }}">
-<button class="nav sub" style="color: var(--text2)" onClick="{{openImport}}">暂无账号 · 去导入</button>
-</sc-if>
-</sc-for>
-<button class="nav" style="color: var(--text2); font-size: 13px" onClick="{{toggleAdd}}">{{addLabel}}</button>
+<button class="nav dim" style="font-size: 13px" onClick="{{toggleAdd}}">{{addLabel}}</button>
 <sc-if value="{{addOpen}}" hint-placeholder-val="{{ false }}">
 <div class="addbox">
 <sc-for list="{{hiddenGames}}" as="h" hint-placeholder-count="2">
@@ -153,64 +188,97 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="track"><div class="fill" style="width: {{p.pct}}%"></div></div>
 </div>
 </sc-for>
+<sc-if value="{{c.hasExtra}}" hint-placeholder-val="{{ false }}">
+<button class="linkbtn" style="padding-left: 4px" onClick="{{c.toggle}}">{{c.extraLabel}}</button>
+</sc-if>
 <div class="foot" style="padding-left: 4px"><span>总抽数 <b>{{c.total}}</b></span><span>平均出 UP <b>{{c.avgUp}}</b></span><span>歪率 <b>{{c.loss}}</b></span></div>
 </div>
 </sc-for>
 </div>
 </div>
 </sc-if>
+<sc-if value="{{isEmptyGame}}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+<div class="row" style="gap: 10px"><span class="gicon lg" style="background: {{emptyGame.color}}; color: {{emptyGame.ink}}" aria-hidden="true">{{emptyGame.mono}}</span><h1 class="h1">{{emptyGame.name}}</h1></div>
+<div class="empty">
+<div>还没有{{emptyGame.name}}的抽卡记录。导入或拉取后会自动创建账号。</div>
+<div class="row" style="justify-content: center"><button class="btn primary" onClick="{{openImport}}">从游戏拉取</button><button class="btn" onClick="{{openImport}}">导入文件</button></div>
+</div>
+</div>
+</sc-if>
 <sc-if value="{{isDetail}}" hint-placeholder-val="{{ false }}">
 <div class="wrap">
-<div class="row" style="justify-content: space-between">
-<div class="row" style="gap: 10px">
-<span class="gicon lg" style="background: {{acc.color}}; color: {{acc.ink}}" aria-hidden="true">{{acc.mono}}</span>
-<div><h1 class="h1">{{acc.game}} · {{acc.alias}}</h1><div class="muted">UID {{acc.uid}} · 最后更新 {{acc.updated}}</div></div>
+<div class="row" style="justify-content: space-between; align-items: flex-start">
+<div class="row" style="gap: 10px; align-items: flex-start">
+<span class="gicon lg" style="background: {{acc.color}}; color: {{acc.ink}}; margin-top: 2px" aria-hidden="true">{{acc.mono}}</span>
+<div>
+<div class="anchor">
+<button class="acctbtn" onClick="{{toggleAccMenu}}" disabled="{{singleAcc}}" aria-haspopup="menu" aria-label="切换账号">{{acc.game}} · {{acc.alias}}
+<sc-if value="{{multiAcc}}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></sc-if>
+</button>
+<sc-if value="{{accMenuOpen}}" hint-placeholder-val="{{ false }}">
+<div class="menu" role="menu">
+<sc-for list="{{accOptions}}" as="o" hint-placeholder-count="2">
+<button class="mi {{o.cls}}" role="menuitem" onClick="{{o.pick}}"><span>{{o.alias}}</span><span class="muted num" style="margin-left: auto">UID {{o.uid}}</span></button>
+</sc-for>
+<div class="msep"></div>
+<button class="mi" role="menuitem" onClick="{{openImport}}">+ 导入新账号</button>
+</div>
+</sc-if>
+</div>
+<div class="muted">UID {{acc.uid}} <button class="copy" onClick="{{copyUid}}">复制</button> · 最后更新 {{acc.updated}}</div>
+</div>
 </div>
 <div class="row">
 <button class="btn" onClick="{{openImport}}">更新记录</button>
-<button class="btn" onClick="{{noop}}">导出</button>
+<div class="anchor">
+<button class="btn" onClick="{{toggleMore}}" aria-haspopup="menu">更多
+<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></button>
+<sc-if value="{{moreOpen}}" hint-placeholder-val="{{ false }}">
+<div class="menu right" role="menu">
+<button class="mi" role="menuitem" onClick="{{closeMenus}}">导出…</button>
+<button class="mi" role="menuitem" onClick="{{openShare}}">生成分享图<span class="ver" style="margin-left: auto">v0.3</span></button>
+<button class="mi" role="menuitem" onClick="{{closeMenus}}">重命名</button>
+<div class="msep"></div>
+<button class="mi danger" role="menuitem" onClick="{{closeMenus}}">删除账号…</button>
+</div>
+</sc-if>
+</div>
 </div>
 </div>
 <div class="tabs" role="tablist">
 <button class="tab {{tabStatsCls}}" role="tab" onClick="{{goStats}}">统计</button>
 <button class="tab {{tabRecCls}}" role="tab" onClick="{{goRecords}}">记录</button>
-<button class="tab" role="tab" disabled="{{ true }}">分析 · v0.2</button>
+<button class="tab {{tabAnaCls}}" role="tab" onClick="{{goAnalysis}}">分析<span class="ver">v0.2</span></button>
+<button class="tab {{tabTlCls}}" role="tab" onClick="{{goTimeline}}">时间线<span class="ver">v0.3</span></button>
 </div>
 <div class="seg" role="group" aria-label="卡池类型">
 <sc-for list="{{pools}}" as="p" hint-placeholder-count="3">
-<button class="segb {{p.cls}}" onClick="{{p.pick}}">{{p.name}}</button>
+<button class="segb {{p.cls}}" onClick="{{p.pick}}">{{p.short}}<span class="pn">{{p.pity}}</span></button>
 </sc-for>
 </div>
 <sc-if value="{{tabStats}}" hint-placeholder-val="{{ true }}">
 <div class="metrics">
+<sc-for list="{{metrics}}" as="m" hint-placeholder-count="3">
 <div class="card">
-<div class="muted">当前保底</div>
-<div class="big">{{pool.pity}}<small> / {{pool.hard}}</small></div>
-<div class="track"><div class="fill" style="width: {{pool.pct}}%"></div></div>
-<div class="muted">{{pool.state}} · 距硬保底还差 {{pool.left}} 抽</div>
+<div class="muted">{{m.label}}</div>
+<div class="big">{{m.big}}<small> {{m.small}}</small></div>
+<sc-if value="{{m.hasBar}}" hint-placeholder-val="{{ false }}"><div class="track"><div class="fill" style="width: {{m.pct}}%; background: {{m.barColor}}"></div></div></sc-if>
+<div class="muted">{{m.sub}}</div>
 </div>
-<div class="card">
-<div class="muted">平均出 UP</div>
-<div class="big">{{pool.avgUp}}<small> 抽</small></div>
-<div class="muted">共 {{pool.upCount}} 个 UP</div>
-</div>
-<div class="card">
-<div class="muted">小保底歪率</div>
-<div class="big">{{pool.loss}}</div>
-<div class="muted">{{pool.lossFrac}} 次小保底歪了</div>
-</div>
+</sc-for>
 </div>
 <div class="sec">
 <div class="mini"><div class="muted">总抽数</div><div class="v">{{pool.total}}</div></div>
-<div class="mini"><div class="muted">出金数</div><div class="v">{{pool.gold}}</div></div>
+<div class="mini"><div class="muted">出金数 / 占比</div><div class="v">{{pool.gold}} <span class="muted">{{pool.goldRate}}</span></div></div>
 <div class="mini"><div class="muted">平均出金</div><div class="v">{{pool.avgGold}} 抽</div></div>
-<div class="mini"><div class="muted">欧非评级 · v0.2</div><div class="v" style="color: var(--text2)">—</div></div>
+<button class="mini minibtn" onClick="{{goAnalysis}}"><div class="muted">预测与评价 · v0.2 · 点击查看分析</div><div class="v">下一抽出金 {{pred.next}} · {{luckShort}}</div></button>
 </div>
 <div class="card">
-<div class="row" style="justify-content: space-between"><div class="ct">出金历史</div><div class="muted">最近在上 · 条长 = 花费抽数</div></div>
+<div class="row" style="justify-content: space-between"><div class="ct">出金历史</div><div class="muted">最近在上 · 条长 = 花费抽数 · 左侧为预留头像位</div></div>
 <div class="hist">
 <sc-for list="{{history}}" as="h" hint-placeholder-count="4">
-<div class="hrow"><span class="gold">{{h.name}}</span><div class="track" style="height: 10px"><div class="hbar" style="width: {{h.pct}}%"></div></div><span class="num">{{h.pulls}} 抽</span><span class="tag {{h.cls}}">{{h.tag}}</span></div>
+<div class="hrow"><span class="islot" aria-hidden="true"></span><span class="gold">{{h.name}}</span><div class="track" style="height: 10px"><div class="hbar" style="width: {{h.pct}}%"></div></div><span class="num">{{h.pulls}} 抽</span><span class="tag {{h.cls}}">{{h.tag}}</span></div>
 </sc-for>
 </div>
 </div>
@@ -228,11 +296,107 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <thead><tr><th scope="col">时间</th><th scope="col">卡池</th><th scope="col">名称</th><th scope="col">星级</th><th scope="col">当次抽数</th><th scope="col">UP / 歪</th></tr></thead>
 <tbody>
 <sc-for list="{{history}}" as="h" hint-placeholder-count="4">
-<tr><td class="num">{{h.time}}</td><td>{{pool.name}}</td><td class="gold">{{h.name}}</td><td>{{acc.topRarity}}</td><td class="num">{{h.pulls}}</td><td><span class="tag {{h.cls}}">{{h.tag}}</span></td></tr>
+<tr><td class="num">{{h.time}}</td><td>{{pool.name}}</td><td><span class="namecell"><span class="islot" aria-hidden="true"></span><span class="gold">{{h.name}}</span></span></td><td>{{acc.topRarity}}</td><td class="num">{{h.pulls}}</td><td><span class="tag {{h.cls}}">{{h.tag}}</span></td></tr>
 </sc-for>
 </tbody>
 </table>
 </div>
+</sc-if>
+<sc-if value="{{tabAnalysis}}" hint-placeholder-val="{{ false }}">
+<div class="card">
+<div class="row" style="justify-content: space-between"><div class="ct">概率预测</div><div class="muted">当前已垫 {{pool.pity}} 抽 · {{pool.stateShort}}</div></div>
+<div class="two">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div class="row" style="gap: 32px; align-items: flex-start">
+<div><div class="muted">下一抽出金</div><div class="big">{{pred.next}}</div></div>
+<sc-if value="{{pred.hasUp}}" hint-placeholder-val="{{ true }}"><div><div class="muted">下一抽出 UP</div><div class="big">{{pred.nextUp}}</div></div></sc-if>
+</div>
+<div class="row" style="align-items: flex-end">
+<label class="field">未来 N 抽<input class="input num" type="number" min="1" max="300" value="{{n}}" onChange="{{onN}}" style="width: 96px"></label>
+<div class="chips">
+<sc-for list="{{nChips}}" as="q" hint-placeholder-count="4"><button class="chip {{q.cls}}" onClick="{{q.pick}}">{{q.label}}</button></sc-for>
+</div>
+</div>
+<div class="row" style="gap: 32px">
+<div><div class="muted">{{n}} 抽内出金</div><div class="mini v" style="border: 0; padding: 0">{{pred.withinGold}}</div></div>
+<sc-if value="{{pred.hasUp}}" hint-placeholder-val="{{ true }}"><div><div class="muted">{{n}} 抽内出 UP</div><div class="mini v" style="border: 0; padding: 0">{{pred.withinUp}}</div></div></sc-if>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div class="muted">累计出金概率（横轴：再抽多少抽）</div>
+<svg viewBox="0 0 300 140" width="100%" height="160" role="img" aria-label="累计出金概率曲线">
+<line x1="0" y1="130" x2="300" y2="130" stroke="var(--border)"></line>
+<line x1="0" y1="10" x2="300" y2="10" stroke="var(--border)" stroke-dasharray="3 3"></line>
+<polyline points="{{curve.points}}" fill="none" stroke="var(--primary)" stroke-width="2"></polyline>
+<line x1="{{curve.nx}}" y1="10" x2="{{curve.nx}}" y2="130" stroke="var(--gold)" stroke-width="1.5"></line>
+<text x="{{curve.tx}}" y="24" font-size="10" fill="var(--gold)">N = {{n}}</text>
+<text x="2" y="8" font-size="9" fill="var(--text2)" dominant-baseline="hanging">100%</text>
+</svg>
+<div class="row muted" style="justify-content: space-between"><span>0</span><span>{{curve.maxLabel}} 抽（必出）</span></div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="ct">欧非评价</div>
+<sc-if value="{{luck.has}}" hint-placeholder-val="{{ true }}">
+<div class="row" style="gap: 32px; align-items: flex-end">
+<div><div class="muted">评级</div><div class="big">{{luck.grade}}</div></div>
+<div><div class="muted">百分位</div><div class="v mini" style="border: 0; padding: 0">{{luck.text}}</div></div>
+<div><div class="muted">你的平均出金 / 理论平均</div><div class="v mini" style="border: 0; padding: 0">{{pool.avgGold}} / {{pool.theory}} 抽</div></div>
+</div>
+</sc-if>
+<sc-if value="{{luck.none}}" hint-placeholder-val="{{ false }}">
+<div class="muted">样本不足（少于 5 个金），只显示数值：平均出金 {{pool.avgGold}} 抽，理论平均 {{pool.theory}} 抽。</div>
+</sc-if>
+</div>
+<div class="card">
+<div class="row" style="justify-content: space-between"><div class="ct">出金分布</div><button class="btn small" onClick="{{toggleDistTable}}">{{distToggleLabel}}</button></div>
+<sc-if value="{{distChart}}" hint-placeholder-val="{{ true }}">
+<div class="legend"><span><span class="sw" style="background: var(--up)"></span>UP</span><span><span class="sw" style="background: var(--loss)"></span>歪</span><span><span class="sw" style="background: var(--text2)"></span>常驻</span><span style="color: var(--gold)">--- 理论平均 {{pool.theory}} 抽</span></div>
+<div class="chart">
+<div class="avgline" style="bottom: {{pool.theoryPct}}%"></div>
+<sc-for list="{{dist}}" as="d" hint-placeholder-count="4">
+<div class="bar {{d.cls}}" style="height: {{d.h}}%; max-width: 48px"><span class="barlab">{{d.pulls}}</span></div>
+</sc-for>
+</div>
+<div class="xlabs"><sc-for list="{{dist}}" as="d" hint-placeholder-count="4"><span style="max-width: 48px">{{d.name}}</span></sc-for></div>
+</sc-if>
+<sc-if value="{{distTable}}" hint-placeholder-val="{{ false }}">
+<div class="tablebox"><table style="min-width: 0"><thead><tr><th scope="col">时间</th><th scope="col">名称</th><th scope="col">抽数</th><th scope="col">UP / 歪</th></tr></thead><tbody>
+<sc-for list="{{dist}}" as="d" hint-placeholder-count="4"><tr><td class="num">{{d.time}}</td><td class="gold">{{d.name}}</td><td class="num">{{d.pulls}}</td><td><span class="tag {{d.cls}}">{{d.tag}}</span></td></tr></sc-for>
+</tbody></table></div>
+</sc-if>
+</div>
+<div class="card">
+<div class="row" style="justify-content: space-between"><div class="ct">月度趋势</div><div class="muted">最近 12 个月 · 柱 = 抽数 · 数字 = 出金数</div></div>
+<div class="chart" style="height: 150px">
+<sc-for list="{{months}}" as="mo" hint-placeholder-count="12">
+<div class="bar month" style="height: {{mo.h}}%"><span class="barlab">{{mo.gold}}</span></div>
+</sc-for>
+</div>
+<div class="xlabs"><sc-for list="{{months}}" as="mo" hint-placeholder-count="12"><span>{{mo.label}}</span></sc-for></div>
+</div>
+</sc-if>
+<sc-if value="{{tabTimeline}}" hint-placeholder-val="{{ false }}">
+<div class="row" style="justify-content: space-between">
+<div class="muted">最新一期在上 · {{pool.name}}</div>
+<label class="check"><input type="checkbox" checked="{{showSkipped}}" onChange="{{toggleSkipped}}">显示未参与的卡池</label>
+</div>
+<sc-for list="{{periods}}" as="pe" hint-placeholder-count="3">
+<sc-if value="{{pe.joined}}" hint-placeholder-val="{{ true }}">
+<div class="card period">
+<div class="row" style="justify-content: space-between"><div class="row" style="gap: 8px"><span class="gold">{{pe.ups}}</span></div><span class="muted num">{{pe.dates}}</span></div>
+<div class="gotrow"><span>本期 <b class="num">{{pe.pulls}}</b> 抽</span><span class="muted">·</span>
+<sc-for list="{{pe.golds}}" as="go" hint-placeholder-count="1"><span class="gold">{{go.name}}</span><span class="num muted">{{go.pulls}} 抽</span><span class="tag {{go.cls}}">{{go.tag}}</span></sc-for>
+<sc-if value="{{pe.noGold}}" hint-placeholder-val="{{ false }}"><span class="muted">本期未出金</span></sc-if>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{pe.skippedShown}}" hint-placeholder-val="{{ false }}">
+<div class="skipped"><span>{{pe.ups}} · 未参与</span><span class="num">{{pe.dates}}</span></div>
+</sc-if>
+</sc-for>
+<div class="muted">没有卡池数据包时按记录时间自动分段，标题显示为「2026-10-01 – 10-21 的记录」。</div>
 </sc-if>
 </div>
 </sc-if>
@@ -317,6 +481,35 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </div>
 </div>
 </sc-if>
+<sc-if value="{{shareOpen}}" hint-placeholder-val="{{ false }}">
+<div class="overlay">
+<div class="modal wide" role="dialog" aria-modal="true" aria-label="生成分享图">
+<div class="row" style="justify-content: space-between"><div class="ct" style="font-size: 17px">生成分享图</div><button class="btn small" onClick="{{closeShare}}" aria-label="关闭">关闭</button></div>
+<div class="share">
+<div class="shot" style="{{shareStyle}}">
+<div class="row" style="gap: 10px"><span class="gicon lg" style="background: {{acc.color}}; color: {{acc.ink}}" aria-hidden="true">{{acc.mono}}</span><div><div class="ct">{{acc.game}} · {{acc.alias}}</div><div class="muted">{{shareUid}} · {{pool.name}}</div></div></div>
+<div class="shotm">
+<sc-for list="{{metrics}}" as="m" hint-placeholder-count="3"><div><div class="muted">{{m.label}}</div><div class="v">{{m.big}}<span class="muted"> {{m.small}}</span></div></div></sc-for>
+</div>
+<div class="muted">最近 10 个出金</div>
+<div class="shotlist">
+<sc-for list="{{shareHist}}" as="h" hint-placeholder-count="4"><div><span class="gold">{{h.name}}</span><span class="num">{{h.pulls}} 抽 <span class="tag {{h.cls}}">{{h.tag}}</span></span></div></sc-for>
+</div>
+<div class="row muted" style="justify-content: space-between; border-top: 1px solid var(--border); padding-top: 10px"><span>2026-10-25</span><span>GachaNote</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<label class="check"><input type="checkbox" checked="{{shareHide}}" onChange="{{toggleShareHide}}">隐藏 UID</label>
+<div class="field">背景<div class="seg" role="group" aria-label="分享图背景"><button class="segb {{shareLightCls}}" onClick="{{shareLight}}">浅色</button><button class="segb {{shareDarkCls}}" onClick="{{shareDark}}">深色</button></div></div>
+<div class="field">卡池<div class="seg" role="group" aria-label="分享图卡池"><sc-for list="{{pools}}" as="p" hint-placeholder-count="3"><button class="segb {{p.cls}}" onClick="{{p.pick}}">{{p.short}}</button></sc-for></div></div>
+<div class="muted">导出为 1080 px 宽的 PNG</div>
+<div class="spacer"></div>
+<div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{shareCopy}}">复制到剪贴板</button><button class="btn primary" onClick="{{shareSave}}">保存 PNG</button></div>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{toastOn}}" hint-placeholder-val="{{ false }}"><div class="toast" role="status">{{toastText}}</div></sc-if>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":820}}'>
@@ -328,99 +521,213 @@ var GAMES = [
   { key: 'ef', name: '明日方舟：终末地', color: '#F2C200', mono: '终', ink: '#1A1500' },
   { key: 'ww', name: '鸣潮', color: '#3FBFA8', mono: '潮', ink: '#06201B' }
 ];
+// 规则模型：base 基础概率，soft 软保底起点，step 每抽增量，hard 硬保底，up UP 概率（null 为常驻），guar 歪后是否大保底
+var M = {
+  ysChar: { base: 0.006, soft: 73, step: 0.06, hard: 90, up: 0.5, guar: true, theory: 62.3 },
+  ysWeap: { base: 0.007, soft: 62, step: 0.07, hard: 80, up: 0.75, guar: true, theory: 53.2 },
+  ysStd: { base: 0.006, soft: 73, step: 0.06, hard: 90, up: null, guar: false, theory: 62.3 },
+  srChar: { base: 0.006, soft: 73, step: 0.06, hard: 90, up: 0.5, guar: true, theory: 62.3 },
+  srCone: { base: 0.008, soft: 65, step: 0.07, hard: 80, up: 0.75, guar: true, theory: 54.6 },
+  akStd: { base: 0.02, soft: 50, step: 0.02, hard: 99, up: 0.5, guar: false, theory: 34.6 },
+  akLim: { base: 0.02, soft: 50, step: 0.02, hard: 99, up: 0.7, guar: false, theory: 34.6 },
+  wwChar: { base: 0.008, soft: 65, step: 0.055, hard: 80, up: 0.5, guar: true, theory: 56.0 },
+  wwWeap: { base: 0.008, soft: 65, step: 0.055, hard: 80, up: 1, guar: true, theory: 56.0 }
+};
+// 指标模板：hoyo = 保底 / 平均出 UP / 歪率；std = 保底 / 平均出金；akStd = 无大保底；akLim = 第三张换成「井」
 var ACCS = [
-  { game: 'ys', alias: '主号', uid: '1****6789', updated: '3 小时前', topRarity: '5 星', pools: [
-    { name: '角色活动祈愿', pity: 37, hard: 90, big: true, avgUp: '88.4', upCount: 12, loss: '41.7%', lossFrac: '5 / 12', total: '1,642', gold: 19, avgGold: '62.1',
-      hist: [['示例角色 A', 77, 1, '2026-10-02 20:14'], ['示例角色 B', 81, 0, '2026-08-21 11:03'], ['示例角色 C', 24, 1, '2026-07-30 22:41'], ['示例角色 D', 76, 0, '2026-06-18 19:20']] },
-    { name: '武器活动祈愿', pity: 12, hard: 80, big: false, avgUp: '101.5', upCount: 4, loss: '25.0%', lossFrac: '1 / 4', total: '512', gold: 8, avgGold: '55.0',
-      hist: [['示例武器 A', 63, 1, '2026-09-11 21:02'], ['示例武器 B', 66, 0, '2026-05-04 12:30']] },
-    { name: '常驻祈愿', pity: 55, hard: 90, big: false, avgUp: '—', upCount: 0, loss: '—', lossFrac: '—', total: '187', gold: 3, avgGold: '62.3',
-      hist: [['示例角色 E', 72, 2, '2026-04-01 09:12']] }
+  { game: 'ys', alias: '主号', uid: '1****6789', updated: '3 小时前', topRarity: '5 星', seed: 3, pools: [
+    { name: '角色活动祈愿', short: '角色', limited: true, tpl: 'hoyo', m: 'ysChar', pity: 37, big: true, avgUp: '88.4', upCount: 12, loss: '41.7%', lossFrac: '5 / 12', total: '1,642', gold: 19, avgGold: '62.1',
+      luck: { grade: '欧', text: '比 78% 的人运气好', short: '欧 · 前 22%' },
+      hist: [['示例角色 A', 77, 1, '2026-10-02 20:14'], ['示例角色 B', 81, 0, '2026-08-21 11:03'], ['示例角色 C', 24, 1, '2026-07-30 22:41'], ['示例角色 D', 76, 0, '2026-06-18 19:20'], ['示例角色 I', 62, 1, '2026-05-02 10:40'], ['示例角色 J', 84, 0, '2026-03-11 21:30']],
+      periods: [['2026-10-14 – 11-04', '示例角色 K', 37, []], ['2026-09-23 – 10-14', '示例角色 A', 77, [['示例角色 A', 77, 1]]], ['2026-09-02 – 09-23', '示例角色 L', 0, []], ['2026-08-12 – 09-02', '示例角色 C', 81, [['示例角色 B', 81, 0]]], ['2026-07-22 – 08-12', '示例角色 C', 24, [['示例角色 C', 24, 1]]]] },
+    { name: '武器活动祈愿', short: '武器', limited: true, tpl: 'hoyo', m: 'ysWeap', pity: 12, big: false, avgUp: '101.5', upCount: 4, loss: '25.0%', lossFrac: '1 / 4', total: '512', gold: 8, avgGold: '55.0',
+      luck: { grade: '平', text: '比 46% 的人运气好', short: '平 · 前 54%' },
+      hist: [['示例武器 A', 63, 1, '2026-09-11 21:02'], ['示例武器 B', 66, 0, '2026-05-04 12:30']],
+      periods: [['2026-09-23 – 10-14', '示例武器 A', 63, [['示例武器 A', 63, 1]]], ['2026-04-22 – 05-13', '示例武器 C', 66, [['示例武器 B', 66, 0]]]] },
+    { name: '集录祈愿', short: '集录', limited: false, tpl: 'std', m: 'ysStd', pity: 8, big: false, avgUp: '—', upCount: 0, loss: '—', lossFrac: '—', total: '96', gold: 1, avgGold: '88.0', luck: null,
+      hist: [['示例角色 M', 88, 2, '2026-02-14 15:00']], periods: [] },
+    { name: '常驻祈愿', short: '常驻', limited: false, tpl: 'std', m: 'ysStd', pity: 55, big: false, avgUp: '—', upCount: 0, loss: '—', lossFrac: '—', total: '187', gold: 3, avgGold: '62.3', luck: null,
+      hist: [['示例角色 E', 72, 2, '2026-04-01 09:12']], periods: [] }
   ] },
-  { game: 'sr', alias: '主号', uid: '1****2345', updated: '昨天', topRarity: '5 星', pools: [
-    { name: '角色活动跃迁', pity: 66, hard: 90, big: false, avgUp: '92.0', upCount: 6, loss: '50.0%', lossFrac: '3 / 6', total: '902', gold: 10, avgGold: '64.5',
-      hist: [['示例角色 F', 74, 1, '2026-10-10 20:00'], ['示例角色 G', 79, 0, '2026-09-01 18:22']] },
-    { name: '光锥活动跃迁', pity: 3, hard: 80, big: false, avgUp: '70.0', upCount: 2, loss: '0.0%', lossFrac: '0 / 2', total: '200', gold: 3, avgGold: '58.0',
-      hist: [['示例光锥 A', 66, 1, '2026-10-11 10:10']] }
+  { game: 'ys', alias: '小号', uid: '1****1357', updated: '12 天前', topRarity: '5 星', seed: 7, pools: [
+    { name: '角色活动祈愿', short: '角色', limited: true, tpl: 'hoyo', m: 'ysChar', pity: 64, big: false, avgUp: '95.0', upCount: 2, loss: '50.0%', lossFrac: '1 / 2', total: '254', gold: 3, avgGold: '63.3', luck: null,
+      hist: [['示例角色 A', 70, 1, '2026-10-01 12:00'], ['示例角色 E', 74, 0, '2026-07-01 12:00']], periods: [['2026-09-23 – 10-14', '示例角色 A', 70, [['示例角色 A', 70, 1]]]] },
+    { name: '常驻祈愿', short: '常驻', limited: false, tpl: 'std', m: 'ysStd', pity: 20, big: false, avgUp: '—', upCount: 0, loss: '—', lossFrac: '—', total: '40', gold: 0, avgGold: '—', luck: null, hist: [], periods: [] }
   ] },
-  { game: 'ak', alias: '官服', uid: '8****1024', updated: '5 天前', topRarity: '6 星', pools: [
-    { name: '标准寻访', pity: 23, hard: 99, big: false, avgUp: '68.2', upCount: 5, loss: '54.5%', lossFrac: '6 / 11', total: '1,230', gold: 21, avgGold: '33.0',
-      hist: [['示例干员 A', 41, 1, '2026-10-15 13:00'], ['示例干员 B', 12, 0, '2026-09-29 23:50']] },
-    { name: '限定寻访', pity: 0, hard: 99, big: false, avgUp: '75.0', upCount: 2, loss: '33.3%', lossFrac: '1 / 3', total: '310', gold: 5, avgGold: '35.1',
-      hist: [['示例干员 C', 58, 1, '2026-08-01 16:16']] }
+  { game: 'sr', alias: '主号', uid: '1****2345', updated: '昨天', topRarity: '5 星', seed: 5, pools: [
+    { name: '角色活动跃迁', short: '角色', limited: true, tpl: 'hoyo', m: 'srChar', pity: 66, big: false, avgUp: '92.0', upCount: 6, loss: '50.0%', lossFrac: '3 / 6', total: '902', gold: 10, avgGold: '64.5',
+      luck: { grade: '非', text: '比 31% 的人运气好', short: '非 · 前 69%' },
+      hist: [['示例角色 F', 74, 1, '2026-10-10 20:00'], ['示例角色 G', 79, 0, '2026-09-01 18:22']],
+      periods: [['2026-10-08 – 10-29', '示例角色 F', 74, [['示例角色 F', 74, 1]]], ['2026-08-27 – 09-17', '示例角色 N', 79, [['示例角色 G', 79, 0]]]] },
+    { name: '光锥活动跃迁', short: '光锥', limited: true, tpl: 'hoyo', m: 'srCone', pity: 3, big: false, avgUp: '70.0', upCount: 2, loss: '0.0%', lossFrac: '0 / 2', total: '200', gold: 3, avgGold: '58.0', luck: null,
+      hist: [['示例光锥 A', 66, 1, '2026-10-11 10:10']], periods: [['2026-10-08 – 10-29', '示例光锥 A', 66, [['示例光锥 A', 66, 1]]]] }
   ] },
-  { game: 'ww', alias: '主号', uid: '1****0777', updated: '2 天前', topRarity: '5 星', pools: [
-    { name: '角色活动唤取', pity: 71, hard: 80, big: false, avgUp: '79.3', upCount: 3, loss: '33.3%', lossFrac: '1 / 3', total: '560', gold: 7, avgGold: '61.0',
-      hist: [['示例角色 H', 68, 1, '2026-09-20 21:21']] },
-    { name: '武器活动唤取', pity: 20, hard: 80, big: false, avgUp: '64.0', upCount: 1, loss: '—', lossFrac: '—', total: '84', gold: 1, avgGold: '64.0',
-      hist: [['示例武器 C', 64, 1, '2026-09-21 08:08']] }
+  { game: 'ak', alias: '官服', uid: '8****1024', updated: '5 天前', topRarity: '6 星', seed: 9, pools: [
+    { name: '限定寻访', short: '限定', limited: true, tpl: 'akLim', m: 'akLim', pity: 0, big: false, spark: 180, sparkMax: 300, avgUp: '75.0', upCount: 2, loss: '33.3%', lossFrac: '1 / 3', total: '310', gold: 5, avgGold: '35.1', luck: { grade: '欧', text: '比 64% 的人运气好', short: '欧 · 前 36%' },
+      hist: [['示例干员 C', 58, 1, '2026-08-01 16:16'], ['示例干员 D', 22, 0, '2026-07-28 13:02']], periods: [['2026-07-25 – 08-08', '示例干员 C', 180, [['示例干员 D', 22, 0], ['示例干员 C', 58, 1]]]] },
+    { name: '标准寻访', short: '标准', limited: true, tpl: 'akStd', m: 'akStd', pity: 23, big: false, avgUp: '68.2', upCount: 5, loss: '54.5%', lossFrac: '6 / 11', total: '1,230', gold: 21, avgGold: '33.0',
+      luck: { grade: '平', text: '比 52% 的人运气好', short: '平 · 前 48%' },
+      hist: [['示例干员 A', 41, 1, '2026-10-15 13:00'], ['示例干员 B', 12, 0, '2026-09-29 23:50']], periods: [['2026-10-15 – 10-29', '示例干员 A', 64, [['示例干员 A', 41, 1]]], ['2026-09-29 – 10-13', '示例干员 E', 12, [['示例干员 B', 12, 0]]]] }
+  ] },
+  { game: 'ww', alias: '主号', uid: '1****0777', updated: '2 天前', topRarity: '5 星', seed: 4, pools: [
+    { name: '角色活动唤取', short: '角色', limited: true, tpl: 'hoyo', m: 'wwChar', pity: 71, big: false, avgUp: '79.3', upCount: 3, loss: '33.3%', lossFrac: '1 / 3', total: '560', gold: 7, avgGold: '61.0', luck: { grade: '平', text: '比 49% 的人运气好', short: '平 · 前 51%' },
+      hist: [['示例角色 H', 68, 1, '2026-09-20 21:21']], periods: [['2026-09-18 – 10-09', '示例角色 H', 68, [['示例角色 H', 68, 1]]]] },
+    { name: '武器活动唤取', short: '武器', limited: true, tpl: 'std', m: 'wwWeap', pity: 20, big: false, avgUp: '64.0', upCount: 1, loss: '—', lossFrac: '—', total: '84', gold: 1, avgGold: '64.0', luck: null,
+      hist: [['示例武器 C', 64, 1, '2026-09-21 08:08']], periods: [] }
   ] }
 ];
 var LIGHT = { bg: '#F7F7F8', surface: '#FFFFFF', border: '#E4E4E7', text: '#18181B', text2: '#5F5F68', primary: '#3B6FE0', onprimary: '#FFFFFF', selected: '#EAF0FC', hover: '#F2F2F4', track: '#EDEDF0', gold: '#9A6700', up: '#1F7A4D', upbg: '#E3F4EA', loss: '#C23434', lossbg: '#FBE7E7', overlay: 'rgba(15,15,20,0.45)' };
 var DARK = { bg: '#141518', surface: '#1D1F23', border: '#2E3036', text: '#ECECEE', text2: '#A0A0AA', primary: '#7B9CF2', onprimary: '#0B0C0E', selected: '#232C40', hover: '#26282D', track: '#2A2C31', gold: '#E3A43B', up: '#5CCB94', upbg: '#183528', loss: '#F07A7A', lossbg: '#3A1E1E', overlay: 'rgba(0,0,0,0.6)' };
 function gameOf(key) { for (var i = 0; i < GAMES.length; i++) { if (GAMES[i].key === key) return GAMES[i]; } return GAMES[0]; }
+function vars(t) { return Object.keys(t).map(function (k) { return '--' + k + ':' + t[k]; }).join(';'); }
+function pct(x) { return (x * 100 < 10 ? (x * 100).toFixed(1) : Math.round(x * 100)) + '%'; }
+function prob(m, n) { if (n >= m.hard) return 1; if (n <= m.soft) return m.base; return Math.min(1, m.base + m.step * (n - m.soft)); }
+// 未来 k 抽内至少出一次金 / 出一次 UP 的概率（逐抽推演）
+function predict(m, pity, big, k) {
+  var gold = 1, mass = {}, upHit = 0;
+  for (var i = 1; i <= k; i++) { if (pity + i <= m.hard) gold *= 1 - prob(m, pity + i); }
+  mass[pity + ':' + (big ? 1 : 0)] = 1;
+  for (var j = 0; j < k; j++) {
+    var next = {};
+    Object.keys(mass).forEach(function (key) {
+      var c = Number(key.split(':')[0]), g = Number(key.split(':')[1]), w = mass[key];
+      var q = prob(m, c + 1), upP = (g || m.up === null) ? 1 : m.up;
+      upHit += w * q * upP;
+      if (m.up !== null && !g) { var lk = '0:' + (m.guar ? 1 : 0); next[lk] = (next[lk] || 0) + w * q * (1 - upP); }
+      var nk = (c + 1) + ':' + g; next[nk] = (next[nk] || 0) + w * (1 - q);
+    });
+    mass = next;
+  }
+  return { gold: 1 - gold, up: upHit };
+}
+function tagOf(f) { return f === 1 ? { tag: 'UP', cls: 'up' } : (f === 0 ? { tag: '歪', cls: 'loss' } : { tag: '常驻', cls: 'std' }); }
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { view: 'overview', acc: 0, pool: 0, tab: 'stats', dark: false, filter: 'all', importOpen: false, step: 1, method: 'url', shown: [], addOpen: false };
+    this.state = { view: 'overview', acc: 0, pool: 0, tab: 'stats', dark: false, filter: 'all', importOpen: false, step: 1, method: 'url', shown: [], addOpen: false,
+      lastAcc: {}, emptyGame: null, accMenu: false, more: false, expanded: {}, n: 10, distTable: false, showSkipped: false,
+      shareOpen: false, shareHide: true, shareDark: false, toast: '' };
   }
+  flash(text) { var self = this; this.setState({ toast: text }); clearTimeout(this._t); this._t = setTimeout(function () { self.setState({ toast: '' }); }, 3000); }
   renderVals() {
     var self = this;
     var s = this.state;
     var t = s.dark ? DARK : LIGHT;
-    var rootStyle = Object.keys(t).map(function (k) { return '--' + k + ':' + t[k]; }).join(';');
     var set = function (patch) { return function () { self.setState(patch); }; };
-    var openAcc = function (i) { return function () { self.setState({ view: 'detail', acc: i, pool: 0, tab: 'stats' }); }; };
+    var openAcc = function (i) { return function () { var la = Object.assign({}, self.state.lastAcc); la[ACCS[i].game] = i; self.setState({ view: 'detail', acc: i, pool: 0, accMenu: false, more: false, lastAcc: la }); }; };
     var games = GAMES.map(function (g) {
-      var accounts = [];
-      ACCS.forEach(function (a, i) { if (a.game === g.key) accounts.push({ alias: a.alias + ' · ' + a.uid.slice(-4), open: openAcc(i), navCls: (s.view === 'detail' && s.acc === i) ? 'on' : '' }); });
-      return { key: g.key, name: g.name, color: g.color, mono: g.mono, ink: g.ink, count: accounts.length, accounts: accounts, empty: accounts.length === 0 };
+      var idx = [];
+      ACCS.forEach(function (a, i) { if (a.game === g.key) idx.push(i); });
+      var active = (s.view === 'detail' && ACCS[s.acc].game === g.key) || (s.view === 'empty' && s.emptyGame === g.key);
+      return { key: g.key, name: g.name, color: g.color, mono: g.mono, ink: g.ink, count: idx.length, countLabel: idx.length ? idx.length : '暂无账号', cls: active ? 'on' : (idx.length ? '' : 'dim'),
+        open: idx.length ? openAcc(s.lastAcc[g.key] !== undefined ? s.lastAcc[g.key] : idx[0]) : set({ view: 'empty', emptyGame: g.key }) };
     });
     var hiddenGames = games.filter(function (g) { return g.count === 0 && s.shown.indexOf(g.key) < 0; })
-      .map(function (g) { return { name: g.name, color: g.color, mono: g.mono, ink: g.ink, add: function () { self.setState({ shown: self.state.shown.concat([g.key]), addOpen: false }); } }; });
+      .map(function (g) { return { name: g.name, color: g.color, mono: g.mono, ink: g.ink, add: function () { self.setState({ shown: self.state.shown.concat([g.key]), addOpen: false, view: 'empty', emptyGame: g.key }); } }; });
     games = games.filter(function (g) { return g.count > 0 || s.shown.indexOf(g.key) >= 0; });
     var filters = [{ key: 'all', label: '全部' }].concat(GAMES.filter(function (g) { return ACCS.some(function (a) { return a.game === g.key; }); }).map(function (g) { return { key: g.key, label: g.name }; }))
       .map(function (f) { return { label: f.label, cls: s.filter === f.key ? 'on' : '', pick: set({ filter: f.key }) }; });
     var poolView = function (p) {
-      return Object.assign({}, p, { pct: Math.round(p.pity / p.hard * 100), left: p.hard - p.pity, state: p.big ? '大保底：下一个金必为 UP' : '小保底' });
+      var m = M[p.m];
+      var gr = p.gold && p.total ? (p.gold / Number(String(p.total).replace(/,/g, '')) * 100).toFixed(1) + '%' : '—';
+      return Object.assign({}, p, { hard: m.hard, theory: m.theory.toFixed(1), theoryPct: Math.round(m.theory / m.hard * 100), pct: Math.round(p.pity / m.hard * 100), left: m.hard - p.pity, goldRate: gr,
+        stateShort: m.up === null ? '常驻池，无 UP' : (m.guar ? (p.big ? '大保底' : '小保底') : '无大保底') });
     };
     var cards = [];
     ACCS.forEach(function (a, i) {
       if (s.filter !== 'all' && s.filter !== a.game) return;
       var g = gameOf(a.game);
-      var main = a.pools[0];
+      var lim = a.pools.filter(function (p) { return p.limited; }).slice(0, 2);
+      var rest = a.pools.filter(function (p) { return lim.indexOf(p) < 0; });
+      var open = !!s.expanded[i];
+      var main = lim[0] || a.pools[0];
       cards.push({ game: g.name, color: g.color, mono: g.mono, ink: g.ink, alias: a.alias, uid: a.uid, updated: a.updated, open: openAcc(i),
-        pools: a.pools.slice(0, 2).map(poolView), total: a.pools.reduce(function (n, p) { return n + Number(String(p.total).replace(/,/g, '')); }, 0).toLocaleString('en-US'),
+        pools: (open ? lim.concat(rest) : lim).map(poolView), hasExtra: rest.length > 0, extraLabel: open ? '收起' : '展开其余 ' + rest.length + ' 个卡池',
+        toggle: function () { var e = Object.assign({}, self.state.expanded); e[i] = !e[i]; self.setState({ expanded: e }); },
+        total: a.pools.reduce(function (n, p) { return n + Number(String(p.total).replace(/,/g, '')); }, 0).toLocaleString('en-US'),
         avgUp: main.avgUp + ' 抽', loss: main.loss });
     });
     var a = ACCS[s.acc];
     var g = gameOf(a.game);
-    var pool = poolView(a.pools[s.pool] || a.pools[0]);
-    var pools = a.pools.map(function (p, i) { return { name: p.name, cls: i === s.pool ? 'on' : '', pick: set({ pool: i }) }; });
-    var history = pool.hist.map(function (h) {
-      return { name: h[0], pulls: h[1], time: h[3], pct: Math.round(h[1] / pool.hard * 100), tag: h[2] === 1 ? 'UP' : (h[2] === 0 ? '歪' : '常驻'), cls: h[2] === 1 ? 'up' : (h[2] === 0 ? 'loss' : '') };
+    var pi = Math.min(s.pool, a.pools.length - 1);
+    var pool = poolView(a.pools[pi]);
+    var m = M[pool.m];
+    var pools = a.pools.map(function (p, i) { return { name: p.name, short: p.short, pity: p.pity, cls: i === pi ? 'on' : '', pick: set({ pool: i }) }; });
+    var accOptions = [];
+    ACCS.forEach(function (x, i) { if (x.game === a.game) accOptions.push({ alias: x.alias, uid: x.uid, cls: i === s.acc ? 'on' : '', pick: openAcc(i) }); });
+    // 核心指标卡由规则模板决定
+    var pityCard = { label: '当前保底', big: pool.pity, small: '/ ' + m.hard, hasBar: true, pct: pool.pct, barColor: 'var(--primary)',
+      sub: pool.tpl === 'hoyo' ? (pool.big ? '大保底：下一个金必为 UP' : '小保底') + ' · 距硬保底还差 ' + pool.left + ' 抽'
+        : (pool.tpl === 'std' ? '距硬保底还差 ' + pool.left + ' 抽' : '第 ' + (m.soft + 1) + ' 抽起每抽概率 +2%') };
+    var upCard = { label: '平均出 UP', big: pool.avgUp, small: '抽', hasBar: false, sub: '共 ' + pool.upCount + ' 个 UP' };
+    var metrics;
+    if (pool.tpl === 'hoyo') metrics = [pityCard, upCard, { label: '小保底歪率', big: pool.loss, small: '', hasBar: false, sub: pool.lossFrac + ' 次小保底歪了' }];
+    else if (pool.tpl === 'akStd') metrics = [pityCard, upCard, { label: '歪率', big: pool.loss, small: '', hasBar: false, sub: pool.lossFrac + ' 次 6 星不是 UP · 无大保底' }];
+    else if (pool.tpl === 'akLim') metrics = [pityCard, upCard, { label: '井（寻访凭证）', big: pool.spark, small: '/ ' + pool.sparkMax, hasBar: true, pct: Math.round(pool.spark / pool.sparkMax * 100), barColor: 'var(--gold)', sub: '再抽 ' + (pool.sparkMax - pool.spark) + ' 次可直接兑换 UP 干员' }];
+    else metrics = [pityCard, { label: '平均出金', big: pool.avgGold, small: '抽', hasBar: false, sub: '共 ' + pool.gold + ' 个金' }];
+    var history = pool.hist.map(function (h) { var tg = tagOf(h[2]); return { name: h[0], pulls: h[1], time: h[3], pct: Math.round(h[1] / m.hard * 100), tag: tg.tag, cls: tg.cls }; });
+    var n = Math.max(1, Math.min(300, Number(s.n) || 1));
+    var p1 = predict(m, pool.pity, pool.big, 1), pn = predict(m, pool.pity, pool.big, n);
+    var hasUp = m.up !== null && pool.tpl !== 'std';
+    var pred = { next: pct(p1.gold), nextUp: pct(p1.up), withinGold: pct(pn.gold), withinUp: pct(pn.up), hasUp: hasUp };
+    var span = m.hard - pool.pity, pts = [];
+    for (var k = 0; k <= span; k++) { var c = k === 0 ? 0 : predict(m, pool.pity, pool.big, k).gold; pts.push((k / span * 300).toFixed(1) + ',' + (130 - c * 120).toFixed(1)); }
+    var nx = Math.min(300, n / span * 300);
+    var curve = { points: pts.join(' '), nx: nx.toFixed(1), tx: (nx > 240 ? nx - 44 : nx + 4).toFixed(1), maxLabel: span };
+    var luck = { has: !!pool.luck, none: !pool.luck, grade: pool.luck ? pool.luck.grade : '', text: pool.luck ? pool.luck.text : '' };
+    var dist = history.slice().reverse().map(function (h) { return Object.assign({}, h, { h: Math.round(h.pulls / m.hard * 100) }); });
+    var months = [], maxP = 1;
+    for (var i = 0; i < 12; i++) { var pulls = 30 + ((a.seed * 37 + i * 53) % 170); maxP = Math.max(maxP, pulls); months.push({ label: (((i + 10) % 12) + 1) + '月', pulls: pulls, gold: Math.round(pulls / 68) }); }
+    months.forEach(function (x) { x.h = Math.round(x.pulls / maxP * 100); });
+    var periods = pool.periods.map(function (pe) {
+      var joined = pe[2] > 0;
+      return { dates: pe[0], ups: pe[1], pulls: pe[2], joined: joined, skippedShown: !joined && s.showSkipped, noGold: pe[3].length === 0,
+        golds: pe[3].map(function (x) { var tg = tagOf(x[2]); return { name: x[0], pulls: x[1], tag: tg.tag, cls: tg.cls }; }) };
     });
     var step = s.step;
+    var tab = s.tab;
     return {
-      rootStyle: rootStyle,
-      games: games, filters: filters, cards: cards, pools: pools, pool: pool, history: history, recordCount: history.length,
+      rootStyle: vars(t),
+      games: games, filters: filters, cards: cards, pools: pools, pool: pool, metrics: metrics, history: history, recordCount: history.length,
       hiddenGames: hiddenGames, noHidden: hiddenGames.length === 0, addOpen: s.addOpen,
       addLabel: s.addOpen ? '收起' : '+ 添加游戏',
       toggleAdd: function () { self.setState({ addOpen: !self.state.addOpen }); },
       acc: { game: g.name, color: g.color, mono: g.mono, ink: g.ink, alias: a.alias, uid: a.uid, updated: a.updated, topRarity: a.topRarity },
-      isOverview: s.view === 'overview', isDetail: s.view === 'detail', isSettings: s.view === 'settings',
+      emptyGame: gameOf(s.emptyGame || 'zzz'),
+      accOptions: accOptions, multiAcc: accOptions.length > 1, singleAcc: accOptions.length < 2, accMenuOpen: s.accMenu, moreOpen: s.more,
+      toggleAccMenu: function () { self.setState({ accMenu: !self.state.accMenu, more: false }); },
+      toggleMore: function () { self.setState({ more: !self.state.more, accMenu: false }); },
+      closeMenus: set({ more: false, accMenu: false }),
+      copyUid: function () { self.flash('已复制 UID'); },
+      isOverview: s.view === 'overview', isDetail: s.view === 'detail', isSettings: s.view === 'settings', isEmptyGame: s.view === 'empty',
       navOverview: s.view === 'overview' ? 'on' : '', navSettings: s.view === 'settings' ? 'on' : '',
-      tabStats: s.tab === 'stats', tabRecords: s.tab === 'records',
-      tabStatsCls: s.tab === 'stats' ? 'on' : '', tabRecCls: s.tab === 'records' ? 'on' : '',
+      tabStats: tab === 'stats', tabRecords: tab === 'records', tabAnalysis: tab === 'analysis', tabTimeline: tab === 'timeline',
+      tabStatsCls: tab === 'stats' ? 'on' : '', tabRecCls: tab === 'records' ? 'on' : '', tabAnaCls: tab === 'analysis' ? 'on' : '', tabTlCls: tab === 'timeline' ? 'on' : '',
+      goStats: set({ tab: 'stats' }), goRecords: set({ tab: 'records' }), goAnalysis: set({ tab: 'analysis' }), goTimeline: set({ tab: 'timeline' }),
+      pred: pred, curve: curve, luck: luck, luckShort: pool.luck ? pool.luck.short : '样本不足', n: n,
+      onN: function (e) { self.setState({ n: e.target.value }); },
+      nChips: [10, 20, 50, 90].map(function (v) { return { label: v + ' 抽', cls: n === v ? 'on' : '', pick: set({ n: v }) }; }),
+      dist: dist, distChart: !s.distTable, distTable: s.distTable, distToggleLabel: s.distTable ? '显示图表' : '数据表',
+      toggleDistTable: function () { self.setState({ distTable: !self.state.distTable }); },
+      months: months, periods: periods, showSkipped: s.showSkipped,
+      toggleSkipped: function () { self.setState({ showSkipped: !self.state.showSkipped }); },
       themeLabel: s.dark ? '切换到浅色' : '切换到深色',
       lightCls: s.dark ? '' : 'on', darkCls: s.dark ? 'on' : '',
       goOverview: set({ view: 'overview' }), goSettings: set({ view: 'settings' }),
-      goStats: set({ tab: 'stats' }), goRecords: set({ tab: 'records' }),
       toggleTheme: function () { self.setState({ dark: !self.state.dark }); },
       setLight: set({ dark: false }), setDark: set({ dark: true }),
       noop: function () {},
+      shareOpen: s.shareOpen, openShare: set({ shareOpen: true, more: false }), closeShare: set({ shareOpen: false }),
+      shareStyle: vars(s.shareDark ? DARK : LIGHT), shareUid: s.shareHide ? 'UID 已隐藏' : 'UID ' + a.uid, shareHide: s.shareHide,
+      shareHist: history.slice(0, 10),
+      toggleShareHide: function () { self.setState({ shareHide: !self.state.shareHide }); },
+      shareLight: set({ shareDark: false }), shareDark: set({ shareDark: true }),
+      shareLightCls: s.shareDark ? '' : 'on', shareDarkCls: s.shareDark ? 'on' : '',
+      shareSave: function () { self.setState({ shareOpen: false }); self.flash('已保存 PNG（原型）'); },
+      shareCopy: function () { self.flash('已复制到剪贴板（原型）'); },
+      toastOn: !!s.toast, toastText: s.toast,
       importOpen: s.importOpen,
-      openImport: set({ importOpen: true, step: 1 }), closeImport: set({ importOpen: false, step: 1 }),
+      openImport: set({ importOpen: true, step: 1, accMenu: false }), closeImport: set({ importOpen: false, step: 1 }),
       pickUrl: set({ step: 2, method: 'url' }), pickFile: set({ step: 2, method: 'file' }), pickToken: set({ step: 2, method: 'token' }),
       back: function () { self.setState({ step: Math.max(1, self.state.step - 1) }); },
       start: set({ step: 3 }), finish: set({ step: 4 }),
