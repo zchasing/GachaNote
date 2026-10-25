@@ -207,7 +207,14 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 .trow2{display:flex;justify-content:space-between;gap:16px;align-items:center}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
 .tbar .pin{position:absolute;top:-24px;left:50%;transform:translateX(-50%);background:var(--bar3);color:#fff;font-size:11px;font-weight:600;border-radius:999px;padding:1px 7px;white-space:nowrap;font-variant-numeric:tabular-nums}
-.brush{position:relative;height:44px;margin-left:32px;border:1px solid var(--border);border-radius:6px;background:var(--bg);overflow:hidden}
+.brushrow{display:flex;gap:6px;align-items:center;margin-left:4px}
+.panbtn{flex:0 0 22px;height:44px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+.panbtn:hover{color:var(--primary);border-color:var(--primary)}
+.panbtn.off{opacity:.35;pointer-events:none}
+.bwin.pan{pointer-events:auto;cursor:grab}
+.bwin.pan:active{cursor:grabbing;background:rgba(59,111,224,.16)}
+.bwin:focus-visible{outline:2px solid var(--primary);outline-offset:1px}
+.brush{position:relative;height:44px;flex:1 1 auto;min-width:0;border:1px solid var(--border);border-radius:6px;background:var(--bg);overflow:hidden}
 .bmini{position:absolute;inset:6px 0 0;display:flex;align-items:flex-end;gap:0}
 .bmini span{flex:1 1 0;min-width:0;background:var(--bar3);opacity:.45}
 .bmask{position:absolute;top:0;bottom:0;background:var(--track);opacity:.75;pointer-events:none}
@@ -562,14 +569,16 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </sc-if>
 </div>
 <div class="tticks"><sc-for list="{{tl.ticks}}" as="tk" hint-placeholder-count="7"><span>{{tk.t}}</span></sc-for></div>
-<div class="brush" aria-label="时间范围">
+<div class="brushrow"><button class="panbtn {{tl.panLCls}}" onClick="{{tl.panL}}" aria-label="选区向前移动"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 3.5L5.5 8 10 12.5"></path></svg></button>
+<div class="brush" aria-label="时间范围" onMouseMove="{{tl.move}}" onMouseUp="{{tl.up}}" onMouseLeave="{{tl.up}}">
 <div class="bmini"><sc-for list="{{tl.mini}}" as="mb" hint-placeholder-count="60"><span style="height: {{mb.h}}%"></span></sc-for></div>
 <div class="bmask" style="left: 0; width: {{tl.maskL}}%"></div>
 <div class="bmask" style="right: 0; width: {{tl.maskR}}%"></div>
-<div class="bwin" style="left: {{tl.maskL}}%; right: {{tl.maskR}}%"></div>
+<div class="bwin {{tl.winCls}}" style="left: {{tl.maskL}}%; right: {{tl.maskR}}%" onMouseDown="{{tl.down}}" onKeyDown="{{tl.key}}" tabindex="0" role="slider" aria-label="拖动平移选区，或按左右方向键"></div>
 <input class="brange" type="range" min="0" max="{{tl.max}}" value="{{tl.start}}" onChange="{{tl.onStart}}" aria-label="开始日期">
 <input class="brange" type="range" min="0" max="{{tl.max}}" value="{{tl.end}}" onChange="{{tl.onEnd}}" aria-label="结束日期">
 </div>
+<button class="panbtn {{tl.panRCls}}" onClick="{{tl.panR}}" aria-label="选区向后移动"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 3.5L10.5 8 6 12.5"></path></svg></button></div>
 <div class="row" style="justify-content: space-between; margin-left: 32px">
 <div class="chips"><sc-for list="{{tl.quick}}" as="q" hint-placeholder-count="4"><button class="chip small {{q.cls}}" onClick="{{q.pick}}">{{q.label}}</button></sc-for></div>
 <div class="muted num" style="font-size: 12px">已选 {{tl.startDate}} – {{tl.endDate}} · {{tl.days}} 天（记录范围 {{tl.firstDate}} – {{tl.lastDate}}）</div>
@@ -1027,6 +1036,7 @@ class Component extends DCLogic {
     var ticks = [], nT = Math.min(7, vis.length);
     for (var ti = 0; ti < nT; ti++) ticks.push({ t: vis[nT === 1 ? 0 : Math.round(ti * (vis.length - 1) / (nT - 1))].date.slice(5) });
     var setRange = function (from, to) { self.setState({ rFrom: from, rTo: to, hoverDay: null }); };
+    var pan = function (k) { var w0 = rEnd - rStart, ns = Math.max(0, Math.min(nDays - 1 - w0, rStart + k)); if (ns !== rStart && w0 < nDays - 1) setRange(nDays - 1 - ns, nDays - 1 - (ns + w0)); };
     var quick = [['近 30 天', 30], ['近 90 天', 90], ['近半年', 182], ['全部', 0]].map(function (q) {
       var on = q[1] ? (s.rFrom === q[1] - 1 && !s.rTo) : s.rFrom === null && !s.rTo;
       return { label: q[0], cls: on ? 'on' : '', pick: function () { setRange(q[1] ? q[1] - 1 : null, 0); } };
@@ -1042,7 +1052,14 @@ class Component extends DCLogic {
       startDate: days[rStart].date, endDate: days[rEnd].date, firstDate: days[0].date, lastDate: days[nDays - 1].date, days: vis.length,
       onStart: function (e) { var v = Math.min(Number(e.target.value), rEnd); setRange(v === 0 && rEnd === nDays - 1 ? null : nDays - 1 - v, nDays - 1 - rEnd); },
       onEnd: function (e) { var v = Math.max(Number(e.target.value), rStart); setRange(rStart === 0 && v === nDays - 1 ? null : nDays - 1 - rStart, nDays - 1 - v); },
-      quick: quick };
+      quick: quick,
+      // 平移：拖动选区框，或用两侧箭头按半个选区移动；全部选中时不能平移
+      canPan: vis.length < nDays, panL: function () { pan(-Math.max(1, Math.round(vis.length / 2))); }, panR: function () { pan(Math.max(1, Math.round(vis.length / 2))); },
+      panLCls: rStart > 0 ? '' : 'off', panRCls: rEnd < nDays - 1 ? '' : 'off', winCls: vis.length < nDays ? 'pan' : '',
+      down: function (e) { if (vis.length >= nDays) return; var box = e.currentTarget.parentNode.getBoundingClientRect(); self.drag = { x0: e.clientX, w: box.width, s0: rStart, e0: rEnd }; if (e.preventDefault) e.preventDefault(); },
+      move: function (e) { var d = self.drag; if (!d) return; var k = Math.round((e.clientX - d.x0) / d.w * nDays); var ns = Math.max(0, Math.min(nDays - 1 - (d.e0 - d.s0), d.s0 + k)); if (ns !== rStart) setRange(nDays - 1 - ns, nDays - 1 - (ns + d.e0 - d.s0)); },
+      up: function () { self.drag = null; },
+      key: function (e) { if (e.key === 'ArrowLeft') pan(-1); if (e.key === 'ArrowRight') pan(1); } };
     var periods = pool.periods.map(function (pe) {
       var joined = pe[2] > 0;
       return { dates: pe[0], ups: pe[1], pulls: pe[2], joined: joined, skippedShown: !joined && s.showSkipped, noGold: pe[3].length === 0,
