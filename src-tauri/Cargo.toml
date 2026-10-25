@@ -9,7 +9,7 @@ repository.workspace = true
 
 [lib]
 name = "gachanote_app_lib"
-crate-type = ["staticlib", "cdylib", "rlib"]
+# 只编为 rlib；以后做 Tauri mobile 时再加 staticlib / cdylib
 
 [build-dependencies]
 tauri-build = { workspace = true, features = [] }
