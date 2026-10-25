@@ -211,7 +211,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="row" style="gap: 10px"><span class="gicon lg" style="background: {{emptyGame.color}}; color: {{emptyGame.ink}}" aria-hidden="true">{{emptyGame.mono}}</span><h1 class="h1">{{emptyGame.name}}</h1></div>
 <div class="empty">
 <div>还没有{{emptyGame.name}}的抽卡记录。导入或拉取后会自动创建账号。</div>
-<div class="row" style="justify-content: center"><button class="btn primary" onClick="{{openImport}}">从游戏拉取</button><button class="btn" onClick="{{openImport}}">导入文件</button></div>
+<div class="row" style="justify-content: center"><button class="btn primary" onClick="{{openImportHere}}">从游戏拉取</button><button class="btn" onClick="{{openImportHere}}">导入文件</button></div>
 </div>
 </div>
 </sc-if>
@@ -231,7 +231,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <button class="mi {{o.cls}}" role="menuitem" onClick="{{o.pick}}"><span>{{o.alias}}</span><span class="muted num" style="margin-left: auto">UID {{o.uid}}</span></button>
 </sc-for>
 <div class="msep"></div>
-<button class="mi" role="menuitem" onClick="{{openImport}}">+ 导入新账号</button>
+<button class="mi" role="menuitem" onClick="{{openImportHere}}">+ 导入新账号</button>
 </div>
 </sc-if>
 </div>
@@ -239,7 +239,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </div>
 </div>
 <div class="row">
-<button class="btn" onClick="{{openImport}}">更新记录</button>
+<button class="btn" onClick="{{openImportHere}}">更新记录</button>
 <div class="anchor">
 <button class="btn" onClick="{{toggleMore}}" aria-haspopup="menu">更多
 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></button>
@@ -442,22 +442,34 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="overlay">
 <div class="modal" role="dialog" aria-modal="true" aria-label="导入或拉取">
 <div class="row" style="justify-content: space-between"><div class="ct" style="font-size: 17px">导入 / 拉取</div><button class="btn small" onClick="{{closeImport}}" aria-label="关闭">关闭</button></div>
-<div class="steps"><span class="step {{s1Cls}}">1 选择方式</span><span>›</span><span class="step {{s2Cls}}">2 准备</span><span>›</span><span class="step {{s3Cls}}">3 进行中</span><span>›</span><span class="step {{s4Cls}}">4 报告</span></div>
+<div class="steps"><span class="step {{s1Cls}}">1 选择游戏</span><span>›</span><span class="step {{s2Cls}}">2 选择方式</span><span>›</span><span class="step {{s3Cls}}">3 准备</span><span>›</span><span class="step {{s4Cls}}">4 进行中</span><span>›</span><span class="step {{s5Cls}}">5 报告</span></div>
+<sc-if value="{{impHeader}}" hint-placeholder-val="{{ false }}">
+<div class="row" style="gap: 8px"><span class="gicon" style="background: {{impGame.color}}; color: {{impGame.ink}}" aria-hidden="true">{{impGame.mono}}</span><b>{{impGame.name}}</b><button class="linkbtn" style="align-self: center" onClick="{{changeGame}}">更换游戏</button></div>
+</sc-if>
 <sc-if value="{{step1}}" hint-placeholder-val="{{ true }}">
 <div class="methods">
-<button class="method" onClick="{{pickUrl}}"><b>从游戏拉取</b><span class="muted">米哈游三款、鸣潮。先在游戏里打开一次抽卡历史。</span></button>
-<button class="method" onClick="{{pickFile}}"><b>导入文件</b><span class="muted">UIGF、GNJ、CSV，自动识别格式。</span></button>
-<button class="method" onClick="{{pickToken}}"><b>鹰角账号 token</b><span class="muted">明日方舟、终末地 · v0.2</span></button>
+<sc-for list="{{impGames}}" as="ig" hint-placeholder-count="6">
+<button class="method" style="min-height: 72px; flex-direction: row; align-items: center; gap: 10px" onClick="{{ig.pick}}"><span class="gicon lg" style="background: {{ig.color}}; color: {{ig.ink}}" aria-hidden="true">{{ig.mono}}</span><span style="display: flex; flex-direction: column"><b>{{ig.name}}</b><span class="muted">{{ig.hint}}</span></span></button>
+</sc-for>
 </div>
+<div class="muted">文件里有多款游戏？<button class="linkbtn" style="font-size: 12px" onClick="{{pickFileAuto}}">直接导入文件，自动识别游戏</button></div>
+</sc-if>
+<sc-if value="{{stepMethod}}" hint-placeholder-val="{{ false }}">
+<div class="methods">
+<sc-for list="{{impMethods}}" as="im" hint-placeholder-count="2">
+<button class="method" onClick="{{im.pick}}"><b>{{im.title}}</b><span class="muted">{{im.desc}}</span></button>
+</sc-for>
+</div>
+<div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{back}}">上一步</button></div>
 </sc-if>
 <sc-if value="{{step2Url}}" hint-placeholder-val="{{ false }}">
-<label class="field">游戏<select class="input"><option>原神</option><option>崩坏：星穹铁道</option><option>绝区零</option><option>鸣潮</option></select></label>
-<div class="ok">已在游戏缓存中找到抽卡链接（国服，UID 1****6789）</div>
+<div class="ok">{{impGame.found}}</div>
 <label class="field">或手动粘贴链接<input class="input" type="url" placeholder="https://…"></label>
 <label class="check"><input type="checkbox">全量拉取（默认只拉新增）</label>
 <div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{back}}">上一步</button><button class="btn primary" onClick="{{start}}">开始拉取</button></div>
 </sc-if>
 <sc-if value="{{step2File}}" hint-placeholder-val="{{ false }}">
+<div class="muted">{{fileHint}}</div>
 <div class="drop">把文件拖到这里，或 <button class="btn small" onClick="{{noop}}">选择文件</button></div>
 <div class="tablebox"><table style="min-width: 0"><thead><tr><th scope="col">导入</th><th scope="col">游戏</th><th scope="col">UID</th><th scope="col">条数</th></tr></thead><tbody>
 <tr><td><input type="checkbox" checked="{{ true }}" aria-label="导入原神"></td><td>原神</td><td class="num">1****6789</td><td class="num">2,341</td></tr>
@@ -472,13 +484,13 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <label class="check"><input type="checkbox" checked="{{ true }}">记住 token（加密保存在本机）</label>
 <div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{back}}">上一步</button><button class="btn primary" onClick="{{start}}">开始拉取</button></div>
 </sc-if>
-<sc-if value="{{step3}}" hint-placeholder-val="{{ false }}">
-<div>正在拉取：角色活动祈愿</div>
+<sc-if value="{{step4}}" hint-placeholder-val="{{ false }}">
+<div>正在拉取：{{impGame.pool}}</div>
 <div class="track" style="height: 8px"><div class="fill" style="height: 8px; width: 60%"></div></div>
 <div class="muted">已获取 120 条 · 每次请求间隔 300 ms</div>
 <div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{back}}">取消</button><button class="btn primary" onClick="{{finish}}">（原型）跳到完成</button></div>
 </sc-if>
-<sc-if value="{{step4}}" hint-placeholder-val="{{ false }}">
+<sc-if value="{{step5}}" hint-placeholder-val="{{ false }}">
 <div class="report">
 <div class="mini"><div class="muted">新增</div><div class="v">128</div></div>
 <div class="mini"><div class="muted">重复（已跳过）</div><div class="v">2,213</div></div>
@@ -587,6 +599,15 @@ var ACCS = [
 ];
 var LIGHT = { bg: '#F7F7F8', surface: '#FFFFFF', border: '#E4E4E7', text: '#18181B', text2: '#5F5F68', primary: '#3B6FE0', onprimary: '#FFFFFF', selected: '#EAF0FC', hover: '#F2F2F4', track: '#EDEDF0', gold: '#9A6700', up: '#1F7A4D', upbg: '#E3F4EA', loss: '#C23434', lossbg: '#FBE7E7', overlay: 'rgba(15,15,20,0.45)' };
 var DARK = { bg: '#141518', surface: '#1D1F23', border: '#2E3036', text: '#ECECEE', text2: '#A0A0AA', primary: '#7B9CF2', onprimary: '#0B0C0E', selected: '#232C40', hover: '#26282D', track: '#2A2C31', gold: '#E3A43B', up: '#5CCB94', upbg: '#183528', loss: '#F07A7A', lossbg: '#3A1E1E', overlay: 'rgba(0,0,0,0.6)' };
+// 每款游戏在导入弹窗里可用的方式
+var IMP = {
+  ys: { methods: ['url', 'file'], formats: 'UIGF v4（兼容旧版 UIGF）', found: '已在游戏缓存中找到抽卡链接（国服，UID 1****6789）', pool: '角色活动祈愿' },
+  sr: { methods: ['url', 'file'], formats: 'UIGF v4（兼容 SRGF）', found: '已在游戏缓存中找到抽卡链接（国服，UID 1****2345）', pool: '角色活动跃迁' },
+  zzz: { methods: ['url', 'file'], formats: 'UIGF v4', found: '已在游戏缓存中找到抽卡链接（国服）', pool: '独家频段' },
+  ww: { methods: ['url', 'file'], formats: 'GNJ（GachaNote JSON）', found: '已在 Client.log 中找到唤取记录链接（UID 1****0777）', pool: '角色活动唤取' },
+  ak: { methods: ['token', 'file'], formats: 'CSV（兼容现有导出工具）、GNJ', found: '', pool: '限定寻访' },
+  ef: { methods: ['token', 'file'], formats: 'CSV、GNJ', found: '', pool: '限定寻访' }
+};
 function gameOf(key) { for (var i = 0; i < GAMES.length; i++) { if (GAMES[i].key === key) return GAMES[i]; } return GAMES[0]; }
 function vars(t) { return Object.keys(t).map(function (k) { return '--' + k + ':' + t[k]; }).join(';'); }
 function pct(x) { return (x * 100 < 10 ? (x * 100).toFixed(1) : Math.round(x * 100)) + '%'; }
@@ -615,7 +636,7 @@ class Component extends DCLogic {
     super(props);
     this.state = { view: 'overview', acc: 0, pool: 0, tab: 'stats', dark: false, filter: 'all', importOpen: false, step: 1, method: 'url', shown: [], addOpen: false,
       lastAcc: {}, emptyGame: null, accMenu: false, more: false, expanded: {}, n: 10, distTable: false, showSkipped: false,
-      shareOpen: false, shareHide: true, shareDark: false, toast: '' };
+      importGame: null, shareOpen: false, shareHide: true, shareDark: false, toast: '' };
   }
   flash(text) { var self = this; this.setState({ toast: text }); clearTimeout(this._t); this._t = setTimeout(function () { self.setState({ toast: '' }); }, 3000); }
   renderVals() {
@@ -694,6 +715,18 @@ class Component extends DCLogic {
         golds: pe[3].map(function (x) { var tg = tagOf(x[2]); return { name: x[0], pulls: x[1], tag: tg.tag, cls: tg.cls }; }) };
     });
     var step = s.step;
+    var ig = s.importGame ? gameOf(s.importGame) : null, imp = s.importGame ? IMP[s.importGame] : null;
+    var impGames = GAMES.map(function (x) {
+      var mm = IMP[x.key].methods;
+      return { name: x.name, color: x.color, mono: x.mono, ink: x.ink, hint: mm[0] === 'url' ? '拉取链接 · 文件' : 'token 拉取 · 文件', pick: set({ importGame: x.key, step: 2 }) };
+    });
+    var MD = {
+      url: { title: '从游戏拉取', desc: s.importGame === 'ww' ? '先在游戏里打开一次唤取记录，从 Client.log 自动查找链接；找不到时可粘贴。' : '先在游戏里打开一次抽卡历史，自动查找链接；找不到时可粘贴。' },
+      token: { title: '鹰角账号 token · v0.2', desc: '在鹰角网络官网获取 token，一次拉取该账号下的明日方舟和终末地。' },
+      file: { title: '导入文件', desc: imp ? '支持 ' + imp.formats : '' }
+    };
+    var impMethods = imp ? imp.methods.map(function (k) { return { title: MD[k].title, desc: MD[k].desc, pick: set({ step: 3, method: k }) }; }) : [];
+    var ctxGame = s.view === 'detail' ? ACCS[s.acc].game : (s.view === 'empty' ? (s.emptyGame || 'zzz') : null);
     var tab = s.tab;
     return {
       rootStyle: vars(t),
@@ -736,14 +769,20 @@ class Component extends DCLogic {
       shareCopy: function () { self.flash('已复制到剪贴板（原型）'); },
       toastOn: !!s.toast, toastText: s.toast,
       importOpen: s.importOpen,
-      openImport: set({ importOpen: true, step: 1, accMenu: false }), closeImport: set({ importOpen: false, step: 1 }),
-      pickUrl: set({ step: 2, method: 'url' }), pickFile: set({ step: 2, method: 'file' }), pickToken: set({ step: 2, method: 'token' }),
-      back: function () { self.setState({ step: Math.max(1, self.state.step - 1) }); },
-      start: set({ step: 3 }), finish: set({ step: 4 }),
+      openImport: set({ importOpen: true, step: 1, importGame: null, accMenu: false }),
+      openImportHere: set({ importOpen: true, step: ctxGame ? 2 : 1, importGame: ctxGame, accMenu: false }),
+      impGames: impGames, impMethods: impMethods,
+      impGame: { name: ig ? ig.name : '', color: ig ? ig.color : '', mono: ig ? ig.mono : '', ink: ig ? ig.ink : '', found: imp ? imp.found : '', pool: imp ? imp.pool : '各卡池' },
+      impHeader: !!ig && step >= 2 && step <= 3,
+      changeGame: set({ step: 1, importGame: null }),
+      pickFileAuto: set({ step: 3, method: 'file', importGame: null }),
+      fileHint: imp ? '支持格式：' + imp.formats : '自动识别 UIGF / GNJ / CSV 及其中包含的游戏', closeImport: set({ importOpen: false, step: 1 }),
+      back: function () { var st = self.state.step; self.setState({ step: (st === 3 && !self.state.importGame) ? 1 : Math.max(1, st - 1) }); },
+      start: set({ step: 4 }), finish: set({ step: 5 }),
       viewAccount: set({ importOpen: false, step: 1, view: 'detail', acc: 0, pool: 0, tab: 'stats' }),
-      step1: step === 1, step2Url: step === 2 && s.method === 'url', step2File: step === 2 && s.method === 'file', step2Token: step === 2 && s.method === 'token',
-      step3: step === 3, step4: step === 4,
-      s1Cls: step === 1 ? 'on' : '', s2Cls: step === 2 ? 'on' : '', s3Cls: step === 3 ? 'on' : '', s4Cls: step === 4 ? 'on' : ''
+      step1: step === 1, stepMethod: step === 2, step2Url: step === 3 && s.method === 'url', step2File: step === 3 && s.method === 'file', step2Token: step === 3 && s.method === 'token',
+      step4: step === 4, step5: step === 5,
+      s1Cls: step === 1 ? 'on' : '', s2Cls: step === 2 ? 'on' : '', s3Cls: step === 3 ? 'on' : '', s4Cls: step === 4 ? 'on' : '', s5Cls: step === 5 ? 'on' : ''
     };
   }
 }
