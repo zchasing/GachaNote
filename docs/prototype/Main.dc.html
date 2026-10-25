@@ -301,14 +301,6 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 </div>
 </sc-for>
 </div>
-<div class="card">
-<div class="row" style="justify-content: space-between"><div class="ct">最近出金（全部卡池）</div><div class="muted">最近在上</div></div>
-<div class="hist">
-<sc-for list="{{accRecent}}" as="h" hint-placeholder-count="5">
-<div class="hrow" style="grid-template-columns: 24px 120px 1fr 48px 44px 96px"><span class="islot" aria-hidden="true"></span><span class="gold">{{h.name}}</span><span class="muted">{{h.pool}}</span><span class="num">{{h.pulls}} 抽</span><span class="tag {{h.cls}}">{{h.tag}}</span><span class="muted num">{{h.date}}</span></div>
-</sc-for>
-</div>
-</div>
 </sc-if>
 <sc-if value="{{tabStats}}" hint-placeholder-val="{{ false }}">
 <div class="metrics">
