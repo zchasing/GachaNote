@@ -323,7 +323,7 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <button class="mini minibtn" onClick="{{goAnalysis}}"><div class="muted">预测与评价 · v0.2 · 点击查看分析</div><div class="v">下一抽出金 {{pred.next}} · {{luckShort}}</div></button>
 </div>
 <div class="card">
-<div class="row" style="justify-content: space-between"><div class="ct">出金历史</div><div class="legend"><span>最近在上 · 条长 = 花费抽数</span><span><span class="sw" style="background: {{luckLegend.good}}"></span>欧</span><span><span class="sw" style="background: {{luckLegend.mid}}"></span>理论平均 {{pool.theory}} 抽</span><span><span class="sw" style="background: {{luckLegend.bad}}"></span>非</span></div></div>
+<div class="row" style="justify-content: space-between"><div class="ct">出金历史</div><div class="legend"><span>最近在上 · 条长 = 花费抽数</span><span><span class="sw" style="background: {{luckLegend.good}}"></span>欧</span><span><span class="sw" style="background: {{luckLegend.mid}}"></span>接近理论平均 {{pool.theory}} 抽</span><span><span class="sw" style="background: {{luckLegend.bad}}"></span>非</span></div></div>
 <div class="hist">
 <sc-for list="{{history}}" as="h" hint-placeholder-count="4">
 <div class="hrow"><span class="islot" aria-hidden="true"></span><span class="gold">{{h.name}}</span><div class="track" style="height: 10px"><div class="hbar" style="width: {{h.pct}}%; background: {{h.color}}; opacity: 1"></div></div><span class="num">{{h.pulls}} 抽</span><span class="tag {{h.cls}}">{{h.tag}}</span></div>
@@ -773,11 +773,10 @@ class Component extends DCLogic {
     var sumGold = a.pools.reduce(function (n0, p0) { return n0 + p0.gold; }, 0);
     var accSum = { total: sumTotal.toLocaleString('en-US'), gold: sumGold, avgGold: sumGold ? (sumTotal / sumGold).toFixed(1) : '—',
       range: allHist.length ? allHist[allHist.length - 1].date + ' – ' + allHist[0].date : '—' };
-    // 抽数条颜色：低于理论平均偏绿（欧），高于偏红（非），接近平均为黄
-    var luckColor = function (t) { t = Math.max(0, Math.min(1, t)); return 'hsl(' + Math.round(130 * (1 - t)) + ', ' + (s.dark ? '60%, 55%' : '62%, 42%') + ')'; };
-    var luckT = function (pulls) { return 0.5 + (pulls - m.theory) / (m.hard * 0.5); };
-    var luckLegend = { good: luckColor(0), mid: luckColor(0.5), bad: luckColor(1) };
-    var history = pool.hist.map(function (h) { var tg = tagOf(h[2]); return { name: h[0], pulls: h[1], time: h[3], pct: Math.round(h[1] / m.hard * 100), color: luckColor(luckT(h[1])), tag: tg.tag, cls: tg.cls }; });
+    // 抽数条三色：低于理论平均 85% 为绿（欧），高于 115% 为红（非），其余为黄
+    var luckLegend = { good: '#22C55E', mid: '#FBBF24', bad: '#F43F5E' };
+    var luckColor = function (pulls) { return pulls < m.theory * 0.85 ? luckLegend.good : (pulls > m.theory * 1.15 ? luckLegend.bad : luckLegend.mid); };
+    var history = pool.hist.map(function (h) { var tg = tagOf(h[2]); return { name: h[0], pulls: h[1], time: h[3], pct: Math.round(h[1] / m.hard * 100), color: luckColor(h[1]), tag: tg.tag, cls: tg.cls }; });
     var n = Math.max(1, Math.min(300, Number(s.n) || 1));
     var p1 = predict(m, pool.pity, pool.big, 1), pn = predict(m, pool.pity, pool.big, n);
     var hasUp = m.up !== null && pool.tpl !== 'std';
