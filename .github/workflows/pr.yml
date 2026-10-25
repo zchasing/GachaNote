@@ -36,8 +36,6 @@ jobs:
             chore
             revert
           requireScope: false
-          subjectPattern: ^(?![A-Z]).+$
-          subjectPatternError: '描述不要以大写字母开头，例如 "feat(core): 新增保底状态机"'
 
   commits:
     name: 提交信息
