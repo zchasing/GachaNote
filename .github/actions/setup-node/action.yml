@@ -1,0 +1,16 @@
+name: 准备前端环境
+description: 安装 pnpm 与 Node.js，并按 ui/pnpm-lock.yaml 安装依赖
+runs:
+  using: composite
+  steps:
+    - uses: pnpm/action-setup@v4
+      with:
+        package_json_file: ui/package.json
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: pnpm
+        cache-dependency-path: ui/pnpm-lock.yaml
+    - shell: bash
+      working-directory: ui
+      run: pnpm install --frozen-lockfile

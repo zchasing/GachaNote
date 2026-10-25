@@ -1,0 +1,191 @@
+# 主 CI：按改动路径只运行相关检查。
+# 各检查在对应目录还不存在时自动跳过，便于在写代码之前先把流水线搭好。
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: -D warnings
+  # core / formats / store 的行覆盖率下限（见架构文档 9.1）
+  COVERAGE_MIN: 90
+
+jobs:
+  changes:
+    name: 识别改动范围
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      rust: ${{ steps.filter.outputs.rust }}
+      ui: ${{ steps.filter.outputs.ui }}
+      bindings: ${{ steps.filter.outputs.bindings }}
+      metadata: ${{ steps.filter.outputs.metadata }}
+      docs: ${{ steps.filter.outputs.docs }}
+      workflows: ${{ steps.filter.outputs.workflows }}
+      has_cargo: ${{ steps.exists.outputs.cargo }}
+      has_core: ${{ steps.exists.outputs.core }}
+      has_app: ${{ steps.exists.outputs.app }}
+      has_ui: ${{ steps.exists.outputs.ui }}
+      has_metadata: ${{ steps.exists.outputs.metadata }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: .github/path-filters.yml
+      # job 级 if 不能用 hashFiles，这里先探测各模块是否已存在
+      - name: 探测已有模块
+        id: exists
+        run: |
+          probe() { if [ -e "$2" ]; then echo "$1=true"; else echo "$1=false"; fi >> "$GITHUB_OUTPUT"; }
+          probe cargo Cargo.toml
+          probe core crates/gachanote-core/Cargo.toml
+          probe app src-tauri/Cargo.toml
+          probe ui ui/package.json
+          probe metadata metadata/manifest.json
+
+  rust-lint:
+    name: Rust 格式与 Clippy
+    needs: changes
+    if: needs.changes.outputs.rust == 'true' && needs.changes.outputs.has_cargo == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-rust
+      - run: cargo fmt --all --check
+      - run: cargo clippy --workspace --all-targets --locked
+
+  rust-test:
+    name: Rust 测试 (${{ matrix.os }})
+    needs: changes
+    if: needs.changes.outputs.rust == 'true' && needs.changes.outputs.has_cargo == 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-rust
+      - run: cargo test --workspace --locked
+
+  rust-coverage:
+    name: 覆盖率门槛
+    needs: changes
+    if: needs.changes.outputs.rust == 'true' && needs.changes.outputs.has_core == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-rust
+        with:
+          components: llvm-tools-preview
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-llvm-cov
+      - name: core / formats / store 覆盖率
+        shell: bash
+        run: |
+          pkgs=()
+          for p in gachanote-core gachanote-formats gachanote-store; do
+            [ -f "crates/$p/Cargo.toml" ] && pkgs+=(-p "$p")
+          done
+          cargo llvm-cov "${pkgs[@]}" --locked --fail-under-lines "$COVERAGE_MIN" --summary-only
+
+  bindings:
+    name: 前后端类型绑定一致性
+    needs: changes
+    if: needs.changes.outputs.bindings == 'true' && needs.changes.outputs.has_app == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-rust
+      # 约定：src-tauri 中名为 export_bindings 的测试负责写出 ui/src/bindings.ts
+      - run: cargo test -p gachanote-app --locked export_bindings
+      - name: bindings.ts 必须已提交且为最新
+        run: git diff --exit-code -- ui/src/bindings.ts
+
+  ui:
+    name: 前端检查
+    needs: changes
+    if: needs.changes.outputs.ui == 'true' && needs.changes.outputs.has_ui == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ui
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node
+      - run: pnpm run --if-present lint
+      - run: pnpm run --if-present type-check
+      - run: pnpm run --if-present test
+      - run: pnpm run --if-present build
+
+  metadata:
+    name: 卡池元数据包校验
+    needs: changes
+    if: needs.changes.outputs.metadata == 'true' && needs.changes.outputs.has_metadata == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: JSON Schema 校验
+        if: hashFiles('metadata/schema/*.json') != ''
+        run: |
+          pip install --quiet check-jsonschema
+          python scripts/check_metadata.py --schema
+      - name: manifest SHA-256 校验
+        run: python scripts/check_metadata.py
+
+  docs:
+    name: 文档检查
+    needs: changes
+    if: needs.changes.outputs.docs == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DavidAnson/markdownlint-cli2-action@v20
+        with:
+          globs: |
+            **/*.md
+            !**/node_modules/**
+            !**/target/**
+
+  workflows:
+    name: 工作流语法检查
+    needs: changes
+    if: needs.changes.outputs.workflows == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: actionlint
+        shell: bash
+        run: |
+          bash <(curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/v1.7.7/scripts/download-actionlint.bash) 1.7.7
+          ./actionlint -color
+
+  # 分支保护只需要勾选这一项：任何被触发的检查失败都会让它失败，被跳过的不算失败。
+  ci-ok:
+    name: CI 通过
+    if: always()
+    needs: [changes, rust-lint, rust-test, rust-coverage, bindings, ui, metadata, docs, workflows]
+    runs-on: ubuntu-latest
+    steps:
+      - name: 汇总结果
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        run: exit 1
+      - run: echo "所有被触发的检查均已通过"
