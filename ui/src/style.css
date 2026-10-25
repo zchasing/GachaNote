@@ -1,0 +1,24 @@
+/* M0 占位样式；主题变量在 T-30 按 UI/UX 文档实现 */
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, 'Microsoft YaHei UI', sans-serif;
+  line-height: 1.5;
+  --bg: #f7f7fa;
+  --fg: #1f2030;
+  --muted: #6b6d80;
+  --accent: #f6c453;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1b1c27;
+    --fg: #e8e8f0;
+    --muted: #9a9cb0;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+}

@@ -1,10 +1,16 @@
 # cargo-deny 配置：漏洞、许可证、重复依赖、依赖来源
 [graph]
 all-features = true
+# 目前只发布 Windows 桌面版；Linux 上 Tauri 依赖的 gtk-rs 系列不进入发布产物
+targets = ["x86_64-pc-windows-msvc"]
 
 [advisories]
 version = 2
 yanked = "deny"
+ignore = [
+  # paste 不再维护，但只是编译期宏，被 tauri 与 specta 直接依赖，等上游替换
+  { id = "RUSTSEC-2024-0436", reason = "tauri / specta 的编译期依赖，无运行时风险" },
+]
 
 [licenses]
 version = 2

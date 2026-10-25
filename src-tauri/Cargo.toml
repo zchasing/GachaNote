@@ -1,0 +1,31 @@
+[package]
+name = "gachanote-app"
+description = "GachaNote 桌面端 Tauri 外壳：命令、事件、窗口与组装"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[lib]
+name = "gachanote_app_lib"
+# 只编为 rlib；以后做 Tauri mobile 时再加 staticlib / cdylib
+
+[build-dependencies]
+tauri-build = { workspace = true, features = [] }
+
+[dependencies]
+gachanote-core.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+specta.workspace = true
+specta-typescript.workspace = true
+tauri = { workspace = true, features = [] }
+tauri-specta.workspace = true
+tracing.workspace = true
+tracing-appender.workspace = true
+tracing-subscriber.workspace = true
+
+[lints]
+workspace = true
