@@ -304,7 +304,7 @@ pub trait RecordRepository: Send + Sync {
 | 导入 | `import_file(path, options) -> TaskId` | 异步执行，结果（新增/重复/失败）走事件 | F-02, F-05, F-06 |
 | 拉取 | `discover_urls(game)` | 自动查找缓存/日志中的抽卡 URL | F-03 |
 | 拉取 | `fetch_by_url(game, url, mode) -> TaskId` | mode = 增量 / 全量 | F-03 |
-| 拉取 | `save_hg_token(token)` / `fetch_by_token(account) -> TaskId` | 鹰角账号 token 拉取（v0.2） | F-04 |
+| 拉取 | `open_hg_login() -> token` / `save_hg_token(token)` / `fetch_by_token(account) -> TaskId` | 鹰角登录窗口获取 token、手动保存 token、按 token 拉取（v0.2） | F-04 |
 | 任务 | `cancel_task(id)` | 取消导入/拉取 | — |
 | 导出 | `export(accounts, format, path)` | UIGF v4.2 / GNJ / CSV | F-07 |
 | 元数据 | `check_metadata()` / `update_metadata()` | 检查并下载卡池元数据包 | F-08 |
@@ -462,7 +462,7 @@ sequenceDiagram
 
 ### 7.3 鹰角 token 拉取（v0.2）
 
-用户粘贴从官网获取的账号 token，后端依次换取 OAuth 授权码、游戏角色 token，再分页拉取：明日方舟用 `pos + gachaTs` 分页，终末地用 `seqId`。接口只参考 arknights-gacha-export 的行为，不复制其代码（该项目无许可证）。账号 token 用 DPAPI 加密后存入 `credential` 表，中间 token 只在内存中使用。
+账号 token 有两种来源：默认由 `open_hg_login` 打开独立的 Tauri WebviewWindow 载入鹰角官网登录页，用户登录后由后端从该窗口取得 token 并关闭窗口（取 token 的方式需技术验证，窗口不开放 IPC 给官网页面）；备用为用户手动粘贴。拿到 token 后，后端依次换取 OAuth 授权码、游戏角色 token，再分页拉取：明日方舟用 `pos + gachaTs` 分页，终末地用 `seqId`。接口只参考 arknights-gacha-export 的行为，不复制其代码（该项目无许可证）。账号 token 用 DPAPI 加密后存入 `credential` 表，中间 token 只在内存中使用。
 
 ### 7.4 错误处理
 

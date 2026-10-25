@@ -478,6 +478,27 @@ td{padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
 <div class="muted">示例：一个 UIGF v4 文件包含两款游戏</div>
 <div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{back}}">上一步</button><button class="btn primary" onClick="{{start}}">确认导入</button></div>
 </sc-if>
+<sc-if value="{{step2Login}}" hint-placeholder-val="{{ false }}">
+<div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden">
+<div class="row" style="justify-content: space-between; padding: 8px 12px; background: var(--hover); font-size: 12px"><span>鹰角网络 · 账号登录（独立窗口）</span><span class="muted">[鹰角官网登录地址]</span></div>
+<div class="muted" style="padding: 8px 12px; border-bottom: 1px solid var(--border)">登录在鹰角官网页面完成，GachaNote 不接触密码，只保存登录后的 token。</div>
+<div style="padding: 28px; text-align: center; color: var(--text2); display: flex; flex-direction: column; gap: 12px; align-items: center">
+<div>[ 鹰角官网登录页 ]</div>
+<button class="btn small" onClick="{{fakeLogin}}">（原型）模拟登录成功</button>
+</div>
+</div>
+<div class="muted">关闭窗口或 5 分钟未登录会回到上一步，可改用手动粘贴 token。</div>
+<div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{back}}">上一步</button></div>
+</sc-if>
+<sc-if value="{{step2LoginDone}}" hint-placeholder-val="{{ false }}">
+<div class="ok">已获取 token，找到该账号下的角色</div>
+<div class="tablebox"><table style="min-width: 0"><thead><tr><th scope="col">拉取</th><th scope="col">游戏</th><th scope="col">服务器</th><th scope="col">UID</th></tr></thead><tbody>
+<tr><td><input type="checkbox" checked="{{ true }}" aria-label="拉取明日方舟"></td><td>明日方舟</td><td>官服</td><td class="num">8****1024</td></tr>
+<tr><td><input type="checkbox" checked="{{ true }}" aria-label="拉取终末地"></td><td>明日方舟：终末地</td><td>官服</td><td class="num">2****5810</td></tr>
+</tbody></table></div>
+<label class="check"><input type="checkbox" checked="{{ true }}">记住 token（加密保存在本机）</label>
+<div class="row" style="justify-content: flex-end"><button class="btn" onClick="{{back}}">上一步</button><button class="btn primary" onClick="{{start}}">开始拉取</button></div>
+</sc-if>
 <sc-if value="{{step2Token}}" hint-placeholder-val="{{ false }}">
 <ol style="margin: 0; padding-left: 20px; font-size: 13px; color: var(--text2)"><li>在浏览器登录鹰角网络官网</li><li>打开账号信息接口页面</li><li>复制 content 字段的内容（不含引号）</li></ol>
 <label class="field">token<textarea class="input" style="min-height: 72px; padding: 8px 10px" placeholder="粘贴 token"></textarea></label>
@@ -605,8 +626,8 @@ var IMP = {
   sr: { methods: ['url', 'file'], formats: 'UIGF v4（兼容 SRGF）', found: '已在游戏缓存中找到抽卡链接（国服，UID 1****2345）', pool: '角色活动跃迁' },
   zzz: { methods: ['url', 'file'], formats: 'UIGF v4', found: '已在游戏缓存中找到抽卡链接（国服）', pool: '独家频段' },
   ww: { methods: ['url', 'file'], formats: 'GNJ（GachaNote JSON）', found: '已在 Client.log 中找到唤取记录链接（UID 1****0777）', pool: '角色活动唤取' },
-  ak: { methods: ['token', 'file'], formats: 'CSV（兼容现有导出工具）、GNJ', found: '', pool: '限定寻访' },
-  ef: { methods: ['token', 'file'], formats: 'CSV、GNJ', found: '', pool: '限定寻访' }
+  ak: { methods: ['login', 'token', 'file'], formats: 'CSV（兼容现有导出工具）、GNJ', found: '', pool: '限定寻访' },
+  ef: { methods: ['login', 'token', 'file'], formats: 'CSV、GNJ', found: '', pool: '限定寻访' }
 };
 function gameOf(key) { for (var i = 0; i < GAMES.length; i++) { if (GAMES[i].key === key) return GAMES[i]; } return GAMES[0]; }
 function vars(t) { return Object.keys(t).map(function (k) { return '--' + k + ':' + t[k]; }).join(';'); }
@@ -636,7 +657,7 @@ class Component extends DCLogic {
     super(props);
     this.state = { view: 'overview', acc: 0, pool: 0, tab: 'stats', dark: false, filter: 'all', importOpen: false, step: 1, method: 'url', shown: [], addOpen: false,
       lastAcc: {}, emptyGame: null, accMenu: false, more: false, expanded: {}, n: 10, distTable: false, showSkipped: false,
-      importGame: null, shareOpen: false, shareHide: true, shareDark: false, toast: '' };
+      importGame: null, loggedIn: false, shareOpen: false, shareHide: true, shareDark: false, toast: '' };
   }
   flash(text) { var self = this; this.setState({ toast: text }); clearTimeout(this._t); this._t = setTimeout(function () { self.setState({ toast: '' }); }, 3000); }
   renderVals() {
@@ -718,14 +739,15 @@ class Component extends DCLogic {
     var ig = s.importGame ? gameOf(s.importGame) : null, imp = s.importGame ? IMP[s.importGame] : null;
     var impGames = GAMES.map(function (x) {
       var mm = IMP[x.key].methods;
-      return { name: x.name, color: x.color, mono: x.mono, ink: x.ink, hint: mm[0] === 'url' ? '拉取链接 · 文件' : 'token 拉取 · 文件', pick: set({ importGame: x.key, step: 2 }) };
+      return { name: x.name, color: x.color, mono: x.mono, ink: x.ink, hint: mm[0] === 'url' ? '拉取链接 · 文件' : '登录鹰角账号 · 文件', pick: set({ importGame: x.key, step: 2 }) };
     });
     var MD = {
       url: { title: '从游戏拉取', desc: s.importGame === 'ww' ? '先在游戏里打开一次唤取记录，从 Client.log 自动查找链接；找不到时可粘贴。' : '先在游戏里打开一次抽卡历史，自动查找链接；找不到时可粘贴。' },
-      token: { title: '鹰角账号 token · v0.2', desc: '在鹰角网络官网获取 token，一次拉取该账号下的明日方舟和终末地。' },
+      login: { title: '登录鹰角账号（推荐）· v0.2', desc: '弹出鹰角官网登录窗口，登录后自动获取 token，一次拉取明日方舟和终末地。' },
+      token: { title: '手动粘贴 token · v0.2', desc: '自动获取失效时使用：从鹰角官网复制 token 粘贴进来。' },
       file: { title: '导入文件', desc: imp ? '支持 ' + imp.formats : '' }
     };
-    var impMethods = imp ? imp.methods.map(function (k) { return { title: MD[k].title, desc: MD[k].desc, pick: set({ step: 3, method: k }) }; }) : [];
+    var impMethods = imp ? imp.methods.map(function (k) { return { title: MD[k].title, desc: MD[k].desc, pick: set({ step: 3, method: k, loggedIn: false }) }; }) : [];
     var ctxGame = s.view === 'detail' ? ACCS[s.acc].game : (s.view === 'empty' ? (s.emptyGame || 'zzz') : null);
     var tab = s.tab;
     return {
@@ -780,7 +802,8 @@ class Component extends DCLogic {
       back: function () { var st = self.state.step; self.setState({ step: (st === 3 && !self.state.importGame) ? 1 : Math.max(1, st - 1) }); },
       start: set({ step: 4 }), finish: set({ step: 5 }),
       viewAccount: set({ importOpen: false, step: 1, view: 'detail', acc: 0, pool: 0, tab: 'stats' }),
-      step1: step === 1, stepMethod: step === 2, step2Url: step === 3 && s.method === 'url', step2File: step === 3 && s.method === 'file', step2Token: step === 3 && s.method === 'token',
+      step1: step === 1, stepMethod: step === 2, step2Url: step === 3 && s.method === 'url', step2File: step === 3 && s.method === 'file', step2Token: step === 3 && s.method === 'token', step2Login: step === 3 && s.method === 'login' && !s.loggedIn, step2LoginDone: step === 3 && s.method === 'login' && s.loggedIn,
+      fakeLogin: set({ loggedIn: true }),
       step4: step === 4, step5: step === 5,
       s1Cls: step === 1 ? 'on' : '', s2Cls: step === 2 ? 'on' : '', s3Cls: step === 3 ? 'on' : '', s4Cls: step === 4 ? 'on' : '', s5Cls: step === 5 ? 'on' : ''
     };
