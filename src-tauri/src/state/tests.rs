@@ -141,10 +141,7 @@ fn preview_import_stats_records_and_export() {
     // 再次导入：全部重复
     f.state.import_file(path.clone(), genshin_only());
     assert_eq!(f.wait().unwrap().report.skipped, 52);
-    assert_eq!(
-        f.state.preview_file(&path).unwrap().accounts[0].exists,
-        true
-    );
+    assert!(f.state.preview_file(&path).unwrap().accounts[0].exists);
 
     let stats = f.state.get_stats(&acc.id).unwrap();
     assert_eq!(stats.total_pulls, 52);
