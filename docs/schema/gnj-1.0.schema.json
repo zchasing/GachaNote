@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/zchasing/GachaNote/blob/main/docs/schema/gnj-1.0.schema.json",
+  "title": "GachaNote JSON (GNJ) v1.0",
+  "description": "GachaNote 的抽卡记录备份格式，主要用于明日方舟、明日方舟：终末地与鸣潮。",
+  "type": "object",
+  "required": ["info"],
+  "properties": {
+    "info": {
+      "type": "object",
+      "required": ["export_app", "export_app_version", "export_timestamp", "version"],
+      "properties": {
+        "export_app": { "type": "string" },
+        "export_app_version": { "type": "string" },
+        "export_timestamp": { "type": "integer", "description": "导出时间，UNIX 秒" },
+        "version": { "type": "string", "pattern": "^gnj-1\\.\\d+$" }
+      }
+    },
+    "arknights": { "$ref": "#/$defs/accounts" },
+    "endfield": { "$ref": "#/$defs/accounts" },
+    "wuthering_waves": { "$ref": "#/$defs/accounts" }
+  },
+  "additionalProperties": { "$ref": "#/$defs/accounts" },
+  "$defs": {
+    "accounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["uid", "timezone", "list"],
+        "properties": {
+          "uid": { "type": ["string", "integer"] },
+          "server": { "type": ["string", "null"] },
+          "timezone": { "type": "integer", "description": "服务器时区，小时" },
+          "nickname": { "type": ["string", "null"] },
+          "list": { "type": "array", "items": { "$ref": "#/$defs/record" } }
+        }
+      }
+    },
+    "record": {
+      "type": "object",
+      "required": ["pool_type", "item_name", "rarity", "time"],
+      "properties": {
+        "id": { "type": ["string", "null"], "description": "官方记录 ID；为空时按自然键去重" },
+        "pool_type": { "type": "string", "description": "GachaNote 的卡池类型（保底组）" },
+        "pool_id": { "type": ["string", "null"] },
+        "pool_name": { "type": ["string", "null"] },
+        "item_id": { "type": ["string", "null"] },
+        "item_name": { "type": "string", "minLength": 1 },
+        "item_type": { "type": ["string", "null"] },
+        "rarity": { "type": "integer", "minimum": 1, "maximum": 6, "description": "游戏内星数" },
+        "time": { "type": "integer", "description": "抽卡时间，UTC 毫秒" },
+        "seq": { "type": ["integer", "null"], "minimum": 0, "description": "同一秒内的顺序" },
+        "is_pull": { "type": "boolean", "default": true, "description": "是否计入抽数与保底" },
+        "raw": { "type": "object", "description": "原始字段" }
+      }
+    }
+  }
+}

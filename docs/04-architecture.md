@@ -85,33 +85,36 @@ flowchart TD
 
 ## 3. 游戏插件接口
 
-每款游戏实现一个 `GamePlugin`，内含三个可选能力：规则模板（必须）、拉取器（URL 或 token）、格式转换器。插件在 `src-tauri` 启动时注册到 `PluginRegistry`，前端通过 `list_games` 拿到游戏列表和各自支持的导入方式。
+每款游戏实现一个 `GamePlugin`：规则模板（必须）、官方卡池类型代码到内部卡池类型的映射（必须）、可选的拉取器。文件格式转换器跨游戏通用（一个 UIGF v4 文件可含三款游戏，GNJ 可含任意游戏），所以不挂在插件下，而是单独注册。插件与转换器在 `src-tauri` 启动时注册到 `PluginRegistry`，前端通过 `list_games` 拿到游戏列表和各自支持的导入方式。
 
 ```rust
 pub trait GamePlugin: Send + Sync {
-    fn id(&self) -> GameId;                 // "genshin" | "starrail" | "zzz" | "arknights" | "endfield" | "wuwa"
-    fn info(&self) -> GameInfo;              // 名称、厂商、主题色、卡池类型列表
-    fn rules(&self) -> &[PoolRule];          // 每种卡池类型一份规则模板
+    fn id(&self) -> GameId;                  // "genshin" | "starrail" | "zzz" | "arknights" | "endfield" | "wuwa"
+    fn info(&self) -> GameInfo;              // 厂商、主题色、卡池类型列表、拉取方式、支持的格式
+    fn rules(&self) -> &[PoolRule];          // 每种卡池类型一份规则模板，可按生效日期分段
+    fn pool_type(&self, official: &str) -> Option<PoolTypeId>; // 官方卡池代码 → 内部卡池类型（即保底组）
+    fn validate_uid(&self, uid: &str) -> bool { /* 默认：非空字母数字 */ }
     fn fetcher(&self) -> Option<&dyn Fetcher> { None }
-    fn converters(&self) -> &[&dyn Converter] { &[] }
-    fn classify(&self, rec: &GachaRecord, meta: &MetaPack) -> Classified; // 是否 UP、是否计入保底
+    fn classify(&self, rec: &NewRecord, meta: &GameMeta) -> Classified { meta.classify(rec) } // 是否 UP
 }
 
 #[async_trait]
 pub trait Fetcher: Send + Sync {
     fn kind(&self) -> FetchKind;             // Url | AccountToken
     async fn discover(&self, env: &dyn PathProvider) -> Result<Vec<FetchSource>>; // 自动查找 URL / 已保存凭据
-    async fn fetch(&self, src: &FetchSource, since: Option<Cursor>,
-                   progress: &dyn Progress, cancel: &CancelToken) -> Result<FetchOutput>;
+    async fn fetch(&self, src: &FetchSource, since: &Since,   // Since = 每个卡池类型的最新 Cursor，空则全量
+                   progress: &dyn Progress, cancel: &CancelToken) -> Result<Vec<ImportedAccount>>;
 }
 
 pub trait Converter: Send + Sync {
     fn format(&self) -> FormatId;            // UigfV4 | UigfV3 | UigfV2 | SrgfV1 | Gnj | AkExportCsv | GnCsv
-    fn sniff(&self, head: &[u8]) -> bool;    // 自动识别文件格式
-    fn decode(&self, input: &mut dyn Read) -> Result<Vec<ImportedAccount>>;
-    fn encode(&self, data: &[ExportAccount], out: &mut dyn Write) -> Result<()>;
+    fn sniff(&self, head: &[u8]) -> bool;    // 自动识别文件格式（先看文件开头 4 KB，识别不出再看整个文件）
+    fn decode(&self, input: &mut dyn Read) -> Result<Vec<ImportedAccount>>; // 个别记录不合法时放进 failures
+    fn encode(&self, data: &[ExportAccount], out: &mut dyn Write) -> Result<()>; // 只导入的格式返回 Invalid
 }
 ```
+
+转换器只做与格式有关的换算（时区换算成 UTC、方舟星级 0–5 → 1–6），记录的卡池类型以官方代码（`PoolRef::Official`）交给插件映射；GNJ 和自有 CSV 存的已是内部卡池类型（`PoolRef::Normalized`）。
 
 ### 3.1 规则模板
 
@@ -165,6 +168,18 @@ CREATE TABLE account (
   UNIQUE (game, uid)
 );
 
+CREATE TABLE import_batch (
+  id         TEXT PRIMARY KEY,
+  account_id TEXT REFERENCES account(id) ON DELETE CASCADE,
+  source     TEXT NOT NULL,                 -- file | url | token
+  format     TEXT,                          -- FormatId
+  file_name  TEXT,
+  added      INTEGER NOT NULL,
+  skipped    INTEGER NOT NULL,
+  started_at INTEGER NOT NULL,
+  finished_at INTEGER
+);
+
 CREATE TABLE gacha_record (
   id          TEXT PRIMARY KEY,
   account_id  TEXT NOT NULL REFERENCES account(id) ON DELETE CASCADE,
@@ -178,25 +193,13 @@ CREATE TABLE gacha_record (
   pulled_at   INTEGER NOT NULL,             -- UTC ms
   seq_in_sec  INTEGER NOT NULL DEFAULT 0,   -- 同一秒内的顺序（十连）
   is_pull     INTEGER NOT NULL DEFAULT 1,   -- 0 = 免费抽等不计保底
-  batch_id    TEXT REFERENCES import_batch(id),
+  batch_id    TEXT REFERENCES import_batch(id) ON DELETE SET NULL,
   raw_json    TEXT NOT NULL                 -- 原始字段，导出时无损还原
 );
 CREATE UNIQUE INDEX ux_record_ext  ON gacha_record(account_id, ext_id) WHERE ext_id IS NOT NULL;
 CREATE UNIQUE INDEX ux_record_nat  ON gacha_record(account_id, pool_type, pulled_at, item_name, seq_in_sec) WHERE ext_id IS NULL;
 CREATE INDEX ix_record_timeline   ON gacha_record(account_id, pool_type, pulled_at, seq_in_sec);
 CREATE INDEX ix_record_rarity     ON gacha_record(account_id, rarity);
-
-CREATE TABLE import_batch (
-  id         TEXT PRIMARY KEY,
-  account_id TEXT REFERENCES account(id) ON DELETE CASCADE,
-  source     TEXT NOT NULL,                 -- file | url | token
-  format     TEXT,                          -- FormatId
-  file_name  TEXT,
-  added      INTEGER NOT NULL,
-  skipped    INTEGER NOT NULL,
-  started_at INTEGER NOT NULL,
-  finished_at INTEGER
-);
 
 CREATE TABLE credential (
   id         TEXT PRIMARY KEY,
@@ -264,31 +267,41 @@ erDiagram
 
 ### 4.1 设计要点
 
-- **去重靠唯一索引**：导入用 `INSERT ... ON CONFLICT DO NOTHING`，影响行数即新增数，其余计为跳过。两条部分索引分别对应「有官方 ID」和「无官方 ID」两种去重键。
+- **去重靠唯一索引**：导入用 `INSERT ... ON CONFLICT DO NOTHING`，影响行数即新增数，其余计为跳过。两条部分索引分别对应「有官方 ID」和「无官方 ID」两种去重键。`seq_in_sec` 由导入管线计算：同一卡池类型、同一秒内优先用来源自带的序号（方舟 `pos`），否则按官方 ID 数值排序编号，保证同一份数据每次导入得到相同的键。
+- **终末地的官方 ID**：记录接口的 `seqId` 只在卡池内有意义，`ext_id` 取 `poolId:kind:seqId`。
 - **不存派生数据**：保底计数、是否歪等都由统计引擎实时计算，规则或元数据更新后自动变正确。统计结果只在内存中按 (account, pool\_type, 数据版本) 缓存。
 - **`raw_json` 必存**：保证 UIGF/GNJ 导出不丢字段，也方便以后发现解析错误时重算。
 - **元数据不入库**：卡池元数据包以 JSON 文件形式缓存在 `%APPDATA%/GachaNote/metadata/`，启动时加载到内存。
 
 ### 4.2 迁移与备份
 
-- 迁移脚本放在 `crates/gachanote-store/migrations/NNNN_name.sql`，用 `PRAGMA user_version` 记录版本，启动时自动升级。升级前先做一次备份。
-- 备份用 SQLite Online Backup API 复制到 `backups/gachanote-YYYYMMDD-HHMMSS.db`，保留最近 5 份。触发点：每次导入/拉取前、迁移前、删除账号前。
-- 设置页提供「从备份恢复」：关闭连接 → 替换文件 → 重新打开 → 前端全量刷新。
+- 迁移脚本放在 `crates/gachanote-store/migrations/NNNN_name.sql`，由 rusqlite\_migration 按 `PRAGMA user_version` 记录版本，启动时自动升级。已有数据且需要升级时先做一次备份（`SqliteStore::open_with_backup`）；数据库版本比程序新时拒绝打开。
+- 备份用 SQLite Online Backup API 复制到 `backups/gachanote-YYYYMMDD-HHMMSS.db`（本地时间，同一秒多次时加 `-1`、`-2`），保留最近 5 份。触发点：每次导入/拉取前、迁移前、删除账号前。
+- 设置页提供「从备份恢复」：用 Online Backup API 把备份整体写回当前连接（不必关闭连接、不受 WAL 文件影响），再迁移到最新结构 → 前端全量刷新。
 
 ### 4.3 存储接口
 
 ```rust
 pub trait RecordRepository: Send + Sync {
-    fn accounts(&self, game: Option<GameId>) -> Result<Vec<Account>>;
-    fn upsert_account(&self, a: &NewAccount) -> Result<Account>;
+    fn accounts(&self, game: Option<&GameId>) -> Result<Vec<Account>>;
+    fn account(&self, id: &AccountId) -> Result<Option<Account>>;
+    fn upsert_account(&self, a: &NewAccount) -> Result<Account>;     // 已存在时只补全为空的字段
+    fn rename_account(&self, id: &AccountId, nickname: Option<&str>) -> Result<()>;
     fn delete_account(&self, id: &AccountId) -> Result<()>;
-    fn insert_records(&self, batch: &ImportBatch, recs: &[NewRecord]) -> Result<InsertSummary>; // 单事务
+    // 单事务：自动建账号、去重写入、每个账号一条 import_batch；出错或 cancel 置位时整体回滚
+    fn insert_records(&self, meta: &ImportMeta, data: &[AccountImport], cancel: &CancelToken) -> Result<InsertSummary>;
     fn records(&self, q: &RecordQuery) -> Result<Page<GachaRecord>>;
-    fn timeline(&self, account: &AccountId, pool: &PoolTypeId) -> Result<Vec<GachaRecord>>; // 统计用，按时间顺序
+    fn timeline(&self, account: &AccountId, pool: Option<&PoolTypeId>) -> Result<Vec<GachaRecord>>; // 统计与导出用，按时间顺序
     fn latest_cursor(&self, account: &AccountId, pool: &PoolTypeId) -> Result<Option<Cursor>>; // 增量拉取
     fn backup(&self, dest: &Path) -> Result<()>;
 }
+
+pub trait BackupService: Send + Sync {        // store 中的 BackupManager 实现：命名、保留 5 份、列表、恢复
+    fn snapshot(&self, reason: BackupReason) -> Result<BackupInfo>;
+}
 ```
+
+一次文件导入可能含多个账号（UIGF v4），所以 `insert_records` 一次接收全部账号，在同一个事务里写完，满足「格式校验失败时不写入任何数据」。
 
 ## 5. Tauri 命令与事件
 
@@ -335,7 +348,7 @@ pub trait RecordRepository: Send + Sync {
 
 ### 5.3 任务模型
 
-长任务由 `TaskManager` 统一调度：同一账号同时只允许一个写入任务，每个任务持有 `CancelToken`。取消或失败时事务回滚，已拉取但未写入的数据丢弃。
+长任务由 `TaskManager`（`gachanote-core::task`）统一调度：每个任务在独立线程上运行并持有 `CancelToken`；任务解码出账号后用 `claim("game:uid")` 占用写入权，同一账号已有写入任务时以 `Busy` 失败。取消只是置位标记，管线在各阶段之间、写入事务中每 1000 条检查一次；取消或失败时事务回滚，已拉取但未写入的数据丢弃。任务结束时通过 `TaskEvents` 回调发出 `done` / `failed`，外壳把它们转成 `task://*` 事件。导入入口为 `ImportService`（`preview_file`、`import_file`、`spawn_import_file`、`import_accounts`）。
 
 ## 6. 统计引擎与概率算法
 
@@ -359,8 +372,11 @@ struct PityState {
 
 - **当前保底计数** = 扫描结束时的 `since_top`，及是否大保底、命定值。
 - **平均出 UP 抽数** = 从第一抽到最后一只 UP 的总抽数 ÷ UP 数（歪掉的那一段抽数计入下一只 UP，最后尚未出 UP 的尾部不计）。
-- **小保底歪率** = 歪的次数 ÷ 非大保底状态下的最高星次数；明日方舟无大小保底，改为非 UP 六星占比。
-- UP 判定优先用元数据包的卡池 UP 名单（按 `pulled_at` 落在哪一期）；缺失时退化为「常驻名单之外即 UP」，并在界面上标注为估算。
+- **小保底歪率** = 歪的次数 ÷ 非大保底状态下的最高星次数；明日方舟无大小保底，改为非 UP 六星占比。命定值已满时出的那一只同样视为「必出」，不计入分母。
+- UP 判定优先用记录自带的卡池 ID 或元数据包的卡池 UP 名单（按 `pulled_at` 落在哪一期）；找不到卡池但有常驻名单时退化为「常驻名单之外即 UP」，并在界面上标注为估算；两者都没有时为「UP 未知」，不计入歪率与平均出 UP，下一只是否大保底标为推断（`guarantee_uncertain`）。
+- **基础统计**：总抽数、各星级数量只算 `is_pull = 1` 的记录；免费抽与赠送条目单独计数（`free_count`），也不进入保底序列。
+- **命定值**：记录里看不出定轨对象，按「出非 UP 最高星加 1、出 UP 或命定值满时归零、换期清零」估算。
+- **换期**：规则需要卡池信息时（`PerBanner`、命定值、当期 N 抽必出 UP、井），按记录的卡池 ID 判断是否换期；`PerBanner` 的保底计数换期清零，`banner_pulls` 记录当期已抽数。
 
 图 6-1 大小保底与命定值的状态转移。`since_top` 每抽加 1，出最高星时归零；下图只画出最高星时发生的转移：
 
@@ -476,6 +492,9 @@ pub enum AppError {
     #[error("rate limited")]                 RateLimited,
     #[error("network: {0}")]                 Network(String),
     #[error("storage: {0}")]                 Storage(String),
+    #[error("not found: {0}")]               NotFound(String),     // 账号、备份等不存在
+    #[error("busy: ...")]                    Busy(String),         // 同一账号已有写入任务
+    #[error("invalid input: {0}")]           Invalid(String),      // UID 格式错误、不支持导出的格式等
     #[error("cancelled")]                    Cancelled,
     #[error("internal: {0}")]                Internal(String),
 }
