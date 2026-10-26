@@ -122,8 +122,12 @@ mod tests {
         assert!(out.contains("https://hk4e-api.mihoyo.com/gacha_info/api/getGachaLog"));
         assert!(out.contains("12*****89"));
         assert!(out.contains("Redacted(***)"));
-        for secret in ["AUTHKEY_SECRET", "page=1", "123456789", "TOKEN_SECRET"] {
-            assert!(!out.contains(secret), "日志泄露了 {secret}: {out}");
+        // 失败消息只给序号，不回显敏感值本身（避免 CodeQL rust/cleartext-logging）
+        for (i, secret) in ["AUTHKEY_SECRET", "page=1", "123456789", "TOKEN_SECRET"]
+            .iter()
+            .enumerate()
+        {
+            assert!(!out.contains(secret), "日志泄露了第 {i} 个敏感值");
         }
     }
 
