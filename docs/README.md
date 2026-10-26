@@ -8,4 +8,6 @@
 | [04 架构设计](04-architecture.md) | crate 划分、插件接口、数据库、Tauri 命令、统计引擎 |
 | [05 开发计划](05-dev-plan.md) | 里程碑 M0–M6、任务 T-01–T-63、完成定义 |
 
+面向用户的文档：[使用说明](user-guide.md)（安装、SmartScreen、首次导入、常见问题）、[隐私说明](privacy.md)。
+
 文档最初在 Claude Docs 中编写，此后以仓库中的版本为准；接口、表结构或口径变化时同步更新对应文档。

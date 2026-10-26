@@ -38,6 +38,17 @@ cargo test --workspace --locked
 cd ui && pnpm lint && pnpm type-check && pnpm test && pnpm build
 ```
 
+另有两组较慢的测试，CI 会单独运行：
+
+```sh
+# 性能基准（SRS NFR-01–03）：用与 release 同级优化的 perf profile 跑计时测试
+cargo test -p gachanote-app --profile perf --locked perf -- --ignored --test-threads=1 --nocapture
+
+# 冒烟测试（Playwright）：浏览器加载真实前端，后端由 ui/e2e/mock-backend.ts 模拟
+cd ui && pnpm exec playwright install chromium   # 只需一次
+pnpm e2e
+```
+
 新增或修改 Tauri 命令后，运行 `cargo test -p gachanote-app export_bindings` 重新生成
 `ui/src/bindings.ts` 并一起提交。日志写在数据目录的 `GachaNote/logs/`（Windows 为
 `%APPDATA%\GachaNote\logs\`），可用环境变量 `RUST_LOG` 调整级别；URL、UID、token
@@ -96,7 +107,7 @@ docs: 补充架构文档 ER 图
 | `CI`（ci.yml） | 每个 PR、推送到 `main` | 按改动路径只运行相关检查，见下表；最后由「CI 通过」汇总 |
 | `PR 规范`（pr.yml） | PR 创建、编辑、推送 | PR 标题与提交信息格式；按路径自动打 `area/*`、`game/*` 标签 |
 | `依赖安全`（security.yml） | 依赖清单变化、每周一 | cargo-deny（漏洞、许可证、来源）、pnpm audit |
-| `Release`（release.yml） | 推送 `v*` 标签；手动触发 | 构建 Windows NSIS 安装包；标签发布时创建 Release 草稿和自动更新清单 |
+| `Release`（release.yml） | 推送 `v*` 标签；手动触发 | 构建 Windows NSIS 安装包并检查体积 ≤ 20 MB；标签发布时创建 Release 草稿，写入更新日志与 SHA-256 |
 
 `CI` 中各检查的触发条件：
 
@@ -105,8 +116,10 @@ docs: 补充架构文档 ER 图
 | Rust 格式与 Clippy | `crates/**`、`src-tauri/**`、`Cargo.*` | `cargo fmt --check`、`cargo clippy -D warnings` |
 | Rust 测试 | 同上 | `cargo test`，Linux 与 Windows 各跑一次 |
 | 覆盖率门槛 | 同上 | `core`、`formats`、`store`、`games`、`meta` 行覆盖率 ≥ 90%（cargo-llvm-cov） |
+| 性能基准 | 同上 | 10 万条导入、5 万条统计重算、冷启动、10 万条翻页的计时测试，超出 NFR 阈值即失败 |
 | 前后端类型绑定一致性 | `crates/**`、`src-tauri/**`、`ui/src/bindings.ts` | 重新生成 `bindings.ts`，必须与已提交版本一致 |
 | 前端检查 | `ui/**` | `lint`、`type-check`、`test`、`build`（脚本存在才运行） |
+| 冒烟测试（Playwright） | `ui/**` | 首次导入、总览、主题与语言切换；失败时上传报告与 trace |
 | 卡池元数据包校验 | `metadata/**` | JSON 可解析、Schema 校验、`manifest.json` 中的 SHA-256 与文件一致 |
 | 文档检查 | `**/*.md` | markdownlint |
 | 工作流语法检查 | `.github/workflows/**` | actionlint |
@@ -121,6 +134,13 @@ docs: 补充架构文档 ER 图
 - 修改 `metadata/` 后运行 `python scripts/check_metadata.py --fix` 更新 `manifest.json` 的哈希。发布新数据时同时把 `manifest.json` 的 `version` 改大（`YYYY.M.D`），客户端只下载版本更高的包。
 - 米哈游三款的物品表和历史卡池用 `python scripts/build_hoyo_metadata.py` 从 HoYo.Gacha 重新生成；鸣潮、明日方舟、终末地手工维护。
 - 发布前把 `src-tauri/tauri.conf.json` 的 `version` 改成与标签一致（标签 `v0.1.0` 对应 `0.1.0`），否则发布会失败。
+
+### 发布流程
+
+1. 确认 `main` 上 CI 全绿；在 Actions 里手动运行一次 `Release`，下载 artifact 里的安装包，在干净的 Windows 10/11 上完成安装、导入、升级、卸载的手工冒烟（开发计划 6.2）。
+2. 同步版本号：`src-tauri/tauri.conf.json`、`ui/package.json`、根 `Cargo.toml` 的 `workspace.package.version`，通过 PR 合并（`chore(release): v0.1.0`）。
+3. 在 `main` 上打标签并推送：`git tag v0.1.0 && git push origin v0.1.0`。带 `-` 的标签（如 `v0.2.0-beta.1`）会标成预发布。
+4. 工作流会创建 Release 草稿：正文是自上个标签以来合并的 PR 列表 + 安装说明 + SHA-256，并附 `SHA256SUMS.txt`。检查无误后在网页上点「Publish release」。
 
 ### 仓库设置（一次性）
 

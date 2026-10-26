@@ -574,8 +574,8 @@ ui/src/
 | 拉取器 | wiremock | 用录制好的脱敏响应模拟分页、过期、限流；缓存/日志解析用样例文件 |
 | 存储 | cargo test（内存 SQLite） | 去重、事务回滚、迁移升级、备份恢复 |
 | 前端 | Vitest + Vue Test Utils | Store 逻辑、关键组件渲染 |
-| 端到端 | Playwright（mock IPC） | 导入向导、概览、主题/语言切换的冒烟测试 |
-| 性能 | criterion | 10 万条导入、统计重算，对应 NFR 阈值 |
+| 端到端 | Playwright（mock IPC，`ui/e2e/`） | 导入向导、概览、主题/语言切换的冒烟测试 |
+| 性能 | release 下的计时测试（`#[ignore]`，CI 单独运行） | 10 万条导入、5 万条统计重算、冷启动、10 万条翻页，对应 NFR 阈值 |
 
 `core`、`formats`、`store`、`games`、`meta` 的行覆盖率目标 ≥ 90%（cargo-llvm-cov），外壳与前端不设硬指标。测试用的真实样例文件必须去掉 UID 与 authkey 后才能入库。
 
