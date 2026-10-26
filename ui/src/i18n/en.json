@@ -1,0 +1,579 @@
+{
+  "app": {
+    "name": "GachaNote"
+  },
+  "nav": {
+    "overview": "Overview",
+    "games": "Games",
+    "addGame": "Add game",
+    "hideFromSidebar": "Hide from sidebar",
+    "noAccount": "No account yet · Import",
+    "settings": "Settings",
+    "toLight": "Switch to light theme",
+    "toDark": "Switch to dark theme",
+    "import": "Import / Fetch",
+    "collapse": "Collapse sidebar",
+    "expand": "Expand sidebar"
+  },
+  "games": {
+    "genshin": {
+      "name": "Genshin Impact",
+      "mono": "G"
+    },
+    "starrail": {
+      "name": "Honkai: Star Rail",
+      "mono": "S"
+    },
+    "zzz": {
+      "name": "Zenless Zone Zero",
+      "mono": "Z"
+    },
+    "arknights": {
+      "name": "Arknights",
+      "mono": "A"
+    },
+    "endfield": {
+      "name": "Arknights: Endfield",
+      "mono": "E"
+    },
+    "wuwa": {
+      "name": "Wuthering Waves",
+      "mono": "W"
+    }
+  },
+  "pools": {
+    "genshin": {
+      "character": {
+        "name": "Character Event Wish",
+        "short": "Character"
+      },
+      "weapon": {
+        "name": "Weapon Event Wish",
+        "short": "Weapon"
+      },
+      "standard": {
+        "name": "Standard Wish",
+        "short": "Standard"
+      },
+      "chronicled": {
+        "name": "Chronicled Wish",
+        "short": "Chronicled"
+      },
+      "beginner": {
+        "name": "Beginners' Wish",
+        "short": "Beginner"
+      }
+    },
+    "starrail": {
+      "character": {
+        "name": "Character Event Warp",
+        "short": "Character"
+      },
+      "light_cone": {
+        "name": "Light Cone Event Warp",
+        "short": "Light Cone"
+      },
+      "collab_character": {
+        "name": "Collab Character Warp",
+        "short": "Collab Char."
+      },
+      "collab_light_cone": {
+        "name": "Collab Light Cone Warp",
+        "short": "Collab LC"
+      },
+      "standard": {
+        "name": "Stellar Warp",
+        "short": "Standard"
+      },
+      "beginner": {
+        "name": "Departure Warp",
+        "short": "Beginner"
+      }
+    },
+    "zzz": {
+      "character": {
+        "name": "Exclusive Channel",
+        "short": "Exclusive"
+      },
+      "w_engine": {
+        "name": "W-Engine Channel",
+        "short": "W-Engine"
+      },
+      "standard": {
+        "name": "Stable Channel",
+        "short": "Standard"
+      },
+      "bangboo": {
+        "name": "Bangboo Channel",
+        "short": "Bangboo"
+      },
+      "exclusive_rescreening": {
+        "name": "Exclusive Rescreening",
+        "short": "Rescreening"
+      },
+      "w_engine_reverberation": {
+        "name": "W-Engine Reverberation",
+        "short": "Reverb."
+      }
+    },
+    "arknights": {
+      "standard": {
+        "name": "Standard Headhunting",
+        "short": "Standard"
+      },
+      "classic": {
+        "name": "Kernel Headhunting",
+        "short": "Kernel"
+      },
+      "limited": {
+        "name": "Limited Headhunting",
+        "short": "Limited"
+      },
+      "single": {
+        "name": "Debut Headhunting",
+        "short": "Debut"
+      },
+      "linkage": {
+        "name": "Collab Headhunting",
+        "short": "Collab"
+      },
+      "beginner": {
+        "name": "Beginner Headhunting",
+        "short": "Beginner"
+      },
+      "other": {
+        "name": "Other Headhunting",
+        "short": "Other"
+      }
+    },
+    "endfield": {
+      "character": {
+        "name": "Limited Character Banner",
+        "short": "Limited"
+      },
+      "weapon": {
+        "name": "Weapon Banner",
+        "short": "Weapon"
+      },
+      "standard": {
+        "name": "Standard Banner",
+        "short": "Standard"
+      },
+      "beginner": {
+        "name": "Beginner Banner",
+        "short": "Beginner"
+      },
+      "other": {
+        "name": "Other Banner",
+        "short": "Other"
+      }
+    },
+    "wuwa": {
+      "character": {
+        "name": "Featured Resonator Convene",
+        "short": "Character"
+      },
+      "weapon": {
+        "name": "Featured Weapon Convene",
+        "short": "Weapon"
+      },
+      "standard_character": {
+        "name": "Standard Resonator Convene",
+        "short": "Std. Char."
+      },
+      "standard_weapon": {
+        "name": "Standard Weapon Convene",
+        "short": "Std. Weapon"
+      },
+      "beginner": {
+        "name": "Beginner Convene",
+        "short": "Beginner"
+      },
+      "beginner_selector": {
+        "name": "Beginner's Choice Convene",
+        "short": "Choice"
+      },
+      "giveback_selector": {
+        "name": "Giveback Custom Convene",
+        "short": "Giveback"
+      }
+    }
+  },
+  "rarity": {
+    "star": "{n}★",
+    "zzz": {
+      "4": "S-Rank",
+      "3": "A-Rank",
+      "2": "B-Rank"
+    },
+    "andBelow": "{name} and below"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "confirm": "OK",
+    "close": "Close",
+    "save": "Save",
+    "done": "Done",
+    "back": "Back",
+    "next": "Next",
+    "loading": "Loading…",
+    "retry": "Retry",
+    "details": "Details",
+    "all": "All",
+    "copied": "Copied",
+    "expand": "Show more",
+    "collapse": "Show less",
+    "none": "—",
+    "export": "Export",
+    "rename": "Rename",
+    "delete": "Delete",
+    "open": "Open",
+    "more": "More",
+    "pulls": "{n} pulls",
+    "count": "{n} records",
+    "estimated": "Estimated",
+    "inferred": "Inferred",
+    "comingSoon": "Available in {version}",
+    "restart": "Restart now"
+  },
+  "time": {
+    "justNow": "just now",
+    "minutes": "{n} min ago",
+    "hours": "{n} h ago",
+    "yesterday": "yesterday",
+    "days": "{n} days ago",
+    "never": "never updated"
+  },
+  "pity": {
+    "guaranteed": "Guaranteed",
+    "fiftyFifty": "50/50",
+    "of": "/ {n}"
+  },
+  "overview": {
+    "title": "Overview",
+    "summary": "{accounts} accounts · {pulls} pulls in total",
+    "summaryEmpty": "No records imported yet",
+    "filterAll": "All",
+    "totalPulls": "Total pulls",
+    "avgUp": "Avg. per featured",
+    "lossRate": "Lost 50/50",
+    "avgTop": "Avg. per top",
+    "openAccount": "Open {name}",
+    "emptyTitle": "Import your gacha history to see pity and totals for every account here.",
+    "fromGame": "Fetch from game",
+    "importFile": "Import file",
+    "noPulls": "No records",
+    "updated": "updated {time}"
+  },
+  "account": {
+    "uid": "UID {uid}",
+    "copyUid": "Click to copy UID",
+    "update": "Update records",
+    "importNew": "Import a new account",
+    "lastUpdated": "Last updated: {time}",
+    "tabs": {
+      "stats": "Stats",
+      "records": "Records"
+    },
+    "renameTitle": "Rename account",
+    "renamePlaceholder": "Nickname; leave empty to show the UID",
+    "deleteTitle": "Delete account",
+    "deleteBody": "All gacha records of {name} will be deleted. A backup is made first and can be restored in Settings → Data.",
+    "deleteConfirm": "Delete {n} records",
+    "exportTitle": "Export account",
+    "deleted": "Account deleted",
+    "renamed": "Renamed",
+    "notFound": "This account no longer exists.",
+    "emptyGame": "No {game} account yet. One is created automatically when you fetch or import records.",
+    "goImport": "Import"
+  },
+  "stats": {
+    "overview": "Overview",
+    "currentPity": "Current pity",
+    "avgUp": "Avg. per featured",
+    "lossRate": "Lost 50/50 rate",
+    "avgTop": "Avg. per top-rarity",
+    "spark": "Spark",
+    "upWithin": "Featured within {n}",
+    "path": "Fate points",
+    "upCount": "{n} featured in total",
+    "lossFrac": "lost {lost} of {total} 50/50s",
+    "topCountSub": "{n} in total",
+    "sparkSub": "{n} pulls on this banner",
+    "upWithinSub": "{n} pulls since last featured",
+    "remaining": "{n} pulls to hard pity",
+    "totalPulls": "Total pulls",
+    "topCount": "{name} pulls",
+    "share": "{name}",
+    "range": "Record range",
+    "free": "{n} free pulls not counted",
+    "unknownUp": "{n} {name} pulls lack banner data and are excluded from the 50/50 rate",
+    "estimatedUp": "Some featured checks are estimated from the standard list",
+    "unrated": "{n} records are on banners not yet supported",
+    "composition": "Pull composition",
+    "compositionAll": "Pull composition (all banners)",
+    "upSplit": "featured {up} · lost {lost}",
+    "upSplitStd": "featured {up} · lost {lost} · standard {std}",
+    "avgEvery": "one {name} every {n} pulls on average",
+    "history": "{name} history",
+    "historyEmpty": "No {name} pulls on this banner yet.",
+    "legendLucky": "Lucky (< 85% of average)",
+    "legendEven": "Near average",
+    "legendUnlucky": "Unlucky (> 115% of average)",
+    "up": "Featured",
+    "lost": "Lost",
+    "unknown": "Unknown",
+    "guaranteedPull": "Guaranteed",
+    "viewDetail": "Details",
+    "pools": "Banners",
+    "noData": "No records on this banner yet.",
+    "pulls": "Pulls"
+  },
+  "records": {
+    "pool": "Banner",
+    "rarity": "Rarity",
+    "range": "Time range",
+    "search": "Search",
+    "searchPlaceholder": "Item name",
+    "onlyTop": "{name} only",
+    "ranges": {
+      "all": "All time",
+      "d30": "Last 30 days",
+      "d90": "Last 90 days",
+      "d365": "Last year"
+    },
+    "columns": {
+      "time": "Time",
+      "pool": "Banner",
+      "item": "Item",
+      "type": "Type",
+      "rarity": "Rarity",
+      "pulls": "Pity",
+      "mark": "50/50"
+    },
+    "free": "Free",
+    "empty": "No matching records.",
+    "pager": "{total} records · page {page} of {pages}",
+    "prev": "Previous",
+    "next": "Next",
+    "perPage": "{n} per page"
+  },
+  "import": {
+    "title": "Import / Fetch",
+    "steps": {
+      "game": "Game",
+      "method": "Method",
+      "prepare": "Prepare",
+      "progress": "Progress",
+      "report": "Report"
+    },
+    "pickGame": "Choose the game to import records for",
+    "autoDetect": "Import a file and detect the game automatically",
+    "autoDetectHint": "For UIGF files that contain several games",
+    "changeGame": "Change game",
+    "methods": {
+      "url": "Fetch from game",
+      "urlDesc": "Finds the history link automatically, or paste one",
+      "urlDescWuwa": "Finds the link in Client.log, or paste one",
+      "file": "Import file",
+      "fileDesc": "Supports {formats}",
+      "login": "Sign in to Hypergryph",
+      "loginDesc": "Recommended; gets the token after you sign in",
+      "token": "Paste token",
+      "tokenDesc": "Fallback when the sign-in window does not work"
+    },
+    "formatNames": {
+      "uigf_v4": "UIGF v4",
+      "uigf_v3": "UIGF v3",
+      "uigf_v2": "UIGF v2",
+      "srgf_v1": "SRGF",
+      "gnj": "GNJ (GachaNote JSON)",
+      "ak_export_csv": "CSV (arknights-gacha-export)",
+      "gn_csv": "CSV (GachaNote)"
+    },
+    "url": {
+      "searching": "Looking for the gacha history link…",
+      "found": "Found a history link: {display}",
+      "notFound": "No history link found. Open the gacha history in the game once, then search again, or paste the link below.",
+      "unsupported": "Automatic search is not available on this system. Paste the history link below.",
+      "retry": "Search again",
+      "paste": "Paste the history link",
+      "pastePlaceholder": "https://…",
+      "useFound": "Use the link found",
+      "usePasted": "Use the pasted link",
+      "mode": "Range",
+      "incremental": "New records only",
+      "full": "Fetch everything again",
+      "start": "Start fetching"
+    },
+    "file": {
+      "drop": "Drop a file here, or",
+      "choose": "choose a file",
+      "filterName": "Gacha records",
+      "reading": "Reading file…",
+      "detected": "{file} · format: {format}",
+      "colGame": "Game",
+      "colUid": "UID",
+      "colCount": "Records",
+      "colRange": "Time range",
+      "colStatus": "Status",
+      "exists": "Existing, will merge",
+      "new": "New account",
+      "unsupported": "Not supported",
+      "failed": "{n} could not be read",
+      "start": "Import {n} selected accounts",
+      "noneSelected": "Select at least one account",
+      "otherGame": "This file has no {game} records."
+    },
+    "progress": {
+      "discover": "Searching…",
+      "fetch": "Fetching",
+      "parse": "Reading records…",
+      "backup": "Backing up the database…",
+      "write": "Writing",
+      "fetched": "{n} fetched",
+      "written": "{current} of {total}",
+      "starting": "Starting…",
+      "cancel": "Cancel",
+      "cancelling": "Cancelling…"
+    },
+    "report": {
+      "added": "Added",
+      "skipped": "Duplicates",
+      "failed": "Failed",
+      "created": "New accounts: {list}",
+      "backup": "Backed up before writing: {name}",
+      "failures": "Failed records",
+      "more": "{n} more not shown",
+      "viewAccount": "View account",
+      "cancelled": "Cancelled. Nothing was written.",
+      "failedTitle": "The import did not finish. The database is unchanged.",
+      "nothing": "There was nothing to write."
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "sections": {
+      "general": "General",
+      "data": "Data",
+      "metadata": "Banner data",
+      "credentials": "Credentials",
+      "about": "About"
+    },
+    "language": "Language",
+    "languageSystem": "System default",
+    "theme": "Theme",
+    "themes": {
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "proxy": "Network proxy",
+    "proxyHint": "Leave empty to use the system proxy. Takes effect after restart.",
+    "proxyPlaceholder": "http://127.0.0.1:7890",
+    "proxySaved": "Proxy saved. It takes effect after restart.",
+    "dataDir": "Data folder",
+    "dataDirHint": "Where the database and backups are kept",
+    "change": "Change…",
+    "resetDir": "Use default",
+    "openDir": "Open folder",
+    "dataDirMoved": "Data copied to the new folder. It takes effect after restart; the old files were not deleted.",
+    "dbSize": "Database size: {size}",
+    "backups": "Backups",
+    "backupsHint": "Made automatically before every import and account deletion; the latest 5 are kept",
+    "backupNow": "Back up now",
+    "backupDone": "Backed up",
+    "restore": "Restore",
+    "restoreTitle": "Restore from backup",
+    "restoreBody": "Current data will be replaced with {name}. The current data is backed up first.",
+    "restoreConfirm": "Restore",
+    "restored": "Restored from backup",
+    "noBackups": "No backups yet",
+    "exportAll": "Export all",
+    "exportHint": "One account at a time; UIGF supports Genshin, Star Rail and ZZZ only",
+    "accounts": "Accounts",
+    "noAccounts": "No accounts yet",
+    "exported": "Exported {n} records",
+    "metaVersion": "Current version",
+    "metaOrigin": {
+      "bundled": "built in",
+      "cache": "downloaded"
+    },
+    "metaCheck": "Check for updates",
+    "metaChecking": "Checking…",
+    "metaUpdated": "Updated to {version}",
+    "metaUpToDate": "Up to date ({version})",
+    "metaAppTooOld": "Banner data {version} needs app version {min} or later",
+    "metaAuto": "Check on startup",
+    "metaHint": "Banner data lists past banners and standard pools, used to tell featured pulls apart.",
+    "credentialsEmpty": "No saved credentials. Hypergryph token fetching arrives in v0.2; saved tokens are encrypted on this computer.",
+    "version": "Version",
+    "logs": "Log folder",
+    "openLogs": "Open log folder",
+    "license": "Open source under the MIT license",
+    "privacy": "All data stays on this computer. No usage data is collected.",
+    "source": "Source code"
+  },
+  "export": {
+    "format": "Format",
+    "uigf": "UIGF v4.2",
+    "gnj": "GNJ (GachaNote JSON)",
+    "csv": "CSV",
+    "uigfOnlyHoyo": "UIGF supports Genshin, Star Rail and ZZZ only",
+    "choose": "Choose where to save and export"
+  },
+  "errors": {
+    "unknown_format": {
+      "title": "File format not recognized",
+      "hint": "Make sure the file is a UIGF, GNJ or CSV gacha export."
+    },
+    "parse": {
+      "title": "The file has invalid content",
+      "hint": "Check the location shown in the details, or export the file again."
+    },
+    "url_not_found": {
+      "title": "No history link found",
+      "hint": "Open the gacha history in the game once and search again, or paste the link."
+    },
+    "auth_expired": {
+      "title": "The history link has expired",
+      "hint": "Open the gacha history in the game again, then search again or paste the new link."
+    },
+    "rate_limited": {
+      "title": "Too many requests",
+      "hint": "The official API is rate limiting. Wait a few minutes and try again."
+    },
+    "network": {
+      "title": "Network error",
+      "hint": "Check your connection or proxy settings and try again."
+    },
+    "storage": {
+      "title": "Database error",
+      "hint": "Check disk space and folder permissions. Your data was not changed."
+    },
+    "not_found": {
+      "title": "Not found",
+      "hint": "It may have been deleted. Refresh and try again."
+    },
+    "busy": {
+      "title": "This account is being imported",
+      "hint": "Wait for the current import or fetch to finish."
+    },
+    "invalid": {
+      "title": "Invalid input",
+      "hint": "Check the input and try again."
+    },
+    "cancelled": {
+      "title": "Cancelled",
+      "hint": "Nothing was written."
+    },
+    "internal": {
+      "title": "Something went wrong",
+      "hint": "Try again. If it keeps happening, open the log folder from Settings → About and report it."
+    },
+    "unknown": {
+      "title": "Something went wrong",
+      "hint": "Try again."
+    }
+  }
+}

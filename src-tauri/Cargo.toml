@@ -17,15 +17,25 @@ tauri-build = { workspace = true, features = [] }
 
 [dependencies]
 gachanote-core.workspace = true
+gachanote-formats.workspace = true
+gachanote-games.workspace = true
+gachanote-meta.workspace = true
+gachanote-store.workspace = true
+reqwest.workspace = true
 serde.workspace = true
 serde_json.workspace = true
 specta.workspace = true
 specta-typescript.workspace = true
 tauri = { workspace = true, features = [] }
+tauri-plugin-dialog = "2"
 tauri-specta.workspace = true
 tracing.workspace = true
 tracing-appender.workspace = true
 tracing-subscriber.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
 
 [lints]
 workspace = true

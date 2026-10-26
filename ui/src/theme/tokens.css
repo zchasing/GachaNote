@@ -1,0 +1,88 @@
+/*
+ * 设计 token（UI/UX 文档第 5 节）。组件只引用变量，深浅主题只切换变量值。
+ * 主题由 <html data-theme="light|dark"> 决定，「跟随系统」时由 useTheme 按 prefers-color-scheme 设置。
+ */
+:root {
+  color-scheme: light;
+  --bg: #f7f7f8;
+  --surface: #ffffff;
+  --border: #e4e4e7;
+  --text: #18181b;
+  --text2: #5f5f68;
+  --primary: #3b6fe0;
+  --onprimary: #ffffff;
+  --danger: #d64545;
+  --selected: #eaf0fc;
+  --hover: #f2f2f4;
+  --track: #ededf0;
+  --thead: #f1f1f4;
+  --overlay: rgba(15, 15, 20, 0.45);
+  --shadow: 0 8px 24px rgba(15, 15, 20, 0.12);
+
+  /* 星级：文字色 */
+  --gold: #9a6700;
+  --purple: #7445c9;
+  --blue: #3f74d8;
+  --gray: #8a9097;
+  /* 星级：图表色（比文字色更亮） */
+  --bar3: #4a90e2;
+  --bar4: #9b5de5;
+  --bar5: #f5b83d;
+  --goldbg: #fbf1dc;
+  --goldline: #ebcf94;
+
+  /* 状态 */
+  --up: #1f7a4d;
+  --upbg: #e3f4ea;
+  --loss: #c23434;
+  --lossbg: #fbe7e7;
+  /* 出金历史欧 / 平 / 非（深浅主题同一组亮色） */
+  --lucky: #22c55e;
+  --even: #fbbf24;
+  --unlucky: #f43f5e;
+
+  /* 字体与尺寸 */
+  --font: 'Microsoft YaHei UI', 'Segoe UI', 'PingFang SC', system-ui, sans-serif;
+  --radius-card: 8px;
+  --radius-ctl: 6px;
+  --dur: 150ms;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #141518;
+  --surface: #1d1f23;
+  --border: #2e3036;
+  --text: #ececee;
+  --text2: #a0a0aa;
+  --primary: #7b9cf2;
+  --onprimary: #0b0c0e;
+  --danger: #f06a6a;
+  --selected: #232c40;
+  --hover: #26282d;
+  --track: #2a2c31;
+  --thead: #25272c;
+  --overlay: rgba(0, 0, 0, 0.6);
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+  --gold: #e3a43b;
+  --purple: #b595f2;
+  --blue: #7ea6f2;
+  --gray: #9aa0a6;
+  --bar3: #5a9bea;
+  --bar4: #a97af0;
+  --bar5: #f2c14e;
+  --goldbg: #33280f;
+  --goldline: #5c4618;
+
+  --up: #5ccb94;
+  --upbg: #183528;
+  --loss: #f07a7a;
+  --lossbg: #3a1e1e;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur: 0ms;
+  }
+}

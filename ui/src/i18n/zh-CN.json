@@ -1,0 +1,579 @@
+{
+  "app": {
+    "name": "GachaNote"
+  },
+  "nav": {
+    "overview": "总览",
+    "games": "游戏",
+    "addGame": "添加游戏",
+    "hideFromSidebar": "从边栏隐藏",
+    "noAccount": "暂无账号 · 去导入",
+    "settings": "设置",
+    "toLight": "切换到浅色",
+    "toDark": "切换到深色",
+    "import": "导入 / 拉取",
+    "collapse": "收起边栏",
+    "expand": "展开边栏"
+  },
+  "games": {
+    "genshin": {
+      "name": "原神",
+      "mono": "原"
+    },
+    "starrail": {
+      "name": "崩坏：星穹铁道",
+      "mono": "铁"
+    },
+    "zzz": {
+      "name": "绝区零",
+      "mono": "零"
+    },
+    "arknights": {
+      "name": "明日方舟",
+      "mono": "舟"
+    },
+    "endfield": {
+      "name": "明日方舟：终末地",
+      "mono": "终"
+    },
+    "wuwa": {
+      "name": "鸣潮",
+      "mono": "潮"
+    }
+  },
+  "pools": {
+    "genshin": {
+      "character": {
+        "name": "角色活动祈愿",
+        "short": "角色"
+      },
+      "weapon": {
+        "name": "武器活动祈愿",
+        "short": "武器"
+      },
+      "standard": {
+        "name": "常驻祈愿",
+        "short": "常驻"
+      },
+      "chronicled": {
+        "name": "集录祈愿",
+        "short": "集录"
+      },
+      "beginner": {
+        "name": "新手祈愿",
+        "short": "新手"
+      }
+    },
+    "starrail": {
+      "character": {
+        "name": "角色活动跃迁",
+        "short": "角色"
+      },
+      "light_cone": {
+        "name": "光锥活动跃迁",
+        "short": "光锥"
+      },
+      "collab_character": {
+        "name": "角色联动跃迁",
+        "short": "联动角色"
+      },
+      "collab_light_cone": {
+        "name": "光锥联动跃迁",
+        "short": "联动光锥"
+      },
+      "standard": {
+        "name": "常驻跃迁",
+        "short": "常驻"
+      },
+      "beginner": {
+        "name": "新手跃迁",
+        "short": "新手"
+      }
+    },
+    "zzz": {
+      "character": {
+        "name": "独家频段",
+        "short": "独家"
+      },
+      "w_engine": {
+        "name": "音擎频段",
+        "short": "音擎"
+      },
+      "standard": {
+        "name": "常驻频段",
+        "short": "常驻"
+      },
+      "bangboo": {
+        "name": "邦布频段",
+        "short": "邦布"
+      },
+      "exclusive_rescreening": {
+        "name": "独家重映",
+        "short": "重映"
+      },
+      "w_engine_reverberation": {
+        "name": "音擎回响",
+        "short": "回响"
+      }
+    },
+    "arknights": {
+      "standard": {
+        "name": "标准寻访",
+        "short": "标准"
+      },
+      "classic": {
+        "name": "中坚寻访",
+        "short": "中坚"
+      },
+      "limited": {
+        "name": "限定寻访",
+        "short": "限定"
+      },
+      "single": {
+        "name": "登场寻访",
+        "short": "登场"
+      },
+      "linkage": {
+        "name": "联动寻访",
+        "short": "联动"
+      },
+      "beginner": {
+        "name": "新手寻访",
+        "short": "新手"
+      },
+      "other": {
+        "name": "其他寻访",
+        "short": "其他"
+      }
+    },
+    "endfield": {
+      "character": {
+        "name": "角色限定寻访",
+        "short": "限定"
+      },
+      "weapon": {
+        "name": "武器寻访",
+        "short": "武器"
+      },
+      "standard": {
+        "name": "常驻寻访",
+        "short": "常驻"
+      },
+      "beginner": {
+        "name": "新手寻访",
+        "short": "新手"
+      },
+      "other": {
+        "name": "其他寻访",
+        "short": "其他"
+      }
+    },
+    "wuwa": {
+      "character": {
+        "name": "角色活动唤取",
+        "short": "角色"
+      },
+      "weapon": {
+        "name": "武器活动唤取",
+        "short": "武器"
+      },
+      "standard_character": {
+        "name": "角色常驻唤取",
+        "short": "常驻角色"
+      },
+      "standard_weapon": {
+        "name": "武器常驻唤取",
+        "short": "常驻武器"
+      },
+      "beginner": {
+        "name": "新手唤取",
+        "short": "新手"
+      },
+      "beginner_selector": {
+        "name": "新手自选唤取",
+        "short": "新手自选"
+      },
+      "giveback_selector": {
+        "name": "感恩定向唤取",
+        "short": "感恩"
+      }
+    }
+  },
+  "rarity": {
+    "star": "{n} 星",
+    "zzz": {
+      "4": "S 级",
+      "3": "A 级",
+      "2": "B 级"
+    },
+    "andBelow": "{name}及以下"
+  },
+  "common": {
+    "cancel": "取消",
+    "confirm": "确定",
+    "close": "关闭",
+    "save": "保存",
+    "done": "完成",
+    "back": "上一步",
+    "next": "下一步",
+    "loading": "正在加载…",
+    "retry": "重试",
+    "details": "详情",
+    "all": "全部",
+    "copied": "已复制",
+    "expand": "展开",
+    "collapse": "收起",
+    "none": "—",
+    "export": "导出",
+    "rename": "重命名",
+    "delete": "删除",
+    "open": "打开",
+    "more": "更多",
+    "pulls": "{n} 抽",
+    "count": "{n} 条",
+    "estimated": "估算",
+    "inferred": "推断",
+    "comingSoon": "{version} 开放",
+    "restart": "立即重启"
+  },
+  "time": {
+    "justNow": "刚刚",
+    "minutes": "{n} 分钟前",
+    "hours": "{n} 小时前",
+    "yesterday": "昨天",
+    "days": "{n} 天前",
+    "never": "从未更新"
+  },
+  "pity": {
+    "guaranteed": "大保底",
+    "fiftyFifty": "小保底",
+    "of": "/ {n}"
+  },
+  "overview": {
+    "title": "总览",
+    "summary": "{accounts} 个账号 · 共 {pulls} 抽",
+    "summaryEmpty": "还没有导入任何记录",
+    "filterAll": "全部",
+    "totalPulls": "总抽数",
+    "avgUp": "平均出 UP",
+    "lossRate": "歪率",
+    "avgTop": "平均出金",
+    "openAccount": "查看 {name} 详情",
+    "emptyTitle": "导入抽卡记录后，这里会显示每个账号的保底与总抽数。",
+    "fromGame": "从游戏拉取",
+    "importFile": "导入文件",
+    "noPulls": "暂无记录",
+    "updated": "{time}更新"
+  },
+  "account": {
+    "uid": "UID {uid}",
+    "copyUid": "点击复制 UID",
+    "update": "更新记录",
+    "importNew": "导入新账号",
+    "lastUpdated": "最后更新：{time}",
+    "tabs": {
+      "stats": "统计",
+      "records": "记录"
+    },
+    "renameTitle": "重命名账号",
+    "renamePlaceholder": "备注名，留空则显示 UID",
+    "deleteTitle": "删除账号",
+    "deleteBody": "将删除 {name} 的全部抽卡记录。删除前会自动备份，可在设置 → 数据中恢复。",
+    "deleteConfirm": "删除 {n} 条记录",
+    "exportTitle": "导出账号",
+    "deleted": "账号已删除",
+    "renamed": "已重命名",
+    "notFound": "找不到这个账号，可能已被删除。",
+    "emptyGame": "{game}还没有账号。从游戏拉取或导入文件后会自动创建。",
+    "goImport": "去导入"
+  },
+  "stats": {
+    "overview": "总览",
+    "currentPity": "当前保底",
+    "avgUp": "平均出 UP",
+    "lossRate": "歪率",
+    "avgTop": "平均出金",
+    "spark": "井",
+    "upWithin": "{n} 抽必出 UP",
+    "path": "命定值",
+    "upCount": "共 {n} 个 UP",
+    "lossFrac": "{lost} / {total} 次小保底",
+    "topCountSub": "共 {n} 个",
+    "sparkSub": "当期已抽 {n}",
+    "upWithinSub": "距上次 UP 已 {n} 抽",
+    "remaining": "距保底还剩 {n} 抽",
+    "totalPulls": "总抽数",
+    "topCount": "出{name}数",
+    "share": "{name}",
+    "range": "记录范围",
+    "free": "另有 {n} 次免费抽未计入",
+    "unknownUp": "{n} 个{name}缺少卡池数据，无法判断是否 UP，未计入歪率",
+    "estimatedUp": "部分 UP 判定按常驻名单估算",
+    "unrated": "{n} 条记录的卡池暂不支持统计",
+    "composition": "抽卡构成",
+    "compositionAll": "抽卡构成（全部卡池）",
+    "upSplit": "其中 UP {up} · 歪 {lost}",
+    "upSplitStd": "其中 UP {up} · 歪 {lost} · 常驻池 {std}",
+    "avgEvery": "平均每 {n} 抽出一个{name}",
+    "history": "{name}历史",
+    "historyEmpty": "这个卡池还没有出过{name}。",
+    "legendLucky": "欧（低于平均 85%）",
+    "legendEven": "接近平均",
+    "legendUnlucky": "非（高于平均 115%）",
+    "up": "UP",
+    "lost": "歪",
+    "unknown": "未知",
+    "guaranteedPull": "大保底",
+    "viewDetail": "查看详情",
+    "pools": "各卡池",
+    "noData": "这个卡池还没有记录。",
+    "pulls": "抽数"
+  },
+  "records": {
+    "pool": "卡池",
+    "rarity": "星级",
+    "range": "时间范围",
+    "search": "名称搜索",
+    "searchPlaceholder": "输入物品名",
+    "onlyTop": "只看{name}",
+    "ranges": {
+      "all": "全部",
+      "d30": "近 30 天",
+      "d90": "近 90 天",
+      "d365": "近一年"
+    },
+    "columns": {
+      "time": "时间",
+      "pool": "卡池",
+      "item": "物品",
+      "type": "类型",
+      "rarity": "星级",
+      "pulls": "当次抽数",
+      "mark": "UP / 歪"
+    },
+    "free": "免费",
+    "empty": "没有符合条件的记录。",
+    "pager": "共 {total} 条 · 第 {page} / {pages} 页",
+    "prev": "上一页",
+    "next": "下一页",
+    "perPage": "每页 {n} 条"
+  },
+  "import": {
+    "title": "导入 / 拉取",
+    "steps": {
+      "game": "选择游戏",
+      "method": "选择方式",
+      "prepare": "准备",
+      "progress": "进度",
+      "report": "报告"
+    },
+    "pickGame": "选择要导入记录的游戏",
+    "autoDetect": "直接导入文件，自动识别游戏",
+    "autoDetectHint": "适用于包含多款游戏的 UIGF 文件",
+    "changeGame": "更换游戏",
+    "methods": {
+      "url": "从游戏拉取",
+      "urlDesc": "自动查找抽卡链接，也可以粘贴",
+      "urlDescWuwa": "从 Client.log 查找链接，也可以粘贴",
+      "file": "导入文件",
+      "fileDesc": "支持 {formats}",
+      "login": "登录鹰角账号",
+      "loginDesc": "推荐，登录后自动获取 token",
+      "token": "手动粘贴 token",
+      "tokenDesc": "登录窗口不可用时的备用方式"
+    },
+    "formatNames": {
+      "uigf_v4": "UIGF v4",
+      "uigf_v3": "UIGF v3",
+      "uigf_v2": "UIGF v2",
+      "srgf_v1": "SRGF",
+      "gnj": "GNJ（GachaNote JSON）",
+      "ak_export_csv": "CSV（arknights-gacha-export）",
+      "gn_csv": "CSV（GachaNote）"
+    },
+    "url": {
+      "searching": "正在查找游戏里的抽卡链接…",
+      "found": "已找到抽卡链接：{display}",
+      "notFound": "没有找到抽卡链接。请先在游戏里打开一次抽卡历史，再点「重新查找」；也可以把链接粘贴到下面。",
+      "unsupported": "当前系统不能自动查找，请把抽卡链接粘贴到下面。",
+      "retry": "重新查找",
+      "paste": "粘贴抽卡链接",
+      "pastePlaceholder": "https://…",
+      "useFound": "使用找到的链接",
+      "usePasted": "使用粘贴的链接",
+      "mode": "拉取范围",
+      "incremental": "只拉新记录",
+      "full": "全部重新拉取",
+      "start": "开始拉取"
+    },
+    "file": {
+      "drop": "把文件拖到这里，或",
+      "choose": "选择文件",
+      "filterName": "抽卡记录",
+      "reading": "正在识别文件…",
+      "detected": "{file} · 格式：{format}",
+      "colGame": "游戏",
+      "colUid": "UID",
+      "colCount": "条数",
+      "colRange": "时间范围",
+      "colStatus": "状态",
+      "exists": "已有账号，合并",
+      "new": "新账号",
+      "unsupported": "不支持",
+      "failed": "{n} 条无法解析",
+      "start": "导入选中的 {n} 个账号",
+      "noneSelected": "至少选择一个账号",
+      "otherGame": "这个文件里没有{game}的记录。"
+    },
+    "progress": {
+      "discover": "正在查找…",
+      "fetch": "正在拉取",
+      "parse": "正在解析记录…",
+      "backup": "正在备份数据库…",
+      "write": "正在写入",
+      "fetched": "已获取 {n} 条",
+      "written": "{current} / {total} 条",
+      "starting": "正在开始…",
+      "cancel": "取消",
+      "cancelling": "正在取消…"
+    },
+    "report": {
+      "added": "新增",
+      "skipped": "重复",
+      "failed": "失败",
+      "created": "新建账号：{list}",
+      "backup": "写入前已备份：{name}",
+      "failures": "失败的记录",
+      "more": "另有 {n} 条未列出",
+      "viewAccount": "查看账号",
+      "cancelled": "已取消，没有写入任何数据。",
+      "failedTitle": "导入没有完成，数据库保持不变。",
+      "nothing": "没有可写入的记录。"
+    }
+  },
+  "settings": {
+    "title": "设置",
+    "sections": {
+      "general": "通用",
+      "data": "数据",
+      "metadata": "卡池数据包",
+      "credentials": "凭证",
+      "about": "关于"
+    },
+    "language": "语言",
+    "languageSystem": "跟随系统",
+    "theme": "主题",
+    "themes": {
+      "system": "跟随系统",
+      "light": "浅色",
+      "dark": "深色"
+    },
+    "proxy": "网络代理",
+    "proxyHint": "留空则跟随系统代理；修改后重启生效",
+    "proxyPlaceholder": "http://127.0.0.1:7890",
+    "proxySaved": "代理已保存，重启后生效",
+    "dataDir": "数据目录",
+    "dataDirHint": "数据库与备份所在的目录",
+    "change": "更改…",
+    "resetDir": "恢复默认",
+    "openDir": "打开目录",
+    "dataDirMoved": "数据已复制到新目录，重启后生效。原目录的文件没有删除。",
+    "dbSize": "数据库大小：{size}",
+    "backups": "备份",
+    "backupsHint": "每次导入、删除账号前自动备份，保留最近 5 份",
+    "backupNow": "立即备份",
+    "backupDone": "已备份",
+    "restore": "恢复",
+    "restoreTitle": "从备份恢复",
+    "restoreBody": "当前数据会被替换为 {name} 的内容。恢复前会先把当前数据再备份一份。",
+    "restoreConfirm": "恢复",
+    "restored": "已从备份恢复",
+    "noBackups": "还没有备份",
+    "exportAll": "导出全部",
+    "exportHint": "按账号导出；UIGF 仅支持原神、崩铁、绝区零",
+    "accounts": "账号管理",
+    "noAccounts": "还没有账号",
+    "exported": "已导出 {n} 条记录",
+    "metaVersion": "当前版本",
+    "metaOrigin": {
+      "bundled": "安装包内置",
+      "cache": "已下载"
+    },
+    "metaCheck": "检查更新",
+    "metaChecking": "正在检查…",
+    "metaUpdated": "已更新到 {version}",
+    "metaUpToDate": "已是最新（{version}）",
+    "metaAppTooOld": "新数据包 {version} 需要应用 {min} 及以上版本",
+    "metaAuto": "启动时自动检查",
+    "metaHint": "卡池数据包包含历史卡池与常驻名单，用于判断是否 UP。",
+    "credentialsEmpty": "没有保存的凭证。鹰角账号 token 拉取在 v0.2 开放，保存的 token 会加密存放在本机。",
+    "version": "版本",
+    "logs": "日志目录",
+    "openLogs": "打开日志目录",
+    "license": "以 MIT 许可证开源",
+    "privacy": "所有数据只保存在本机，不收集任何使用数据。",
+    "source": "源代码"
+  },
+  "export": {
+    "format": "格式",
+    "uigf": "UIGF v4.2",
+    "gnj": "GNJ（GachaNote JSON）",
+    "csv": "CSV",
+    "uigfOnlyHoyo": "UIGF 只支持原神、崩铁、绝区零",
+    "choose": "选择保存位置并导出"
+  },
+  "errors": {
+    "unknown_format": {
+      "title": "无法识别文件格式",
+      "hint": "请确认文件是 UIGF、GNJ 或 CSV 格式的抽卡记录。"
+    },
+    "parse": {
+      "title": "文件内容有误",
+      "hint": "请检查详情中指出的位置，或重新导出文件后再试。"
+    },
+    "url_not_found": {
+      "title": "没有找到抽卡链接",
+      "hint": "请先在游戏里打开一次抽卡历史，再重新查找；也可以手动粘贴链接。"
+    },
+    "auth_expired": {
+      "title": "抽卡链接已过期",
+      "hint": "请在游戏中重新打开抽卡历史，再重新查找或粘贴新链接。"
+    },
+    "rate_limited": {
+      "title": "请求太频繁",
+      "hint": "官方接口限制了访问频率，请稍等几分钟再试。"
+    },
+    "network": {
+      "title": "网络连接失败",
+      "hint": "请检查网络或代理设置后重试。"
+    },
+    "storage": {
+      "title": "数据库读写失败",
+      "hint": "请检查磁盘空间与数据目录权限；数据没有被修改。"
+    },
+    "not_found": {
+      "title": "找不到对象",
+      "hint": "它可能已被删除，请刷新后再试。"
+    },
+    "busy": {
+      "title": "这个账号正在导入",
+      "hint": "请等当前的导入或拉取结束后再试。"
+    },
+    "invalid": {
+      "title": "输入不正确",
+      "hint": "请检查后重试。"
+    },
+    "cancelled": {
+      "title": "已取消",
+      "hint": "没有写入任何数据。"
+    },
+    "internal": {
+      "title": "发生了意外错误",
+      "hint": "请重试；如果反复出现，可以在设置 → 关于中打开日志目录反馈问题。"
+    },
+    "unknown": {
+      "title": "发生了意外错误",
+      "hint": "请重试。"
+    }
+  }
+}

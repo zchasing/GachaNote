@@ -313,30 +313,39 @@ pub trait BackupService: Send + Sync {        // store 中的 BackupManager 实�
 
 ### 5.1 命令清单
 
+M3 起已实现的命令（以 `src-tauri/src/commands.rs` 与生成的 `bindings.ts` 为准）：
+
 | 模块 | 命令 | 说明 | 对应需求 |
 | --- | --- | --- | --- |
-| 游戏 | `list_games` | 游戏信息、卡池类型、支持的导入方式 | — |
-| 账号 | `list_accounts` / `rename_account` / `delete_account` | 多账号管理 | F-01 |
-| 导入 | `sniff_file(path)` | 识别格式，返回预览（账号、条数、时间范围） | F-02 |
-| 导入 | `import_file(path, options) -> TaskId` | 异步执行，结果（新增/重复/失败）走事件 | F-02, F-05, F-06 |
-| 拉取 | `discover_urls(game)` | 自动查找缓存/日志中的抽卡 URL | F-03 |
-| 拉取 | `fetch_by_url(game, url, mode) -> TaskId` | mode = 增量 / 全量 | F-03 |
+| 游戏 | `list_games` | 游戏信息、主题色、卡池规则（硬保底、UP 机制、井、期望抽数）、支持的导入方式与文件格式 | — |
+| 账号 | `list_accounts` / `rename_account(accountId, nickname?)` / `delete_account(accountId)` | 多账号管理；删除前自动备份 | F-01 |
+| 导入 | `sniff_file(path)` | 识别格式，返回预览（账号、条数、时间范围、是否已有账号） | F-02 |
+| 导入 | `import_file(path, only?) -> TaskId` | 异步执行，`only` 为空表示导入文件里的全部账号；结果走事件 | F-02, F-05, F-06 |
+| 拉取 | `discover_url(game) -> { sourceId, game, display }` | 自动查找缓存/日志中的抽卡链接；完整链接只留在后端，前端拿到脱敏的显示文本和来源 ID | F-03 |
+| 拉取 | `fetch_by_url(game, source, mode) -> TaskId` | `source` 为 `{ kind: "discovered", id }` 或 `{ kind: "pasted", url }`；`mode` 为 `incremental` / `full` | F-03 |
+| 任务 | `cancel_task(taskId)` | 取消导入/拉取 | — |
+| 导出 | `export_accounts(accountIds, format, path)` | `format` 为 `uigf`（v4.2，仅米哈游三款）/ `gnj` / `csv`；先写临时文件再替换 | F-07 |
+| 元数据 | `meta_info` / `update_metadata` | 当前卡池数据包版本与来源；检查并下载（结果为 `updated` / `upToDate` / `appTooOld`） | F-08 |
+| 统计 | `get_stats(accountId)` | 账号与各卡池的保底计数、平均 UP 抽数、歪率、星级构成、出金历史 | F-09–F-12 |
+| 记录 | `query_records(query)` | 按卡池、星级、时间、名称筛选并分页；附带当次抽数与 UP 标记（后端按账号缓存） | F-13 |
+| 总览 | `get_overview()` | 跨游戏总览卡片数据 | F-18 |
+| 设置 | `get_settings` / `set_settings(settings)` | 整个设置对象（语言、主题、代理、边栏手动添加的游戏、各游戏上次查看的账号、自动检查数据包），存在 `setting` 表的 `app.settings` 键 | F-21, F-22 |
+| 设置 | `app_info` | 版本、数据目录、默认目录、日志目录、数据库大小、是否支持自动查找链接 | — |
+| 设置 | `set_data_dir(dir)` / `restart_app` | 复制数据库与备份到新目录，在默认目录写 `location.json` 指向它，重启后生效；原目录不删除 | F-23 |
+| 备份 | `list_backups` / `create_backup` / `restore_backup(name)` | 恢复前先备份当前数据 | NFR |
+| 诊断 | `open_dir(kind)` | 用系统文件管理器打开数据、备份或日志目录 | NFR |
+
+后续阶段的命令：
+
+| 模块 | 命令 | 说明 | 对应需求 |
+| --- | --- | --- | --- |
 | 拉取 | `open_hg_login() -> token` / `save_hg_token(token)` / `fetch_by_token(account) -> TaskId` | 鹰角登录窗口获取 token、手动保存 token、按 token 拉取（v0.2） | F-04 |
-| 任务 | `cancel_task(id)` | 取消导入/拉取 | — |
-| 导出 | `export(accounts, format, path)` | UIGF v4.2 / GNJ / CSV | F-07 |
-| 元数据 | `check_metadata()` / `update_metadata()` | 检查并下载卡池元数据包 | F-08 |
-| 统计 | `get_stats(account, pool?)` | 保底计数、平均 UP 抽数、歪率、基础统计 | F-09–F-12 |
-| 记录 | `query_records(query)` | 分页、筛选、排序 | F-13 |
 | 统计 | `get_distribution` / `get_monthly_trend` | 出金分布、月度趋势 | F-14, F-15 |
 | 统计 | `predict(account, pool, pulls)` | 出金/出 UP 概率曲线 | F-16 |
 | 统计 | `get_luck(account, pool?)` | 欧非评价百分位 | F-17 |
-| 总览 | `get_overview()` | 跨游戏总览卡片数据 | F-18 |
 | 时间线 | `get_banner_timeline(account)` | 按期聚合抽数与所得（v0.3） | F-19 |
-| 设置 | `get_settings` / `set_setting(key, value)` | 语言、主题、代理等 | F-21, F-22 |
-| 设置 | `set_data_dir(path)` | 迁移数据库到新目录 | F-23 |
 | 更新 | `check_update` / `install_update` | Tauri updater（v0.2） | F-24 |
-| 备份 | `list_backups` / `restore_backup(name)` | 备份恢复 | NFR |
-| 诊断 | `open_log_dir` / `export_diagnostics` | 打包脱敏日志供反馈 | NFR |
+| 诊断 | `export_diagnostics` | 打包脱敏日志供反馈 | NFR |
 
 分享图（F-20）在前端用 DOM 渲染成 PNG，只需一个 `save_image(bytes, path)` 命令落盘。
 
@@ -344,11 +353,13 @@ pub trait BackupService: Send + Sync {        // store 中的 BackupManager 实�
 
 | 事件 | 载荷 | 说明 |
 | --- | --- | --- |
-| `task://progress` | `{ taskId, stage, current, total?, message }` | stage = discover / fetch / parse / write；拉取时按卡池、页码推送 |
-| `task://done` | `{ taskId, summary: { added, skipped, accounts } }` | 前端据此刷新统计和侧边栏 |
+| `task://progress` | `{ taskId, stage, current, total?, message }` | stage = discover / fetch / parse / backup / write；拉取时按卡池、页码推送 |
+| `task://done` | `{ taskId, report: { accounts, failures, added, skipped, failed, backup? } }` | 失败明细最多 200 条；前端据此显示导入报告 |
 | `task://failed` | `{ taskId, error: AppError }` | 已回滚，数据不变 |
-| `data://changed` | `{ accountIds }` | 任何写入后广播，统一使缓存失效 |
+| `data://changed` | `{ accountIds }` | 任何写入后广播，`accountIds` 为空表示全部；统一使缓存失效 |
 | `meta://updated` | `{ version }` | 元数据包更新后重算 UP 判定 |
+
+前端在启动时就订阅全部 `task://*` 事件，按任务 ID 记录状态，避免任务在命令返回 ID 之前就结束而丢失结果。
 
 ### 5.3 任务模型
 
@@ -524,11 +535,11 @@ pub enum AppError {
 ```text
 ui/src/
 ├─ bindings.ts          # tauri-specta 生成，禁止手改
-├─ api/                 # 对 bindings 的薄封装：错误转 i18n、任务进度订阅
-├─ stores/              # Pinia：games, accounts, stats, tasks, settings, metadata
-├─ views/               # Overview, AccountDetail(Stats|Records), Settings, AddGame
-├─ components/          # PityCard, StatTile, RecordTable, Charts/*, ImportWizard/*, GameIcon
-├─ composables/         # useTask, useTheme, useVirtualList
+├─ api/                 # 对 bindings 的薄封装：错误统一成 ErrorDto
+├─ stores/              # Pinia：games, accounts（含统计缓存）, tasks, settings, ui
+├─ views/               # Overview, Game, Account(StatsTab|RecordsTab), Settings
+├─ components/          # AppSidebar, OverviewCard, CompositionCard, ImportWizard, ExportDialog, GameIcon …
+├─ composables/         # format, useNames, useErrors, useTheme, useRelative
 ├─ i18n/{zh-CN,en}.json
 ├─ theme/tokens.css     # CSS 变量：浅色/深色 + 六款游戏印象色
 └─ router.ts
@@ -539,7 +550,8 @@ ui/src/
 - 前端不做任何统计计算，只展示后端返回的结果，保证桌面端、手机端、将来服务器端口径一致。
 - Store 按需加载：进入账号详情时调 `get_stats`，记录列表按页调 `query_records`（页大小与界面分页一致：20 / 50 / 100 条）。
 - 监听 `data://changed` 与 `meta://updated`，只使受影响账号的缓存失效；侧边栏「有账号才显示游戏」的逻辑由 `accounts` store 派生。
-- `useTask(taskId)` 统一订阅 `task://*` 事件，导入向导和后台任务指示器共用。
+- `tasks` store 统一订阅 `task://*` 事件，导入向导使用。
+- 记录页 10 万条时翻页查询在 40 ms 内（release 构建实测；导入后第一次查询需重算当次抽数，约 0.3 s），见 `src-tauri/src/state/tests.rs` 的性能测试。
 
 ### 8.2 主题与国际化
 

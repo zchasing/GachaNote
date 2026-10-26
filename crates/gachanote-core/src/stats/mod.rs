@@ -302,5 +302,67 @@ pub fn account_stats(
     }
 }
 
+/// 记录列表中一条记录的标注（FR-REC-02）。
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct RecordMark {
+    /// 当次抽数：最高星为距上一只最高星的抽数，次高星为距上一只次高星及以上的抽数；
+    /// 其他星级、免费抽和没有规则的记录为空。
+    pub pulls: Option<u32>,
+    /// 最高星是否 UP；常驻池和其他星级为空。
+    pub up: Option<UpStatus>,
+    /// UP 判定是否为估算。
+    pub estimated: bool,
+}
+
+/// 计算一个账号全部记录的标注，结果与 `records` 一一对应。
+///
+/// 最高星的抽数与 UP 直接取自 [`pool_stats`] 的最高星序列，与统计页口径一致
+/// （包括每期重置的卡池）。
+pub fn record_marks(
+    plugin: &dyn GamePlugin,
+    meta: &GameMeta,
+    records: &[GachaRecord],
+) -> Vec<RecordMark> {
+    let mut marks = vec![RecordMark::default(); records.len()];
+    let mut groups: BTreeMap<&PoolTypeId, Vec<usize>> = BTreeMap::new();
+    for (i, r) in records.iter().enumerate() {
+        groups.entry(&r.data.pool_type).or_default().push(i);
+    }
+    let classify = |r: &NewRecord| plugin.classify(r, meta);
+    for (pool_type, idx) in groups {
+        let refs: Vec<&NewRecord> = idx.iter().map(|&i| &records[i].data).collect();
+        let Some(stats) = pool_stats(pool_type, plugin.rules(), &refs, &classify) else {
+            continue;
+        };
+        let has_up = rule_at(plugin.rules(), pool_type, None).is_some_and(|r| r.up.has_up());
+        for t in &stats.tops {
+            marks[idx[t.index]] = RecordMark {
+                pulls: Some(t.pulls),
+                up: has_up.then_some(t.up),
+                estimated: has_up && t.estimated,
+            };
+        }
+        let mut order: Vec<usize> = (0..refs.len()).collect();
+        order.sort_by_key(|&k| (refs[k].pulled_at, refs[k].seq_in_sec));
+        let mut since_second = 0u32;
+        for k in order {
+            let rec = refs[k];
+            if !rec.is_pull {
+                continue;
+            }
+            let top = rule_at(plugin.rules(), pool_type, Some(rec.pulled_at))
+                .map_or(u8::MAX, |r| r.rarity_top);
+            since_second += 1;
+            if rec.rarity >= top {
+                since_second = 0;
+            } else if rec.rarity + 1 == top {
+                marks[idx[k]].pulls = Some(since_second);
+                since_second = 0;
+            }
+        }
+    }
+    marks
+}
+
 #[cfg(test)]
 mod tests;

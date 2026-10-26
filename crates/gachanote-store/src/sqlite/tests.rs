@@ -430,3 +430,20 @@ fn backup_keeps_five_and_restores() {
         "not_found"
     );
 }
+
+#[test]
+fn account_activity_counts_records_and_last_import() {
+    let store = SqliteStore::open_in_memory().unwrap();
+    assert!(store.account_activity().unwrap().is_empty());
+    let empty = store
+        .upsert_account(&NewAccount::new("genshin", "2"))
+        .unwrap();
+    let s = insert(&store, &[imp("1", sample())]).unwrap();
+    let act = store.account_activity().unwrap();
+    assert_eq!(act.len(), 2);
+    assert_eq!(act[0].account_id, empty.id);
+    assert_eq!((act[0].records, act[0].last_import_at), (0, None));
+    assert_eq!(act[1].account_id, s.accounts[0].account.id);
+    assert_eq!(act[1].records, sample().len() as u64);
+    assert!(act[1].last_import_at.is_some_and(|t| t >= T0));
+}
