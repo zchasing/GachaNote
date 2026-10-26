@@ -130,15 +130,16 @@ impl TaskEvents for TaskBridge {
                 cache.remove(a);
             }
         }
-        self.sink.emit(AppEvent::Done(crate::dto::TaskDone {
-            task_id: id,
-            report: report.into(),
-        }));
+        // 先广播数据变化再报告完成：前端收到报告时缓存已失效，测试等到 done 时也能看到变化事件
         if !ids.is_empty() {
             self.sink.emit(AppEvent::DataChanged(
                 ids.iter().map(ToString::to_string).collect(),
             ));
         }
+        self.sink.emit(AppEvent::Done(crate::dto::TaskDone {
+            task_id: id,
+            report: report.into(),
+        }));
     }
 
     fn failed(&self, id: TaskId, error: &AppError) {
