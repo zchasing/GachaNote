@@ -8,7 +8,8 @@ manifest.json 结构（见架构文档 2 节与 SRS）：
 用法：
     python scripts/check_metadata.py           校验所有文件存在、可解析、SHA-256 与 manifest 一致
     python scripts/check_metadata.py --fix     按当前文件内容重写 manifest 中的 sha256
-    python scripts/check_metadata.py --schema  额外用 metadata/schema/ 下的 JSON Schema 校验（需 check-jsonschema）
+    python scripts/check_metadata.py --schema  额外用 metadata/schema/ 下的 JSON Schema 校验（需 check-jsonschema）：
+                                               manifest.json → manifest.schema.json，各游戏文件 → game.schema.json
 """
 import argparse
 import hashlib
@@ -62,12 +63,15 @@ def main() -> int:
             errors.append(f"{path.name}: 未登记到 manifest.json")
 
     if args.schema:
-        for schema in sorted((ROOT / "schema").glob("*.schema.json")):
-            target = ROOT / schema.name.replace(".schema.json", ".json")
-            if target.is_file():
-                r = subprocess.run(["check-jsonschema", "--schemafile", str(schema), str(target)])
-                if r.returncode != 0:
-                    errors.append(f"{target.name}: 不符合 {schema.name}")
+        # manifest.json 用 manifest.schema.json，各游戏文件用 game.schema.json
+        games = [ROOT / e["path"] for e in files if (ROOT / e.get("path", "")).is_file()]
+        for schema, targets in (("manifest.schema.json", [MANIFEST]), ("game.schema.json", games)):
+            schema_path = ROOT / "schema" / schema
+            if not schema_path.is_file() or not targets:
+                continue
+            r = subprocess.run(["check-jsonschema", "--schemafile", str(schema_path), *map(str, targets)])
+            if r.returncode != 0:
+                errors.append(f"有文件不符合 {schema}")
 
     if args.fix and not errors:
         MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

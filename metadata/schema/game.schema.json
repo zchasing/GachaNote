@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GachaNote game metadata pack",
+  "type": "object",
+  "required": ["game"],
+  "additionalProperties": false,
+  "$defs": {
+    "names": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z]{2}-[a-z]{2}$" },
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "refs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "time": { "type": "string", "format": "date-time" }
+  },
+  "properties": {
+    "game": { "enum": ["genshin", "starrail", "zzz", "arknights", "endfield", "wuwa"] },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "rarity"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "rarity": { "type": "integer", "minimum": 1, "maximum": 6 },
+          "names": { "$ref": "#/$defs/names" }
+        }
+      }
+    },
+    "standard": { "$ref": "#/$defs/refs" },
+    "banners": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "pool_type", "start", "end"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "pool_type": { "type": "string", "pattern": "^[a-z_]+$" },
+          "names": { "$ref": "#/$defs/names" },
+          "version": { "type": ["string", "null"] },
+          "start": { "$ref": "#/$defs/time" },
+          "end": { "$ref": "#/$defs/time" },
+          "up_top": { "$ref": "#/$defs/refs" },
+          "up_second": { "$ref": "#/$defs/refs" }
+        }
+      }
+    }
+  }
+}

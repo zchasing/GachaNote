@@ -1,0 +1,7182 @@
+{
+ "game": "genshin",
+ "items": [
+  {
+   "id": "10000002",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "神里绫华",
+    "zh-tw": "神里綾華",
+    "en-us": "Kamisato Ayaka",
+    "ja-jp": "神里綾華"
+   }
+  },
+  {
+   "id": "10000003",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "琴",
+    "zh-tw": "琴",
+    "en-us": "Jean",
+    "ja-jp": "ジン"
+   }
+  },
+  {
+   "id": "10000005",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "旅行者",
+    "zh-tw": "旅行者",
+    "en-us": "Traveler",
+    "ja-jp": "旅人"
+   }
+  },
+  {
+   "id": "10000006",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "丽莎",
+    "zh-tw": "麗莎",
+    "en-us": "Lisa",
+    "ja-jp": "リサ"
+   }
+  },
+  {
+   "id": "10000007",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "旅行者",
+    "zh-tw": "旅行者",
+    "en-us": "Traveler",
+    "ja-jp": "旅人"
+   }
+  },
+  {
+   "id": "10000014",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "芭芭拉",
+    "zh-tw": "芭芭拉",
+    "en-us": "Barbara",
+    "ja-jp": "バーバラ"
+   }
+  },
+  {
+   "id": "10000015",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "凯亚",
+    "zh-tw": "凱亞",
+    "en-us": "Kaeya",
+    "ja-jp": "ガイア"
+   }
+  },
+  {
+   "id": "10000016",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "迪卢克",
+    "zh-tw": "迪盧克",
+    "en-us": "Diluc",
+    "ja-jp": "ディルック"
+   }
+  },
+  {
+   "id": "10000020",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "雷泽",
+    "zh-tw": "雷澤",
+    "en-us": "Razor",
+    "ja-jp": "レザー"
+   }
+  },
+  {
+   "id": "10000021",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "安柏",
+    "zh-tw": "安柏",
+    "en-us": "Amber",
+    "ja-jp": "アンバー"
+   }
+  },
+  {
+   "id": "10000022",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "温迪",
+    "zh-tw": "溫迪",
+    "en-us": "Venti",
+    "ja-jp": "ウェンティ"
+   }
+  },
+  {
+   "id": "10000023",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "香菱",
+    "zh-tw": "香菱",
+    "en-us": "Xiangling",
+    "ja-jp": "香菱"
+   }
+  },
+  {
+   "id": "10000024",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "北斗",
+    "zh-tw": "北斗",
+    "en-us": "Beidou",
+    "ja-jp": "北斗"
+   }
+  },
+  {
+   "id": "10000025",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "行秋",
+    "zh-tw": "行秋",
+    "en-us": "Xingqiu",
+    "ja-jp": "行秋"
+   }
+  },
+  {
+   "id": "10000026",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "魈",
+    "zh-tw": "魈",
+    "en-us": "Xiao",
+    "ja-jp": "魈"
+   }
+  },
+  {
+   "id": "10000027",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "凝光",
+    "zh-tw": "凝光",
+    "en-us": "Ningguang",
+    "ja-jp": "凝光"
+   }
+  },
+  {
+   "id": "10000029",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "可莉",
+    "zh-tw": "可莉",
+    "en-us": "Klee",
+    "ja-jp": "クレー"
+   }
+  },
+  {
+   "id": "10000030",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "钟离",
+    "zh-tw": "鍾離",
+    "en-us": "Zhongli",
+    "ja-jp": "鍾離"
+   }
+  },
+  {
+   "id": "10000031",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "菲谢尔",
+    "zh-tw": "菲謝爾",
+    "en-us": "Fischl",
+    "ja-jp": "フィッシュル"
+   }
+  },
+  {
+   "id": "10000032",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "班尼特",
+    "zh-tw": "班尼特",
+    "en-us": "Bennett",
+    "ja-jp": "ベネット"
+   }
+  },
+  {
+   "id": "10000033",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "达达利亚",
+    "zh-tw": "達達利亞",
+    "en-us": "Tartaglia",
+    "ja-jp": "タルタリヤ"
+   }
+  },
+  {
+   "id": "10000034",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "诺艾尔",
+    "zh-tw": "諾艾爾",
+    "en-us": "Noelle",
+    "ja-jp": "ノエル"
+   }
+  },
+  {
+   "id": "10000035",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "七七",
+    "zh-tw": "七七",
+    "en-us": "Qiqi",
+    "ja-jp": "七七"
+   }
+  },
+  {
+   "id": "10000036",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "重云",
+    "zh-tw": "重雲",
+    "en-us": "Chongyun",
+    "ja-jp": "重雲"
+   }
+  },
+  {
+   "id": "10000037",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "甘雨",
+    "zh-tw": "甘雨",
+    "en-us": "Ganyu",
+    "ja-jp": "甘雨"
+   }
+  },
+  {
+   "id": "10000038",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "阿贝多",
+    "zh-tw": "阿貝多",
+    "en-us": "Albedo",
+    "ja-jp": "アルベド"
+   }
+  },
+  {
+   "id": "10000039",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "迪奥娜",
+    "zh-tw": "迪奧娜",
+    "en-us": "Diona",
+    "ja-jp": "ディオナ"
+   }
+  },
+  {
+   "id": "10000041",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "莫娜",
+    "zh-tw": "莫娜",
+    "en-us": "Mona",
+    "ja-jp": "モナ"
+   }
+  },
+  {
+   "id": "10000042",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "刻晴",
+    "zh-tw": "刻晴",
+    "en-us": "Keqing",
+    "ja-jp": "刻晴"
+   }
+  },
+  {
+   "id": "10000043",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "砂糖",
+    "zh-tw": "砂糖",
+    "en-us": "Sucrose",
+    "ja-jp": "スクロース"
+   }
+  },
+  {
+   "id": "10000044",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "辛焱",
+    "zh-tw": "辛焱",
+    "en-us": "Xinyan",
+    "ja-jp": "辛炎"
+   }
+  },
+  {
+   "id": "10000045",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "罗莎莉亚",
+    "zh-tw": "蘿莎莉亞",
+    "en-us": "Rosaria",
+    "ja-jp": "ロサリア"
+   }
+  },
+  {
+   "id": "10000046",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "胡桃",
+    "zh-tw": "胡桃",
+    "en-us": "Hu Tao",
+    "ja-jp": "胡桃"
+   }
+  },
+  {
+   "id": "10000047",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "枫原万叶",
+    "zh-tw": "楓原萬葉",
+    "en-us": "Kaedehara Kazuha",
+    "ja-jp": "楓原万葉"
+   }
+  },
+  {
+   "id": "10000048",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "烟绯",
+    "zh-tw": "煙緋",
+    "en-us": "Yanfei",
+    "ja-jp": "煙緋"
+   }
+  },
+  {
+   "id": "10000049",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "宵宫",
+    "zh-tw": "宵宮",
+    "en-us": "Yoimiya",
+    "ja-jp": "宵宮"
+   }
+  },
+  {
+   "id": "10000050",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "托马",
+    "zh-tw": "托馬",
+    "en-us": "Thoma",
+    "ja-jp": "トーマ"
+   }
+  },
+  {
+   "id": "10000051",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "优菈",
+    "zh-tw": "優菈",
+    "en-us": "Eula",
+    "ja-jp": "エウルア"
+   }
+  },
+  {
+   "id": "10000052",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "雷电将军",
+    "zh-tw": "雷電將軍",
+    "en-us": "Raiden Shogun",
+    "ja-jp": "雷電将軍"
+   }
+  },
+  {
+   "id": "10000053",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "早柚",
+    "zh-tw": "早柚",
+    "en-us": "Sayu",
+    "ja-jp": "早柚"
+   }
+  },
+  {
+   "id": "10000054",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "珊瑚宫心海",
+    "zh-tw": "珊瑚宮心海",
+    "en-us": "Sangonomiya Kokomi",
+    "ja-jp": "珊瑚宮心海"
+   }
+  },
+  {
+   "id": "10000055",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "五郎",
+    "zh-tw": "五郎",
+    "en-us": "Gorou",
+    "ja-jp": "ゴロー"
+   }
+  },
+  {
+   "id": "10000056",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "九条裟罗",
+    "zh-tw": "九條裟羅",
+    "en-us": "Kujou Sara",
+    "ja-jp": "九条裟羅"
+   }
+  },
+  {
+   "id": "10000057",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "荒泷一斗",
+    "zh-tw": "荒瀧一斗",
+    "en-us": "Arataki Itto",
+    "ja-jp": "荒瀧一斗"
+   }
+  },
+  {
+   "id": "10000058",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "八重神子",
+    "zh-tw": "八重神子",
+    "en-us": "Yae Miko",
+    "ja-jp": "八重神子"
+   }
+  },
+  {
+   "id": "10000059",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "鹿野院平藏",
+    "zh-tw": "鹿野院平藏",
+    "en-us": "Shikanoin Heizou",
+    "ja-jp": "鹿野院平蔵"
+   }
+  },
+  {
+   "id": "10000060",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "夜兰",
+    "zh-tw": "夜蘭",
+    "en-us": "Yelan",
+    "ja-jp": "夜蘭"
+   }
+  },
+  {
+   "id": "10000061",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "绮良良",
+    "zh-tw": "綺良良",
+    "en-us": "Kirara",
+    "ja-jp": "綺良々"
+   }
+  },
+  {
+   "id": "10000062",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "埃洛伊",
+    "zh-tw": "亞蘿伊",
+    "en-us": "Aloy",
+    "ja-jp": "アーロイ"
+   }
+  },
+  {
+   "id": "10000063",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "申鹤",
+    "zh-tw": "申鶴",
+    "en-us": "Shenhe",
+    "ja-jp": "申鶴"
+   }
+  },
+  {
+   "id": "10000064",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "云堇",
+    "zh-tw": "雲堇",
+    "en-us": "Yun Jin",
+    "ja-jp": "雲菫"
+   }
+  },
+  {
+   "id": "10000065",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "久岐忍",
+    "zh-tw": "久岐忍",
+    "en-us": "Kuki Shinobu",
+    "ja-jp": "久岐忍"
+   }
+  },
+  {
+   "id": "10000066",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "神里绫人",
+    "zh-tw": "神里綾人",
+    "en-us": "Kamisato Ayato",
+    "ja-jp": "神里綾人"
+   }
+  },
+  {
+   "id": "10000067",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "柯莱",
+    "zh-tw": "柯萊",
+    "en-us": "Collei",
+    "ja-jp": "コレイ"
+   }
+  },
+  {
+   "id": "10000068",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "多莉",
+    "zh-tw": "多莉",
+    "en-us": "Dori",
+    "ja-jp": "ドリー"
+   }
+  },
+  {
+   "id": "10000069",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "提纳里",
+    "zh-tw": "提納里",
+    "en-us": "Tighnari",
+    "ja-jp": "ティナリ"
+   }
+  },
+  {
+   "id": "10000070",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "妮露",
+    "zh-tw": "妮露",
+    "en-us": "Nilou",
+    "ja-jp": "ニィロウ"
+   }
+  },
+  {
+   "id": "10000071",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "赛诺",
+    "zh-tw": "賽諾",
+    "en-us": "Cyno",
+    "ja-jp": "セノ"
+   }
+  },
+  {
+   "id": "10000072",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "坎蒂丝",
+    "zh-tw": "坎蒂絲",
+    "en-us": "Candace",
+    "ja-jp": "キャンディス"
+   }
+  },
+  {
+   "id": "10000073",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "纳西妲",
+    "zh-tw": "納西妲",
+    "en-us": "Nahida",
+    "ja-jp": "ナヒーダ"
+   }
+  },
+  {
+   "id": "10000074",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "莱依拉",
+    "zh-tw": "萊依拉",
+    "en-us": "Layla",
+    "ja-jp": "レイラ"
+   }
+  },
+  {
+   "id": "10000075",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "流浪者",
+    "zh-tw": "流浪者",
+    "en-us": "Wanderer",
+    "ja-jp": "放浪者"
+   }
+  },
+  {
+   "id": "10000076",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "珐露珊",
+    "zh-tw": "琺露珊",
+    "en-us": "Faruzan",
+    "ja-jp": "ファルザン"
+   }
+  },
+  {
+   "id": "10000077",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "瑶瑶",
+    "zh-tw": "瑤瑤",
+    "en-us": "Yaoyao",
+    "ja-jp": "ヨォーヨ"
+   }
+  },
+  {
+   "id": "10000078",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "艾尔海森",
+    "zh-tw": "艾爾海森",
+    "en-us": "Alhaitham",
+    "ja-jp": "アルハイゼン"
+   }
+  },
+  {
+   "id": "10000079",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "迪希雅",
+    "zh-tw": "迪希雅",
+    "en-us": "Dehya",
+    "ja-jp": "ディシア"
+   }
+  },
+  {
+   "id": "10000080",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "米卡",
+    "zh-tw": "米卡",
+    "en-us": "Mika",
+    "ja-jp": "ミカ"
+   }
+  },
+  {
+   "id": "10000081",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "卡维",
+    "zh-tw": "卡維",
+    "en-us": "Kaveh",
+    "ja-jp": "カーヴェ"
+   }
+  },
+  {
+   "id": "10000082",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "白术",
+    "zh-tw": "白朮",
+    "en-us": "Baizhu",
+    "ja-jp": "白朮"
+   }
+  },
+  {
+   "id": "10000083",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "琳妮特",
+    "zh-tw": "琳妮特",
+    "en-us": "Lynette",
+    "ja-jp": "リネット"
+   }
+  },
+  {
+   "id": "10000084",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "林尼",
+    "zh-tw": "林尼",
+    "en-us": "Lyney",
+    "ja-jp": "リネ"
+   }
+  },
+  {
+   "id": "10000085",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "菲米尼",
+    "zh-tw": "菲米尼",
+    "en-us": "Freminet",
+    "ja-jp": "フレミネ"
+   }
+  },
+  {
+   "id": "10000086",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "莱欧斯利",
+    "zh-tw": "萊歐斯利",
+    "en-us": "Wriothesley",
+    "ja-jp": "リオセスリ"
+   }
+  },
+  {
+   "id": "10000087",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "那维莱特",
+    "zh-tw": "那維萊特",
+    "en-us": "Neuvillette",
+    "ja-jp": "ヌヴィレット"
+   }
+  },
+  {
+   "id": "10000088",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "夏洛蒂",
+    "zh-tw": "夏洛蒂",
+    "en-us": "Charlotte",
+    "ja-jp": "シャルロット"
+   }
+  },
+  {
+   "id": "10000089",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "芙宁娜",
+    "zh-tw": "芙寧娜",
+    "en-us": "Furina",
+    "ja-jp": "フリーナ"
+   }
+  },
+  {
+   "id": "10000090",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "夏沃蕾",
+    "zh-tw": "夏沃蕾",
+    "en-us": "Chevreuse",
+    "ja-jp": "シュヴルーズ"
+   }
+  },
+  {
+   "id": "10000091",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "娜维娅",
+    "zh-tw": "娜維婭",
+    "en-us": "Navia",
+    "ja-jp": "ナヴィア"
+   }
+  },
+  {
+   "id": "10000092",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "嘉明",
+    "zh-tw": "嘉明",
+    "en-us": "Gaming",
+    "ja-jp": "嘉明"
+   }
+  },
+  {
+   "id": "10000093",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "闲云",
+    "zh-tw": "閒雲",
+    "en-us": "Xianyun",
+    "ja-jp": "閑雲"
+   }
+  },
+  {
+   "id": "10000094",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "千织",
+    "zh-tw": "千織",
+    "en-us": "Chiori",
+    "ja-jp": "千織"
+   }
+  },
+  {
+   "id": "10000095",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "希格雯",
+    "zh-tw": "希格雯",
+    "en-us": "Sigewinne",
+    "ja-jp": "シグウィン"
+   }
+  },
+  {
+   "id": "10000096",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "阿蕾奇诺",
+    "zh-tw": "阿蕾奇諾",
+    "en-us": "Arlecchino",
+    "ja-jp": "アルレッキーノ"
+   }
+  },
+  {
+   "id": "10000097",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "赛索斯",
+    "zh-tw": "賽索斯",
+    "en-us": "Sethos",
+    "ja-jp": "セトス"
+   }
+  },
+  {
+   "id": "10000098",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "克洛琳德",
+    "zh-tw": "克洛琳德",
+    "en-us": "Clorinde",
+    "ja-jp": "クロリンデ"
+   }
+  },
+  {
+   "id": "10000099",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "艾梅莉埃",
+    "zh-tw": "艾梅莉埃",
+    "en-us": "Emilie",
+    "ja-jp": "エミリエ"
+   }
+  },
+  {
+   "id": "10000100",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "卡齐娜",
+    "zh-tw": "卡齊娜",
+    "en-us": "Kachina",
+    "ja-jp": "カチーナ"
+   }
+  },
+  {
+   "id": "10000101",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "基尼奇",
+    "zh-tw": "基尼奇",
+    "en-us": "Kinich",
+    "ja-jp": "キィニチ"
+   }
+  },
+  {
+   "id": "10000102",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "玛拉妮",
+    "zh-tw": "瑪拉妮",
+    "en-us": "Mualani",
+    "ja-jp": "ムアラニ"
+   }
+  },
+  {
+   "id": "10000103",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "希诺宁",
+    "zh-tw": "希諾寧",
+    "en-us": "Xilonen",
+    "ja-jp": "シロネン"
+   }
+  },
+  {
+   "id": "10000104",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "恰斯卡",
+    "zh-tw": "恰斯卡",
+    "en-us": "Chasca",
+    "ja-jp": "チャスカ"
+   }
+  },
+  {
+   "id": "10000105",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "欧洛伦",
+    "zh-tw": "歐洛倫",
+    "en-us": "Ororon",
+    "ja-jp": "オロルン"
+   }
+  },
+  {
+   "id": "10000106",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "玛薇卡",
+    "zh-tw": "瑪薇卡",
+    "en-us": "Mavuika",
+    "ja-jp": "マーヴィカ"
+   }
+  },
+  {
+   "id": "10000107",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "茜特菈莉",
+    "zh-tw": "茜特菈莉",
+    "en-us": "Citlali",
+    "ja-jp": "シトラリ"
+   }
+  },
+  {
+   "id": "10000108",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "蓝砚",
+    "zh-tw": "藍硯",
+    "en-us": "Lan Yan",
+    "ja-jp": "藍硯"
+   }
+  },
+  {
+   "id": "10000109",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "梦见月瑞希",
+    "zh-tw": "夢見月瑞希",
+    "en-us": "Yumemizuki Mizuki",
+    "ja-jp": "夢見月瑞希"
+   }
+  },
+  {
+   "id": "10000110",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "伊安珊",
+    "zh-tw": "伊安珊",
+    "en-us": "Iansan",
+    "ja-jp": "イアンサ"
+   }
+  },
+  {
+   "id": "10000111",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "瓦雷莎",
+    "zh-tw": "瓦雷莎",
+    "en-us": "Varesa",
+    "ja-jp": "ヴァレサ"
+   }
+  },
+  {
+   "id": "10000112",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "爱可菲",
+    "zh-tw": "愛可菲",
+    "en-us": "Escoffier",
+    "ja-jp": "エスコフィエ"
+   }
+  },
+  {
+   "id": "10000113",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "伊法",
+    "zh-tw": "伊法",
+    "en-us": "Ifa",
+    "ja-jp": "イファ"
+   }
+  },
+  {
+   "id": "10000114",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "丝柯克",
+    "zh-tw": "絲柯克",
+    "en-us": "Skirk",
+    "ja-jp": "スカーク"
+   }
+  },
+  {
+   "id": "10000115",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "塔利雅",
+    "zh-tw": "塔利雅",
+    "en-us": "Dahlia",
+    "ja-jp": "ダリア"
+   }
+  },
+  {
+   "id": "10000116",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "伊涅芙",
+    "zh-tw": "伊涅芙",
+    "en-us": "Ineffa",
+    "ja-jp": "イネファ"
+   }
+  },
+  {
+   "id": "10000117",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "奇偶·男性",
+    "zh-tw": "奇偶·男性",
+    "en-us": "Manekin",
+    "ja-jp": "ドール（男）"
+   }
+  },
+  {
+   "id": "10000118",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "奇偶·女性",
+    "zh-tw": "奇偶·女性",
+    "en-us": "Manekina",
+    "ja-jp": "ドール（女）"
+   }
+  },
+  {
+   "id": "10000119",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "菈乌玛",
+    "zh-tw": "菈烏瑪",
+    "en-us": "Lauma",
+    "ja-jp": "ラウマ"
+   }
+  },
+  {
+   "id": "10000120",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "菲林斯",
+    "zh-tw": "菲林斯",
+    "en-us": "Flins",
+    "ja-jp": "フリンズ"
+   }
+  },
+  {
+   "id": "10000121",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "爱诺",
+    "zh-tw": "愛諾",
+    "en-us": "Aino",
+    "ja-jp": "アイノ"
+   }
+  },
+  {
+   "id": "10000122",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "奈芙尔",
+    "zh-tw": "奈芙爾",
+    "en-us": "Nefer",
+    "ja-jp": "ネフェル"
+   }
+  },
+  {
+   "id": "10000123",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "杜林",
+    "zh-tw": "杜林",
+    "en-us": "Durin",
+    "ja-jp": "ドゥリン"
+   }
+  },
+  {
+   "id": "10000124",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "雅珂达",
+    "zh-tw": "雅珂達",
+    "en-us": "Jahoda",
+    "ja-jp": "ヤフォダ"
+   }
+  },
+  {
+   "id": "10000125",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "哥伦比娅",
+    "zh-tw": "哥倫比婭",
+    "en-us": "Columbina",
+    "ja-jp": "コロンビーナ"
+   }
+  },
+  {
+   "id": "10000126",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "兹白",
+    "zh-tw": "茲白",
+    "en-us": "Zibai",
+    "ja-jp": "兹白"
+   }
+  },
+  {
+   "id": "10000127",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "叶洛亚",
+    "zh-tw": "葉洛亞",
+    "en-us": "Illuga",
+    "ja-jp": "イルーガ"
+   }
+  },
+  {
+   "id": "10000128",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "法尔伽",
+    "zh-tw": "法爾伽",
+    "en-us": "Varka",
+    "ja-jp": "ファルカ"
+   }
+  },
+  {
+   "id": "10000129",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "洛恩",
+    "zh-tw": "洛恩",
+    "en-us": "Lohen",
+    "ja-jp": "ローエン"
+   }
+  },
+  {
+   "id": "10000130",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "莉奈娅",
+    "zh-tw": "莉奈婭",
+    "en-us": "Linnea",
+    "ja-jp": "リンネア"
+   }
+  },
+  {
+   "id": "10000131",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "尼可",
+    "zh-tw": "尼可",
+    "en-us": "Nicole",
+    "ja-jp": "ニコ"
+   }
+  },
+  {
+   "id": "10000132",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "布伦妮",
+    "zh-tw": "布倫妮",
+    "en-us": "Prune",
+    "ja-jp": "プルーネ"
+   }
+  },
+  {
+   "id": "10000133",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "桑多涅",
+    "zh-tw": "桑多涅",
+    "en-us": "Sandrone",
+    "ja-jp": "サンドローネ"
+   }
+  },
+  {
+   "id": "11101",
+   "rarity": 1,
+   "names": {
+    "zh-cn": "无锋剑",
+    "zh-tw": "無鋒劍",
+    "en-us": "Dull Blade",
+    "ja-jp": "無鋒の剣"
+   }
+  },
+  {
+   "id": "11201",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "银剑",
+    "zh-tw": "銀劍",
+    "en-us": "Silver Sword",
+    "ja-jp": "銀の剣"
+   }
+  },
+  {
+   "id": "11301",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "冷刃",
+    "zh-tw": "冷刃",
+    "en-us": "Cool Steel",
+    "ja-jp": "冷刃"
+   }
+  },
+  {
+   "id": "11302",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "黎明神剑",
+    "zh-tw": "黎明神劍",
+    "en-us": "Harbinger of Dawn",
+    "ja-jp": "黎明の神剣"
+   }
+  },
+  {
+   "id": "11303",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "旅行剑",
+    "zh-tw": "旅行劍",
+    "en-us": "Traveler's Handy Sword",
+    "ja-jp": "旅道の剣"
+   }
+  },
+  {
+   "id": "11304",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "暗铁剑",
+    "zh-tw": "暗鐵劍",
+    "en-us": "Dark Iron Sword",
+    "ja-jp": "暗鉄剣"
+   }
+  },
+  {
+   "id": "11305",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "吃虎鱼刀",
+    "zh-tw": "吃虎魚刀",
+    "en-us": "Fillet Blade",
+    "ja-jp": "チ虎魚の刀"
+   }
+  },
+  {
+   "id": "11306",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "飞天御剑",
+    "zh-tw": "飛天御劍",
+    "en-us": "Skyrider Sword",
+    "ja-jp": "飛天御剣"
+   }
+  },
+  {
+   "id": "11401",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "西风剑",
+    "zh-tw": "西風劍",
+    "en-us": "Favonius Sword",
+    "ja-jp": "西風剣"
+   }
+  },
+  {
+   "id": "11402",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "笛剑",
+    "zh-tw": "笛劍",
+    "en-us": "The Flute",
+    "ja-jp": "笛の剣"
+   }
+  },
+  {
+   "id": "11403",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "祭礼剑",
+    "zh-tw": "祭禮劍",
+    "en-us": "Sacrificial Sword",
+    "ja-jp": "祭礼の剣"
+   }
+  },
+  {
+   "id": "11404",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "宗室长剑",
+    "zh-tw": "宗室長劍",
+    "en-us": "Royal Longsword",
+    "ja-jp": "旧貴族長剣"
+   }
+  },
+  {
+   "id": "11405",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "匣里龙吟",
+    "zh-tw": "匣裡龍吟",
+    "en-us": "Lion's Roar",
+    "ja-jp": "匣中龍吟"
+   }
+  },
+  {
+   "id": "11406",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "试作斩岩",
+    "zh-tw": "試作斬岩",
+    "en-us": "Prototype Rancour",
+    "ja-jp": "斬岩·試作"
+   }
+  },
+  {
+   "id": "11407",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "铁蜂刺",
+    "zh-tw": "鐵蜂刺",
+    "en-us": "Iron Sting",
+    "ja-jp": "鉄蜂の刺し"
+   }
+  },
+  {
+   "id": "11408",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "黑岩长剑",
+    "zh-tw": "黑岩長劍",
+    "en-us": "Blackcliff Longsword",
+    "ja-jp": "黒岩の長剣"
+   }
+  },
+  {
+   "id": "11409",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "黑剑",
+    "zh-tw": "黑劍",
+    "en-us": "The Black Sword",
+    "ja-jp": "黒剣"
+   }
+  },
+  {
+   "id": "11410",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "暗巷闪光",
+    "zh-tw": "暗巷閃光",
+    "en-us": "The Alley Flash",
+    "ja-jp": "ダークアレイの閃光"
+   }
+  },
+  {
+   "id": "11412",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "降临之剑",
+    "zh-tw": "降臨之劍",
+    "en-us": "Sword of Descension",
+    "ja-jp": "降臨の剣"
+   }
+  },
+  {
+   "id": "11413",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "腐殖之剑",
+    "zh-tw": "腐殖之劍",
+    "en-us": "Festering Desire",
+    "ja-jp": "腐植の剣"
+   }
+  },
+  {
+   "id": "11414",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "天目影打刀",
+    "zh-tw": "天目影打刀",
+    "en-us": "Amenoma Kageuchi",
+    "ja-jp": "天目影打"
+   }
+  },
+  {
+   "id": "11415",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "辰砂之纺锤",
+    "zh-tw": "辰砂之紡錘",
+    "en-us": "Cinnabar Spindle",
+    "ja-jp": "シナバースピンドル"
+   }
+  },
+  {
+   "id": "11416",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "笼钓瓶一心",
+    "zh-tw": "籠釣瓶一心",
+    "en-us": "Kagotsurube Isshin",
+    "ja-jp": "籠釣瓶一心"
+   }
+  },
+  {
+   "id": "11417",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "原木刀",
+    "zh-tw": "原木刀",
+    "en-us": "Sapwood Blade",
+    "ja-jp": "原木刀"
+   }
+  },
+  {
+   "id": "11418",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "西福斯的月光",
+    "zh-tw": "西福斯的月光",
+    "en-us": "Xiphos' Moonlight",
+    "ja-jp": "サイフォスの月明かり"
+   }
+  },
+  {
+   "id": "11422",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "东花坊时雨",
+    "zh-tw": "東花坊時雨",
+    "en-us": "Toukabou Shigure",
+    "ja-jp": "東花坊時雨"
+   }
+  },
+  {
+   "id": "11424",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "狼牙",
+    "zh-tw": "狼牙",
+    "en-us": "Wolf-Fang",
+    "ja-jp": "狼牙"
+   }
+  },
+  {
+   "id": "11425",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "海渊终曲",
+    "zh-tw": "海淵終曲",
+    "en-us": "Finale of the Deep",
+    "ja-jp": "海淵のフィナーレ"
+   }
+  },
+  {
+   "id": "11426",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "灰河渡手",
+    "zh-tw": "灰河渡手",
+    "en-us": "Fleuve Cendre Ferryman",
+    "ja-jp": "サーンドルの渡し守"
+   }
+  },
+  {
+   "id": "11427",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "船坞长剑",
+    "zh-tw": "船塢長劍",
+    "en-us": "The Dockhand's Assistant",
+    "ja-jp": "船渠剣"
+   }
+  },
+  {
+   "id": "11430",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "弥坚骨",
+    "zh-tw": "彌堅骨",
+    "en-us": "Sturdy Bone",
+    "ja-jp": "ストロング・ボーン"
+   }
+  },
+  {
+   "id": "11431",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "息燧之笛",
+    "zh-tw": "息燧之笛",
+    "en-us": "Flute of Ezpitzal",
+    "ja-jp": "エズピツァルの笛"
+   }
+  },
+  {
+   "id": "11432",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "厄水之祸",
+    "zh-tw": "厄水之禍",
+    "en-us": "Calamity of Eshu",
+    "ja-jp": "厄水の災い"
+   }
+  },
+  {
+   "id": "11433",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "谧音吹哨",
+    "zh-tw": "謐音吹哨",
+    "en-us": "Serenity's Call",
+    "ja-jp": "静謐の笛"
+   }
+  },
+  {
+   "id": "11434",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "织月者的曙色",
+    "zh-tw": "織月者的曙色",
+    "en-us": "Moonweaver's Dawn",
+    "ja-jp": "月紡ぎの曙光"
+   }
+  },
+  {
+   "id": "11501",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "风鹰剑",
+    "zh-tw": "風鷹劍",
+    "en-us": "Aquila Favonia",
+    "ja-jp": "風鷹剣"
+   }
+  },
+  {
+   "id": "11502",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "天空之刃",
+    "zh-tw": "天空之刃",
+    "en-us": "Skyward Blade",
+    "ja-jp": "天空の刃"
+   }
+  },
+  {
+   "id": "11503",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "苍古自由之誓",
+    "zh-tw": "蒼古自由之誓",
+    "en-us": "Freedom-Sworn",
+    "ja-jp": "蒼古なる自由への誓い"
+   }
+  },
+  {
+   "id": "11504",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "斫峰之刃",
+    "zh-tw": "斫峰之刃",
+    "en-us": "Summit Shaper",
+    "ja-jp": "斬山の刃"
+   }
+  },
+  {
+   "id": "11505",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "磐岩结绿",
+    "zh-tw": "磐岩結綠",
+    "en-us": "Primordial Jade Cutter",
+    "ja-jp": "磐岩結緑"
+   }
+  },
+  {
+   "id": "11509",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "雾切之回光",
+    "zh-tw": "霧切之回光",
+    "en-us": "Mistsplitter Reforged",
+    "ja-jp": "霧切の廻光"
+   }
+  },
+  {
+   "id": "11510",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "波乱月白经津",
+    "zh-tw": "波亂月白經津",
+    "en-us": "Haran Geppaku Futsu",
+    "ja-jp": "波乱月白経津"
+   }
+  },
+  {
+   "id": "11511",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "圣显之钥",
+    "zh-tw": "聖顯之鑰",
+    "en-us": "Key of Khaj-Nisut",
+    "ja-jp": "聖顕の鍵"
+   }
+  },
+  {
+   "id": "11512",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "裁叶萃光",
+    "zh-tw": "裁葉萃光",
+    "en-us": "Light of Foliar Incision",
+    "ja-jp": "萃光の裁葉"
+   }
+  },
+  {
+   "id": "11513",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "静水流涌之辉",
+    "zh-tw": "靜水流湧之輝",
+    "en-us": "Splendor of Tranquil Waters",
+    "ja-jp": "静水流転の輝き"
+   }
+  },
+  {
+   "id": "11514",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "有乐御簾切",
+    "zh-tw": "有樂御簾切",
+    "en-us": "Uraku Misugiri",
+    "ja-jp": "有楽御簾切"
+   }
+  },
+  {
+   "id": "11515",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "赦罪",
+    "zh-tw": "赦罪",
+    "en-us": "Absolution",
+    "ja-jp": "赦罪"
+   }
+  },
+  {
+   "id": "11516",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "岩峰巡歌",
+    "zh-tw": "岩峰巡歌",
+    "en-us": "Peak Patrol Song",
+    "ja-jp": "岩峰を巡る歌"
+   }
+  },
+  {
+   "id": "11517",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "苍耀",
+    "zh-tw": "蒼耀",
+    "en-us": "Azurelight",
+    "ja-jp": "蒼耀"
+   }
+  },
+  {
+   "id": "11518",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "黑蚀",
+    "zh-tw": "黑蝕",
+    "en-us": "Athame Artis",
+    "ja-jp": "黒蝕"
+   }
+  },
+  {
+   "id": "11519",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "朏魄含光",
+    "zh-tw": "朏魄含光",
+    "en-us": "Lightbearing Moonshard",
+    "ja-jp": "三日月の含光"
+   }
+  },
+  {
+   "id": "12101",
+   "rarity": 1,
+   "names": {
+    "zh-cn": "训练大剑",
+    "zh-tw": "訓練大劍",
+    "en-us": "Waster Greatsword",
+    "ja-jp": "訓練用大剣"
+   }
+  },
+  {
+   "id": "12201",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "佣兵重剑",
+    "zh-tw": "傭兵重劍",
+    "en-us": "Old Merc's Pal",
+    "ja-jp": "傭兵の重剣"
+   }
+  },
+  {
+   "id": "12301",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "铁影阔剑",
+    "zh-tw": "鐵影闊劍",
+    "en-us": "Ferrous Shadow",
+    "ja-jp": "鉄影段平"
+   }
+  },
+  {
+   "id": "12302",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "沐浴龙血的剑",
+    "zh-tw": "沐浴龍血的劍",
+    "en-us": "Bloodtainted Greatsword",
+    "ja-jp": "龍血を浴びた剣"
+   }
+  },
+  {
+   "id": "12303",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "白铁大剑",
+    "zh-tw": "白鐵大劍",
+    "en-us": "White Iron Greatsword",
+    "ja-jp": "白鉄の大剣"
+   }
+  },
+  {
+   "id": "12305",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "以理服人",
+    "zh-tw": "以理服人",
+    "en-us": "Debate Club",
+    "ja-jp": "理屈責め"
+   }
+  },
+  {
+   "id": "12306",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "飞天大御剑",
+    "zh-tw": "飛天大御劍",
+    "en-us": "Skyrider Greatsword",
+    "ja-jp": "飛天大御剣"
+   }
+  },
+  {
+   "id": "12401",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "西风大剑",
+    "zh-tw": "西風大劍",
+    "en-us": "Favonius Greatsword",
+    "ja-jp": "西風大剣"
+   }
+  },
+  {
+   "id": "12402",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "钟剑",
+    "zh-tw": "鐘劍",
+    "en-us": "The Bell",
+    "ja-jp": "鐘の剣"
+   }
+  },
+  {
+   "id": "12403",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "祭礼大剑",
+    "zh-tw": "祭禮大劍",
+    "en-us": "Sacrificial Greatsword",
+    "ja-jp": "祭礼の大剣"
+   }
+  },
+  {
+   "id": "12404",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "宗室大剑",
+    "zh-tw": "宗室大劍",
+    "en-us": "Royal Greatsword",
+    "ja-jp": "旧貴族大剣"
+   }
+  },
+  {
+   "id": "12405",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "雨裁",
+    "zh-tw": "雨裁",
+    "en-us": "Rainslasher",
+    "ja-jp": "雨裁"
+   }
+  },
+  {
+   "id": "12406",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "试作古华",
+    "zh-tw": "試作古華",
+    "en-us": "Prototype Archaic",
+    "ja-jp": "古華·試作"
+   }
+  },
+  {
+   "id": "12407",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "白影剑",
+    "zh-tw": "白影劍",
+    "en-us": "Whiteblind",
+    "ja-jp": "白影の剣"
+   }
+  },
+  {
+   "id": "12408",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "黑岩斩刀",
+    "zh-tw": "黑岩斬刀",
+    "en-us": "Blackcliff Slasher",
+    "ja-jp": "黒岩の斬刀"
+   }
+  },
+  {
+   "id": "12409",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "螭骨剑",
+    "zh-tw": "螭骨劍",
+    "en-us": "Serpent Spine",
+    "ja-jp": "螭龍の剣"
+   }
+  },
+  {
+   "id": "12410",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "千岩古剑",
+    "zh-tw": "千岩古劍",
+    "en-us": "Lithic Blade",
+    "ja-jp": "千岩古剣"
+   }
+  },
+  {
+   "id": "12411",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "雪葬的星银",
+    "zh-tw": "雪葬的星銀",
+    "en-us": "Snow-Tombed Starsilver",
+    "ja-jp": "雪葬の星銀"
+   }
+  },
+  {
+   "id": "12412",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "衔珠海皇",
+    "zh-tw": "銜珠海皇",
+    "en-us": "Luxurious Sea-Lord",
+    "ja-jp": "銜玉の海皇"
+   }
+  },
+  {
+   "id": "12414",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "桂木斩长正",
+    "zh-tw": "桂木斬長正",
+    "en-us": "Katsuragikiri Nagamasa",
+    "ja-jp": "桂木斬長正"
+   }
+  },
+  {
+   "id": "12415",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "玛海菈的水色",
+    "zh-tw": "瑪海菈的水色",
+    "en-us": "Makhaira Aquamarine",
+    "ja-jp": "マカイラの水色"
+   }
+  },
+  {
+   "id": "12416",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "恶王丸",
+    "zh-tw": "惡王丸",
+    "en-us": "Akuoumaru",
+    "ja-jp": "惡王丸"
+   }
+  },
+  {
+   "id": "12417",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "森林王器",
+    "zh-tw": "森林王器",
+    "en-us": "Forest Regalia",
+    "ja-jp": "森林のレガリア"
+   }
+  },
+  {
+   "id": "12418",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "饰铁之花",
+    "zh-tw": "飾鐵之花",
+    "en-us": "Mailed Flower",
+    "ja-jp": "鉄彩の花"
+   }
+  },
+  {
+   "id": "12424",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "聊聊棒",
+    "zh-tw": "聊聊棒",
+    "en-us": "Talking Stick",
+    "ja-jp": "話死合い棒"
+   }
+  },
+  {
+   "id": "12425",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "浪影阔剑",
+    "zh-tw": "浪影闊劍",
+    "en-us": "Tidal Shadow",
+    "ja-jp": "タイダル·シャドー"
+   }
+  },
+  {
+   "id": "12426",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "「究极霸王超级魔剑」",
+    "zh-tw": "「究極霸王超級魔劍」",
+    "en-us": "\"Ultimate Overlord's Mega Magic Sword\"",
+    "ja-jp": "「スーパーアルティメット覇王魔剣」"
+   }
+  },
+  {
+   "id": "12427",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "便携动力锯",
+    "zh-tw": "便攜動力鋸",
+    "en-us": "Portable Power Saw",
+    "ja-jp": "携帯型チェーンソー"
+   }
+  },
+  {
+   "id": "12430",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "硕果钩",
+    "zh-tw": "碩果鉤",
+    "en-us": "Fruitful Hook",
+    "ja-jp": "実りの鉤鉈"
+   }
+  },
+  {
+   "id": "12431",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "撼地者",
+    "zh-tw": "撼地者",
+    "en-us": "Earth Shaker",
+    "ja-jp": "アースシェイカー"
+   }
+  },
+  {
+   "id": "12432",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "拾慧铸熔",
+    "zh-tw": "拾慧鑄熔",
+    "en-us": "Flame-Forged Insight",
+    "ja-jp": "知恵の溶炎"
+   }
+  },
+  {
+   "id": "12433",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "万能钥匙",
+    "zh-tw": "萬能鑰匙",
+    "en-us": "Master Key",
+    "ja-jp": "万能の鍵"
+   }
+  },
+  {
+   "id": "12501",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "天空之傲",
+    "zh-tw": "天空之傲",
+    "en-us": "Skyward Pride",
+    "ja-jp": "天空の傲"
+   }
+  },
+  {
+   "id": "12502",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "狼的末路",
+    "zh-tw": "狼的末路",
+    "en-us": "Wolf's Gravestone",
+    "ja-jp": "狼の末路"
+   }
+  },
+  {
+   "id": "12503",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "松籁响起之时",
+    "zh-tw": "松籟響起之時",
+    "en-us": "Song of Broken Pines",
+    "ja-jp": "松韻の響く頃"
+   }
+  },
+  {
+   "id": "12504",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "无工之剑",
+    "zh-tw": "無工之劍",
+    "en-us": "The Unforged",
+    "ja-jp": "無工の剣"
+   }
+  },
+  {
+   "id": "12510",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "赤角石溃杵",
+    "zh-tw": "赤角石潰杵",
+    "en-us": "Redhorn Stonethresher",
+    "ja-jp": "赤角石塵滅砕"
+   }
+  },
+  {
+   "id": "12511",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "苇海信标",
+    "zh-tw": "葦海信標",
+    "en-us": "Beacon of the Reed Sea",
+    "ja-jp": "葦海の標"
+   }
+  },
+  {
+   "id": "12512",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "裁断",
+    "zh-tw": "裁斷",
+    "en-us": "Verdict",
+    "ja-jp": "裁断"
+   }
+  },
+  {
+   "id": "12513",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "山王长牙",
+    "zh-tw": "山王長牙",
+    "en-us": "Fang of the Mountain King",
+    "ja-jp": "山の王の長牙"
+   }
+  },
+  {
+   "id": "12514",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "焚曜千阳",
+    "zh-tw": "焚曜千陽",
+    "en-us": "A Thousand Blazing Suns",
+    "ja-jp": "千烈の日輪"
+   }
+  },
+  {
+   "id": "12515",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "狼的武功歌",
+    "zh-tw": "狼的武功歌",
+    "en-us": "Gest of the Mighty Wolf",
+    "ja-jp": "狼の武勲詩"
+   }
+  },
+  {
+   "id": "12516",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "超越之匙",
+    "zh-tw": "超越之匙",
+    "en-us": "A Teaspoon of Transcendence",
+    "ja-jp": "超越の鍵"
+   }
+  },
+  {
+   "id": "13101",
+   "rarity": 1,
+   "names": {
+    "zh-cn": "新手长枪",
+    "zh-tw": "新手長槍",
+    "en-us": "Beginner's Protector",
+    "ja-jp": "新米の長槍"
+   }
+  },
+  {
+   "id": "13201",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "铁尖枪",
+    "zh-tw": "鐵尖槍",
+    "en-us": "Iron Point",
+    "ja-jp": "鉄尖槍"
+   }
+  },
+  {
+   "id": "13301",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "白缨枪",
+    "zh-tw": "白纓槍",
+    "en-us": "White Tassel",
+    "ja-jp": "白纓槍"
+   }
+  },
+  {
+   "id": "13302",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "钺矛",
+    "zh-tw": "鉞矛",
+    "en-us": "Halberd",
+    "ja-jp": "鉾槍"
+   }
+  },
+  {
+   "id": "13303",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "黑缨枪",
+    "zh-tw": "黑纓槍",
+    "en-us": "Black Tassel",
+    "ja-jp": "黒纓槍"
+   }
+  },
+  {
+   "id": "13401",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "匣里灭辰",
+    "zh-tw": "匣裡滅辰",
+    "en-us": "Dragon's Bane",
+    "ja-jp": "匣中滅龍"
+   }
+  },
+  {
+   "id": "13402",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "试作星镰",
+    "zh-tw": "試作星鐮",
+    "en-us": "Prototype Starglitter",
+    "ja-jp": "星鎌·試作"
+   }
+  },
+  {
+   "id": "13403",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "流月针",
+    "zh-tw": "流月針",
+    "en-us": "Crescent Pike",
+    "ja-jp": "流月の針"
+   }
+  },
+  {
+   "id": "13404",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "黑岩刺枪",
+    "zh-tw": "黑岩刺槍",
+    "en-us": "Blackcliff Pole",
+    "ja-jp": "黒岩の突槍"
+   }
+  },
+  {
+   "id": "13405",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "决斗之枪",
+    "zh-tw": "決鬥之槍",
+    "en-us": "Deathmatch",
+    "ja-jp": "死闘の槍"
+   }
+  },
+  {
+   "id": "13406",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "千岩长枪",
+    "zh-tw": "千岩長槍",
+    "en-us": "Lithic Spear",
+    "ja-jp": "千岩長槍"
+   }
+  },
+  {
+   "id": "13407",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "西风长枪",
+    "zh-tw": "西風長槍",
+    "en-us": "Favonius Lance",
+    "ja-jp": "西風長槍"
+   }
+  },
+  {
+   "id": "13408",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "宗室猎枪",
+    "zh-tw": "宗室獵槍",
+    "en-us": "Royal Spear",
+    "ja-jp": "旧貴族猟槍"
+   }
+  },
+  {
+   "id": "13409",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "龙脊长枪",
+    "zh-tw": "龍脊長槍",
+    "en-us": "Dragonspine Spear",
+    "ja-jp": "ドラゴンスピア"
+   }
+  },
+  {
+   "id": "13414",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "喜多院十文字",
+    "zh-tw": "喜多院十文字",
+    "en-us": "Kitain Cross Spear",
+    "ja-jp": "喜多院十文字槍"
+   }
+  },
+  {
+   "id": "13415",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "「渔获」",
+    "zh-tw": "「漁獲」",
+    "en-us": "\"The Catch\"",
+    "ja-jp": "「漁獲」"
+   }
+  },
+  {
+   "id": "13416",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "断浪长鳍",
+    "zh-tw": "斷浪長鰭",
+    "en-us": "Wavebreaker's Fin",
+    "ja-jp": "斬波のひれ長"
+   }
+  },
+  {
+   "id": "13417",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "贯月矢",
+    "zh-tw": "貫月矢",
+    "en-us": "Moonpiercer",
+    "ja-jp": "ムーンピアサー"
+   }
+  },
+  {
+   "id": "13419",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "风信之锋",
+    "zh-tw": "風信之鋒",
+    "en-us": "Missive Windspear",
+    "ja-jp": "風信の矛"
+   }
+  },
+  {
+   "id": "13424",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "峡湾长歌",
+    "zh-tw": "峽灣長歌",
+    "en-us": "Ballad of the Fjords",
+    "ja-jp": "フィヨルドの歌"
+   }
+  },
+  {
+   "id": "13425",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "公义的酬报",
+    "zh-tw": "公義的酬報",
+    "en-us": "Rightful Reward",
+    "ja-jp": "正義の報酬"
+   }
+  },
+  {
+   "id": "13426",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "沙中伟贤的对答",
+    "zh-tw": "沙中偉賢的對答",
+    "en-us": "Dialogues of the Desert Sages",
+    "ja-jp": "砂中の賢者達の問答"
+   }
+  },
+  {
+   "id": "13427",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "勘探钻机",
+    "zh-tw": "勘探鑽機",
+    "en-us": "Prospector's Drill",
+    "ja-jp": "プロスペクタードリル"
+   }
+  },
+  {
+   "id": "13430",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "镇山之钉",
+    "zh-tw": "鎮山之釘",
+    "en-us": "Mountain-Bracing Bolt",
+    "ja-jp": "鎮山の釘"
+   }
+  },
+  {
+   "id": "13431",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "虹的行迹",
+    "zh-tw": "虹的行跡",
+    "en-us": "Footprint of the Rainbow",
+    "ja-jp": "虹の行方"
+   }
+  },
+  {
+   "id": "13432",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "且住亭御咄",
+    "zh-tw": "且住亭御咄",
+    "en-us": "Tamayuratei no Ohanashi",
+    "ja-jp": "玉響停の御噺"
+   }
+  },
+  {
+   "id": "13433",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "掘金之锹",
+    "zh-tw": "掘金之鍬",
+    "en-us": "Prospector's Shovel",
+    "ja-jp": "金掘りのシャベル"
+   }
+  },
+  {
+   "id": "13434",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "圣祭者的辉杖",
+    "zh-tw": "聖祭者的輝杖",
+    "en-us": "Sacrificer's Staff",
+    "ja-jp": "聖祭者の輝杖"
+   }
+  },
+  {
+   "id": "13501",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "护摩之杖",
+    "zh-tw": "護摩之杖",
+    "en-us": "Staff of Homa",
+    "ja-jp": "護摩の杖"
+   }
+  },
+  {
+   "id": "13502",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "天空之脊",
+    "zh-tw": "天空之脊",
+    "en-us": "Skyward Spine",
+    "ja-jp": "天空の脊"
+   }
+  },
+  {
+   "id": "13504",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "贯虹之槊",
+    "zh-tw": "貫虹之槊",
+    "en-us": "Vortex Vanquisher",
+    "ja-jp": "破天の槍"
+   }
+  },
+  {
+   "id": "13505",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "和璞鸢",
+    "zh-tw": "和璞鳶",
+    "en-us": "Primordial Jade Winged-Spear",
+    "ja-jp": "和璞鳶"
+   }
+  },
+  {
+   "id": "13507",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "息灾",
+    "zh-tw": "息災",
+    "en-us": "Calamity Queller",
+    "ja-jp": "息災"
+   }
+  },
+  {
+   "id": "13509",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "薙草之稻光",
+    "zh-tw": "薙草之稻光",
+    "en-us": "Engulfing Lightning",
+    "ja-jp": "草薙の稲光"
+   }
+  },
+  {
+   "id": "13511",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "赤沙之杖",
+    "zh-tw": "赤沙之杖",
+    "en-us": "Staff of the Scarlet Sands",
+    "ja-jp": "赤砂の杖"
+   }
+  },
+  {
+   "id": "13512",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "赤月之形",
+    "zh-tw": "赤月之形",
+    "en-us": "Crimson Moon's Semblance",
+    "ja-jp": "赤月のシルエット"
+   }
+  },
+  {
+   "id": "13513",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "柔灯挽歌",
+    "zh-tw": "柔燈輓歌",
+    "en-us": "Lumidouce Elegy",
+    "ja-jp": "ルミドゥースの挽歌"
+   }
+  },
+  {
+   "id": "13514",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "香韵奏者",
+    "zh-tw": "香韻奏者",
+    "en-us": "Symphonist of Scents",
+    "ja-jp": "香りのシンフォニスト"
+   }
+  },
+  {
+   "id": "13515",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "支离轮光",
+    "zh-tw": "支離輪光",
+    "en-us": "Fractured Halo",
+    "ja-jp": "砕け散る光輪"
+   }
+  },
+  {
+   "id": "13516",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "血染荒城",
+    "zh-tw": "血染荒城",
+    "en-us": "Bloodsoaked Ruins",
+    "ja-jp": "血染めの荒れ地"
+   }
+  },
+  {
+   "id": "13517",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "灾悔",
+    "zh-tw": "災悔",
+    "en-us": "Disaster and Remorse",
+    "ja-jp": "災憾"
+   }
+  },
+  {
+   "id": "14101",
+   "rarity": 1,
+   "names": {
+    "zh-cn": "学徒笔记",
+    "zh-tw": "學徒筆記",
+    "en-us": "Apprentice's Notes",
+    "ja-jp": "生徒ノート"
+   }
+  },
+  {
+   "id": "14201",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "口袋魔导书",
+    "zh-tw": "口袋魔導書",
+    "en-us": "Pocket Grimoire",
+    "ja-jp": "ポケット魔導書"
+   }
+  },
+  {
+   "id": "14301",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "魔导绪论",
+    "zh-tw": "魔導緒論",
+    "en-us": "Magic Guide",
+    "ja-jp": "魔導緒論"
+   }
+  },
+  {
+   "id": "14302",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "讨龙英杰谭",
+    "zh-tw": "討龍英傑譚",
+    "en-us": "Thrilling Tales of Dragon Slayers",
+    "ja-jp": "龍殺しの英傑譚"
+   }
+  },
+  {
+   "id": "14303",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "异世界行记",
+    "zh-tw": "異世界行記",
+    "en-us": "Otherworldly Story",
+    "ja-jp": "異世界旅行記"
+   }
+  },
+  {
+   "id": "14304",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "翡玉法球",
+    "zh-tw": "翡玉法球",
+    "en-us": "Emerald Orb",
+    "ja-jp": "翡玉法珠"
+   }
+  },
+  {
+   "id": "14305",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "甲级宝珏",
+    "zh-tw": "甲級寶玨",
+    "en-us": "Twin Nephrite",
+    "ja-jp": "特級の宝玉"
+   }
+  },
+  {
+   "id": "14401",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "西风秘典",
+    "zh-tw": "西風秘典",
+    "en-us": "Favonius Codex",
+    "ja-jp": "西風秘典"
+   }
+  },
+  {
+   "id": "14402",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "流浪乐章",
+    "zh-tw": "流浪樂章",
+    "en-us": "The Widsith",
+    "ja-jp": "流浪楽章"
+   }
+  },
+  {
+   "id": "14403",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "祭礼残章",
+    "zh-tw": "祭禮殘章",
+    "en-us": "Sacrificial Fragments",
+    "ja-jp": "祭礼の断片"
+   }
+  },
+  {
+   "id": "14404",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "宗室秘法录",
+    "zh-tw": "宗室秘法錄",
+    "en-us": "Royal Grimoire",
+    "ja-jp": "旧貴族秘法録"
+   }
+  },
+  {
+   "id": "14405",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "匣里日月",
+    "zh-tw": "匣裡日月",
+    "en-us": "Solar Pearl",
+    "ja-jp": "匣中日月"
+   }
+  },
+  {
+   "id": "14406",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "试作金珀",
+    "zh-tw": "試作金珀",
+    "en-us": "Prototype Amber",
+    "ja-jp": "金珀·試作"
+   }
+  },
+  {
+   "id": "14407",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "万国诸海图谱",
+    "zh-tw": "萬國諸海圖譜",
+    "en-us": "Mappa Mare",
+    "ja-jp": "万国諸海の図譜"
+   }
+  },
+  {
+   "id": "14408",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "黑岩绯玉",
+    "zh-tw": "黑岩緋玉",
+    "en-us": "Blackcliff Agate",
+    "ja-jp": "黒岩の緋玉"
+   }
+  },
+  {
+   "id": "14409",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "昭心",
+    "zh-tw": "昭心",
+    "en-us": "Eye of Perception",
+    "ja-jp": "昭心"
+   }
+  },
+  {
+   "id": "14410",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "暗巷的酒与诗",
+    "zh-tw": "暗巷的酒與詩",
+    "en-us": "Wine and Song",
+    "ja-jp": "ダークアレイの酒と詩"
+   }
+  },
+  {
+   "id": "14412",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "忍冬之果",
+    "zh-tw": "忍冬之果",
+    "en-us": "Frostbearer",
+    "ja-jp": "冬忍びの実"
+   }
+  },
+  {
+   "id": "14413",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "嘟嘟可故事集",
+    "zh-tw": "嘟嘟可故事集",
+    "en-us": "Dodoco Tales",
+    "ja-jp": "ドドコの物語"
+   }
+  },
+  {
+   "id": "14414",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "白辰之环",
+    "zh-tw": "白辰之環",
+    "en-us": "Hakushin Ring",
+    "ja-jp": "白辰の輪"
+   }
+  },
+  {
+   "id": "14415",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "证誓之明瞳",
+    "zh-tw": "證誓之明瞳",
+    "en-us": "Oathsworn Eye",
+    "ja-jp": "誓いの明瞳"
+   }
+  },
+  {
+   "id": "14416",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "流浪的晚星",
+    "zh-tw": "流浪的晚星",
+    "en-us": "Wandering Evenstar",
+    "ja-jp": "彷徨える星"
+   }
+  },
+  {
+   "id": "14417",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "盈满之实",
+    "zh-tw": "盈滿之實",
+    "en-us": "Fruit of Fulfillment",
+    "ja-jp": "満悦の実"
+   }
+  },
+  {
+   "id": "14424",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "遗祀玉珑",
+    "zh-tw": "遺祀玉瓏",
+    "en-us": "Sacrificial Jade",
+    "ja-jp": "古祠の瓏"
+   }
+  },
+  {
+   "id": "14425",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "纯水流华",
+    "zh-tw": "純水流華",
+    "en-us": "Flowing Purity",
+    "ja-jp": "純水流華"
+   }
+  },
+  {
+   "id": "14426",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "无垠蔚蓝之歌",
+    "zh-tw": "無垠蔚藍之歌",
+    "en-us": "Ballad of the Boundless Blue",
+    "ja-jp": "果てなき紺碧の唄"
+   }
+  },
+  {
+   "id": "14427",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "苍纹角杯",
+    "zh-tw": "蒼紋角杯",
+    "en-us": "Ash-Graven Drinking Horn",
+    "ja-jp": "蒼紋の角杯"
+   }
+  },
+  {
+   "id": "14430",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "乘浪的回旋",
+    "zh-tw": "乘浪的迴旋",
+    "en-us": "Waveriding Whirl",
+    "ja-jp": "波乗りの旋回"
+   }
+  },
+  {
+   "id": "14431",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "木棉之环",
+    "zh-tw": "木棉之環",
+    "en-us": "Ring of Yaxche",
+    "ja-jp": "ヤシュチェの環"
+   }
+  },
+  {
+   "id": "14432",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "天光的纺琴",
+    "zh-tw": "天光的紡琴",
+    "en-us": "Etherlight Spindlelute",
+    "ja-jp": "天光のリュート"
+   }
+  },
+  {
+   "id": "14433",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "乌髓孑灯",
+    "zh-tw": "烏髓孑燈",
+    "en-us": "Blackmarrow Lantern",
+    "ja-jp": "烏髄の孤灯"
+   }
+  },
+  {
+   "id": "14434",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "霜辰",
+    "zh-tw": "霜辰",
+    "en-us": "Dawning Frost",
+    "ja-jp": "霜辰"
+   }
+  },
+  {
+   "id": "14501",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "天空之卷",
+    "zh-tw": "天空之卷",
+    "en-us": "Skyward Atlas",
+    "ja-jp": "天空の巻"
+   }
+  },
+  {
+   "id": "14502",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "四风原典",
+    "zh-tw": "四風原典",
+    "en-us": "Lost Prayer to the Sacred Winds",
+    "ja-jp": "四風原典"
+   }
+  },
+  {
+   "id": "14504",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "尘世之锁",
+    "zh-tw": "塵世之鎖",
+    "en-us": "Memory of Dust",
+    "ja-jp": "浮世の錠"
+   }
+  },
+  {
+   "id": "14505",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "碧落之珑",
+    "zh-tw": "碧落之瓏",
+    "en-us": "Jadefall's Splendor",
+    "ja-jp": "碧落の瓏"
+   }
+  },
+  {
+   "id": "14506",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "不灭月华",
+    "zh-tw": "不滅月華",
+    "en-us": "Everlasting Moonglow",
+    "ja-jp": "不滅の月華"
+   }
+  },
+  {
+   "id": "14509",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "神乐之真意",
+    "zh-tw": "神樂之真意",
+    "en-us": "Kagura's Verity",
+    "ja-jp": "神楽の真意"
+   }
+  },
+  {
+   "id": "14511",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "千夜浮梦",
+    "zh-tw": "千夜浮夢",
+    "en-us": "A Thousand Floating Dreams",
+    "ja-jp": "千夜に浮かぶ夢"
+   }
+  },
+  {
+   "id": "14512",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "图莱杜拉的回忆",
+    "zh-tw": "圖萊杜拉的回憶",
+    "en-us": "Tulaytullah's Remembrance",
+    "ja-jp": "トゥライトゥーラの記憶"
+   }
+  },
+  {
+   "id": "14513",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "金流监督",
+    "zh-tw": "金流監督",
+    "en-us": "Cashflow Supervision",
+    "ja-jp": "凛流の監視者"
+   }
+  },
+  {
+   "id": "14514",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "万世流涌大典",
+    "zh-tw": "萬世流湧大典",
+    "en-us": "Tome of the Eternal Flow",
+    "ja-jp": "久遠流転の大典"
+   }
+  },
+  {
+   "id": "14515",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "鹤鸣余音",
+    "zh-tw": "鶴鳴餘音",
+    "en-us": "Crane's Echoing Call",
+    "ja-jp": "鶴鳴の余韻"
+   }
+  },
+  {
+   "id": "14516",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "冲浪时光",
+    "zh-tw": "衝浪時光",
+    "en-us": "Surf's Up",
+    "ja-jp": "サーフィンタイム"
+   }
+  },
+  {
+   "id": "14517",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "祭星者之望",
+    "zh-tw": "祭星者之望",
+    "en-us": "Starcaller's Watch",
+    "ja-jp": "祭星者の眺め"
+   }
+  },
+  {
+   "id": "14518",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "寝正月初晴",
+    "zh-tw": "寢正月初晴",
+    "en-us": "Sunny Morning Sleep-In",
+    "ja-jp": "寝正月の初晴"
+   }
+  },
+  {
+   "id": "14519",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "溢彩心念",
+    "zh-tw": "溢彩心念",
+    "en-us": "Vivid Notions",
+    "ja-jp": "ヴィヴィッド・ハート"
+   }
+  },
+  {
+   "id": "14520",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "纺夜天镜",
+    "zh-tw": "紡夜天鏡",
+    "en-us": "Nightweaver's Looking Glass",
+    "ja-jp": "夜を紡ぐ天鏡"
+   }
+  },
+  {
+   "id": "14521",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "真语秘匣",
+    "zh-tw": "真語秘匣",
+    "en-us": "Reliquary of Truth",
+    "ja-jp": "真言の匣"
+   }
+  },
+  {
+   "id": "14522",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "帷间夜曲",
+    "zh-tw": "帷間夜曲",
+    "en-us": "Nocturne's Curtain Call",
+    "ja-jp": "帳の夜曲"
+   }
+  },
+  {
+   "id": "14523",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "尘光七谕",
+    "zh-tw": "塵光七諭",
+    "en-us": "Angelos' Heptades",
+    "ja-jp": "塵と光の七つの誓約"
+   }
+  },
+  {
+   "id": "15101",
+   "rarity": 1,
+   "names": {
+    "zh-cn": "猎弓",
+    "zh-tw": "獵弓",
+    "en-us": "Hunter's Bow",
+    "ja-jp": "狩猟弓"
+   }
+  },
+  {
+   "id": "15201",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "历练的猎弓",
+    "zh-tw": "歷練的獵弓",
+    "en-us": "Seasoned Hunter's Bow",
+    "ja-jp": "歴戦の狩猟弓"
+   }
+  },
+  {
+   "id": "15301",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "鸦羽弓",
+    "zh-tw": "鴉羽弓",
+    "en-us": "Raven Bow",
+    "ja-jp": "鴉羽の弓"
+   }
+  },
+  {
+   "id": "15302",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "神射手之誓",
+    "zh-tw": "神射手之誓",
+    "en-us": "Sharpshooter's Oath",
+    "ja-jp": "シャープシューターの誓い"
+   }
+  },
+  {
+   "id": "15303",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "反曲弓",
+    "zh-tw": "反曲弓",
+    "en-us": "Recurve Bow",
+    "ja-jp": "リカーブボウ"
+   }
+  },
+  {
+   "id": "15304",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "弹弓",
+    "zh-tw": "彈弓",
+    "en-us": "Slingshot",
+    "ja-jp": "弾弓"
+   }
+  },
+  {
+   "id": "15305",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "信使",
+    "zh-tw": "信使",
+    "en-us": "Messenger",
+    "ja-jp": "文使い"
+   }
+  },
+  {
+   "id": "15401",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "西风猎弓",
+    "zh-tw": "西風獵弓",
+    "en-us": "Favonius Warbow",
+    "ja-jp": "西風猟弓"
+   }
+  },
+  {
+   "id": "15402",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "绝弦",
+    "zh-tw": "絕弦",
+    "en-us": "The Stringless",
+    "ja-jp": "絶弦"
+   }
+  },
+  {
+   "id": "15403",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "祭礼弓",
+    "zh-tw": "祭禮弓",
+    "en-us": "Sacrificial Bow",
+    "ja-jp": "祭礼の弓"
+   }
+  },
+  {
+   "id": "15404",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "宗室长弓",
+    "zh-tw": "宗室長弓",
+    "en-us": "Royal Bow",
+    "ja-jp": "旧貴族長弓"
+   }
+  },
+  {
+   "id": "15405",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "弓藏",
+    "zh-tw": "弓藏",
+    "en-us": "Rust",
+    "ja-jp": "弓蔵"
+   }
+  },
+  {
+   "id": "15406",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "试作澹月",
+    "zh-tw": "試作澹月",
+    "en-us": "Prototype Crescent",
+    "ja-jp": "澹月·試作"
+   }
+  },
+  {
+   "id": "15407",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "钢轮弓",
+    "zh-tw": "鋼輪弓",
+    "en-us": "Compound Bow",
+    "ja-jp": "リングボウ"
+   }
+  },
+  {
+   "id": "15408",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "黑岩战弓",
+    "zh-tw": "黑岩戰弓",
+    "en-us": "Blackcliff Warbow",
+    "ja-jp": "黒岩の戦弓"
+   }
+  },
+  {
+   "id": "15409",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "苍翠猎弓",
+    "zh-tw": "蒼翠獵弓",
+    "en-us": "The Viridescent Hunt",
+    "ja-jp": "蒼翠の狩猟弓"
+   }
+  },
+  {
+   "id": "15410",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "暗巷猎手",
+    "zh-tw": "暗巷獵手",
+    "en-us": "Alley Hunter",
+    "ja-jp": "ダークアレイの狩人"
+   }
+  },
+  {
+   "id": "15411",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "落霞",
+    "zh-tw": "落霞",
+    "en-us": "Fading Twilight",
+    "ja-jp": "落霞"
+   }
+  },
+  {
+   "id": "15412",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "幽夜华尔兹",
+    "zh-tw": "幽夜華爾滋",
+    "en-us": "Mitternachts Waltz",
+    "ja-jp": "幽夜のワルツ"
+   }
+  },
+  {
+   "id": "15413",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "风花之颂",
+    "zh-tw": "風花之頌",
+    "en-us": "Windblume Ode",
+    "ja-jp": "風花の頌歌"
+   }
+  },
+  {
+   "id": "15414",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "破魔之弓",
+    "zh-tw": "破魔之弓",
+    "en-us": "Hamayumi",
+    "ja-jp": "破魔の弓"
+   }
+  },
+  {
+   "id": "15415",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "掠食者",
+    "zh-tw": "掠食者",
+    "en-us": "Predator",
+    "ja-jp": "プレデター"
+   }
+  },
+  {
+   "id": "15416",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "曚云之月",
+    "zh-tw": "曚雲之月",
+    "en-us": "Mouun's Moon",
+    "ja-jp": "曚雲の月"
+   }
+  },
+  {
+   "id": "15417",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "王下近侍",
+    "zh-tw": "王下近侍",
+    "en-us": "King's Squire",
+    "ja-jp": "王の近侍"
+   }
+  },
+  {
+   "id": "15418",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "竭泽",
+    "zh-tw": "竭澤",
+    "en-us": "End of the Line",
+    "ja-jp": "竭沢"
+   }
+  },
+  {
+   "id": "15419",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "鹮穿之喙",
+    "zh-tw": "䴉穿之喙",
+    "en-us": "Ibis Piercer",
+    "ja-jp": "トキの嘴"
+   }
+  },
+  {
+   "id": "15424",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "烈阳之嗣",
+    "zh-tw": "烈陽之嗣",
+    "en-us": "Scion of the Blazing Sun",
+    "ja-jp": "烈日の後嗣"
+   }
+  },
+  {
+   "id": "15425",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "静谧之曲",
+    "zh-tw": "靜謐之曲",
+    "en-us": "Song of Stillness",
+    "ja-jp": "静寂の唄"
+   }
+  },
+  {
+   "id": "15426",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "筑云",
+    "zh-tw": "築雲",
+    "en-us": "Cloudforged",
+    "ja-jp": "築雲"
+   }
+  },
+  {
+   "id": "15427",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "测距规",
+    "zh-tw": "測距規",
+    "en-us": "Range Gauge",
+    "ja-jp": "レンジゲージ"
+   }
+  },
+  {
+   "id": "15430",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "缀花之翎",
+    "zh-tw": "綴花之翎",
+    "en-us": "Flower-Wreathed Feathers",
+    "ja-jp": "花飾りの羽"
+   }
+  },
+  {
+   "id": "15431",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "碎链",
+    "zh-tw": "碎鏈",
+    "en-us": "Chain Breaker",
+    "ja-jp": "チェーンブレイカー"
+   }
+  },
+  {
+   "id": "15432",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "冷寂迸音",
+    "zh-tw": "冷寂迸音",
+    "en-us": "Sequence of Solitude",
+    "ja-jp": "冷寂の音"
+   }
+  },
+  {
+   "id": "15433",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "罗网勾针",
+    "zh-tw": "羅網勾針",
+    "en-us": "Snare Hook",
+    "ja-jp": "羅網の針"
+   }
+  },
+  {
+   "id": "15434",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "虹蛇的雨弦",
+    "zh-tw": "虹蛇的雨弦",
+    "en-us": "Rainbow Serpent's Rain Bow",
+    "ja-jp": "虹蛇の雨弦"
+   }
+  },
+  {
+   "id": "15501",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "天空之翼",
+    "zh-tw": "天空之翼",
+    "en-us": "Skyward Harp",
+    "ja-jp": "天空の翼"
+   }
+  },
+  {
+   "id": "15502",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "阿莫斯之弓",
+    "zh-tw": "阿莫斯之弓",
+    "en-us": "Amos' Bow",
+    "ja-jp": "アモスの弓"
+   }
+  },
+  {
+   "id": "15503",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "终末嗟叹之诗",
+    "zh-tw": "終末嗟嘆之詩",
+    "en-us": "Elegy for the End",
+    "ja-jp": "終焉を嘆く詩"
+   }
+  },
+  {
+   "id": "15507",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "冬极白星",
+    "zh-tw": "冬極白星",
+    "en-us": "Polar Star",
+    "ja-jp": "冬極の白星"
+   }
+  },
+  {
+   "id": "15508",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "若水",
+    "zh-tw": "若水",
+    "en-us": "Aqua Simulacra",
+    "ja-jp": "若水"
+   }
+  },
+  {
+   "id": "15509",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "飞雷之弦振",
+    "zh-tw": "飛雷之弦振",
+    "en-us": "Thundering Pulse",
+    "ja-jp": "飛雷の鳴弦"
+   }
+  },
+  {
+   "id": "15511",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "猎人之径",
+    "zh-tw": "獵人之徑",
+    "en-us": "Hunter's Path",
+    "ja-jp": "狩人の道"
+   }
+  },
+  {
+   "id": "15512",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "最初的大魔术",
+    "zh-tw": "最初的大魔術",
+    "en-us": "The First Great Magic",
+    "ja-jp": "始まりの大魔術"
+   }
+  },
+  {
+   "id": "15513",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "白雨心弦",
+    "zh-tw": "白雨心弦",
+    "en-us": "Silvershower Heartstrings",
+    "ja-jp": "白雨心弦"
+   }
+  },
+  {
+   "id": "15514",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "星鹫赤羽",
+    "zh-tw": "星鷲赤羽",
+    "en-us": "Astral Vulture's Crimson Plumage",
+    "ja-jp": "星鷲の紅き羽"
+   }
+  },
+  {
+   "id": "15515",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "黎明破晓之史",
+    "zh-tw": "黎明破曉之史",
+    "en-us": "The Daybreak Chronicles",
+    "ja-jp": "暁を告げる歴史"
+   }
+  },
+  {
+   "id": "15516",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "霜结的誓金枝",
+    "zh-tw": "霜結的誓金枝",
+    "en-us": "Golden Frostbound Oath",
+    "ja-jp": "霜契の金枝"
+   }
+  }
+ ],
+ "standard": [
+  "10000003",
+  "10000016",
+  "10000035",
+  "10000041",
+  "10000042",
+  "10000069",
+  "10000079",
+  "10000109",
+  "11501",
+  "11502",
+  "12502",
+  "12501",
+  "13505",
+  "13502",
+  "14502",
+  "14501",
+  "15502",
+  "15501"
+ ],
+ "banners": [
+  {
+   "id": "genshin-character-2020-09-28",
+   "pool_type": "character",
+   "version": "1.0",
+   "start": "2020-09-28T06:00:00+08:00",
+   "end": "2020-10-18T17:59:59+08:00",
+   "up_top": [
+    "10000022"
+   ],
+   "up_second": [
+    "10000014",
+    "10000031",
+    "10000023"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2020-09-28",
+   "pool_type": "weapon",
+   "version": "1.0",
+   "start": "2020-09-28T06:00:00+08:00",
+   "end": "2020-10-18T17:59:59+08:00",
+   "up_top": [
+    "11501",
+    "15502"
+   ],
+   "up_second": [
+    "11402",
+    "12402",
+    "14402",
+    "15402",
+    "13407"
+   ]
+  },
+  {
+   "id": "genshin-character-2020-10-20",
+   "pool_type": "character",
+   "version": "1.0",
+   "start": "2020-10-20T18:00:00+08:00",
+   "end": "2020-11-10T17:59:59+08:00",
+   "up_top": [
+    "10000029"
+   ],
+   "up_second": [
+    "10000025",
+    "10000034",
+    "10000043"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2020-10-20",
+   "pool_type": "weapon",
+   "version": "1.0",
+   "start": "2020-10-20T18:00:00+08:00",
+   "end": "2020-11-10T17:59:59+08:00",
+   "up_top": [
+    "14502",
+    "12502"
+   ],
+   "up_second": [
+    "11403",
+    "12403",
+    "14403",
+    "15403",
+    "13401"
+   ]
+  },
+  {
+   "id": "genshin-character-2020-11-11",
+   "pool_type": "character",
+   "version": "1.1",
+   "start": "2020-11-11T06:00:00+08:00",
+   "end": "2020-12-01T15:59:59+08:00",
+   "up_top": [
+    "10000033"
+   ],
+   "up_second": [
+    "10000039",
+    "10000024",
+    "10000027"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2020-11-11",
+   "pool_type": "weapon",
+   "version": "1.1",
+   "start": "2020-11-11T06:00:00+08:00",
+   "end": "2020-12-01T15:59:59+08:00",
+   "up_top": [
+    "14504",
+    "15501"
+   ],
+   "up_second": [
+    "11402",
+    "12405",
+    "14409",
+    "15405",
+    "13407"
+   ]
+  },
+  {
+   "id": "genshin-character-2020-12-01",
+   "pool_type": "character",
+   "version": "1.1",
+   "start": "2020-12-01T18:00:00+08:00",
+   "end": "2020-12-22T14:59:59+08:00",
+   "up_top": [
+    "10000030"
+   ],
+   "up_second": [
+    "10000044",
+    "10000020",
+    "10000036"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2020-12-01",
+   "pool_type": "weapon",
+   "version": "1.1",
+   "start": "2020-12-01T18:00:00+08:00",
+   "end": "2020-12-22T14:59:59+08:00",
+   "up_top": [
+    "13504",
+    "12504"
+   ],
+   "up_second": [
+    "11405",
+    "12402",
+    "14401",
+    "15401",
+    "13401"
+   ]
+  },
+  {
+   "id": "genshin-character-2020-12-23",
+   "pool_type": "character",
+   "version": "1.2",
+   "start": "2020-12-23T06:00:00+08:00",
+   "end": "2021-01-12T15:59:59+08:00",
+   "up_top": [
+    "10000038"
+   ],
+   "up_second": [
+    "10000031",
+    "10000043",
+    "10000032"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2020-12-23",
+   "pool_type": "weapon",
+   "version": "1.2",
+   "start": "2020-12-23T06:00:00+08:00",
+   "end": "2021-01-12T15:59:59+08:00",
+   "up_top": [
+    "11504",
+    "14501"
+   ],
+   "up_second": [
+    "11401",
+    "12401",
+    "13407",
+    "14403",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-01-12",
+   "pool_type": "character",
+   "version": "1.2",
+   "start": "2021-01-12T18:00:00+08:00",
+   "end": "2021-02-02T14:59:59+08:00",
+   "up_top": [
+    "10000037"
+   ],
+   "up_second": [
+    "10000023",
+    "10000025",
+    "10000034"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-01-12",
+   "pool_type": "weapon",
+   "version": "1.2",
+   "start": "2021-01-12T18:00:00+08:00",
+   "end": "2021-02-02T14:59:59+08:00",
+   "up_top": [
+    "12501",
+    "15502"
+   ],
+   "up_second": [
+    "11403",
+    "12402",
+    "13401",
+    "14409",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-02-03",
+   "pool_type": "character",
+   "version": "1.3",
+   "start": "2021-02-03T06:00:00+08:00",
+   "end": "2021-02-17T15:59:59+08:00",
+   "up_top": [
+    "10000026"
+   ],
+   "up_second": [
+    "10000039",
+    "10000024",
+    "10000044"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-02-03",
+   "pool_type": "weapon",
+   "version": "1.3",
+   "start": "2021-02-03T06:00:00+08:00",
+   "end": "2021-02-23T15:59:59+08:00",
+   "up_top": [
+    "11505",
+    "13505"
+   ],
+   "up_second": [
+    "11402",
+    "12403",
+    "15405",
+    "14409",
+    "13407"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-02-17",
+   "pool_type": "character",
+   "version": "1.3",
+   "start": "2021-02-17T18:00:00+08:00",
+   "end": "2021-03-02T15:59:59+08:00",
+   "up_top": [
+    "10000042"
+   ],
+   "up_second": [
+    "10000027",
+    "10000032",
+    "10000014"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-02-23",
+   "pool_type": "weapon",
+   "version": "1.3",
+   "start": "2021-02-23T18:00:00+08:00",
+   "end": "2021-03-16T14:59:59+08:00",
+   "up_top": [
+    "13501",
+    "12502"
+   ],
+   "up_second": [
+    "12410",
+    "13406",
+    "11405",
+    "15403",
+    "14402"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-03-02",
+   "pool_type": "character",
+   "version": "1.3",
+   "start": "2021-03-02T18:00:00+08:00",
+   "end": "2021-03-16T14:59:59+08:00",
+   "up_top": [
+    "10000046"
+   ],
+   "up_second": [
+    "10000025",
+    "10000023",
+    "10000036"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-03-17",
+   "pool_type": "character",
+   "version": "1.4",
+   "start": "2021-03-17T06:00:00+08:00",
+   "end": "2021-04-06T15:59:59+08:00",
+   "up_top": [
+    "10000022"
+   ],
+   "up_second": [
+    "10000043",
+    "10000020",
+    "10000034"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-03-17",
+   "pool_type": "weapon",
+   "version": "1.4",
+   "start": "2021-03-17T06:00:00+08:00",
+   "end": "2021-04-06T15:59:59+08:00",
+   "up_top": [
+    "15503",
+    "11502"
+   ],
+   "up_second": [
+    "11410",
+    "14410",
+    "12401",
+    "15401",
+    "13401"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-04-06",
+   "pool_type": "character",
+   "version": "1.4",
+   "start": "2021-04-06T18:00:00+08:00",
+   "end": "2021-04-27T14:59:59+08:00",
+   "up_top": [
+    "10000033"
+   ],
+   "up_second": [
+    "10000045",
+    "10000014",
+    "10000031"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-04-06",
+   "pool_type": "weapon",
+   "version": "1.4",
+   "start": "2021-04-06T18:00:00+08:00",
+   "end": "2021-04-27T14:59:59+08:00",
+   "up_top": [
+    "15501",
+    "14502"
+   ],
+   "up_second": [
+    "15410",
+    "11401",
+    "12403",
+    "14401",
+    "13407"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-04-28",
+   "pool_type": "character",
+   "version": "1.5",
+   "start": "2021-04-28T06:00:00+08:00",
+   "end": "2021-05-18T17:59:00+08:00",
+   "up_top": [
+    "10000030"
+   ],
+   "up_second": [
+    "10000048",
+    "10000034",
+    "10000039"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-04-28",
+   "pool_type": "weapon",
+   "version": "1.5",
+   "start": "2021-04-28T06:00:00+08:00",
+   "end": "2021-05-18T17:59:00+08:00",
+   "up_top": [
+    "11504",
+    "14504"
+   ],
+   "up_second": [
+    "12410",
+    "13406",
+    "11402",
+    "14409",
+    "15403"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-05-18",
+   "pool_type": "character",
+   "version": "1.5",
+   "start": "2021-05-18T18:00:00+08:00",
+   "end": "2021-06-08T14:59:59+08:00",
+   "up_top": [
+    "10000051"
+   ],
+   "up_second": [
+    "10000044",
+    "10000025",
+    "10000024"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-05-18",
+   "pool_type": "weapon",
+   "version": "1.5",
+   "start": "2021-05-18T18:00:00+08:00",
+   "end": "2021-06-08T14:59:59+08:00",
+   "up_top": [
+    "12503",
+    "11501"
+   ],
+   "up_second": [
+    "11403",
+    "12405",
+    "13401",
+    "14403",
+    "15405"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-06-09",
+   "pool_type": "character",
+   "version": "1.6",
+   "start": "2021-06-09T06:00:00+08:00",
+   "end": "2021-06-29T17:59:00+08:00",
+   "up_top": [
+    "10000029"
+   ],
+   "up_second": [
+    "10000014",
+    "10000043",
+    "10000031"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-06-09",
+   "pool_type": "weapon",
+   "version": "1.6",
+   "start": "2021-06-09T06:00:00+08:00",
+   "end": "2021-06-29T17:59:00+08:00",
+   "up_top": [
+    "12501",
+    "14502"
+   ],
+   "up_second": [
+    "15412",
+    "11405",
+    "12402",
+    "13407",
+    "14402"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-06-29",
+   "pool_type": "character",
+   "version": "1.6",
+   "start": "2021-06-29T18:00:00+08:00",
+   "end": "2021-07-20T14:59:59+08:00",
+   "up_top": [
+    "10000047"
+   ],
+   "up_second": [
+    "10000045",
+    "10000032",
+    "10000020"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-06-29",
+   "pool_type": "weapon",
+   "version": "1.6",
+   "start": "2021-06-29T18:00:00+08:00",
+   "end": "2021-07-20T14:59:59+08:00",
+   "up_top": [
+    "11503",
+    "14501"
+   ],
+   "up_second": [
+    "11410",
+    "14410",
+    "15410",
+    "13401",
+    "12401"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-07-21",
+   "pool_type": "character",
+   "version": "2.0",
+   "start": "2021-07-21T06:00:00+08:00",
+   "end": "2021-08-10T17:59:59+08:00",
+   "up_top": [
+    "10000002"
+   ],
+   "up_second": [
+    "10000027",
+    "10000036",
+    "10000048"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-07-21",
+   "pool_type": "weapon",
+   "version": "2.0",
+   "start": "2021-07-21T06:00:00+08:00",
+   "end": "2021-08-10T17:59:00+08:00",
+   "up_top": [
+    "11509",
+    "13502"
+   ],
+   "up_second": [
+    "12403",
+    "13407",
+    "14401",
+    "11401",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-08-10",
+   "pool_type": "character",
+   "version": "2.0",
+   "start": "2021-08-10T18:00:00+08:00",
+   "end": "2021-08-31T14:59:59+08:00",
+   "up_top": [
+    "10000049"
+   ],
+   "up_second": [
+    "10000053",
+    "10000039",
+    "10000044"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-08-10",
+   "pool_type": "weapon",
+   "version": "2.0",
+   "start": "2021-08-10T18:00:00+08:00",
+   "end": "2021-08-31T14:59:59+08:00",
+   "up_top": [
+    "15509",
+    "11502"
+   ],
+   "up_second": [
+    "11403",
+    "12405",
+    "13401",
+    "14403",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-09-01",
+   "pool_type": "character",
+   "version": "2.1",
+   "start": "2021-09-01T06:00:00+08:00",
+   "end": "2021-09-21T17:59:59+08:00",
+   "up_top": [
+    "10000052"
+   ],
+   "up_second": [
+    "10000056",
+    "10000023",
+    "10000043"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-09-01",
+   "pool_type": "weapon",
+   "version": "2.1",
+   "start": "2021-09-01T06:00:00+08:00",
+   "end": "2021-09-21T17:59:00+08:00",
+   "up_top": [
+    "13509",
+    "12504"
+   ],
+   "up_second": [
+    "11405",
+    "12402",
+    "13407",
+    "14402",
+    "15403"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-09-21",
+   "pool_type": "character",
+   "version": "2.1",
+   "start": "2021-09-21T18:00:00+08:00",
+   "end": "2021-10-12T14:59:59+08:00",
+   "up_top": [
+    "10000054"
+   ],
+   "up_second": [
+    "10000045",
+    "10000024",
+    "10000025"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-09-21",
+   "pool_type": "weapon",
+   "version": "2.1",
+   "start": "2021-09-21T18:00:00+08:00",
+   "end": "2021-10-12T14:59:00+08:00",
+   "up_top": [
+    "14506",
+    "11505"
+   ],
+   "up_second": [
+    "11402",
+    "12401",
+    "13401",
+    "14401",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-10-13",
+   "pool_type": "character",
+   "version": "2.2",
+   "start": "2021-10-13T06:00:00+08:00",
+   "end": "2021-11-02T17:59:59+08:00",
+   "up_top": [
+    "10000033"
+   ],
+   "up_second": [
+    "10000027",
+    "10000036",
+    "10000048"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-10-13",
+   "pool_type": "weapon",
+   "version": "2.2",
+   "start": "2021-10-13T06:00:00+08:00",
+   "end": "2021-11-02T17:59:00+08:00",
+   "up_top": [
+    "15507",
+    "14504"
+   ],
+   "up_second": [
+    "12416",
+    "11401",
+    "13407",
+    "14409",
+    "15405"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-11-02",
+   "pool_type": "character",
+   "version": "2.2",
+   "start": "2021-11-02T18:00:00+08:00",
+   "end": "2021-11-23T14:59:59+08:00",
+   "up_top": [
+    "10000046"
+   ],
+   "up_second": [
+    "10000050",
+    "10000039",
+    "10000053"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-11-02",
+   "pool_type": "weapon",
+   "version": "2.2",
+   "start": "2021-11-02T18:00:00+08:00",
+   "end": "2021-11-23T14:59:59+08:00",
+   "up_top": [
+    "13501",
+    "15503"
+   ],
+   "up_second": [
+    "13416",
+    "15416",
+    "11403",
+    "12405",
+    "14402"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-11-24",
+   "pool_type": "character",
+   "version": "2.3",
+   "start": "2021-11-24T06:00:00+08:00",
+   "end": "2021-12-14T17:59:59+08:00",
+   "up_top": [
+    "10000038",
+    "10000051"
+   ],
+   "up_second": [
+    "10000032",
+    "10000034",
+    "10000045"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-11-24",
+   "pool_type": "weapon",
+   "version": "2.3",
+   "start": "2021-11-24T06:00:00+08:00",
+   "end": "2021-12-14T17:59:59+08:00",
+   "up_top": [
+    "11503",
+    "12503"
+   ],
+   "up_second": [
+    "14410",
+    "15410",
+    "11405",
+    "12403",
+    "13401"
+   ]
+  },
+  {
+   "id": "genshin-character-2021-12-14",
+   "pool_type": "character",
+   "version": "2.3",
+   "start": "2021-12-14T18:00:00+08:00",
+   "end": "2022-01-04T14:59:59+08:00",
+   "up_top": [
+    "10000057"
+   ],
+   "up_second": [
+    "10000055",
+    "10000014",
+    "10000023"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2021-12-14",
+   "pool_type": "weapon",
+   "version": "2.3",
+   "start": "2021-12-14T18:00:00+08:00",
+   "end": "2022-01-04T14:59:59+08:00",
+   "up_top": [
+    "12510",
+    "15501"
+   ],
+   "up_second": [
+    "11410",
+    "15412",
+    "12402",
+    "13407",
+    "14403"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-01-05",
+   "pool_type": "character",
+   "version": "2.4",
+   "start": "2022-01-05T06:00:00+08:00",
+   "end": "2022-01-25T17:59:59+08:00",
+   "up_top": [
+    "10000063",
+    "10000026"
+   ],
+   "up_second": [
+    "10000064",
+    "10000027",
+    "10000036"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-01-05",
+   "pool_type": "weapon",
+   "version": "2.4",
+   "start": "2022-01-05T06:00:00+08:00",
+   "end": "2022-01-25T17:59:59+08:00",
+   "up_top": [
+    "13507",
+    "13505"
+   ],
+   "up_second": [
+    "13406",
+    "11402",
+    "12401",
+    "14402",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-01-25",
+   "pool_type": "character",
+   "version": "2.4",
+   "start": "2022-01-25T18:00:00+08:00",
+   "end": "2022-02-15T14:59:59+08:00",
+   "up_top": [
+    "10000030",
+    "10000037"
+   ],
+   "up_second": [
+    "10000025",
+    "10000024",
+    "10000048"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-01-25",
+   "pool_type": "weapon",
+   "version": "2.4",
+   "start": "2022-01-25T18:00:00+08:00",
+   "end": "2022-02-15T14:59:59+08:00",
+   "up_top": [
+    "13504",
+    "15502"
+   ],
+   "up_second": [
+    "12410",
+    "11401",
+    "13401",
+    "14401",
+    "15403"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-02-16",
+   "pool_type": "character",
+   "version": "2.5",
+   "start": "2022-02-16T06:00:00+08:00",
+   "end": "2022-03-08T17:59:59+08:00",
+   "up_top": [
+    "10000058"
+   ],
+   "up_second": [
+    "10000031",
+    "10000039",
+    "10000050"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-02-16",
+   "pool_type": "weapon",
+   "version": "2.5",
+   "start": "2022-02-16T06:00:00+08:00",
+   "end": "2022-03-08T17:59:59+08:00",
+   "up_top": [
+    "14509",
+    "11505"
+   ],
+   "up_second": [
+    "13416",
+    "11403",
+    "12405",
+    "14409",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-03-08",
+   "pool_type": "character",
+   "version": "2.5",
+   "start": "2022-03-08T18:00:00+08:00",
+   "end": "2022-03-29T14:59:59+08:00",
+   "up_top": [
+    "10000052",
+    "10000054"
+   ],
+   "up_second": [
+    "10000032",
+    "10000044",
+    "10000056"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-03-08",
+   "pool_type": "weapon",
+   "version": "2.5",
+   "start": "2022-03-08T18:00:00+08:00",
+   "end": "2022-03-29T14:59:59+08:00",
+   "up_top": [
+    "13509",
+    "14506"
+   ],
+   "up_second": [
+    "12416",
+    "15416",
+    "11405",
+    "13407",
+    "14403"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-03-30",
+   "pool_type": "character",
+   "version": "2.6",
+   "start": "2022-03-30T06:00:00+08:00",
+   "end": "2022-04-19T17:59:00+08:00",
+   "up_top": [
+    "10000066",
+    "10000022"
+   ],
+   "up_second": [
+    "10000043",
+    "10000023",
+    "10000064"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-03-30",
+   "pool_type": "weapon",
+   "version": "2.6",
+   "start": "2022-03-30T06:00:00+08:00",
+   "end": "2022-04-19T17:59:59+08:00",
+   "up_top": [
+    "11510",
+    "15503"
+   ],
+   "up_second": [
+    "11402",
+    "12403",
+    "13401",
+    "14402",
+    "15405"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-04-19",
+   "pool_type": "character",
+   "version": "2.6",
+   "start": "2022-04-19T18:00:00+08:00",
+   "end": "2022-05-31T05:59:59+08:00",
+   "up_top": [
+    "10000002"
+   ],
+   "up_second": [
+    "10000020",
+    "10000045",
+    "10000053"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-04-19",
+   "pool_type": "weapon",
+   "version": "2.6",
+   "start": "2022-04-19T18:00:00+08:00",
+   "end": "2022-05-31T05:59:59+08:00",
+   "up_top": [
+    "11509",
+    "12504"
+   ],
+   "up_second": [
+    "11401",
+    "12402",
+    "13407",
+    "14401",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-05-31",
+   "pool_type": "character",
+   "version": "2.7",
+   "start": "2022-05-31T06:00:00+08:00",
+   "end": "2022-06-21T17:59:00+08:00",
+   "up_top": [
+    "10000060",
+    "10000026"
+   ],
+   "up_second": [
+    "10000014",
+    "10000048",
+    "10000034"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-05-31",
+   "pool_type": "weapon",
+   "version": "2.7",
+   "start": "2022-05-31T06:00:00+08:00",
+   "end": "2022-06-21T17:59:00+08:00",
+   "up_top": [
+    "15508",
+    "13505"
+   ],
+   "up_second": [
+    "13406",
+    "14409",
+    "12401",
+    "15403",
+    "11403"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-06-21",
+   "pool_type": "character",
+   "version": "2.7",
+   "start": "2022-06-21T18:00:00+08:00",
+   "end": "2022-07-12T14:59:59+08:00",
+   "up_top": [
+    "10000057"
+   ],
+   "up_second": [
+    "10000065",
+    "10000036",
+    "10000055"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-06-21",
+   "pool_type": "weapon",
+   "version": "2.7",
+   "start": "2022-06-21T18:00:00+08:00",
+   "end": "2022-07-12T14:59:59+08:00",
+   "up_top": [
+    "12510",
+    "14504"
+   ],
+   "up_second": [
+    "12410",
+    "11405",
+    "13401",
+    "14403",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-07-13",
+   "pool_type": "character",
+   "version": "2.8",
+   "start": "2022-07-13T06:00:00+08:00",
+   "end": "2022-08-02T17:59:59+08:00",
+   "up_top": [
+    "10000047",
+    "10000029"
+   ],
+   "up_second": [
+    "10000059",
+    "10000027",
+    "10000050"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-07-13",
+   "pool_type": "weapon",
+   "version": "2.8",
+   "start": "2022-07-13T06:00:00+08:00",
+   "end": "2022-08-02T17:59:59+08:00",
+   "up_top": [
+    "11503",
+    "14502"
+   ],
+   "up_second": [
+    "11410",
+    "15412",
+    "12405",
+    "13407",
+    "14402"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-08-02",
+   "pool_type": "character",
+   "version": "2.8",
+   "start": "2022-08-02T18:00:00+08:00",
+   "end": "2022-08-23T14:59:59+08:00",
+   "up_top": [
+    "10000049"
+   ],
+   "up_second": [
+    "10000032",
+    "10000044",
+    "10000064"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-08-02",
+   "pool_type": "weapon",
+   "version": "2.8",
+   "start": "2022-08-02T18:00:00+08:00",
+   "end": "2022-08-23T14:59:59+08:00",
+   "up_top": [
+    "15509",
+    "11504"
+   ],
+   "up_second": [
+    "14410",
+    "15410",
+    "11402",
+    "12403",
+    "13401"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-08-24",
+   "pool_type": "character",
+   "version": "3.0",
+   "start": "2022-08-24T06:00:00+08:00",
+   "end": "2022-09-09T17:59:59+08:00",
+   "up_top": [
+    "10000069",
+    "10000030"
+   ],
+   "up_second": [
+    "10000067",
+    "10000039",
+    "10000031"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-08-24",
+   "pool_type": "weapon",
+   "version": "3.0",
+   "start": "2022-08-24T06:00:00+08:00",
+   "end": "2022-09-09T17:59:59+08:00",
+   "up_top": [
+    "15511",
+    "13504"
+   ],
+   "up_second": [
+    "11401",
+    "12402",
+    "13407",
+    "14401",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-09-09",
+   "pool_type": "character",
+   "version": "3.0",
+   "start": "2022-09-09T18:00:00+08:00",
+   "end": "2022-09-27T14:59:59+08:00",
+   "up_top": [
+    "10000037",
+    "10000054"
+   ],
+   "up_second": [
+    "10000068",
+    "10000043",
+    "10000025"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-09-09",
+   "pool_type": "weapon",
+   "version": "3.0",
+   "start": "2022-09-09T18:00:00+08:00",
+   "end": "2022-09-27T14:59:59+08:00",
+   "up_top": [
+    "14506",
+    "15502"
+   ],
+   "up_second": [
+    "11403",
+    "12401",
+    "13401",
+    "14409",
+    "15405"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-09-28",
+   "pool_type": "character",
+   "version": "3.1",
+   "start": "2022-09-28T06:00:00+08:00",
+   "end": "2022-10-14T17:59:59+08:00",
+   "up_top": [
+    "10000071",
+    "10000022"
+   ],
+   "up_second": [
+    "10000072",
+    "10000065",
+    "10000053"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-09-28",
+   "pool_type": "weapon",
+   "version": "3.1",
+   "start": "2022-09-28T06:00:00+08:00",
+   "end": "2022-10-14T17:59:59+08:00",
+   "up_top": [
+    "13511",
+    "15503"
+   ],
+   "up_second": [
+    "12415",
+    "11405",
+    "13407",
+    "14403",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-10-14",
+   "pool_type": "character",
+   "version": "3.1",
+   "start": "2022-10-14T18:00:00+08:00",
+   "end": "2022-11-01T14:59:59+08:00",
+   "up_top": [
+    "10000070",
+    "10000038"
+   ],
+   "up_second": [
+    "10000014",
+    "10000024",
+    "10000023"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-10-14",
+   "pool_type": "weapon",
+   "version": "3.1",
+   "start": "2022-10-14T18:00:00+08:00",
+   "end": "2022-11-01T14:59:59+08:00",
+   "up_top": [
+    "11511",
+    "11505"
+   ],
+   "up_second": [
+    "11418",
+    "14416",
+    "12405",
+    "13401",
+    "15403"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-11-02",
+   "pool_type": "character",
+   "version": "3.2",
+   "start": "2022-11-02T06:00:00+08:00",
+   "end": "2022-11-18T17:59:59+08:00",
+   "up_top": [
+    "10000073",
+    "10000049"
+   ],
+   "up_second": [
+    "10000020",
+    "10000034",
+    "10000032"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-11-02",
+   "pool_type": "weapon",
+   "version": "3.2",
+   "start": "2022-11-02T06:00:00+08:00",
+   "end": "2022-11-18T17:59:59+08:00",
+   "up_top": [
+    "14511",
+    "15509"
+   ],
+   "up_second": [
+    "11402",
+    "12403",
+    "13407",
+    "14402",
+    "15405"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-11-18",
+   "pool_type": "character",
+   "version": "3.2",
+   "start": "2022-11-18T18:00:00+08:00",
+   "end": "2022-12-06T14:59:59+08:00",
+   "up_top": [
+    "10000058",
+    "10000033"
+   ],
+   "up_second": [
+    "10000074",
+    "10000050",
+    "10000059"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-11-18",
+   "pool_type": "weapon",
+   "version": "3.2",
+   "start": "2022-11-18T18:00:00+08:00",
+   "end": "2022-12-06T14:59:59+08:00",
+   "up_top": [
+    "14509",
+    "15507"
+   ],
+   "up_second": [
+    "11401",
+    "12402",
+    "13401",
+    "14401",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-12-07",
+   "pool_type": "character",
+   "version": "3.3",
+   "start": "2022-12-07T06:00:00+08:00",
+   "end": "2022-12-27T17:59:59+08:00",
+   "up_top": [
+    "10000075",
+    "10000057"
+   ],
+   "up_second": [
+    "10000076",
+    "10000055",
+    "10000048"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-12-07",
+   "pool_type": "weapon",
+   "version": "3.3",
+   "start": "2022-12-07T06:00:00+08:00",
+   "end": "2022-12-27T17:59:59+08:00",
+   "up_top": [
+    "14512",
+    "12510"
+   ],
+   "up_second": [
+    "13416",
+    "11403",
+    "12401",
+    "14409",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2022-12-27",
+   "pool_type": "character",
+   "version": "3.3",
+   "start": "2022-12-27T18:00:00+08:00",
+   "end": "2023-01-17T14:59:59+08:00",
+   "up_top": [
+    "10000052",
+    "10000066"
+   ],
+   "up_second": [
+    "10000045",
+    "10000053",
+    "10000056"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2022-12-27",
+   "pool_type": "weapon",
+   "version": "3.3",
+   "start": "2022-12-27T18:00:00+08:00",
+   "end": "2023-01-17T14:59:59+08:00",
+   "up_top": [
+    "13509",
+    "11510"
+   ],
+   "up_second": [
+    "12416",
+    "15416",
+    "11405",
+    "13407",
+    "14403"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-01-18",
+   "pool_type": "character",
+   "version": "3.4",
+   "start": "2023-01-18T06:00:00+08:00",
+   "end": "2023-02-07T17:59:59+08:00",
+   "up_top": [
+    "10000078",
+    "10000026"
+   ],
+   "up_second": [
+    "10000077",
+    "10000064",
+    "10000044"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-01-18",
+   "pool_type": "weapon",
+   "version": "3.4",
+   "start": "2023-01-18T06:00:00+08:00",
+   "end": "2023-02-07T17:59:59+08:00",
+   "up_top": [
+    "11512",
+    "13505"
+   ],
+   "up_second": [
+    "13406",
+    "11402",
+    "12405",
+    "14402",
+    "15403"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-02-07",
+   "pool_type": "character",
+   "version": "3.4",
+   "start": "2023-02-07T18:00:00+08:00",
+   "end": "2023-02-28T14:59:59+08:00",
+   "up_top": [
+    "10000046",
+    "10000060"
+   ],
+   "up_second": [
+    "10000025",
+    "10000027",
+    "10000024"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-02-07",
+   "pool_type": "weapon",
+   "version": "3.4",
+   "start": "2023-02-07T18:00:00+08:00",
+   "end": "2023-02-28T14:59:59+08:00",
+   "up_top": [
+    "13501",
+    "15508"
+   ],
+   "up_second": [
+    "12410",
+    "11401",
+    "13401",
+    "14401",
+    "15405"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-03-01",
+   "pool_type": "character",
+   "version": "3.5",
+   "start": "2023-03-01T06:00:00+08:00",
+   "end": "2023-03-21T17:59:59+08:00",
+   "up_top": [
+    "10000079",
+    "10000071"
+   ],
+   "up_second": [
+    "10000032",
+    "10000014",
+    "10000067"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-03-01",
+   "pool_type": "weapon",
+   "version": "3.5",
+   "start": "2023-03-01T06:00:00+08:00",
+   "end": "2023-03-21T17:59:59+08:00",
+   "up_top": [
+    "12511",
+    "13511"
+   ],
+   "up_second": [
+    "11410",
+    "15410",
+    "12403",
+    "13401",
+    "14409"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-03-21",
+   "pool_type": "character",
+   "version": "3.5",
+   "start": "2023-03-21T18:00:00+08:00",
+   "end": "2023-04-11T14:59:59+08:00",
+   "up_top": [
+    "10000063",
+    "10000002"
+   ],
+   "up_second": [
+    "10000039",
+    "10000043",
+    "10000080"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-03-21",
+   "pool_type": "weapon",
+   "version": "3.5",
+   "start": "2023-03-21T18:00:00+08:00",
+   "end": "2023-04-11T14:59:59+08:00",
+   "up_top": [
+    "13507",
+    "11509"
+   ],
+   "up_second": [
+    "14410",
+    "11403",
+    "12402",
+    "13407",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-04-12",
+   "pool_type": "character",
+   "version": "3.6",
+   "start": "2023-04-12T06:00:00+08:00",
+   "end": "2023-05-02T17:59:59+08:00",
+   "up_top": [
+    "10000073",
+    "10000070"
+   ],
+   "up_second": [
+    "10000065",
+    "10000068",
+    "10000074"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-04-12",
+   "pool_type": "weapon",
+   "version": "3.6",
+   "start": "2023-04-12T06:00:00+08:00",
+   "end": "2023-05-02T17:59:59+08:00",
+   "up_top": [
+    "14511",
+    "11511"
+   ],
+   "up_second": [
+    "11418",
+    "12401",
+    "13401",
+    "14403",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-05-02",
+   "pool_type": "character",
+   "version": "3.6",
+   "start": "2023-05-02T18:00:00+08:00",
+   "end": "2023-05-23T14:59:59+08:00",
+   "up_top": [
+    "10000082",
+    "10000037"
+   ],
+   "up_second": [
+    "10000081",
+    "10000072",
+    "10000031"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-05-02",
+   "pool_type": "weapon",
+   "version": "3.6",
+   "start": "2023-05-02T18:00:00+08:00",
+   "end": "2023-05-23T14:59:59+08:00",
+   "up_top": [
+    "14505",
+    "15502"
+   ],
+   "up_second": [
+    "12415",
+    "14416",
+    "11405",
+    "13407",
+    "15403"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-05-24",
+   "pool_type": "character",
+   "version": "3.7",
+   "start": "2023-05-24T06:00:00+08:00",
+   "end": "2023-06-13T17:59:59+08:00",
+   "up_top": [
+    "10000049",
+    "10000058"
+   ],
+   "up_second": [
+    "10000061",
+    "10000064",
+    "10000036"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-05-24",
+   "pool_type": "weapon",
+   "version": "3.7",
+   "start": "2023-05-24T06:00:00+08:00",
+   "end": "2023-06-13T17:59:59+08:00",
+   "up_top": [
+    "15509",
+    "14509"
+   ],
+   "up_second": [
+    "12416",
+    "11402",
+    "13401",
+    "14402",
+    "15405"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-06-13",
+   "pool_type": "character",
+   "version": "3.7",
+   "start": "2023-06-13T18:00:00+08:00",
+   "end": "2023-07-04T14:59:59+08:00",
+   "up_top": [
+    "10000078",
+    "10000047"
+   ],
+   "up_second": [
+    "10000059",
+    "10000023",
+    "10000077"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-06-13",
+   "pool_type": "weapon",
+   "version": "3.7",
+   "start": "2023-06-13T18:00:00+08:00",
+   "end": "2023-07-04T14:59:59+08:00",
+   "up_top": [
+    "11512",
+    "11503"
+   ],
+   "up_second": [
+    "14401",
+    "11401",
+    "15416",
+    "12403",
+    "13416"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-07-05",
+   "pool_type": "character",
+   "version": "3.8",
+   "start": "2023-07-05T06:00:00+08:00",
+   "end": "2023-07-25T17:59:59+08:00",
+   "up_top": [
+    "10000051",
+    "10000029"
+   ],
+   "up_second": [
+    "10000080",
+    "10000020",
+    "10000050"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-07-05",
+   "pool_type": "weapon",
+   "version": "3.8",
+   "start": "2023-07-05T06:00:00+08:00",
+   "end": "2023-07-25T17:59:59+08:00",
+   "up_top": [
+    "12503",
+    "14502"
+   ],
+   "up_second": [
+    "11410",
+    "15410",
+    "12405",
+    "13407",
+    "14409"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-07-25",
+   "pool_type": "character",
+   "version": "3.8",
+   "start": "2023-07-25T18:00:00+08:00",
+   "end": "2023-08-15T14:59:59+08:00",
+   "up_top": [
+    "10000054",
+    "10000075"
+   ],
+   "up_second": [
+    "10000076",
+    "10000045",
+    "10000048"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-07-25",
+   "pool_type": "weapon",
+   "version": "3.8",
+   "start": "2023-07-25T18:00:00+08:00",
+   "end": "2023-08-15T14:59:59+08:00",
+   "up_top": [
+    "14506",
+    "14512"
+   ],
+   "up_second": [
+    "14410",
+    "11405",
+    "12402",
+    "13401",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-08-16",
+   "pool_type": "character",
+   "version": "4.0",
+   "start": "2023-08-16T06:00:00+08:00",
+   "end": "2023-09-05T17:59:59+08:00",
+   "up_top": [
+    "10000084",
+    "10000060"
+   ],
+   "up_second": [
+    "10000083",
+    "10000032",
+    "10000014"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-08-16",
+   "pool_type": "weapon",
+   "version": "4.0",
+   "start": "2023-08-16T06:00:00+08:00",
+   "end": "2023-09-05T17:59:59+08:00",
+   "up_top": [
+    "15512",
+    "15508"
+   ],
+   "up_second": [
+    "11403",
+    "12401",
+    "13407",
+    "14403",
+    "15403"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-09-05",
+   "pool_type": "character",
+   "version": "4.0",
+   "start": "2023-09-05T18:00:00+08:00",
+   "end": "2023-09-26T14:59:59+08:00",
+   "up_top": [
+    "10000030",
+    "10000033"
+   ],
+   "up_second": [
+    "10000085",
+    "10000053",
+    "10000034"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-09-05",
+   "pool_type": "weapon",
+   "version": "4.0",
+   "start": "2023-09-05T18:00:00+08:00",
+   "end": "2023-09-26T14:59:59+08:00",
+   "up_top": [
+    "13504",
+    "15507"
+   ],
+   "up_second": [
+    "11402",
+    "12403",
+    "13401",
+    "14402",
+    "15405"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-09-27",
+   "pool_type": "character",
+   "version": "4.1",
+   "start": "2023-09-27T06:00:00+08:00",
+   "end": "2023-10-17T17:59:59+08:00",
+   "up_top": [
+    "10000087",
+    "10000046"
+   ],
+   "up_second": [
+    "10000031",
+    "10000025",
+    "10000039"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-09-27",
+   "pool_type": "weapon",
+   "version": "4.1",
+   "start": "2023-09-27T06:00:00+08:00",
+   "end": "2023-10-17T17:59:59+08:00",
+   "up_top": [
+    "14514",
+    "13501"
+   ],
+   "up_second": [
+    "11427",
+    "12427",
+    "15412",
+    "13407",
+    "14401"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-10-17",
+   "pool_type": "character",
+   "version": "4.1",
+   "start": "2023-10-17T18:00:00+08:00",
+   "end": "2023-11-07T14:59:59+08:00",
+   "up_top": [
+    "10000086",
+    "10000022"
+   ],
+   "up_second": [
+    "10000036",
+    "10000050",
+    "10000068"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-10-17",
+   "pool_type": "weapon",
+   "version": "4.1",
+   "start": "2023-10-17T18:00:00+08:00",
+   "end": "2023-11-07T14:59:59+08:00",
+   "up_top": [
+    "14513",
+    "15503"
+   ],
+   "up_second": [
+    "13427",
+    "15427",
+    "11401",
+    "12405",
+    "14409"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-11-08",
+   "pool_type": "character",
+   "version": "4.2",
+   "start": "2023-11-08T06:00:00+08:00",
+   "end": "2023-11-28T17:59:59+08:00",
+   "up_top": [
+    "10000089",
+    "10000082"
+   ],
+   "up_second": [
+    "10000088",
+    "10000067",
+    "10000024"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-11-08",
+   "pool_type": "weapon",
+   "version": "4.2",
+   "start": "2023-11-08T06:00:00+08:00",
+   "end": "2023-11-28T17:59:59+08:00",
+   "up_top": [
+    "11513",
+    "14505"
+   ],
+   "up_second": [
+    "11403",
+    "12402",
+    "13401",
+    "14403",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-11-28",
+   "pool_type": "character",
+   "version": "4.2",
+   "start": "2023-11-28T18:00:00+08:00",
+   "end": "2023-12-19T14:59:59+08:00",
+   "up_top": [
+    "10000071",
+    "10000066"
+   ],
+   "up_second": [
+    "10000061",
+    "10000065",
+    "10000023"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-11-28",
+   "pool_type": "weapon",
+   "version": "4.2",
+   "start": "2023-11-28T18:00:00+08:00",
+   "end": "2023-12-19T14:59:59+08:00",
+   "up_top": [
+    "13511",
+    "11510"
+   ],
+   "up_second": [
+    "11405",
+    "12401",
+    "13407",
+    "14402",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2023-12-20",
+   "pool_type": "character",
+   "version": "4.3",
+   "start": "2023-12-20T06:00:00+08:00",
+   "end": "2024-01-09T17:59:59+08:00",
+   "up_top": [
+    "10000091",
+    "10000002"
+   ],
+   "up_second": [
+    "10000043",
+    "10000045",
+    "10000072"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2023-12-20",
+   "pool_type": "weapon",
+   "version": "4.3",
+   "start": "2023-12-20T06:00:00+08:00",
+   "end": "2024-01-09T17:59:59+08:00",
+   "up_top": [
+    "12512",
+    "11509"
+   ],
+   "up_second": [
+    "12416",
+    "15416",
+    "11402",
+    "13401",
+    "14401"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-01-09",
+   "pool_type": "character",
+   "version": "4.3",
+   "start": "2024-01-09T18:00:00+08:00",
+   "end": "2024-01-30T14:59:59+08:00",
+   "up_top": [
+    "10000052",
+    "10000049"
+   ],
+   "up_second": [
+    "10000090",
+    "10000056",
+    "10000032"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-01-09",
+   "pool_type": "weapon",
+   "version": "4.3",
+   "start": "2024-01-09T18:00:00+08:00",
+   "end": "2024-01-30T14:59:59+08:00",
+   "up_top": [
+    "13509",
+    "15509"
+   ],
+   "up_second": [
+    "13416",
+    "11401",
+    "12405",
+    "14409",
+    "15405"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-01-31",
+   "pool_type": "character",
+   "version": "4.4",
+   "start": "2024-01-31T06:00:00+08:00",
+   "end": "2024-02-20T17:59:59+08:00",
+   "up_top": [
+    "10000093",
+    "10000073"
+   ],
+   "up_second": [
+    "10000092",
+    "10000076",
+    "10000034"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-01-31",
+   "pool_type": "weapon",
+   "version": "4.4",
+   "start": "2024-01-31T06:00:00+08:00",
+   "end": "2024-02-20T17:59:59+08:00",
+   "up_top": [
+    "14515",
+    "14511"
+   ],
+   "up_second": [
+    "13406",
+    "11403",
+    "12403",
+    "14403",
+    "15403"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-02-20",
+   "pool_type": "character",
+   "version": "4.4",
+   "start": "2024-02-20T18:00:00+08:00",
+   "end": "2024-03-12T14:59:59+08:00",
+   "up_top": [
+    "10000026",
+    "10000058"
+   ],
+   "up_second": [
+    "10000077",
+    "10000044",
+    "10000027"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-02-20",
+   "pool_type": "weapon",
+   "version": "4.4",
+   "start": "2024-02-20T18:00:00+08:00",
+   "end": "2024-03-12T14:59:59+08:00",
+   "up_top": [
+    "14509",
+    "13505"
+   ],
+   "up_second": [
+    "12410",
+    "11405",
+    "13407",
+    "14402",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-03-13",
+   "pool_type": "character",
+   "version": "4.5",
+   "start": "2024-03-13T06:00:00+08:00",
+   "end": "2024-04-02T17:59:59+08:00",
+   "up_top": [
+    "10000094",
+    "10000057"
+   ],
+   "up_second": [
+    "10000055",
+    "10000064",
+    "10000068"
+   ]
+  },
+  {
+   "id": "genshin-chronicled-2024-03-13",
+   "pool_type": "chronicled",
+   "version": "4.5",
+   "start": "2024-03-13T06:00:00+08:00",
+   "end": "2024-04-02T17:59:59+08:00",
+   "up_top": [
+    "10000038",
+    "10000016",
+    "10000051",
+    "10000003",
+    "10000029",
+    "10000041",
+    "11501",
+    "12511",
+    "15511",
+    "14502",
+    "14501",
+    "11502",
+    "15501",
+    "12501",
+    "13502",
+    "12503",
+    "12502"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "genshin-weapon-2024-03-13",
+   "pool_type": "weapon",
+   "version": "4.5",
+   "start": "2024-03-13T06:00:00+08:00",
+   "end": "2024-04-02T17:59:59+08:00",
+   "up_top": [
+    "11514",
+    "12510"
+   ],
+   "up_second": [
+    "11410",
+    "15410",
+    "12402",
+    "13401",
+    "14401"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-04-02",
+   "pool_type": "character",
+   "version": "4.5",
+   "start": "2024-04-02T18:00:00+08:00",
+   "end": "2024-04-23T14:59:00+08:00",
+   "up_top": [
+    "10000087",
+    "10000047"
+   ],
+   "up_second": [
+    "10000014",
+    "10000025",
+    "10000048"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-04-02",
+   "pool_type": "weapon",
+   "version": "4.5",
+   "start": "2024-04-02T18:00:00+08:00",
+   "end": "2024-04-23T14:59:00+08:00",
+   "up_top": [
+    "14514",
+    "11503"
+   ],
+   "up_second": [
+    "14410",
+    "15412",
+    "11402",
+    "12401",
+    "13407"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-04-24",
+   "pool_type": "character",
+   "version": "4.6",
+   "start": "2024-04-24T06:00:00+08:00",
+   "end": "2024-05-14T17:59:59+08:00",
+   "up_top": [
+    "10000096",
+    "10000084"
+   ],
+   "up_second": [
+    "10000085",
+    "10000083",
+    "10000023"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-04-24",
+   "pool_type": "weapon",
+   "version": "4.6",
+   "start": "2024-04-24T06:00:00+08:00",
+   "end": "2024-05-14T17:59:59+08:00",
+   "up_top": [
+    "13512",
+    "15512"
+   ],
+   "up_second": [
+    "11427",
+    "12427",
+    "13401",
+    "14409",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-05-14",
+   "pool_type": "character",
+   "version": "4.6",
+   "start": "2024-05-14T18:00:00+08:00",
+   "end": "2024-06-04T14:59:00+08:00",
+   "up_top": [
+    "10000075",
+    "10000082"
+   ],
+   "up_second": [
+    "10000024",
+    "10000076",
+    "10000074"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-05-14",
+   "pool_type": "weapon",
+   "version": "4.6",
+   "start": "2024-05-14T18:00:00+08:00",
+   "end": "2024-06-04T14:59:00+08:00",
+   "up_top": [
+    "14512",
+    "14505"
+   ],
+   "up_second": [
+    "15427",
+    "11401",
+    "14403",
+    "13427",
+    "12405"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-06-05",
+   "pool_type": "character",
+   "version": "4.7",
+   "start": "2024-06-05T06:00:00+08:00",
+   "end": "2024-06-25T17:59:00+08:00",
+   "up_top": [
+    "10000098",
+    "10000078"
+   ],
+   "up_second": [
+    "10000097",
+    "10000032",
+    "10000050"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-06-05",
+   "pool_type": "weapon",
+   "version": "4.7",
+   "start": "2024-06-05T06:00:00+08:00",
+   "end": "2024-06-25T17:59:00+08:00",
+   "up_top": [
+    "11515",
+    "11512"
+   ],
+   "up_second": [
+    "13406",
+    "11403",
+    "12403",
+    "14402",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-06-25",
+   "pool_type": "character",
+   "version": "4.7",
+   "start": "2024-06-25T18:00:00+08:00",
+   "end": "2024-07-16T14:59:59+08:00",
+   "up_top": [
+    "10000095",
+    "10000089"
+   ],
+   "up_second": [
+    "10000034",
+    "10000092",
+    "10000045"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-06-25",
+   "pool_type": "weapon",
+   "version": "4.7",
+   "start": "2024-06-25T18:00:00+08:00",
+   "end": "2024-07-16T14:59:59+08:00",
+   "up_top": [
+    "15513",
+    "11513"
+   ],
+   "up_second": [
+    "12410",
+    "11405",
+    "13407",
+    "14401",
+    "15403"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-07-17",
+   "pool_type": "character",
+   "version": "4.8",
+   "start": "2024-07-17T06:00:00+08:00",
+   "end": "2024-08-06T17:59:59+08:00",
+   "up_top": [
+    "10000091",
+    "10000070"
+   ],
+   "up_second": [
+    "10000061",
+    "10000081",
+    "10000027"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-07-17",
+   "pool_type": "weapon",
+   "version": "4.8",
+   "start": "2024-07-17T06:00:00+08:00",
+   "end": "2024-08-06T17:59:59+08:00",
+   "up_top": [
+    "12512",
+    "11511"
+   ],
+   "up_second": [
+    "11418",
+    "12402",
+    "13401",
+    "14409",
+    "15405"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-08-06",
+   "pool_type": "character",
+   "version": "4.8",
+   "start": "2024-08-06T18:00:00+08:00",
+   "end": "2024-08-27T14:59:59+08:00",
+   "up_top": [
+    "10000099",
+    "10000060"
+   ],
+   "up_second": [
+    "10000048",
+    "10000023",
+    "10000020"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-08-06",
+   "pool_type": "weapon",
+   "version": "4.8",
+   "start": "2024-08-06T18:00:00+08:00",
+   "end": "2024-08-27T14:59:59+08:00",
+   "up_top": [
+    "13513",
+    "15508"
+   ],
+   "up_second": [
+    "12415",
+    "14416",
+    "11402",
+    "13407",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-08-28",
+   "pool_type": "character",
+   "version": "5.0",
+   "start": "2024-08-28T06:00:00+08:00",
+   "end": "2024-09-17T17:59:59+08:00",
+   "up_top": [
+    "10000102",
+    "10000047"
+   ],
+   "up_second": [
+    "10000100",
+    "10000044",
+    "10000032"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-08-28",
+   "pool_type": "weapon",
+   "version": "5.0",
+   "start": "2024-08-28T06:00:00+08:00",
+   "end": "2024-09-17T17:59:59+08:00",
+   "up_top": [
+    "14516",
+    "11503"
+   ],
+   "up_second": [
+    "11401",
+    "12401",
+    "13401",
+    "14403",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-09-17",
+   "pool_type": "character",
+   "version": "5.0",
+   "start": "2024-09-17T18:00:00+08:00",
+   "end": "2024-10-08T14:59:59+08:00",
+   "up_top": [
+    "10000101",
+    "10000052"
+   ],
+   "up_second": [
+    "10000050",
+    "10000056",
+    "10000090"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-09-17",
+   "pool_type": "weapon",
+   "version": "5.0",
+   "start": "2024-09-17T18:00:00+08:00",
+   "end": "2024-10-08T14:59:59+08:00",
+   "up_top": [
+    "12513",
+    "13509"
+   ],
+   "up_second": [
+    "11403",
+    "12405",
+    "13407",
+    "14402",
+    "15403"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-10-09",
+   "pool_type": "character",
+   "version": "5.1",
+   "start": "2024-10-09T06:00:00+08:00",
+   "end": "2024-10-29T17:59:59+08:00",
+   "up_top": [
+    "10000103",
+    "10000094"
+   ],
+   "up_second": [
+    "10000068",
+    "10000072",
+    "10000067"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-10-09",
+   "pool_type": "weapon",
+   "version": "5.1",
+   "start": "2024-10-09T06:00:00+08:00",
+   "end": "2024-10-29T17:59:59+08:00",
+   "up_top": [
+    "11516",
+    "11514"
+   ],
+   "up_second": [
+    "11430",
+    "13430",
+    "12403",
+    "14401",
+    "15405"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-10-29",
+   "pool_type": "character",
+   "version": "5.1",
+   "start": "2024-10-29T18:00:00+08:00",
+   "end": "2024-11-19T14:59:59+08:00",
+   "up_top": [
+    "10000073",
+    "10000046"
+   ],
+   "up_second": [
+    "10000097",
+    "10000025",
+    "10000065"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-10-29",
+   "pool_type": "weapon",
+   "version": "5.1",
+   "start": "2024-10-29T18:00:00+08:00",
+   "end": "2024-11-19T14:59:59+08:00",
+   "up_top": [
+    "14511",
+    "13501"
+   ],
+   "up_second": [
+    "12430",
+    "11405",
+    "13401",
+    "14409",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-11-20",
+   "pool_type": "character",
+   "version": "5.2",
+   "start": "2024-11-20T06:00:00+08:00",
+   "end": "2024-12-10T17:59:59+08:00",
+   "up_top": [
+    "10000104",
+    "10000084"
+   ],
+   "up_second": [
+    "10000105",
+    "10000043",
+    "10000014"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-11-20",
+   "pool_type": "weapon",
+   "version": "5.2",
+   "start": "2024-11-20T06:00:00+08:00",
+   "end": "2024-12-10T17:59:59+08:00",
+   "up_top": [
+    "15514",
+    "15512"
+   ],
+   "up_second": [
+    "14430",
+    "15430",
+    "11402",
+    "12402",
+    "13407"
+   ]
+  },
+  {
+   "id": "genshin-character-2024-12-10",
+   "pool_type": "character",
+   "version": "5.2",
+   "start": "2024-12-10T18:00:00+08:00",
+   "end": "2024-12-31T14:59:59+08:00",
+   "up_top": [
+    "10000087",
+    "10000030"
+   ],
+   "up_second": [
+    "10000059",
+    "10000031",
+    "10000077"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2024-12-10",
+   "pool_type": "weapon",
+   "version": "5.2",
+   "start": "2024-12-10T18:00:00+08:00",
+   "end": "2024-12-31T14:59:59+08:00",
+   "up_top": [
+    "14514",
+    "13504"
+   ],
+   "up_second": [
+    "15412",
+    "11401",
+    "12401",
+    "13401",
+    "14403"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-01-01",
+   "pool_type": "character",
+   "version": "5.3",
+   "start": "2025-01-01T06:00:00+08:00",
+   "end": "2025-01-21T17:59:59+08:00",
+   "up_top": [
+    "10000106",
+    "10000107"
+   ],
+   "up_second": [
+    "10000100",
+    "10000032",
+    "10000039"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2025-01-01",
+   "pool_type": "weapon",
+   "version": "5.3",
+   "start": "2025-01-01T06:00:00+08:00",
+   "end": "2025-01-21T17:59:59+08:00",
+   "up_top": [
+    "12514",
+    "14517"
+   ],
+   "up_second": [
+    "12410",
+    "11403",
+    "13407",
+    "14401",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-01-21",
+   "pool_type": "character",
+   "version": "5.3",
+   "start": "2025-01-21T18:00:00+08:00",
+   "end": "2025-02-11T14:59:59+08:00",
+   "up_top": [
+    "10000096",
+    "10000098"
+   ],
+   "up_second": [
+    "10000108",
+    "10000090",
+    "10000045"
+   ]
+  },
+  {
+   "id": "genshin-chronicled-2025-01-21",
+   "pool_type": "chronicled",
+   "version": "5.3",
+   "start": "2025-01-21T18:00:00+08:00",
+   "end": "2025-02-11T14:59:59+08:00",
+   "up_top": [
+    "10000082",
+    "10000063",
+    "10000042",
+    "10000037",
+    "10000035",
+    "10000033",
+    "10000026",
+    "11505",
+    "11504",
+    "12504",
+    "13507",
+    "13505",
+    "14505",
+    "14504",
+    "15507",
+    "15502"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "genshin-weapon-2025-01-21",
+   "pool_type": "weapon",
+   "version": "5.3",
+   "start": "2025-01-21T18:00:00+08:00",
+   "end": "2025-02-11T14:59:59+08:00",
+   "up_top": [
+    "13512",
+    "11515"
+   ],
+   "up_second": [
+    "11405",
+    "12405",
+    "14402",
+    "15403",
+    "13406"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-02-12",
+   "pool_type": "character",
+   "version": "5.4",
+   "start": "2025-02-12T06:00:00+08:00",
+   "end": "2025-03-04T17:59:59+08:00",
+   "up_top": [
+    "10000109",
+    "10000095"
+   ],
+   "up_second": [
+    "10000055",
+    "10000053",
+    "10000023"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2025-02-12",
+   "pool_type": "weapon",
+   "version": "5.4",
+   "start": "2025-02-12T06:00:00+08:00",
+   "end": "2025-03-04T17:59:59+08:00",
+   "up_top": [
+    "14518",
+    "15513"
+   ],
+   "up_second": [
+    "12416",
+    "13416",
+    "15416",
+    "11402",
+    "14409"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-03-04",
+   "pool_type": "character",
+   "version": "5.4",
+   "start": "2025-03-04T18:00:00+08:00",
+   "end": "2025-03-25T14:59:59+08:00",
+   "up_top": [
+    "10000089",
+    "10000086"
+   ],
+   "up_second": [
+    "10000088",
+    "10000036",
+    "10000080"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2025-03-04",
+   "pool_type": "weapon",
+   "version": "5.4",
+   "start": "2025-03-04T18:00:00+08:00",
+   "end": "2025-03-25T14:59:59+08:00",
+   "up_top": [
+    "11513",
+    "14513"
+   ],
+   "up_second": [
+    "11401",
+    "12403",
+    "13401",
+    "14403",
+    "15405"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-03-26",
+   "pool_type": "character",
+   "version": "5.5",
+   "start": "2025-03-26T06:00:00+08:00",
+   "end": "2025-04-15T17:59:59+08:00",
+   "up_top": [
+    "10000111",
+    "10000093"
+   ],
+   "up_second": [
+    "10000110",
+    "10000090",
+    "10000092"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2025-03-26",
+   "pool_type": "weapon",
+   "version": "5.5",
+   "start": "2025-03-26T06:00:00+08:00",
+   "end": "2025-04-15T17:59:59+08:00",
+   "up_top": [
+    "14519",
+    "14515"
+   ],
+   "up_second": [
+    "11430",
+    "12430",
+    "13430",
+    "14430",
+    "15430"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-04-15",
+   "pool_type": "character",
+   "version": "5.5",
+   "start": "2025-04-15T18:00:00+08:00",
+   "end": "2025-05-06T14:59:59+08:00",
+   "up_top": [
+    "10000103",
+    "10000022"
+   ],
+   "up_second": [
+    "10000076",
+    "10000024",
+    "10000048"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2025-04-15",
+   "pool_type": "weapon",
+   "version": "5.5",
+   "start": "2025-04-15T18:00:00+08:00",
+   "end": "2025-05-06T14:59:59+08:00",
+   "up_top": [
+    "11516",
+    "15503"
+   ],
+   "up_second": [
+    "11403",
+    "12402",
+    "13407",
+    "14401",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-05-07",
+   "pool_type": "character",
+   "version": "5.6",
+   "start": "2025-05-07T06:00:00+08:00",
+   "end": "2025-05-27T17:59:59+08:00",
+   "up_top": [
+    "10000112",
+    "10000091"
+   ],
+   "up_second": [
+    "10000113",
+    "10000105",
+    "10000074"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2025-05-07",
+   "pool_type": "weapon",
+   "version": "5.6",
+   "start": "2025-05-07T06:00:00+08:00",
+   "end": "2025-05-27T17:59:59+08:00",
+   "up_top": [
+    "13514",
+    "12512"
+   ],
+   "up_second": [
+    "11427",
+    "12427",
+    "13427",
+    "15427",
+    "14402"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-05-27",
+   "pool_type": "character",
+   "version": "5.6",
+   "start": "2025-05-27T18:00:00+08:00",
+   "end": "2025-06-17T14:59:59+08:00",
+   "up_top": [
+    "10000101",
+    "10000052"
+   ],
+   "up_second": [
+    "10000050",
+    "10000056",
+    "10000083"
+   ]
+  },
+  {
+   "id": "genshin-chronicled-2025-05-27",
+   "pool_type": "chronicled",
+   "version": "5.6",
+   "start": "2025-05-27T18:00:00+08:00",
+   "end": "2025-06-17T14:59:59+08:00",
+   "up_top": [
+    "10000002",
+    "10000066",
+    "10000049",
+    "10000094",
+    "10000058",
+    "10000057",
+    "10000054",
+    "10000047",
+    "11514",
+    "11510",
+    "11509",
+    "11503",
+    "12510",
+    "14509",
+    "14506",
+    "15509"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "genshin-weapon-2025-05-27",
+   "pool_type": "weapon",
+   "version": "5.6",
+   "start": "2025-05-27T18:00:00+08:00",
+   "end": "2025-06-17T14:59:59+08:00",
+   "up_top": [
+    "12513",
+    "13509"
+   ],
+   "up_second": [
+    "11405",
+    "12401",
+    "13401",
+    "14409",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-06-18",
+   "pool_type": "character",
+   "version": "5.7",
+   "start": "2025-06-18T06:00:00+08:00",
+   "end": "2025-07-08T17:59:59+08:00",
+   "up_top": [
+    "10000114",
+    "10000063"
+   ],
+   "up_second": [
+    "10000115",
+    "10000072",
+    "10000039"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2025-06-18",
+   "pool_type": "weapon",
+   "version": "5.7",
+   "start": "2025-06-18T06:00:00+08:00",
+   "end": "2025-07-08T17:59:59+08:00",
+   "up_top": [
+    "11517",
+    "13507"
+   ],
+   "up_second": [
+    "11418",
+    "12415",
+    "14416",
+    "13407",
+    "15403"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-07-08",
+   "pool_type": "character",
+   "version": "5.7",
+   "start": "2025-07-08T18:00:00+08:00",
+   "end": "2025-07-29T14:59:59+08:00",
+   "up_top": [
+    "10000106",
+    "10000099"
+   ],
+   "up_second": [
+    "10000110",
+    "10000077",
+    "10000023"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2025-07-08",
+   "pool_type": "weapon",
+   "version": "5.7",
+   "start": "2025-07-08T18:00:00+08:00",
+   "end": "2025-07-29T14:59:59+08:00",
+   "up_top": [
+    "12514",
+    "13513"
+   ],
+   "up_second": [
+    "11402",
+    "12405",
+    "13401",
+    "14403",
+    "15405"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-07-30",
+   "pool_type": "character",
+   "version": "5.8",
+   "start": "2025-07-30T06:00:00+08:00",
+   "end": "2025-08-19T17:59:59+08:00",
+   "up_top": [
+    "10000116",
+    "10000107"
+   ],
+   "up_second": [
+    "10000097",
+    "10000025",
+    "10000031"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2025-07-30",
+   "pool_type": "weapon",
+   "version": "5.8",
+   "start": "2025-07-30T06:00:00+08:00",
+   "end": "2025-08-19T17:59:59+08:00",
+   "up_top": [
+    "13515",
+    "14517"
+   ],
+   "up_second": [
+    "11430",
+    "13430",
+    "12403",
+    "14401",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-08-19",
+   "pool_type": "character",
+   "version": "5.8",
+   "start": "2025-08-19T18:00:00+08:00",
+   "end": "2025-09-09T14:59:59+08:00",
+   "up_top": [
+    "10000102",
+    "10000104"
+   ],
+   "up_second": [
+    "10000113",
+    "10000105",
+    "10000032"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2025-08-19",
+   "pool_type": "weapon",
+   "version": "5.8",
+   "start": "2025-08-19T18:00:00+08:00",
+   "end": "2025-09-09T14:59:59+08:00",
+   "up_top": [
+    "14516",
+    "15514"
+   ],
+   "up_second": [
+    "12430",
+    "14430",
+    "15430",
+    "11401",
+    "13407"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-09-10",
+   "pool_type": "character",
+   "version": "6.0",
+   "start": "2025-09-10T06:00:00+08:00",
+   "end": "2025-09-30T17:59:59+08:00",
+   "up_top": [
+    "10000119",
+    "10000073"
+   ],
+   "up_second": [
+    "10000014",
+    "10000065",
+    "10000081"
+   ]
+  },
+  {
+   "id": "genshin-chronicled-2025-09-10",
+   "pool_type": "chronicled",
+   "version": "6.0",
+   "start": "2025-09-10T06:00:00+08:00",
+   "end": "2025-09-30T17:59:59+08:00",
+   "up_top": [
+    "10000079",
+    "10000078",
+    "10000075",
+    "10000071",
+    "10000070",
+    "10000069",
+    "11512",
+    "11511",
+    "12511",
+    "13511",
+    "14512",
+    "15511"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "genshin-weapon-2025-09-10",
+   "pool_type": "weapon",
+   "version": "6.0",
+   "start": "2025-09-10T06:00:00+08:00",
+   "end": "2025-09-30T17:59:59+08:00",
+   "up_top": [
+    "14520",
+    "14511"
+   ],
+   "up_second": [
+    "11402",
+    "12403",
+    "13401",
+    "14403",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-09-30",
+   "pool_type": "character",
+   "version": "6.0",
+   "start": "2025-09-30T18:00:00+08:00",
+   "end": "2025-10-21T14:59:59+08:00",
+   "up_top": [
+    "10000120",
+    "10000060"
+   ],
+   "up_second": [
+    "10000121",
+    "10000043",
+    "10000068"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2025-09-30",
+   "pool_type": "weapon",
+   "version": "6.0",
+   "start": "2025-09-30T18:00:00+08:00",
+   "end": "2025-10-21T14:59:59+08:00",
+   "up_top": [
+    "13516",
+    "15508"
+   ],
+   "up_second": [
+    "11405",
+    "12401",
+    "13407",
+    "14401",
+    "15403"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-10-22",
+   "pool_type": "character",
+   "version": "6.1",
+   "start": "2025-10-22T06:00:00+08:00",
+   "end": "2025-11-11T17:59:59+08:00",
+   "up_top": [
+    "10000122",
+    "10000089"
+   ],
+   "up_second": [
+    "10000025",
+    "10000067",
+    "10000077"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2025-10-22",
+   "pool_type": "weapon",
+   "version": "6.1",
+   "start": "2025-10-22T06:00:00+08:00",
+   "end": "2025-11-11T17:59:59+08:00",
+   "up_top": [
+    "14521",
+    "11513"
+   ],
+   "up_second": [
+    "11434",
+    "13434",
+    "14434",
+    "12402",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-11-11",
+   "pool_type": "character",
+   "version": "6.1",
+   "start": "2025-11-11T18:00:00+08:00",
+   "end": "2025-12-02T14:59:59+08:00",
+   "up_top": [
+    "10000096",
+    "10000030"
+   ],
+   "up_second": [
+    "10000108",
+    "10000045",
+    "10000064"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2025-11-11",
+   "pool_type": "weapon",
+   "version": "6.1",
+   "start": "2025-11-11T18:00:00+08:00",
+   "end": "2025-12-02T14:59:59+08:00",
+   "up_top": [
+    "13512",
+    "13504"
+   ],
+   "up_second": [
+    "11427",
+    "12427",
+    "15427",
+    "13401",
+    "14403"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-12-03",
+   "pool_type": "character",
+   "version": "6.2",
+   "start": "2025-12-03T06:00:00+08:00",
+   "end": "2025-12-23T17:59:59+08:00",
+   "up_top": [
+    "10000123",
+    "10000022"
+   ],
+   "up_second": [
+    "10000124",
+    "10000032",
+    "10000076"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2025-12-03",
+   "pool_type": "weapon",
+   "version": "6.2",
+   "start": "2025-12-03T06:00:00+08:00",
+   "end": "2025-12-23T17:59:59+08:00",
+   "up_top": [
+    "11518",
+    "15515"
+   ],
+   "up_second": [
+    "11410",
+    "13427",
+    "14410",
+    "12405",
+    "15402"
+   ]
+  },
+  {
+   "id": "genshin-character-2025-12-23",
+   "pool_type": "character",
+   "version": "6.2",
+   "start": "2025-12-23T18:00:00+08:00",
+   "end": "2026-01-13T14:59:59+08:00",
+   "up_top": [
+    "10000111",
+    "10000103"
+   ],
+   "up_second": [
+    "10000110",
+    "10000090",
+    "10000092"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2025-12-23",
+   "pool_type": "weapon",
+   "version": "6.2",
+   "start": "2025-12-23T18:00:00+08:00",
+   "end": "2026-01-13T14:59:59+08:00",
+   "up_top": [
+    "14519",
+    "11516"
+   ],
+   "up_second": [
+    "12430",
+    "15410",
+    "11401",
+    "13407",
+    "14402"
+   ]
+  },
+  {
+   "id": "genshin-character-2026-01-14",
+   "pool_type": "character",
+   "version": "6.3",
+   "start": "2026-01-14T06:00:00+08:00",
+   "end": "2026-02-03T17:59:59+08:00",
+   "up_top": [
+    "10000125",
+    "10000116"
+   ],
+   "up_second": [
+    "10000097",
+    "10000031",
+    "10000113"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2026-01-14",
+   "pool_type": "weapon",
+   "version": "6.3",
+   "start": "2026-01-14T06:00:00+08:00",
+   "end": "2026-02-03T17:59:59+08:00",
+   "up_top": [
+    "14522",
+    "13515"
+   ],
+   "up_second": [
+    "13430",
+    "14430",
+    "15412",
+    "11402",
+    "12403"
+   ]
+  },
+  {
+   "id": "genshin-character-2026-02-03",
+   "pool_type": "character",
+   "version": "6.3",
+   "start": "2026-02-03T18:00:00+08:00",
+   "end": "2026-02-24T14:59:59+08:00",
+   "up_top": [
+    "10000126",
+    "10000087"
+   ],
+   "up_second": [
+    "10000127",
+    "10000121",
+    "10000055"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2026-02-03",
+   "pool_type": "weapon",
+   "version": "6.3",
+   "start": "2026-02-03T18:00:00+08:00",
+   "end": "2026-02-24T14:59:59+08:00",
+   "up_top": [
+    "11519",
+    "14514"
+   ],
+   "up_second": [
+    "11418",
+    "12401",
+    "13401",
+    "14409",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2026-02-25",
+   "pool_type": "character",
+   "version": "6.4",
+   "start": "2026-02-25T06:00:00+08:00",
+   "end": "2026-03-17T17:59:59+08:00",
+   "up_top": [
+    "10000128",
+    "10000120"
+   ],
+   "up_second": [
+    "10000032",
+    "10000023",
+    "10000043"
+   ]
+  },
+  {
+   "id": "genshin-chronicled-2026-02-25",
+   "pool_type": "chronicled",
+   "version": "6.4",
+   "start": "2026-02-25T06:00:00+08:00",
+   "end": "2026-03-17T17:59:59+08:00",
+   "up_top": [
+    "10000051",
+    "10000041",
+    "10000038",
+    "10000029",
+    "10000016",
+    "10000003",
+    "11502",
+    "11501",
+    "12503",
+    "12502",
+    "12501",
+    "13502",
+    "14502",
+    "14501",
+    "15503",
+    "15501"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "genshin-weapon-2026-02-25",
+   "pool_type": "weapon",
+   "version": "6.4",
+   "start": "2026-02-25T06:00:00+08:00",
+   "end": "2026-03-17T17:59:59+08:00",
+   "up_top": [
+    "12515",
+    "13516"
+   ],
+   "up_second": [
+    "13434",
+    "11401",
+    "12401",
+    "14403",
+    "15403"
+   ]
+  },
+  {
+   "id": "genshin-character-2026-03-17",
+   "pool_type": "character",
+   "version": "6.4",
+   "start": "2026-03-17T18:00:00+08:00",
+   "end": "2026-04-07T14:59:59+08:00",
+   "up_top": [
+    "10000114",
+    "10000112"
+   ],
+   "up_second": [
+    "10000115",
+    "10000072",
+    "10000088"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2026-03-17",
+   "pool_type": "weapon",
+   "version": "6.4",
+   "start": "2026-03-17T18:00:00+08:00",
+   "end": "2026-04-07T14:59:59+08:00",
+   "up_top": [
+    "11517",
+    "13514"
+   ],
+   "up_second": [
+    "11402",
+    "12402",
+    "13407",
+    "14401",
+    "15405"
+   ]
+  },
+  {
+   "id": "genshin-character-2026-04-08",
+   "pool_type": "character",
+   "version": "6.5",
+   "start": "2026-04-08T06:00:00+08:00",
+   "end": "2026-04-28T17:59:59+08:00",
+   "up_top": [
+    "10000130",
+    "10000104"
+   ],
+   "up_second": [
+    "10000127",
+    "10000121",
+    "10000034"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2026-04-08",
+   "pool_type": "weapon",
+   "version": "6.5",
+   "start": "2026-04-08T06:00:00+08:00",
+   "end": "2026-04-28T17:59:59+08:00",
+   "up_top": [
+    "15516",
+    "15514"
+   ],
+   "up_second": [
+    "15430",
+    "11405",
+    "12403",
+    "13401",
+    "14409"
+   ]
+  },
+  {
+   "id": "genshin-character-2026-04-28",
+   "pool_type": "character",
+   "version": "6.5",
+   "start": "2026-04-28T18:00:00+08:00",
+   "end": "2026-05-19T14:59:59+08:00",
+   "up_top": [
+    "10000119",
+    "10000122"
+   ],
+   "up_second": [
+    "10000025",
+    "10000061",
+    "10000124"
+   ]
+  },
+  {
+   "id": "genshin-chronicled-2026-04-28",
+   "pool_type": "chronicled",
+   "version": "6.5",
+   "start": "2026-04-28T18:00:00+08:00",
+   "end": "2026-05-19T14:59:59+08:00",
+   "up_top": [
+    "10000099",
+    "10000098",
+    "10000095",
+    "10000091",
+    "10000084",
+    "13513",
+    "11515",
+    "15513",
+    "12512",
+    "15512"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "genshin-weapon-2026-04-28",
+   "pool_type": "weapon",
+   "version": "6.5",
+   "start": "2026-04-28T18:00:00+08:00",
+   "end": "2026-05-19T14:59:59+08:00",
+   "up_top": [
+    "14520",
+    "14521"
+   ],
+   "up_second": [
+    "14434",
+    "11403",
+    "12405",
+    "13407",
+    "15401"
+   ]
+  },
+  {
+   "id": "genshin-character-2026-05-20",
+   "pool_type": "character",
+   "version": "6.6",
+   "start": "2026-05-20T06:00:00+08:00",
+   "end": "2026-06-09T17:59:59+08:00",
+   "up_top": [
+    "10000131",
+    "10000123"
+   ],
+   "up_second": [
+    "10000132",
+    "10000020",
+    "10000031"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2026-05-20",
+   "pool_type": "weapon",
+   "version": "6.6",
+   "start": "2026-05-20T06:00:00+08:00",
+   "end": "2026-06-09T17:59:59+08:00",
+   "up_top": [
+    "14523",
+    "11518"
+   ],
+   "up_second": [
+    "11434",
+    "15412",
+    "12402",
+    "13401",
+    "14402"
+   ]
+  },
+  {
+   "id": "genshin-character-2026-06-09",
+   "pool_type": "character",
+   "version": "6.6",
+   "start": "2026-06-09T18:00:00+08:00",
+   "end": "2026-06-30T14:59:59+08:00",
+   "up_top": [
+    "10000129",
+    "10000106"
+   ],
+   "up_second": [
+    "10000080",
+    "10000023",
+    "10000032"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2026-06-09",
+   "pool_type": "weapon",
+   "version": "6.6",
+   "start": "2026-06-09T18:00:00+08:00",
+   "end": "2026-06-30T14:59:59+08:00",
+   "up_top": [
+    "13517",
+    "12514"
+   ],
+   "up_second": [
+    "11410",
+    "14410",
+    "15410",
+    "12405",
+    "13407"
+   ]
+  },
+  {
+   "id": "genshin-character-2026-07-01",
+   "pool_type": "character",
+   "version": "6.7",
+   "start": "2026-07-01T06:00:00+08:00",
+   "end": "2026-07-21T17:59:59+08:00",
+   "up_top": [
+    "10000133",
+    "10000107"
+   ],
+   "up_second": [
+    "10000024",
+    "10000039",
+    "10000085"
+   ]
+  },
+  {
+   "id": "genshin-chronicled-2026-07-01",
+   "pool_type": "chronicled",
+   "version": "6.7",
+   "start": "2026-07-01T06:00:00+08:00",
+   "end": "2026-07-21T17:59:59+08:00",
+   "up_top": [
+    "10000109",
+    "10000086",
+    "10000071",
+    "10000058",
+    "10000035",
+    "14518",
+    "14513",
+    "13511",
+    "14509",
+    "11502"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "genshin-weapon-2026-07-01",
+   "pool_type": "weapon",
+   "version": "6.7",
+   "start": "2026-07-01T06:00:00+08:00",
+   "end": "2026-07-21T17:59:59+08:00",
+   "up_top": [
+    "12516",
+    "14517"
+   ],
+   "up_second": [
+    "11401",
+    "12405",
+    "13401",
+    "14403",
+    "15403"
+   ]
+  },
+  {
+   "id": "genshin-character-2026-07-21",
+   "pool_type": "character",
+   "version": "6.7",
+   "start": "2026-07-21T18:00:00+08:00",
+   "end": "2026-08-11T14:59:59+08:00",
+   "up_top": [
+    "10000125",
+    "10000052"
+   ],
+   "up_second": [
+    "10000124",
+    "10000105",
+    "10000097"
+   ]
+  },
+  {
+   "id": "genshin-weapon-2026-07-21",
+   "pool_type": "weapon",
+   "version": "6.7",
+   "start": "2026-07-21T18:00:00+08:00",
+   "end": "2026-08-11T14:59:59+08:00",
+   "up_top": [
+    "14522",
+    "13509"
+   ],
+   "up_second": [
+    "14430",
+    "11403",
+    "12402",
+    "13407",
+    "15401"
+   ]
+  }
+ ]
+}

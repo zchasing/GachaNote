@@ -1,0 +1,30 @@
+{
+  "version": "2026.10.26",
+  "minAppVersion": "0.1.0",
+  "files": [
+    {
+      "path": "genshin.json",
+      "sha256": "70cbe3b359ed45fc95b19f7caacc0fc16b04f69de74af55677781f750ca3a5c1"
+    },
+    {
+      "path": "starrail.json",
+      "sha256": "5e6e85db78d223644fa78e361deb4b3e8c9215137196e3ba16b48bcab88e36ca"
+    },
+    {
+      "path": "zzz.json",
+      "sha256": "14fbbaaa1cf23b9fb2d754f6db84a3f1dcd9c6af3fec1f0a21d2f14a5772efe3"
+    },
+    {
+      "path": "arknights.json",
+      "sha256": "33f2c0585456326c779f986950005a5fff375e347fea786acf56e6e5dd3bcf24"
+    },
+    {
+      "path": "endfield.json",
+      "sha256": "1dfc592b3cadb224e75a6c93f127a4833df857f9727171cf72a48331413dc213"
+    },
+    {
+      "path": "wuwa.json",
+      "sha256": "e5851d8fd1de38fea8283cce9ad253bbe21de64ffbb98b9ccb87d1439301a4b7"
+    }
+  ]
+}
