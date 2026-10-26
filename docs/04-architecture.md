@@ -102,8 +102,12 @@ pub trait GamePlugin: Send + Sync {
 pub trait Fetcher: Send + Sync {
     fn kind(&self) -> FetchKind;             // Url | AccountToken
     async fn discover(&self, env: &dyn PathProvider) -> Result<Vec<FetchSource>>; // 自动查找 URL / 已保存凭据
-    async fn fetch(&self, src: &FetchSource, since: &Since,   // Since = 每个卡池类型的最新 Cursor，空则全量
+    async fn fetch(&self, src: &FetchSource, since: &dyn SinceLookup, // 拿到 UID 后查该账号各卡池类型的最新 Cursor
                    progress: &dyn Progress, cancel: &CancelToken) -> Result<Vec<ImportedAccount>>;
+}
+
+pub trait SinceLookup: Send + Sync {         // 米哈游链接里没有 UID，只能边拉边查
+    fn since(&self, game: &GameId, uid: &str) -> Result<Since>; // Since = 每个卡池类型的最新 Cursor，空则全量
 }
 
 pub trait Converter: Send + Sync {
@@ -131,11 +135,11 @@ pub struct PoolRule {
 }
 
 pub enum Mechanic {
-    EpitomizedPath { max: u8 },              // 原神武器池命定值
-    UpWithinN { n: u32, once: bool },        // N 抽内必出 UP（终末地 120 抽）
-    Spark { n: u32 },                        // 每 N 抽可自选（方舟限定池等）
-    FreePulls { not_counted: bool },         // 免费抽不计入保底（终末地）
-    CapturingRadiance,                       // 预留：原神「捕获明光」类机制
+    EpitomizedPath { max: u8 },              // 原神武器池命定值（规则按版本分段：2.0 前无、5.0 前上限 2、之后上限 1）
+    UpWithinN { n: u32, per_banner: bool },  // N 抽内必出 UP（终末地 120 抽每期清零；方舟登场限定 150 抽跨期一次性）
+    Spark { n: u32 },                        // 每 N 抽可自选（方舟限定池、崩铁 / 绝区零常驻 300 抽）
+    FreePulls,                               // 免费抽不计入保底（终末地，记录 is_pull = false）
+    CapturingRadiance,                       // 原神 5.0 起角色池「捕获明光」（只影响概率预测）
 }
 ```
 
@@ -145,12 +149,12 @@ pub enum Mechanic {
 
 | 游戏 | 拉取器 | 转换器 | 特殊处理 |
 | --- | --- | --- | --- |
-| 原神 | URL（WebView 磁盘缓存） | UIGF v2–v4.2 | 命定值、集录祈愿（参数待确认） |
-| 崩铁 | URL（WebView 磁盘缓存） | UIGF v4 / SRGF v1 | 光锥池 75% UP |
-| 绝区零 | URL（WebView 磁盘缓存） | UIGF v4 | 邦布频段（参数待确认） |
-| 明日方舟 | 鹰角账号 token（v0.2） | GNJ / arknights-gacha-export CSV | pos + gachaTs 分页；歪率按非 UP 六星占比 |
-| 终末地 | 鹰角账号 token（v0.2） | GNJ / CSV | seqId 分页；isFree 不计保底；120 抽必出 UP |
-| 鸣潮 | URL（Client.log） | GNJ | 官方、Steam、Epic 三种安装路径；仅保留 6 个月 |
+| 原神 | URL（WebView 磁盘缓存） | UIGF v2–v4.2 | 301 / 400 共用角色池保底；命定值按版本分段；集录祈愿（500）不判 UP |
+| 崩铁 | URL（WebView 磁盘缓存） | UIGF v4 / SRGF v1 | 光锥池 75% UP；联动跃迁（21 / 22）单独计保底；常驻 300 抽自选 |
+| 绝区零 | URL（WebView 磁盘缓存） | UIGF v4 | 4 位卡池代码按首位归类；邦布频段；102 / 103 单独计保底、不判 UP |
+| 明日方舟 | 鹰角账号 token（v0.2） | GNJ / arknights-gacha-export CSV | 按 poolId 前缀归类（`NORM` / `DOUBLE` 为标准寻访）；歪率按非 UP 六星占比 |
+| 终末地 | 鹰角账号 token（v0.2） | GNJ / CSV | 卡池代码为 `char:<poolId>` / `weapon:<poolId>`；isFree 不计保底；120 抽必出 UP |
+| 鸣潮 | URL（Client.log） | GNJ | 官方、Steam、Epic 三种安装路径；仅保留 6 个月；武器池不歪 |
 
 ## 4. 数据库设计
 
@@ -271,7 +275,7 @@ erDiagram
 - **终末地的官方 ID**：记录接口的 `seqId` 只在卡池内有意义，`ext_id` 取 `poolId:kind:seqId`。
 - **不存派生数据**：保底计数、是否歪等都由统计引擎实时计算，规则或元数据更新后自动变正确。统计结果只在内存中按 (account, pool\_type, 数据版本) 缓存。
 - **`raw_json` 必存**：保证 UIGF/GNJ 导出不丢字段，也方便以后发现解析错误时重算。
-- **元数据不入库**：卡池元数据包以 JSON 文件形式缓存在 `%APPDATA%/GachaNote/metadata/`，启动时加载到内存。
+- **元数据不入库**：卡池元数据包以 JSON 文件形式缓存在 `%APPDATA%/GachaNote/metadata/`，启动时加载到内存（`gachanote-meta`：缓存合法且不比内置包旧时用缓存，否则用编译进安装包的 `metadata/`）。更新时依次尝试 raw.githubusercontent.com、jsDelivr，逐个校验 SHA-256，全部通过才整体替换缓存。
 
 ### 4.2 迁移与备份
 
@@ -472,8 +476,9 @@ sequenceDiagram
 ### 7.2 URL 拉取
 
 - **米哈游三款**：从游戏日志定位安装目录，读取 `webCaches/<version>/Cache/Cache_Data/data_2` 等 Chromium 磁盘缓存，用正则提取最新的抽卡记录 URL，取出 `authkey` 等参数。实现参考 HoYo.Gacha（MIT/Apache）。
-- **鸣潮**：从官方启动器、Steam、Epic 三处候选路径查找 `Client/Saved/Logs/Client.log`，提取最后一条抽卡记录 URL 中的 `player_id`、`record_id` 等参数。
-- **增量**：按卡池类型从新到旧拉取，遇到已存在的最新记录（`latest_cursor`）即停止；全量模式拉到尽头。
+- **米哈游接口**：`GET .../gacha_info/api/getGachaLog`（崩铁 `hkrpg_gacha_record`，联动跃迁 21 / 22 用 `getLdGachaLog`；绝区零用 `real_gacha_type`），`size=20`、`end_id` 翻页；`retcode` -100 / -101 为链接过期，-110 为限流。链接里没有 UID，拉到第一条记录后才通过 `SinceLookup` 查增量起点。
+- **鸣潮**：从官方启动器、Steam、Epic 三处候选路径查找 `Client/Saved/Logs/Client.log`（或 KRSDK 的 `debug.log`），提取最后一条抽卡记录 URL 中的 `player_id`、`record_id` 等参数。接口 `POST gmserver-api.aki-game2.(com|net)/gacha/record/query`，按 `cardPoolType` 1–7 各请求一次，**一次返回全部记录、无分页、无记录 ID**；增量时丢弃早于游标的记录，由去重键兜底。
+- **增量**：按卡池类型从新到旧拉取，遇到已存在的最新记录（`latest_cursor`）即停止；全量模式（`FetchMode::Full`）拉到尽头。命令层通过 `ImportService::spawn_fetch` 起任务，拉取、规范化、写入走同一条管线。
 - **限速**：每页间隔 300–500 ms 并加抖动；遇到频率限制指数退避，最多重试 3 次。`authkey` 过期等业务错误不重试，直接提示用户在游戏里重新打开抽卡记录。
 
 ### 7.3 鹰角 token 拉取（v0.2）
@@ -560,7 +565,7 @@ ui/src/
 | 端到端 | Playwright（mock IPC） | 导入向导、概览、主题/语言切换的冒烟测试 |
 | 性能 | criterion | 10 万条导入、统计重算，对应 NFR 阈值 |
 
-`core`、`formats`、`store` 的行覆盖率目标 ≥ 90%（cargo-llvm-cov），外壳与前端不设硬指标。测试用的真实样例文件必须去掉 UID 与 authkey 后才能入库。
+`core`、`formats`、`store`、`games`、`meta` 的行覆盖率目标 ≥ 90%（cargo-llvm-cov），外壳与前端不设硬指标。测试用的真实样例文件必须去掉 UID 与 authkey 后才能入库。
 
 ### 9.2 CI（GitHub Actions）
 

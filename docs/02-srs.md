@@ -220,9 +220,12 @@ flowchart LR
 
 ### 4.3 卡池元数据包
 
-- 存放在本仓库 `metadata/` 目录：`manifest.json`（版本号、各文件 SHA-256）+ 每款游戏一个 `<game>.json`。
-- 每款游戏文件含：卡池列表（pool\_id、名称、卡池类型、起止时间、UP 金与 UP 次高星名单）和常驻名单。
-- 物品名称保存中英两种语言，用于切换语言后显示。
+- 存放在本仓库 `metadata/` 目录：`manifest.json`（`version`、`minAppVersion`、各文件 SHA-256）+ 每款游戏一个 `<game>.json`；JSON Schema 在 `metadata/schema/`。
+- 每款游戏文件含：物品表（`id`、星级、各语言名称）、常驻最高星名单（`standard`）、卡池列表（`banners`：`id`、卡池类型、各语言名称、起止时间、UP 最高星与次高星名单）。
+- 名单里写物品 ID 或名称，加载时展开成「ID + 各语言名称」，不论记录里是 ID 还是哪种语言的名称都能匹配。
+- 物品名称至少保存中英两种语言（米哈游三款另有繁中、日文），用于切换语言后显示。
+- 应用版本低于 `minAppVersion` 时不使用远程包，继续用当前包。
+- 米哈游三款的数据由 `scripts/build_hoyo_metadata.py` 从 HoYo.Gacha（MIT）转换，来源与许可见 `metadata/NOTICE.md`。
 
 ### 4.4 自有 CSV
 
