@@ -1,7 +1,7 @@
 //! 性能基准（T-40），对应 SRS 的 NFR-01–03 与 T-35 的翻页指标。
 //!
-//! 计时在调试构建下没有意义，全部标为 `#[ignore]`，在 release 下单独运行：
-//! `cargo test -p gachanote-app --release --locked -- --ignored --test-threads=1`。
+//! 计时在调试构建下没有意义，全部标为 `#[ignore]`，用与 release 同级优化的 perf profile 单独运行：
+//! `cargo test -p gachanote-app --profile perf --locked perf -- --ignored --test-threads=1`。
 //! CI 的「性能基准」任务会跑这一组，超出阈值即失败。
 
 use super::*;

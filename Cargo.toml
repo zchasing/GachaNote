@@ -50,3 +50,16 @@ missing_docs = "warn"
 
 [workspace.lints.clippy]
 all = { level = "warn", priority = -1 }
+
+# 安装包体积目标 ≤ 20 MB（NFR-04）：发布构建做全量 LTO 并去掉符号
+[profile.release]
+codegen-units = 1
+lto = true
+strip = true
+
+# 性能基准用：与 release 同样的优化级别，但不做 LTO，编译快得多
+[profile.perf]
+inherits = "release"
+codegen-units = 16
+lto = false
+strip = false

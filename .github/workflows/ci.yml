@@ -113,7 +113,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-rust
       # 计时只在 release 下有意义；阈值见 SRS NFR-01–03，测试在 src-tauri/src/state/tests/perf.rs
-      - run: cargo test -p gachanote-app --release --locked perf -- --ignored --test-threads=1 --nocapture
+      - run: cargo test -p gachanote-app --profile perf --locked perf -- --ignored --test-threads=1 --nocapture
 
   bindings:
     name: 前后端类型绑定一致性
