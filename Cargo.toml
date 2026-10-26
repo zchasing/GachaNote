@@ -28,7 +28,7 @@ rusqlite = { version = "0.40", features = ["bundled", "backup"] }
 rusqlite_migration = "2.6"
 serde = { version = "1", features = ["derive"] }
 serde_json = { version = "1", features = ["preserve_order"] }
-sha2 = "0.10"
+sha2 = "0.11"
 specta = "=2.0.0-rc.26"
 specta-typescript = "=0.0.13"
 tauri = "2"
