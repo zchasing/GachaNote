@@ -1,0 +1,652 @@
+---
+source: crates/gachanote-formats/tests/formats.rs
+expression: doc
+---
+{
+  "info": {
+    "export_timestamp": "[timestamp]",
+    "export_app": "GachaNote",
+    "export_app_version": "0.1.0",
+    "version": "v4.2"
+  },
+  "hk4e": [
+    {
+      "uid": "100000001",
+      "timezone": 8,
+      "lang": "zh-cn",
+      "list": [
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:00:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000001"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:01:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000002"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:02:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000003"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:03:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000004"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:04:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000005"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:05:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000006"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:06:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000007"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:07:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000008"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:08:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000009"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "10000042",
+          "count": "1",
+          "time": "2024-01-01 12:09:00",
+          "name": "刻晴",
+          "item_type": "角色",
+          "rank_type": "5",
+          "id": "1704081600000000010"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "400",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:10:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000011"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "400",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:11:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000012"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "400",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:12:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000013"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "400",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:13:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000014"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "400",
+          "item_id": "10000022",
+          "count": "1",
+          "time": "2024-01-01 12:14:00",
+          "name": "温迪",
+          "item_type": "角色",
+          "rank_type": "5",
+          "id": "1704081600000000015"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:15:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000016"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:16:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000017"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:17:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000018"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:18:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000019"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:19:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000020"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:20:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000021"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:21:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000022"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:22:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000023"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:23:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000024"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:24:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000025"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:25:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000026"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:26:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000027"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:27:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000028"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:28:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000029"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:29:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000030"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:30:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000031"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:31:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000032"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:32:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000033"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:33:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000034"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "10000029",
+          "count": "1",
+          "time": "2024-01-01 12:34:00",
+          "name": "可莉",
+          "item_type": "角色",
+          "rank_type": "5",
+          "id": "1704081600000000035"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:35:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000036"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:36:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000037"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:37:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000038"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:38:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000039"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:39:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000040"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:40:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000041"
+        },
+        {
+          "uigf_gacha_type": "301",
+          "gacha_type": "301",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-01 12:41:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000042"
+        },
+        {
+          "uigf_gacha_type": "200",
+          "gacha_type": "200",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-02 04:40:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000043"
+        },
+        {
+          "uigf_gacha_type": "200",
+          "gacha_type": "200",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-02 04:40:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000044"
+        },
+        {
+          "uigf_gacha_type": "200",
+          "gacha_type": "200",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-02 04:40:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000045"
+        },
+        {
+          "uigf_gacha_type": "200",
+          "gacha_type": "200",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-02 04:40:00",
+          "name": "迪卢克",
+          "item_type": "角色",
+          "rank_type": "5",
+          "id": "1704081600000000046"
+        },
+        {
+          "uigf_gacha_type": "200",
+          "gacha_type": "200",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-02 04:40:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000047"
+        },
+        {
+          "uigf_gacha_type": "200",
+          "gacha_type": "200",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-02 04:40:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000048"
+        },
+        {
+          "uigf_gacha_type": "200",
+          "gacha_type": "200",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-02 04:40:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000049"
+        },
+        {
+          "uigf_gacha_type": "200",
+          "gacha_type": "200",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-02 04:40:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000050"
+        },
+        {
+          "uigf_gacha_type": "200",
+          "gacha_type": "200",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-02 04:40:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000051"
+        },
+        {
+          "uigf_gacha_type": "200",
+          "gacha_type": "200",
+          "item_id": "11406",
+          "count": "1",
+          "time": "2024-01-02 04:40:00",
+          "name": "冷刃",
+          "item_type": "武器",
+          "rank_type": "3",
+          "id": "1704081600000000052"
+        }
+      ]
+    }
+  ],
+  "hkrpg": [
+    {
+      "uid": "100000002",
+      "timezone": 8,
+      "lang": "zh-cn",
+      "list": [
+        {
+          "gacha_id": "2003",
+          "gacha_type": "11",
+          "item_id": "1203",
+          "count": "1",
+          "time": "2024-02-01 10:00:00",
+          "name": "罗刹",
+          "item_type": "角色",
+          "rank_type": "5",
+          "id": "1706752800000000001"
+        },
+        {
+          "gacha_id": "1001",
+          "gacha_type": "1",
+          "item_id": "20000",
+          "count": "1",
+          "time": "2024-02-01 10:01:00",
+          "name": "锋镝",
+          "item_type": "光锥",
+          "rank_type": "3",
+          "id": "1706752800000000002"
+        }
+      ]
+    }
+  ],
+  "nap": [
+    {
+      "uid": "10000003",
+      "timezone": 8,
+      "lang": "zh-cn",
+      "list": [
+        {
+          "gacha_type": "2",
+          "item_id": "1191",
+          "count": "1",
+          "time": "2024-07-05 18:30:00",
+          "name": "艾莲",
+          "item_type": "代理人",
+          "rank_type": "4",
+          "id": "1720175400000000001"
+        },
+        {
+          "gacha_type": "2",
+          "item_id": "1191",
+          "count": "1",
+          "time": "2024-07-05 18:31:00",
+          "name": "1191",
+          "rank_type": "3",
+          "id": "1720175400000000002"
+        }
+      ]
+    }
+  ]
+}

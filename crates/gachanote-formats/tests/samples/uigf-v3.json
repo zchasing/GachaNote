@@ -1,0 +1,44 @@
+{
+  "info": {
+    "uid": "100000001",
+    "lang": "zh-cn",
+    "export_time": "2023-01-01 00:00:00",
+    "export_timestamp": 1672502400,
+    "export_app": "genshin-wish-export",
+    "export_app_version": "v1.0.0",
+    "uigf_version": "v3.0",
+    "region_time_zone": 8
+  },
+  "list": [
+    {
+      "gacha_type": "301",
+      "item_id": "",
+      "count": "1",
+      "time": "2022-12-30 20:00:00",
+      "name": "胡桃",
+      "item_type": "角色",
+      "rank_type": "5",
+      "id": "1672401600000000001",
+      "uigf_gacha_type": "301"
+    },
+    {
+      "gacha_type": "500",
+      "item_id": "",
+      "count": "1",
+      "time": "2022-12-30 20:00:00",
+      "name": "弹弓",
+      "item_type": "武器",
+      "rank_type": "3",
+      "id": "1672401600000000002",
+      "uigf_gacha_type": "500"
+    },
+    {
+      "gacha_type": "302",
+      "count": "1",
+      "time": "2022-12-30 20:01:00",
+      "name": "黑缨枪",
+      "item_type": "武器",
+      "id": "1672401600000000003"
+    }
+  ]
+}

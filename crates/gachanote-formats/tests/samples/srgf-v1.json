@@ -1,0 +1,35 @@
+{
+  "info": {
+    "uid": "100000002",
+    "lang": "zh-cn",
+    "region_time_zone": 8,
+    "export_timestamp": 1684000000,
+    "export_app": "StarRailExport",
+    "export_app_version": "1.0",
+    "srgf_version": "v1.0"
+  },
+  "list": [
+    {
+      "gacha_id": "1001",
+      "gacha_type": "1",
+      "item_id": "1102",
+      "count": "1",
+      "time": "2023-05-13 09:00:00",
+      "name": "希儿",
+      "item_type": "角色",
+      "rank_type": "5",
+      "id": "1683939600000000001"
+    },
+    {
+      "gacha_id": "2001",
+      "gacha_type": "11",
+      "item_id": "21000",
+      "count": "1",
+      "time": "2023-05-13 09:00:00",
+      "name": "一场术后对话",
+      "item_type": "光锥",
+      "rank_type": "4",
+      "id": "1683939600000000002"
+    }
+  ]
+}

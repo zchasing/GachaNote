@@ -189,14 +189,15 @@ flowchart LR
 
 ### 4.2 GNJ 格式（鹰角两款与鸣潮）
 
-结构仿照 UIGF v4：顶层 info 描述导出信息，每款游戏一个数组，数组内按账号分组。字段名在 v0.1 开发时定稿并发布 JSON Schema。
+结构仿照 UIGF v4：顶层 info 描述导出信息，每款游戏一个数组，数组内按账号分组。v1.0 字段如下，JSON Schema 见 [`schema/gnj-1.0.schema.json`](schema/gnj-1.0.schema.json)。
 
 ```json
 {
   "info": { "export_app": "GachaNote", "export_app_version": "0.1.0", "export_timestamp": 1761292800, "version": "gnj-1.0" },
   "arknights": [
-    { "uid": "12345678", "server": "cn", "list": [
-      { "pool_type": "limited", "pool_id": "...", "pool_name": "...", "item_id": "...", "item_name": "...", "rarity": 6, "time": 1761292800000, "seq": 0, "is_pull": true, "raw": { } }
+    { "uid": "12345678", "server": "cn", "timezone": 8, "nickname": "博士", "list": [
+      { "id": null, "pool_type": "limited", "pool_id": "...", "pool_name": "...", "item_id": "...", "item_name": "...", "item_type": null,
+        "rarity": 6, "time": 1761292800000, "seq": 0, "is_pull": true, "raw": { } }
     ] }
   ],
   "endfield": [],
@@ -204,11 +205,34 @@ flowchart LR
 }
 ```
 
+| 位置 | 字段 | 说明 |
+| --- | --- | --- |
+| info | `version` | `gnj-1.0`；导入接受 `gnj-1.x` |
+| 顶层 | 游戏键 | `arknights`、`endfield`、`wuthering_waves`（鸣潮），其他键按游戏 ID 读取，便于以后新增游戏 |
+| 账号 | `uid`、`timezone` | 必填；`timezone` 为服务器时区（小时） |
+| 账号 | `server`、`nickname` | 可空 |
+| 记录 | `pool_type`、`item_name`、`rarity`、`time` | 必填；`pool_type` 是本软件的卡池类型，`rarity` 为游戏内星数，`time` 为 UTC 毫秒 |
+| 记录 | `id` | 官方记录 ID，可空（明日方舟没有，终末地为 `poolId:kind:seqId`）；为空时按自然键去重 |
+| 记录 | `seq` | 同一秒内的顺序（十连），可空 |
+| 记录 | `is_pull` | 是否计入抽数与保底，缺省为 `true`；免费抽、赠送条目为 `false` |
+| 记录 | `pool_id`、`pool_name`、`item_id`、`item_type` | 可空 |
+| 记录 | `raw` | 原始字段，原样保留 |
+
 ### 4.3 卡池元数据包
 
 - 存放在本仓库 `metadata/` 目录：`manifest.json`（版本号、各文件 SHA-256）+ 每款游戏一个 `<game>.json`。
 - 每款游戏文件含：卡池列表（pool\_id、名称、卡池类型、起止时间、UP 金与 UP 次高星名单）和常驻名单。
 - 物品名称保存中英两种语言，用于切换语言后显示。
+
+### 4.4 自有 CSV
+
+用于在 Excel 中查看，也可以再导入（只保证条数一致，不含原始字段；完整备份用 UIGF / GNJ）。UTF-8，表头固定为：
+
+```text
+game,uid,pool_type,pool_id,id,item_id,item_name,item_type,rarity,time,timezone,seq,is_pull
+```
+
+`time` 为服务器本地时间 `YYYY-MM-DD HH:MM:SS.mmm`（保留毫秒，保证再导入时去重键不变），`timezone` 为小时，`is_pull` 为 `true` / `false`。
 
 ## 5. 游戏规则模板
 

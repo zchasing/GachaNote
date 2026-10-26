@@ -1,0 +1,83 @@
+{
+  "info": {
+    "export_app": "GachaNote",
+    "export_app_version": "0.1.0",
+    "export_timestamp": 1761292800,
+    "version": "gnj-1.0"
+  },
+  "arknights": [
+    {
+      "uid": "12345678",
+      "server": "cn",
+      "timezone": 8,
+      "nickname": "博士#1234",
+      "list": [
+        {
+          "id": null,
+          "pool_type": "limited",
+          "pool_id": "LIMITED_1",
+          "pool_name": "限定寻访",
+          "item_id": "char_1",
+          "item_name": "能天使",
+          "item_type": null,
+          "rarity": 6,
+          "time": 1761292800000,
+          "seq": 0,
+          "is_pull": true,
+          "raw": {
+            "poolId": "LIMITED_1",
+            "pos": 0,
+            "poolName": "限定寻访"
+          }
+        },
+        {
+          "id": null,
+          "pool_type": "limited",
+          "pool_id": "LIMITED_1",
+          "pool_name": "限定寻访",
+          "item_id": "char_2",
+          "item_name": "芬",
+          "item_type": null,
+          "rarity": 3,
+          "time": 1761292800000,
+          "seq": 1,
+          "is_pull": true,
+          "raw": {
+            "poolId": "LIMITED_1",
+            "pos": 1,
+            "poolName": "限定寻访"
+          }
+        },
+        {
+          "pool_type": "limited",
+          "item_name": "缺星级",
+          "time": 1761292800000
+        }
+      ]
+    }
+  ],
+  "wuthering_waves": [
+    {
+      "uid": "100000004",
+      "server": "cn",
+      "timezone": 8,
+      "list": [
+        {
+          "id": null,
+          "pool_type": "character",
+          "pool_id": null,
+          "item_id": "1404",
+          "item_name": "忌炎",
+          "item_type": "角色",
+          "rarity": 5,
+          "time": 1716000000000,
+          "is_pull": true,
+          "raw": {
+            "cardPoolType": 1
+          }
+        }
+      ]
+    }
+  ],
+  "endfield": []
+}

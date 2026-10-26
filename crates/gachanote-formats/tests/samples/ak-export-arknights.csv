@@ -1,0 +1,6 @@
+﻿uid,nickName,poolId,poolName,charId,charName,rarity,isNew,gachaTs,pos
+12345678,博士,LIMITED_1,"限定寻访, 春节",char_1,能天使,5,true,1761292800000,0
+12345678,博士,LIMITED_1,"限定寻访, 春节",char_2,芬,2,false,1761292800000,1
+12345678,博士,NORM_1,标准寻访,char_3,玫兰莎,2,false,1761300000000,0
+12345678,博士,NORM_1,标准寻访,char_4,坏行,x,false,1761300000001,0
+87654321,,NORM_1,标准寻访,char_3,玫兰莎,3,false,1761300000000,0
