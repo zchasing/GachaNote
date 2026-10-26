@@ -237,10 +237,7 @@ impl SqliteStore {
 
     /// 同 [`SqliteStore::open`]；已有数据且需要升级结构时，先用 `backup` 做一份备份
     /// （NFR-09）。`backup` 接收一个临时打开的、尚未迁移的数据库。
-    pub fn open_with_backup(
-        path: &Path,
-        backup: Option<&MigrationBackup<'_>>,
-    ) -> Result<Self> {
+    pub fn open_with_backup(path: &Path, backup: Option<&MigrationBackup<'_>>) -> Result<Self> {
         if let Some(dir) = path.parent() {
             std::fs::create_dir_all(dir)?;
         }
