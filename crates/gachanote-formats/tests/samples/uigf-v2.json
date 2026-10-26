@@ -1,0 +1,22 @@
+{
+  "info": {
+    "uid": "600000001",
+    "lang": "en-us",
+    "export_timestamp": 1640995200,
+    "export_app": "old",
+    "uigf_version": "v2.2"
+  },
+  "list": [
+    {
+      "gacha_type": "100",
+      "item_id": "",
+      "count": 1,
+      "time": "2021-12-31 07:00:00",
+      "name": "Noelle",
+      "item_type": "Character",
+      "rank_type": 4,
+      "id": 1640952000000000001,
+      "uigf_gacha_type": "100"
+    }
+  ]
+}

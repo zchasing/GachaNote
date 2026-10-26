@@ -1,0 +1,15 @@
+---
+source: crates/gachanote-formats/tests/formats.rs
+expression: text
+---
+game,uid,pool_type,pool_id,id,item_id,item_name,item_type,rarity,time,timezone,seq,is_pull
+arknights,12345678,LIMITED_1,LIMITED_1,,char_1,能天使,,6,2025-10-24 16:00:00.000,8,0,true
+arknights,12345678,LIMITED_1,LIMITED_1,,char_2,芬,,3,2025-10-24 16:00:00.000,8,1,true
+arknights,12345678,NORM_1,NORM_1,,char_3,玫兰莎,,3,2025-10-24 18:00:00.000,8,0,true
+arknights,87654321,NORM_1,NORM_1,,char_3,玫兰莎,,4,2025-10-24 18:00:00.000,8,0,true
+endfield,10000005,char:special_1_0_1,special_1_0_1,special_1_0_1:draw:212,chr_0016_laevat,莱万汀,,6,2026-02-07 12:42:22.803,8,0,true
+endfield,10000005,char:special_1_0_1,special_1_0_1,special_1_0_1:draw:213,chr_0003_akekuri,秋栗,,4,2026-02-07 12:42:22.803,8,0,false
+endfield,10000005,char:special_1_0_1,special_1_0_1,special_1_0_1:gift_intel_book:214,,寻访情报书,,1,2026-02-07 12:42:22.803,8,0,false
+endfield,10000005,weapon:wpn_1,wpn_1,wpn_1:draw:60,wpn_sword_1,宏愿,单手剑,6,2026-01-28 09:53:02.199,8,0,true
+genshin,100000001,301,,1672401600000000001,,胡桃,角色,5,2022-12-30 07:00:00.000,-5,0,true
+genshin,100000001,500,,1672401600000000002,,弹弓,武器,3,2022-12-30 07:00:00.000,-5,0,true
