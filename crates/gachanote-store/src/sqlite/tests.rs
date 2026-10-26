@@ -435,7 +435,9 @@ fn backup_keeps_five_and_restores() {
 fn account_activity_counts_records_and_last_import() {
     let store = SqliteStore::open_in_memory().unwrap();
     assert!(store.account_activity().unwrap().is_empty());
-    let empty = store.upsert_account(&NewAccount::new("genshin", "2")).unwrap();
+    let empty = store
+        .upsert_account(&NewAccount::new("genshin", "2"))
+        .unwrap();
     let s = insert(&store, &[imp("1", sample())]).unwrap();
     let act = store.account_activity().unwrap();
     assert_eq!(act.len(), 2);

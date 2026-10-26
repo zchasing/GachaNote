@@ -16,7 +16,10 @@ use rusqlite::{params, params_from_iter, Connection, OptionalExtension, Row, Tra
 use rusqlite_migration::{Migrations, M};
 
 /// 迁移脚本，按顺序追加，不得修改已发布的脚本。
-const MIGRATIONS: &[&str] = &[include_str!("../migrations/0001_init.sql")];
+const MIGRATIONS: &[&str] = &[
+    include_str!("../migrations/0001_init.sql"),
+    include_str!("../migrations/0002_record_time_index.sql"),
+];
 
 /// 当前数据库结构版本（`PRAGMA user_version`）。
 pub const SCHEMA_VERSION: usize = MIGRATIONS.len();
