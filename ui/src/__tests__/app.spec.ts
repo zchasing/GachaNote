@@ -138,7 +138,8 @@ describe('账号操作', () => {
     await ok.trigger('click')
     await settle()
     expect(ipc.called('delete_account')[0]!.args).toEqual({ accountId: 'acc-1' })
-    expect(router.currentRoute.value.fullPath).toBe('/game/genshin')
+    // 游戏页是懒加载路由，CI 上首次加载可能晚于 settle()
+    await vi.waitFor(() => expect(router.currentRoute.value.fullPath).toBe('/game/genshin'))
   })
 })
 
