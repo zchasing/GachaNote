@@ -104,6 +104,17 @@ jobs:
           done
           cargo llvm-cov "${pkgs[@]}" --locked --fail-under-lines "$COVERAGE_MIN" --summary-only
 
+  perf:
+    name: 性能基准
+    needs: changes
+    if: needs.changes.outputs.rust == 'true' && needs.changes.outputs.has_app == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup-rust
+      # 计时只在 release 下有意义；阈值见 SRS NFR-01–03，测试在 src-tauri/src/state/tests/perf.rs
+      - run: cargo test -p gachanote-app --release --locked perf -- --ignored --test-threads=1 --nocapture
+
   bindings:
     name: 前后端类型绑定一致性
     needs: changes
@@ -132,6 +143,31 @@ jobs:
       - run: pnpm run --if-present type-check
       - run: pnpm run --if-present test
       - run: pnpm run --if-present build
+
+  e2e:
+    name: 冒烟测试（Playwright）
+    needs: changes
+    if: needs.changes.outputs.ui == 'true' && needs.changes.outputs.has_ui == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ui
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup-node
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm e2e
+        env:
+          CI: true
+      - name: 失败时上传报告与 trace
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: |
+            ui/playwright-report/
+            ui/test-results/
+          retention-days: 7
 
   metadata:
     name: 卡池元数据包校验
@@ -182,7 +218,7 @@ jobs:
   ci-ok:
     name: CI 通过
     if: always()
-    needs: [changes, rust-lint, rust-test, rust-coverage, bindings, ui, metadata, docs, workflows]
+    needs: [changes, rust-lint, rust-test, rust-coverage, perf, bindings, ui, e2e, metadata, docs, workflows]
     runs-on: ubuntu-latest
     steps:
       - name: 汇总结果

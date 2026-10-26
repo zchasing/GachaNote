@@ -12,6 +12,7 @@
     "lint": "eslint .",
     "type-check": "vue-tsc --build",
     "test": "vitest run",
+    "e2e": "playwright test",
     "tauri": "node scripts/tauri.mjs"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.63.0",
     "@tauri-apps/cli": "^2.12.4",
     "@tsconfig/node22": "^22.0.6",
     "@types/jsdom": "^30.0.0",
