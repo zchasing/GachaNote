@@ -9,7 +9,17 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
+chrono.workspace = true
 gachanote-core.workspace = true
+rusqlite.workspace = true
+rusqlite_migration.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+uuid.workspace = true
+
+[dev-dependencies]
+gachanote-formats.workspace = true
+tempfile.workspace = true
 
 [lints]
 workspace = true
