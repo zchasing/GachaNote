@@ -72,8 +72,10 @@ pub fn uigf_gacha_type(gacha_type: &str) -> &str {
     }
 }
 
-/// 解码一条米哈游记录（UIGF 各版本、SRGF 字段名相同）。
-pub(crate) fn decode_record(
+/// 解码一条米哈游记录（UIGF 各版本、SRGF 与官方抽卡记录接口的字段名相同）。
+///
+/// `banner_key` 为记录中卡池 ID 的字段名（崩铁、绝区零为 `gacha_id`）。
+pub fn decode_record(
     item: &Value,
     location: String,
     tz_offset_min: i32,
@@ -81,8 +83,10 @@ pub(crate) fn decode_record(
 ) -> std::result::Result<ImportedRecord, RecordFailure> {
     let fail = |reason: &str| RecordFailure::new(location.clone(), reason);
     let obj = item.as_object().ok_or_else(|| fail("expected an object"))?;
+    // 没有 gacha_type 时退回 op_gacha_type（部分接口返回的字段名）
     let gacha_type = text(obj, "gacha_type")
         .or_else(|| text(obj, "uigf_gacha_type"))
+        .or_else(|| text(obj, "op_gacha_type"))
         .ok_or_else(|| fail("missing gacha_type"))?;
     let time = text(obj, "time").ok_or_else(|| fail("missing time"))?;
     let pulled_at = local_to_utc_ms(&time, tz_offset_min).ok_or_else(|| fail("invalid time"))?;

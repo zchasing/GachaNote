@@ -643,3 +643,19 @@ fn gn_csv_row_errors() {
     .unwrap_err();
     assert!(err.to_string().contains("missing game or uid"));
 }
+
+/// 拉取器直接解码接口返回的单条记录；缺 gacha_type 时退回 op_gacha_type。
+#[test]
+fn decode_record_falls_back_to_op_gacha_type() {
+    let item = json!({
+        "uid": "100000001", "op_gacha_type": "301", "item_id": "10000002",
+        "time": "2024-01-01 12:00:00", "name": "神里绫华", "rank_type": "5", "id": "1700000000000000001"
+    });
+    let r = gachanote_formats::uigf::decode_record(&item, "x".into(), 480, None).unwrap();
+    assert_eq!(r.pool, PoolRef::Official("301".into()));
+    assert_eq!(r.pulled_at, 1_704_081_600_000);
+    let mut bad = item.clone();
+    bad.as_object_mut().unwrap().remove("op_gacha_type");
+    let f = gachanote_formats::uigf::decode_record(&bad, "x".into(), 480, None).unwrap_err();
+    assert_eq!(f.reason, "missing gacha_type");
+}

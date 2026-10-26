@@ -22,21 +22,27 @@ chrono = { version = "0.4", default-features = false, features = ["std", "clock"
 csv = "1"
 insta = { version = "1", features = ["json", "redactions"] }
 proptest = "1"
+regex = "1"
+reqwest = { version = "0.13", default-features = false, features = ["rustls", "http2", "system-proxy", "json", "query"] }
 rusqlite = { version = "0.40", features = ["bundled", "backup"] }
 rusqlite_migration = "2.6"
 serde = { version = "1", features = ["derive"] }
 serde_json = { version = "1", features = ["preserve_order"] }
+sha2 = "0.10"
 specta = "=2.0.0-rc.26"
 specta-typescript = "=0.0.13"
 tauri = "2"
 tempfile = "3"
 thiserror = "2"
+tokio = { version = "1", features = ["time"] }
 tauri-build = "2"
 tauri-specta = { version = "=2.0.0-rc.26", features = ["derive", "typescript"] }
 tracing = "0.1"
 tracing-appender = "0.2"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+url = "2"
 uuid = { version = "1", features = ["v7"] }
+wiremock = "0.6"
 
 [workspace.lints.rust]
 unsafe_code = "forbid"

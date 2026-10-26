@@ -23,6 +23,7 @@ use gachanote_core::plugin::Converter;
 pub use csv_formats::{AkExportCsv, GnCsv, AK_HEADER, EF_HEADER, GN_HEADER};
 pub use gnj::Gnj;
 pub use uigf::{Srgf, UigfV2, UigfV3, UigfV4};
+pub use util::{local_to_utc_ms, utc_ms_to_local};
 
 /// 全部转换器，按嗅探优先级排列。
 pub fn all_converters() -> Vec<Arc<dyn Converter>> {

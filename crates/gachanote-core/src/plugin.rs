@@ -76,6 +76,42 @@ pub struct FetchSource {
 /// 增量拉取的起点：每个卡池类型最新的一条记录。
 pub type Since = BTreeMap<PoolTypeId, Cursor>;
 
+/// 拉取模式。
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum FetchMode {
+    /// 增量：每个卡池类型拉到已有的最新记录为止（FR-FET-04）。
+    #[default]
+    Incremental,
+    /// 全量：拉到尽头，重复记录由去重索引跳过。
+    Full,
+}
+
+/// 按账号查询增量起点。
+///
+/// 米哈游的抽卡链接里没有 UID，拉取器只有拿到第一页记录后才知道是哪个账号，
+/// 所以起点不能在拉取前算好，而是由拉取器在得知 UID 后查询。
+pub trait SinceLookup: Send + Sync {
+    /// 某账号的增量起点；账号不存在或全量拉取时为空。
+    fn since(&self, game: &GameId, uid: &str) -> Result<Since>;
+}
+
+/// 全量拉取：起点永远为空。
+#[derive(Debug, Clone, Copy, Default)]
+pub struct FullFetch;
+
+impl SinceLookup for FullFetch {
+    fn since(&self, _game: &GameId, _uid: &str) -> Result<Since> {
+        Ok(Since::new())
+    }
+}
+
+impl SinceLookup for Since {
+    fn since(&self, _game: &GameId, _uid: &str) -> Result<Since> {
+        Ok(self.clone())
+    }
+}
+
 /// 平台相关路径（游戏安装目录、日志位置），由外壳注入，便于在 Linux CI 上测试。
 pub trait PathProvider: Send + Sync {
     /// 某款游戏可能的安装目录或日志文件，按优先级排列。
@@ -89,11 +125,11 @@ pub trait Fetcher: Send + Sync {
     fn kind(&self) -> FetchKind;
     /// 自动查找链接或已保存凭据。
     async fn discover(&self, env: &dyn PathProvider) -> Result<Vec<FetchSource>>;
-    /// 拉取记录；`since` 为空时全量拉取。
+    /// 拉取记录。得知 UID 后用 `since` 查询增量起点；起点为空的卡池类型全量拉取。
     async fn fetch(
         &self,
         src: &FetchSource,
-        since: &Since,
+        since: &dyn SinceLookup,
         progress: &dyn Progress,
         cancel: &CancelToken,
     ) -> Result<Vec<ImportedAccount>>;
@@ -300,5 +336,23 @@ mod tests {
         assert!(reg.sniff(b"{").is_none());
         assert!(reg.converter(FormatId::UigfV4).is_none());
         assert!(reg.converter(FormatId::Gnj).is_some());
+    }
+
+    #[test]
+    fn since_lookups() {
+        let game = GameId::from("genshin");
+        assert!(FullFetch.since(&game, "1").unwrap().is_empty());
+        let mut s = Since::new();
+        s.insert(
+            "character".into(),
+            Cursor {
+                ext_id: Some("9".into()),
+                pulled_at: 1,
+                seq_in_sec: 0,
+            },
+        );
+        assert_eq!(s.since(&game, "1").unwrap(), s);
+        assert_eq!(FetchMode::default(), FetchMode::Incremental);
+        assert_eq!(serde_json::to_value(FetchMode::Full).unwrap(), "full");
     }
 }
