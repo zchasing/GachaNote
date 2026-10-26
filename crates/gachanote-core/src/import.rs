@@ -569,10 +569,25 @@ impl ImportService {
         events: Arc<dyn TaskEvents>,
         path: PathBuf,
     ) -> TaskHandle {
+        self.spawn_import_selected(tasks, events, path, None)
+    }
+
+    /// 同 [`ImportService::spawn_import_file`]，但只导入 `only` 中列出的 `(游戏, UID)`
+    /// （预览时用户取消勾选的账号不写入，UI/UX 文档 4.3）。`only = None` 表示全部。
+    pub fn spawn_import_selected(
+        &self,
+        tasks: &TaskManager,
+        events: Arc<dyn TaskEvents>,
+        path: PathBuf,
+        only: Option<Vec<(GameId, String)>>,
+    ) -> TaskHandle {
         let service = self.clone();
         tasks.spawn(events, move |ctx| {
             let started_at = now_ms();
-            let (format, accounts) = service.decode_file(&path)?;
+            let (format, mut accounts) = service.decode_file(&path)?;
+            if let Some(only) = &only {
+                accounts.retain(|a| only.iter().any(|(g, u)| g == &a.game && u == &a.uid));
+            }
             let _claim = ctx.claim(accounts.iter().map(|a| format!("{}:{}", a.game, a.uid)))?;
             let meta = ImportMeta {
                 source: ImportSource::File,

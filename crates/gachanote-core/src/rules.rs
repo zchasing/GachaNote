@@ -31,6 +31,19 @@ impl PityCurve {
             _ => self.base,
         }
     }
+
+    /// 出一只最高星的理论平均抽数：Σ k · P(第 k 抽才出)。
+    /// 记录列表与出金历史用它划分欧 / 非（UI/UX 文档 3.3）。
+    pub fn expected_pulls(&self) -> f64 {
+        let mut survive = 1.0;
+        let mut mean = 0.0;
+        for k in 1..=self.hard.max(1) {
+            let p = self.probability(k);
+            mean += f64::from(k) * survive * p;
+            survive *= 1.0 - p;
+        }
+        mean
+    }
 }
 
 /// UP 规则。
@@ -191,6 +204,29 @@ mod tests {
             ..c
         };
         assert_eq!(flat.probability(80), 0.006);
+    }
+
+    #[test]
+    fn expected_pulls_matches_known_values() {
+        // 原神角色池社区统计的理论平均约 62.3 抽
+        let e = genshin_curve().expected_pulls();
+        assert!((e - 62.3).abs() < 0.5, "{e}");
+        // 没有软保底、40 抽必出的 4% 曲线
+        let flat = PityCurve {
+            base: 0.04,
+            soft_start: None,
+            step: 0.0,
+            hard: 40,
+        };
+        let e = flat.expected_pulls();
+        assert!(e > 20.0 && e < 40.0, "{e}");
+        let always = PityCurve {
+            base: 1.0,
+            soft_start: None,
+            step: 0.0,
+            hard: 1,
+        };
+        assert_eq!(always.expected_pulls(), 1.0);
     }
 
     fn rule(since: Option<i64>, max: u8) -> PoolRule {

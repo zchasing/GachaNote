@@ -505,6 +505,33 @@ fn spawned_import_reports_stages_and_respects_busy_accounts() {
 }
 
 #[test]
+fn spawned_import_only_writes_selected_accounts() {
+    let dir = tempfile::tempdir().unwrap();
+    let path = write_test_file(
+        dir.path(),
+        &[
+            account("1", vec![irec("301", "温迪", 5, 0, Some("1"))]),
+            account("2", vec![irec("301", "可莉", 5, 0, Some("2"))]),
+        ],
+    );
+    let repo = Arc::new(MemRepo::default());
+    let svc = service(repo, None);
+    let tasks = TaskManager::new();
+    let events = Arc::new(Events::default());
+    let report = svc
+        .spawn_import_selected(
+            &tasks,
+            events,
+            path,
+            Some(vec![(GameId::from("genshin"), "2".to_owned())]),
+        )
+        .wait()
+        .unwrap();
+    assert_eq!(report.accounts.len(), 1);
+    assert_eq!(report.accounts[0].uid, "2");
+}
+
+#[test]
 fn now_is_reasonable() {
     assert!(now_ms() > T0);
     let r = ImportReport::default();

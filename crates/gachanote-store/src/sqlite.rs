@@ -43,6 +43,17 @@ fn new_id() -> String {
 /// 迁移前的备份回调：接收一个临时打开的、尚未迁移的数据库。
 pub type MigrationBackup<'a> = dyn Fn(&SqliteStore) -> Result<()> + 'a;
 
+/// 一个账号的记录条数与最近一次导入时间（侧边栏、总览「最后更新」、删除确认用）。
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct AccountActivity {
+    /// 账号。
+    pub account_id: AccountId,
+    /// 记录条数（含免费抽）。
+    pub records: u64,
+    /// 最近一次导入完成的时间（UTC 毫秒）；从未导入时为空。
+    pub last_import_at: Option<i64>,
+}
+
 /// 本地 SQLite 仓库。
 pub struct SqliteStore {
     conn: Mutex<Connection>,
@@ -329,6 +340,29 @@ impl SqliteStore {
             )
             .map_err(storage)?;
         Ok(())
+    }
+
+    /// 全部账号的记录条数与最近导入时间，按账号创建顺序。
+    pub fn account_activity(&self) -> Result<Vec<AccountActivity>> {
+        let conn = self.conn();
+        let mut stmt = conn
+            .prepare(
+                "SELECT a.id, \
+                   (SELECT COUNT(*) FROM gacha_record r WHERE r.account_id = a.id), \
+                   (SELECT MAX(COALESCE(b.finished_at, b.started_at)) FROM import_batch b WHERE b.account_id = a.id) \
+                 FROM account a ORDER BY a.created_at, a.id",
+            )
+            .map_err(storage)?;
+        let rows = stmt
+            .query_map([], |r| {
+                Ok(AccountActivity {
+                    account_id: r.get::<_, String>(0)?.into(),
+                    records: u64::try_from(r.get::<_, i64>(1)?).unwrap_or(0),
+                    last_import_at: r.get(2)?,
+                })
+            })
+            .map_err(storage)?;
+        rows.collect::<rusqlite::Result<_>>().map_err(storage)
     }
 
     /// 某账号的导入批次数（测试与诊断用）。

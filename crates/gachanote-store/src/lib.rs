@@ -7,4 +7,4 @@ mod backup;
 mod sqlite;
 
 pub use backup::{BackupManager, DEFAULT_KEEP};
-pub use sqlite::{MigrationBackup, SqliteStore, SCHEMA_VERSION};
+pub use sqlite::{AccountActivity, MigrationBackup, SqliteStore, SCHEMA_VERSION};

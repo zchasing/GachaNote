@@ -437,6 +437,50 @@ fn account_stats_skips_duplicate_rule_segments() {
     assert_eq!(s.pools.len(), 2);
 }
 
+#[test]
+fn record_marks_count_top_and_second() {
+    let plugin = TestGame::genshin();
+    let mut data = Vec::new();
+    segment(&mut data, "character", 3, Some(("冷刃4", 4)));
+    segment(&mut data, "character", 4, Some(("刻晴", 5)));
+    segment(&mut data, "character", 2, Some(("温迪", 5)));
+    segment(&mut data, "standard", 6, Some(("迪卢克", 5)));
+    data.push(rec("unknown_pool", "x", 5, 99));
+    let mut free = rec("character", "免费", 4, 100);
+    free.is_pull = false;
+    data.push(free);
+    let records: Vec<GachaRecord> = data
+        .into_iter()
+        .enumerate()
+        .map(|(i, d)| GachaRecord {
+            id: i.to_string().into(),
+            account_id: "a".into(),
+            data: d,
+            batch_id: None,
+        })
+        .collect();
+    let marks = record_marks(&plugin, &meta(), &records);
+    assert_eq!(marks.len(), records.len());
+    // 四星：第 3 抽
+    assert_eq!(marks[2].pulls, Some(3));
+    assert_eq!(marks[2].up, None);
+    // 五星：距上一只五星 7 抽，歪
+    assert_eq!(marks[6].pulls, Some(7));
+    assert_eq!(marks[6].up, Some(UpStatus::NotUp));
+    assert!(!marks[6].estimated);
+    // 大保底出 UP
+    assert_eq!(marks[8].pulls, Some(2));
+    assert_eq!(marks[8].up, Some(UpStatus::Up));
+    // 三星不标注
+    assert_eq!(marks[0], RecordMark::default());
+    // 常驻池只有抽数
+    assert_eq!(marks[14].pulls, Some(6));
+    assert_eq!(marks[14].up, None);
+    // 没有规则的卡池、免费抽不标注
+    assert_eq!(marks[15], RecordMark::default());
+    assert_eq!(marks[16], RecordMark::default());
+}
+
 proptest! {
     /// 不变量：保底计数不超过硬保底；各段抽数之和等于总抽数；歪率在 [0, 1]；
     /// 平均出 UP × UP 数 ≤ 总抽数。
