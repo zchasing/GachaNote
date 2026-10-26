@@ -253,7 +253,6 @@
     "title": "总览",
     "summary": "{accounts} 个账号 · 共 {pulls} 抽",
     "summaryEmpty": "还没有导入任何记录",
-    "refreshAll": "全部刷新",
     "filterAll": "全部",
     "totalPulls": "总抽数",
     "avgUp": "平均出 UP",
@@ -264,10 +263,7 @@
     "fromGame": "从游戏拉取",
     "importFile": "导入文件",
     "noPulls": "暂无记录",
-    "updated": "{time}更新",
-    "refreshStarted": "已开始拉取 {n} 款游戏的新记录",
-    "refreshFailed": "没有刷新：{list}",
-    "refreshAllHint": "自动查找各游戏的抽卡链接，只拉新记录"
+    "updated": "{time}更新"
   },
   "account": {
     "uid": "UID {uid}",

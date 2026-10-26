@@ -550,7 +550,7 @@ ui/src/
 - 前端不做任何统计计算，只展示后端返回的结果，保证桌面端、手机端、将来服务器端口径一致。
 - Store 按需加载：进入账号详情时调 `get_stats`，记录列表按页调 `query_records`（页大小与界面分页一致：20 / 50 / 100 条）。
 - 监听 `data://changed` 与 `meta://updated`，只使受影响账号的缓存失效；侧边栏「有账号才显示游戏」的逻辑由 `accounts` store 派生。
-- `tasks` store 统一订阅 `task://*` 事件，导入向导和「全部刷新」共用。
+- `tasks` store 统一订阅 `task://*` 事件，导入向导使用。
 - 记录页 10 万条时翻页查询在 40 ms 内（release 构建实测；导入后第一次查询需重算当次抽数，约 0.3 s），见 `src-tauri/src/state/tests.rs` 的性能测试。
 
 ### 8.2 主题与国际化

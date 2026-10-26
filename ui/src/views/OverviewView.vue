@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { api } from '@/api'
 import AppIcon from '@/components/AppIcon.vue'
 import OverviewCard from '@/components/OverviewCard.vue'
 import PageHeader from '@/components/PageHeader.vue'
@@ -17,12 +16,11 @@ const router = useRouter()
 const accounts = useAccountsStore()
 const games = useGamesStore()
 const ui = useUiStore()
-const { report, describe } = useErrors()
+const { report } = useErrors()
 const { t, locale, gameName } = useNames()
 
 const loading = ref(true)
 const filter = ref<string>('all')
-const refreshing = ref(false)
 
 async function load() {
   try {
@@ -46,29 +44,6 @@ const shown = computed(() =>
   filter.value === 'all' ? entries.value : entries.value.filter((e) => e.account.game === filter.value),
 )
 const totalPulls = computed(() => entries.value.reduce((s, e) => s + e.stats.totalPulls, 0))
-const fetchable = computed(() => gamesWithAccounts.value.filter((g) => g.canFetch))
-
-/**
- * 全部刷新：对每款支持链接拉取的游戏自动查找链接并增量拉取。
- * 自动查找只能拿到游戏里最近打开过的那个账号的链接，所以每款游戏只拉一次。
- */
-async function refreshAll() {
-  refreshing.value = true
-  let started = 0
-  const failed: string[] = []
-  for (const g of fetchable.value) {
-    try {
-      const found = await api.discoverUrl(g.id)
-      await api.fetchByUrl(g.id, { kind: 'discovered', id: found.sourceId }, 'incremental')
-      started += 1
-    } catch (e) {
-      failed.push(`${gameName(g.id)}：${describe(e).title}`)
-    }
-  }
-  refreshing.value = false
-  if (started) ui.toast(t('overview.refreshStarted', { n: started }))
-  if (failed.length) ui.toast(t('overview.refreshFailed', { list: failed.join('；') }), 'error')
-}
 </script>
 
 <template>
@@ -81,18 +56,6 @@ async function refreshAll() {
     "
   >
     <template #icon><AppIcon name="grid" :size="24" /></template>
-    <template #actions>
-      <button
-        v-if="fetchable.length"
-        class="btn"
-        :disabled="refreshing"
-        :title="t('overview.refreshAllHint')"
-        data-test="refresh-all"
-        @click="refreshAll"
-      >
-        <AppIcon name="refresh" />{{ t('overview.refreshAll') }}
-      </button>
-    </template>
     <template v-if="gamesWithAccounts.length > 1" #tabs>
       <div class="tabs" role="tablist">
         <button class="tab" :class="{ on: filter === 'all' }" role="tab" @click="filter = 'all'">

@@ -253,7 +253,6 @@
     "title": "Overview",
     "summary": "{accounts} accounts · {pulls} pulls in total",
     "summaryEmpty": "No records imported yet",
-    "refreshAll": "Refresh all",
     "filterAll": "All",
     "totalPulls": "Total pulls",
     "avgUp": "Avg. per featured",
@@ -264,10 +263,7 @@
     "fromGame": "Fetch from game",
     "importFile": "Import file",
     "noPulls": "No records",
-    "updated": "updated {time}",
-    "refreshStarted": "Fetching new records for {n} game(s)",
-    "refreshFailed": "Not refreshed: {list}",
-    "refreshAllHint": "Find each game's gacha link and fetch only new records"
+    "updated": "updated {time}"
   },
   "account": {
     "uid": "UID {uid}",
