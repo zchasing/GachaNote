@@ -322,11 +322,12 @@ fn settings_round_trip_and_tolerate_old_values() {
 fn backups_restore_and_data_dir() {
     let f = Fixture::new();
     f.state.import_file(sample("uigf-v4.json"), genshin_only());
-    f.wait().unwrap();
+    let done = f.wait().unwrap();
     let manual = f.state.create_backup().unwrap();
     assert!(manual.size > 0);
-    let acc = f.state.list_accounts().unwrap().remove(0);
-    f.state.delete_account(&acc.id).unwrap();
+    f.state
+        .delete_account(&done.report.accounts[0].account_id)
+        .unwrap();
     f.state.restore_backup(&manual.name).unwrap();
     assert_eq!(f.state.list_accounts().unwrap().len(), 1);
     assert_eq!(
