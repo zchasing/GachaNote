@@ -16,10 +16,10 @@ use crate::error::{AppError, Result};
 use crate::exchange::{ImportedAccount, ImportedRecord, PoolRef, RecordFailure};
 use crate::ids::{AccountId, FormatId, GameId, PoolTypeId};
 use crate::model::{AccountImport, ImportMeta, ImportSource, NewAccount, NewRecord};
-use crate::plugin::{GamePlugin, PluginRegistry};
+use crate::plugin::{FetchMode, FullFetch, GamePlugin, PluginRegistry, Since, SinceLookup};
 use crate::repo::{BackupReason, BackupService, RecordRepository};
 use crate::task::{
-    CancelToken, Progress, ProgressEvent, Stage, TaskEvents, TaskHandle, TaskManager,
+    CancelToken, Progress, ProgressEvent, Stage, TaskContext, TaskEvents, TaskHandle, TaskManager,
 };
 
 /// 识别格式时读取的文件开头字节数。
@@ -325,6 +325,46 @@ pub fn sniff_head(path: &Path) -> Result<Vec<u8>> {
     Ok(head)
 }
 
+/// 按数据库中已有记录计算增量起点：账号存在时，取插件每种卡池类型的最新一条记录。
+#[derive(Clone)]
+pub struct RepoSince {
+    registry: Arc<PluginRegistry>,
+    repo: Arc<dyn RecordRepository>,
+}
+
+impl RepoSince {
+    /// 组装。
+    pub fn new(registry: Arc<PluginRegistry>, repo: Arc<dyn RecordRepository>) -> Self {
+        Self { registry, repo }
+    }
+}
+
+impl SinceLookup for RepoSince {
+    fn since(&self, game: &GameId, uid: &str) -> Result<Since> {
+        let mut since = Since::new();
+        let Some(account) = self
+            .repo
+            .accounts(Some(game))?
+            .into_iter()
+            .find(|a| &a.game == game && a.uid == uid)
+        else {
+            return Ok(since);
+        };
+        let Some(plugin) = self.registry.game(game) else {
+            return Ok(since);
+        };
+        for rule in plugin.rules() {
+            if since.contains_key(&rule.pool_type) {
+                continue;
+            }
+            if let Some(cursor) = self.repo.latest_cursor(&account.id, &rule.pool_type)? {
+                since.insert(rule.pool_type.clone(), cursor);
+            }
+        }
+        Ok(since)
+    }
+}
+
 /// 导入服务：持有插件注册表、仓库与备份，供外壳的命令调用。
 #[derive(Clone)]
 pub struct ImportService {
@@ -475,6 +515,50 @@ impl ImportService {
             started_at,
         };
         self.import_accounts(accounts, &meta, progress, cancel)
+    }
+
+    /// 拉取用的增量起点查询。
+    pub fn since_lookup(&self, mode: FetchMode) -> Box<dyn SinceLookup> {
+        match mode {
+            FetchMode::Incremental => Box::new(RepoSince::new(
+                Arc::clone(&self.registry),
+                Arc::clone(&self.repo),
+            )),
+            FetchMode::Full => Box::new(FullFetch),
+        }
+    }
+
+    /// 在后台任务中拉取并导入（`fetch_by_url` 等命令）。
+    ///
+    /// `fetch` 在任务线程上运行，负责调用拉取器（外壳在其中 `block_on` 异步拉取），
+    /// 拿到记录后与文件导入走同一条管线：占用账号 → 规范化 → 备份 → 单事务写入。
+    /// 取消时已拉取的部分不写入（FR-FET-07）。
+    pub fn spawn_fetch<F>(
+        &self,
+        tasks: &TaskManager,
+        events: Arc<dyn TaskEvents>,
+        mode: FetchMode,
+        source: ImportSource,
+        fetch: F,
+    ) -> TaskHandle
+    where
+        F: FnOnce(&TaskContext, &dyn SinceLookup) -> Result<Vec<ImportedAccount>> + Send + 'static,
+    {
+        let service = self.clone();
+        tasks.spawn(events, move |ctx| {
+            let started_at = now_ms();
+            let since = service.since_lookup(mode);
+            let accounts = fetch(ctx, since.as_ref())?;
+            ctx.cancel_token().check()?;
+            let _claim = ctx.claim(accounts.iter().map(|a| format!("{}:{}", a.game, a.uid)))?;
+            let meta = ImportMeta {
+                source,
+                format: None,
+                file_name: None,
+                started_at,
+            };
+            service.import_accounts(accounts, &meta, ctx, ctx.cancel_token())
+        })
     }
 
     /// 在后台任务中导入文件（`import_file` 命令）。解码后占用涉及的账号，

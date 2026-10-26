@@ -104,7 +104,7 @@ docs: 补充架构文档 ER 图
 | --- | --- | --- |
 | Rust 格式与 Clippy | `crates/**`、`src-tauri/**`、`Cargo.*` | `cargo fmt --check`、`cargo clippy -D warnings` |
 | Rust 测试 | 同上 | `cargo test`，Linux 与 Windows 各跑一次 |
-| 覆盖率门槛 | 同上 | `core`、`formats`、`store` 行覆盖率 ≥ 90%（cargo-llvm-cov） |
+| 覆盖率门槛 | 同上 | `core`、`formats`、`store`、`games`、`meta` 行覆盖率 ≥ 90%（cargo-llvm-cov） |
 | 前后端类型绑定一致性 | `crates/**`、`src-tauri/**`、`ui/src/bindings.ts` | 重新生成 `bindings.ts`，必须与已提交版本一致 |
 | 前端检查 | `ui/**` | `lint`、`type-check`、`test`、`build`（脚本存在才运行） |
 | 卡池元数据包校验 | `metadata/**` | JSON 可解析、Schema 校验、`manifest.json` 中的 SHA-256 与文件一致 |
@@ -118,7 +118,8 @@ docs: 补充架构文档 ER 图
 
 - `src-tauri` 的 crate 名为 `gachanote-app`，其中名为 `export_bindings` 的测试负责写出 `ui/src/bindings.ts`。
 - `ui/package.json` 需声明 `packageManager`（如 `"pnpm@9.15.0"`），并提供 `lint`、`type-check`、`test`、`build` 脚本。
-- 修改 `metadata/` 后运行 `python scripts/check_metadata.py --fix` 更新 `manifest.json` 的哈希。
+- 修改 `metadata/` 后运行 `python scripts/check_metadata.py --fix` 更新 `manifest.json` 的哈希。发布新数据时同时把 `manifest.json` 的 `version` 改大（`YYYY.M.D`），客户端只下载版本更高的包。
+- 米哈游三款的物品表和历史卡池用 `python scripts/build_hoyo_metadata.py` 从 HoYo.Gacha 重新生成；鸣潮、明日方舟、终末地手工维护。
 - 发布前把 `src-tauri/tauri.conf.json` 的 `version` 改成与标签一致（标签 `v0.1.0` 对应 `0.1.0`），否则发布会失败。
 
 ### 仓库设置（一次性）

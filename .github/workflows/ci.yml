@@ -18,7 +18,7 @@ permissions:
 env:
   CARGO_TERM_COLOR: always
   RUSTFLAGS: -D warnings
-  # core / formats / store 的行覆盖率下限（见架构文档 9.1）
+  # core / formats / store / games / meta 的行覆盖率下限（见架构文档 9.1）
   COVERAGE_MIN: 90
 
 jobs:
@@ -95,11 +95,11 @@ jobs:
       - uses: taiki-e/install-action@v2
         with:
           tool: cargo-llvm-cov
-      - name: core / formats / store 覆盖率
+      - name: core / formats / store / games / meta 覆盖率
         shell: bash
         run: |
           pkgs=()
-          for p in gachanote-core gachanote-formats gachanote-store; do
+          for p in gachanote-core gachanote-formats gachanote-store gachanote-games gachanote-meta; do
             [ -f "crates/$p/Cargo.toml" ] && pkgs+=(-p "$p")
           done
           cargo llvm-cov "${pkgs[@]}" --locked --fail-under-lines "$COVERAGE_MIN" --summary-only

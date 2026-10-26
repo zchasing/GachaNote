@@ -1,0 +1,98 @@
+{
+ "game": "wuwa",
+ "items": [
+  {
+   "id": "卡卡罗",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "卡卡罗",
+    "en-us": "Calcharo"
+   }
+  },
+  {
+   "id": "安可",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "安可",
+    "en-us": "Encore"
+   }
+  },
+  {
+   "id": "鉴心",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "鉴心",
+    "en-us": "Jianxin"
+   }
+  },
+  {
+   "id": "凌阳",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "凌阳",
+    "en-us": "Lingyang"
+   }
+  },
+  {
+   "id": "维里奈",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "维里奈",
+    "en-us": "Verina"
+   }
+  },
+  {
+   "id": "浩境粼光",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "浩境粼光",
+    "en-us": "Emerald of Genesis"
+   }
+  },
+  {
+   "id": "千古洑流",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "千古洑流",
+    "en-us": "Abyss Surges"
+   }
+  },
+  {
+   "id": "停驻之烟",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "停驻之烟",
+    "en-us": "Static Mist"
+   }
+  },
+  {
+   "id": "擎渊怒涛",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "擎渊怒涛",
+    "en-us": "Lustrous Razor"
+   }
+  },
+  {
+   "id": "漪澜浮录",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "漪澜浮录",
+    "en-us": "Cosmic Ripples"
+   }
+  }
+ ],
+ "standard": [
+  "卡卡罗",
+  "安可",
+  "鉴心",
+  "凌阳",
+  "维里奈",
+  "浩境粼光",
+  "千古洑流",
+  "停驻之烟",
+  "擎渊怒涛",
+  "漪澜浮录"
+ ],
+ "banners": []
+}

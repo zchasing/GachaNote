@@ -1,0 +1,3105 @@
+{
+ "game": "zzz",
+ "items": [
+  {
+   "id": "1011",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "安比",
+    "zh-tw": "安比",
+    "en-us": "Anby",
+    "ja-jp": "アンビー"
+   }
+  },
+  {
+   "id": "1021",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "猫又",
+    "zh-tw": "貓又",
+    "en-us": "Nekomata",
+    "ja-jp": "猫又"
+   }
+  },
+  {
+   "id": "1031",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "妮可",
+    "zh-tw": "妮可",
+    "en-us": "Nicole",
+    "ja-jp": "ニコ"
+   }
+  },
+  {
+   "id": "1041",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "「11号」",
+    "zh-tw": "「11號」",
+    "en-us": "Soldier 11",
+    "ja-jp": "「11号」"
+   }
+  },
+  {
+   "id": "1051",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "伊德海莉",
+    "zh-tw": "伊德海莉",
+    "en-us": "Yidhari",
+    "ja-jp": "イドリー"
+   }
+  },
+  {
+   "id": "1061",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "可琳",
+    "zh-tw": "可琳",
+    "en-us": "Corin",
+    "ja-jp": "カリン"
+   }
+  },
+  {
+   "id": "1071",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "凯撒",
+    "zh-tw": "凱撒",
+    "en-us": "Caesar",
+    "ja-jp": "シーザー"
+   }
+  },
+  {
+   "id": "1081",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "比利",
+    "zh-tw": "比利",
+    "en-us": "Billy",
+    "ja-jp": "ビリー"
+   }
+  },
+  {
+   "id": "1091",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "雅",
+    "zh-tw": "雅",
+    "en-us": "Miyabi",
+    "ja-jp": "星見雅"
+   }
+  },
+  {
+   "id": "1101",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "珂蕾妲",
+    "zh-tw": "珂蕾妲",
+    "en-us": "Koleda",
+    "ja-jp": "クレタ"
+   }
+  },
+  {
+   "id": "1111",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "安东",
+    "zh-tw": "安東",
+    "en-us": "Anton",
+    "ja-jp": "アンドー"
+   }
+  },
+  {
+   "id": "1121",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "本",
+    "zh-tw": "本",
+    "en-us": "Ben",
+    "ja-jp": "ベン"
+   }
+  },
+  {
+   "id": "1131",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "苍角",
+    "zh-tw": "蒼角",
+    "en-us": "Soukaku",
+    "ja-jp": "蒼角"
+   }
+  },
+  {
+   "id": "1141",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "莱卡恩",
+    "zh-tw": "萊卡恩",
+    "en-us": "Lycaon",
+    "ja-jp": "ライカン"
+   }
+  },
+  {
+   "id": "1151",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "露西",
+    "zh-tw": "露西",
+    "en-us": "Lucy",
+    "ja-jp": "ルーシー"
+   }
+  },
+  {
+   "id": "1161",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "莱特",
+    "zh-tw": "萊特",
+    "en-us": "Lighter",
+    "ja-jp": "ライト"
+   }
+  },
+  {
+   "id": "1171",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "柏妮思",
+    "zh-tw": "柏妮思",
+    "en-us": "Burnice",
+    "ja-jp": "バーニス"
+   }
+  },
+  {
+   "id": "1181",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "格莉丝",
+    "zh-tw": "格莉絲",
+    "en-us": "Grace",
+    "ja-jp": "グレース"
+   }
+  },
+  {
+   "id": "1191",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "艾莲",
+    "zh-tw": "艾蓮",
+    "en-us": "Ellen",
+    "ja-jp": "エレン"
+   }
+  },
+  {
+   "id": "1201",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "悠真",
+    "zh-tw": "悠真",
+    "en-us": "Harumasa",
+    "ja-jp": "浅羽悠真"
+   }
+  },
+  {
+   "id": "1211",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "丽娜",
+    "zh-tw": "麗娜",
+    "en-us": "Rina",
+    "ja-jp": "リナ"
+   }
+  },
+  {
+   "id": "1221",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "柳",
+    "zh-tw": "柳",
+    "en-us": "Yanagi",
+    "ja-jp": "月城柳"
+   }
+  },
+  {
+   "id": "1241",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "朱鸢",
+    "zh-tw": "朱鳶",
+    "en-us": "Zhu Yuan",
+    "ja-jp": "朱鳶"
+   }
+  },
+  {
+   "id": "1251",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "青衣",
+    "zh-tw": "青衣",
+    "en-us": "Qingyi",
+    "ja-jp": "青衣"
+   }
+  },
+  {
+   "id": "1261",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "简",
+    "zh-tw": "簡",
+    "en-us": "Jane",
+    "ja-jp": "ジェーン"
+   }
+  },
+  {
+   "id": "1271",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "赛斯",
+    "zh-tw": "賽斯",
+    "en-us": "Seth",
+    "ja-jp": "セス"
+   }
+  },
+  {
+   "id": "1281",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "派派",
+    "zh-tw": "派派",
+    "en-us": "Piper",
+    "ja-jp": "パイパー"
+   }
+  },
+  {
+   "id": "1291",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "雨果",
+    "zh-tw": "雨果",
+    "en-us": "Hugo",
+    "ja-jp": "ヒューゴ"
+   }
+  },
+  {
+   "id": "1301",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "奥菲丝&「鬼火」",
+    "zh-tw": "奧菲絲&「鬼火」",
+    "en-us": "Orphie & Magus",
+    "ja-jp": "オルペウス&「鬼火」"
+   }
+  },
+  {
+   "id": "1311",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "耀嘉音",
+    "zh-tw": "耀嘉音",
+    "en-us": "Astra Yao",
+    "ja-jp": "アストラ"
+   }
+  },
+  {
+   "id": "1321",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "伊芙琳",
+    "zh-tw": "伊芙琳",
+    "en-us": "Evelyn",
+    "ja-jp": "イヴリン"
+   }
+  },
+  {
+   "id": "1331",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "薇薇安",
+    "zh-tw": "薇薇安",
+    "en-us": "Vivian",
+    "ja-jp": "ビビアン"
+   }
+  },
+  {
+   "id": "1341",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "照",
+    "zh-tw": "照",
+    "en-us": "Zhao",
+    "ja-jp": "照"
+   }
+  },
+  {
+   "id": "1351",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "波可娜",
+    "zh-tw": "波可娜",
+    "en-us": "Pulchra",
+    "ja-jp": "プルクラ"
+   }
+  },
+  {
+   "id": "1361",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "「扳机」",
+    "zh-tw": "「扳機」",
+    "en-us": "Trigger",
+    "ja-jp": "「トリガー」"
+   }
+  },
+  {
+   "id": "1371",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "仪玄",
+    "zh-tw": "儀玄",
+    "en-us": "Yixuan",
+    "ja-jp": "儀玄"
+   }
+  },
+  {
+   "id": "1381",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "零号·安比",
+    "zh-tw": "零號·安比",
+    "en-us": "Soldier 0 - Anby",
+    "ja-jp": "0号・アンビー"
+   }
+  },
+  {
+   "id": "1391",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "橘福福",
+    "zh-tw": "橘福福",
+    "en-us": "Ju Fufu",
+    "ja-jp": "橘福福"
+   }
+  },
+  {
+   "id": "1401",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "爱丽丝",
+    "zh-tw": "愛麗絲",
+    "en-us": "Alice",
+    "ja-jp": "アリス"
+   }
+  },
+  {
+   "id": "1411",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "柚叶",
+    "zh-tw": "柚葉",
+    "en-us": "Yuzuha",
+    "ja-jp": "浮波柚葉"
+   }
+  },
+  {
+   "id": "1421",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "潘引壶",
+    "zh-tw": "潘引壺",
+    "en-us": "Pan Yinhu",
+    "ja-jp": "潘引壺"
+   }
+  },
+  {
+   "id": "1431",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "叶瞬光",
+    "zh-tw": "葉瞬光",
+    "en-us": "Ye Shunguang",
+    "ja-jp": "葉瞬光"
+   }
+  },
+  {
+   "id": "1441",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "真斗",
+    "zh-tw": "真斗",
+    "en-us": "Manato",
+    "ja-jp": "狛野真斗"
+   }
+  },
+  {
+   "id": "1451",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "卢西娅",
+    "zh-tw": "盧西婭",
+    "en-us": "Lucia",
+    "ja-jp": "リュシア"
+   }
+  },
+  {
+   "id": "1461",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "「席德」",
+    "zh-tw": "「席德」",
+    "en-us": "Seed",
+    "ja-jp": "「シード」"
+   }
+  },
+  {
+   "id": "1471",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "般岳",
+    "zh-tw": "般岳",
+    "en-us": "Banyue",
+    "ja-jp": "盤岳"
+   }
+  },
+  {
+   "id": "1481",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "琉音",
+    "zh-tw": "琉音",
+    "en-us": "Dialyn",
+    "ja-jp": "ダイアリン"
+   }
+  },
+  {
+   "id": "1491",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "千夏",
+    "zh-tw": "千夏",
+    "en-us": "Sunna",
+    "ja-jp": "千夏"
+   }
+  },
+  {
+   "id": "1501",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "爱芮",
+    "zh-tw": "愛芮",
+    "en-us": "Aria",
+    "ja-jp": "アリア"
+   }
+  },
+  {
+   "id": "1511",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "南宫羽",
+    "zh-tw": "南宮羽",
+    "en-us": "Nangong Yu",
+    "ja-jp": "南宮羽"
+   }
+  },
+  {
+   "id": "1521",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "希希芙",
+    "zh-tw": "希希芙",
+    "en-us": "Cissia",
+    "ja-jp": "シーシィア"
+   }
+  },
+  {
+   "id": "1531",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "星徽·比利",
+    "zh-tw": "星徽·比利",
+    "en-us": "Starlight - Billy",
+    "ja-jp": "スターライト･ビリー"
+   }
+  },
+  {
+   "id": "1541",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "普罗米娅",
+    "zh-tw": "普羅米婭",
+    "en-us": "Promeia",
+    "ja-jp": "プロメイア"
+   }
+  },
+  {
+   "id": "1551",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "佩洛伊斯",
+    "zh-tw": "佩洛伊斯",
+    "en-us": "Pyrois",
+    "ja-jp": "ピュロイス"
+   }
+  },
+  {
+   "id": "1561",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "维琳娜",
+    "zh-tw": "維琳娜",
+    "en-us": "Velina",
+    "ja-jp": "ヴェリナ"
+   }
+  },
+  {
+   "id": "1571",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "诺姆",
+    "zh-tw": "諾姆",
+    "en-us": "Norma",
+    "ja-jp": "ノルムー"
+   }
+  },
+  {
+   "id": "1581",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "蕾米埃尔",
+    "zh-tw": "蕾米埃爾",
+    "en-us": "Remielle",
+    "ja-jp": "レミエール"
+   }
+  },
+  {
+   "id": "1591",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "希格莉德",
+    "zh-tw": "希格莉德",
+    "en-us": "Sigrid",
+    "ja-jp": "シグリッド"
+   }
+  },
+  {
+   "id": "2011",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "哲",
+    "zh-tw": "哲",
+    "en-us": "Wise",
+    "ja-jp": "アキラ"
+   }
+  },
+  {
+   "id": "2021",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "铃",
+    "zh-tw": "鈴",
+    "en-us": "Belle",
+    "ja-jp": "リン"
+   }
+  },
+  {
+   "id": "12001",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "「月相」-望",
+    "zh-tw": "「月相」-望",
+    "en-us": "[Lunar] Pleniluna",
+    "ja-jp": "「月相」-望"
+   }
+  },
+  {
+   "id": "12002",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "「月相」-晦",
+    "zh-tw": "「月相」-晦",
+    "en-us": "[Lunar] Decrescent",
+    "ja-jp": "「月相」-晦"
+   }
+  },
+  {
+   "id": "12003",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "「月相」-朔",
+    "zh-tw": "「月相」-朔",
+    "en-us": "[Lunar] Noviluna",
+    "ja-jp": "「月相」-朔"
+   }
+  },
+  {
+   "id": "12004",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "「残响」-Ⅰ型",
+    "zh-tw": "「殘響」-Ⅰ型",
+    "en-us": "[Reverb] Mark I",
+    "ja-jp": "「残響」-Ⅰ型"
+   }
+  },
+  {
+   "id": "12005",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "「残响」-Ⅱ型",
+    "zh-tw": "「殘響」-Ⅱ型",
+    "en-us": "[Reverb] Mark II",
+    "ja-jp": "「残響」-Ⅱ型"
+   }
+  },
+  {
+   "id": "12006",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "「残响」-Ⅲ型",
+    "zh-tw": "「殘響」-Ⅲ型",
+    "en-us": "[Reverb] Mark III",
+    "ja-jp": "「残響」-Ⅲ型"
+   }
+  },
+  {
+   "id": "12007",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "「湍流」-铳型",
+    "zh-tw": "「湍流」-銃型",
+    "en-us": "[Vortex] Revolver",
+    "ja-jp": "「激流」-銃型"
+   }
+  },
+  {
+   "id": "12008",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "「湍流」-矢型",
+    "zh-tw": "「湍流」-矢型",
+    "en-us": "[Vortex] Arrow",
+    "ja-jp": "「激流」-矢型"
+   }
+  },
+  {
+   "id": "12009",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "「湍流」-斧型",
+    "zh-tw": "「湍流」-斧型",
+    "en-us": "[Vortex] Hatchet",
+    "ja-jp": "「激流」-斧型"
+   }
+  },
+  {
+   "id": "12010",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "「电磁暴」-壹式",
+    "zh-tw": "「電磁暴」-壹式",
+    "en-us": "[Magnetic Storm] Alpha",
+    "ja-jp": "「磁気嵐」-壱式"
+   }
+  },
+  {
+   "id": "12011",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "「电磁暴」-贰式",
+    "zh-tw": "「電磁暴」-貳式",
+    "en-us": "[Magnetic Storm] Bravo",
+    "ja-jp": "「磁気嵐」-弐式"
+   }
+  },
+  {
+   "id": "12012",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "「电磁暴」-叁式",
+    "zh-tw": "「電磁暴」-參式",
+    "en-us": "[Magnetic Storm] Charlie",
+    "ja-jp": "「磁気嵐」-参式"
+   }
+  },
+  {
+   "id": "12013",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "「恒等式」-本格",
+    "zh-tw": "「恆等式」-本格",
+    "en-us": "[Identity] Base",
+    "ja-jp": "「恒等式」-本格"
+   }
+  },
+  {
+   "id": "12014",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "「恒等式」-变格",
+    "zh-tw": "「恆等式」-變格",
+    "en-us": "[Identity] Inflection",
+    "ja-jp": "「恒等式」-変格"
+   }
+  },
+  {
+   "id": "12015",
+   "rarity": 2,
+   "names": {
+    "zh-cn": "「灰烬」-钴蓝",
+    "zh-tw": "「灰燼」-鈷藍",
+    "en-us": "[Cinder] Cobalt",
+    "ja-jp": "「灰燼」-蒼藍"
+   }
+  },
+  {
+   "id": "13001",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "街头巨星",
+    "zh-tw": "街頭巨星",
+    "en-us": "Street Superstar",
+    "ja-jp": "ストリートスター"
+   }
+  },
+  {
+   "id": "13002",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "时光切片",
+    "zh-tw": "時光切片",
+    "en-us": "Slice of Time",
+    "ja-jp": "歳月の薄片"
+   }
+  },
+  {
+   "id": "13003",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "雨林饕客",
+    "zh-tw": "雨林饕客",
+    "en-us": "Rainforest Gourmet",
+    "ja-jp": "密林の食いしん坊"
+   }
+  },
+  {
+   "id": "13004",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "星徽引擎",
+    "zh-tw": "星徽引擎",
+    "en-us": "Starlight Engine",
+    "ja-jp": "スターライトエンジン"
+   }
+  },
+  {
+   "id": "13005",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "人为刀俎",
+    "zh-tw": "人為刀俎",
+    "en-us": "Steam Oven",
+    "ja-jp": "まな板の鯉"
+   }
+  },
+  {
+   "id": "13006",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "贵重骨核",
+    "zh-tw": "貴重骨核",
+    "en-us": "Precious Fossilized Core",
+    "ja-jp": "貴重な石化コア"
+   }
+  },
+  {
+   "id": "13007",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "正版变身器",
+    "zh-tw": "正版變身器",
+    "en-us": "Original Transmorpher",
+    "ja-jp": "正規版変身装置"
+   }
+  },
+  {
+   "id": "13008",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "双生泣星",
+    "zh-tw": "雙生泣星",
+    "en-us": "Weeping Gemini",
+    "ja-jp": "双生の涙"
+   }
+  },
+  {
+   "id": "13009",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "触电唇彩",
+    "zh-tw": "觸電唇彩",
+    "en-us": "Electro-Lip Gloss",
+    "ja-jp": "電撃リップグロス"
+   }
+  },
+  {
+   "id": "13010",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "兔能环",
+    "zh-tw": "兔能環",
+    "en-us": "Bunny Band",
+    "ja-jp": "ラビットチャージャー"
+   }
+  },
+  {
+   "id": "13011",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "春日融融",
+    "zh-tw": "春日融融",
+    "en-us": "Spring Embrace",
+    "ja-jp": "ホットスプリング"
+   }
+  },
+  {
+   "id": "13012",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "幻变魔方",
+    "zh-tw": "幻變魔方",
+    "en-us": "Puzzle Sphere",
+    "ja-jp": "魔法の立体パズル"
+   }
+  },
+  {
+   "id": "13013",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "鎏金花信",
+    "zh-tw": "鎏金花信",
+    "en-us": "Gilded Blossom",
+    "ja-jp": "金メッキの花信"
+   }
+  },
+  {
+   "id": "13014",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "电波漫步",
+    "zh-tw": "電波漫步",
+    "en-us": "Radiowave Journey",
+    "ja-jp": "エレクトロウォーク"
+   }
+  },
+  {
+   "id": "13015",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "强音热望",
+    "zh-tw": "強音熱望",
+    "en-us": "Marcato Desire",
+    "ja-jp": "強音デザイア"
+   }
+  },
+  {
+   "id": "13016",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "光影刻刀",
+    "zh-tw": "光影刻刀",
+    "en-us": "Reel Projector",
+    "ja-jp": "光と影のカット"
+   }
+  },
+  {
+   "id": "13018",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "咚哒回声",
+    "zh-tw": "咚噠回聲",
+    "en-us": "Boisterous Echoes",
+    "ja-jp": "ドンカツエコー"
+   }
+  },
+  {
+   "id": "13019",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "青漪灵鼎",
+    "zh-tw": "青漪靈鼎",
+    "en-us": "Cauldron of Clarity",
+    "ja-jp": "蒼き波の霊器"
+   }
+  },
+  {
+   "id": "13020",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "炎炙沸釜",
+    "zh-tw": "炎炙沸釜",
+    "en-us": "The Simmering Pot",
+    "ja-jp": "炎々沸々鍋一丁"
+   }
+  },
+  {
+   "id": "13101",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "德玛拉电池Ⅱ型",
+    "zh-tw": "德瑪拉電池Ⅱ型",
+    "en-us": "Demara Battery Mark II",
+    "ja-jp": "デマラ式電池Ⅱ型"
+   }
+  },
+  {
+   "id": "13103",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "聚宝箱",
+    "zh-tw": "聚寶箱",
+    "en-us": "The Vault",
+    "ja-jp": "ザ・ボールト"
+   }
+  },
+  {
+   "id": "13106",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "家政员",
+    "zh-tw": "居家服務員",
+    "en-us": "Housekeeper",
+    "ja-jp": "ハウスキーパー"
+   }
+  },
+  {
+   "id": "13108",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "仿制星徽引擎",
+    "zh-tw": "仿製星徽引擎",
+    "en-us": "Starlight Engine Replica",
+    "ja-jp": "なんちゃってスターライトエンジン"
+   }
+  },
+  {
+   "id": "13111",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "旋钻机-赤轴",
+    "zh-tw": "旋鑽機-赤軸",
+    "en-us": "Drill Rig - Red Axis",
+    "ja-jp": "ドリルリグ-レッドシャフト"
+   }
+  },
+  {
+   "id": "13112",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "比格气缸",
+    "zh-tw": "比格氣缸",
+    "en-us": "Big Cylinder",
+    "ja-jp": "ビガー・シリンダー"
+   }
+  },
+  {
+   "id": "13113",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "含羞恶面",
+    "zh-tw": "含羞惡面",
+    "en-us": "Bashful Demon",
+    "ja-jp": "恥じらう悪面"
+   }
+  },
+  {
+   "id": "13115",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "好斗的阿炮",
+    "zh-tw": "好鬥的阿炮",
+    "en-us": "Kaboom the Cannon",
+    "ja-jp": "喧嘩腰のボンバルダム"
+   }
+  },
+  {
+   "id": "13127",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "维序者-特化型",
+    "zh-tw": "維序者-特化型",
+    "en-us": "Peacekeeper - Specialized",
+    "ja-jp": "秩序の守り手・特化型"
+   }
+  },
+  {
+   "id": "13128",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "轰鸣座驾",
+    "zh-tw": "轟鳴座駕",
+    "en-us": "Roaring Ride",
+    "ja-jp": "グロウル・マイ・カー"
+   }
+  },
+  {
+   "id": "13135",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "裁纸刀",
+    "zh-tw": "裁紙刀",
+    "en-us": "Box Cutter",
+    "ja-jp": "ペーパーカッター"
+   }
+  },
+  {
+   "id": "13142",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "震元奇枢",
+    "zh-tw": "震元奇樞",
+    "en-us": "Tremor Trigram Vessel",
+    "ja-jp": "雷鳴が如き八卦"
+   }
+  },
+  {
+   "id": "13144",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "燔火胧夜",
+    "zh-tw": "燔火朧夜",
+    "en-us": "Grill O'Wisp",
+    "ja-jp": "燔火の朧夜"
+   }
+  },
+  {
+   "id": "14001",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "加农转子",
+    "zh-tw": "加農轉子",
+    "en-us": "Cannon Rotor",
+    "ja-jp": "キャノンローラー"
+   }
+  },
+  {
+   "id": "14002",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "逍遥游球",
+    "zh-tw": "逍遙遊球",
+    "en-us": "Unfettered Game Ball",
+    "ja-jp": "ゲームボール"
+   }
+  },
+  {
+   "id": "14003",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "左轮转子",
+    "zh-tw": "左輪轉子",
+    "en-us": "Six Shooter",
+    "ja-jp": "シックスシューター"
+   }
+  },
+  {
+   "id": "14102",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "钢铁肉垫",
+    "zh-tw": "鋼鐵肉墊",
+    "en-us": "Steel Cushion",
+    "ja-jp": "鋼の肉球"
+   }
+  },
+  {
+   "id": "14104",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "硫磺石",
+    "zh-tw": "硫磺石",
+    "en-us": "The Brimstone",
+    "ja-jp": "ブリムストーン"
+   }
+  },
+  {
+   "id": "14105",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "海妖摇篮",
+    "zh-tw": "海妖搖籃",
+    "en-us": "Kraken's Cradle",
+    "ja-jp": "セイレーンクレードル"
+   }
+  },
+  {
+   "id": "14107",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "奔袭獠牙",
+    "zh-tw": "奔襲獠牙",
+    "en-us": "Tusks of Fury",
+    "ja-jp": "猛進するキバ"
+   }
+  },
+  {
+   "id": "14109",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "霰落星殿",
+    "zh-tw": "霰落星殿",
+    "en-us": "Hailstorm Shrine",
+    "ja-jp": "あられ落つ星殿"
+   }
+  },
+  {
+   "id": "14110",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "燃狱齿轮",
+    "zh-tw": "燃獄齒輪",
+    "en-us": "Hellfire Gears",
+    "ja-jp": "燃獄ギア"
+   }
+  },
+  {
+   "id": "14114",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "拘缚者",
+    "zh-tw": "拘縛者",
+    "en-us": "The Restrained",
+    "ja-jp": "拘縛されし者"
+   }
+  },
+  {
+   "id": "14116",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "焰心桂冠",
+    "zh-tw": "焰心桂冠",
+    "en-us": "Blazing Laurel",
+    "ja-jp": "炎心の桂冠"
+   }
+  },
+  {
+   "id": "14117",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "灼心摇壶",
+    "zh-tw": "灼心搖壺",
+    "en-us": "Flamemaker Shaker",
+    "ja-jp": "バーニング・シェイカー"
+   }
+  },
+  {
+   "id": "14118",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "嵌合编译器",
+    "zh-tw": "嵌合編譯器",
+    "en-us": "Fusion Compiler",
+    "ja-jp": "複合コンパイラ"
+   }
+  },
+  {
+   "id": "14119",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "深海访客",
+    "zh-tw": "深海訪客",
+    "en-us": "Deep Sea Visitor",
+    "ja-jp": "ディープシー・ビジター"
+   }
+  },
+  {
+   "id": "14120",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "残心青囊",
+    "zh-tw": "殘心青囊",
+    "en-us": "Zanshin Herb Case",
+    "ja-jp": "残心の青籠"
+   }
+  },
+  {
+   "id": "14121",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "啜泣摇篮",
+    "zh-tw": "啜泣搖籃",
+    "en-us": "Weeping Cradle",
+    "ja-jp": "啜り泣くゆりかご"
+   }
+  },
+  {
+   "id": "14122",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "时流贤者",
+    "zh-tw": "時流賢者",
+    "en-us": "Timeweaver",
+    "ja-jp": "刻流の賢者"
+   }
+  },
+  {
+   "id": "14124",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "防暴者Ⅵ型",
+    "zh-tw": "防暴者Ⅵ型",
+    "en-us": "Riot Suppressor Mark VI",
+    "ja-jp": "サプレッサーⅥ型"
+   }
+  },
+  {
+   "id": "14125",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "玉壶青冰",
+    "zh-tw": "玉壺青冰",
+    "en-us": "Ice-Jade Teapot",
+    "ja-jp": "玉壺青氷"
+   }
+  },
+  {
+   "id": "14126",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "淬锋钳刺",
+    "zh-tw": "淬鋒鉗刺",
+    "en-us": "Sharpened Stinger",
+    "ja-jp": "磨き抜かれた切っ先"
+   }
+  },
+  {
+   "id": "14129",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "千面日陨",
+    "zh-tw": "千面日隕",
+    "en-us": "Myriad Eclipse",
+    "ja-jp": "千面の落日"
+   }
+  },
+  {
+   "id": "14130",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "嚣枪喧焰",
+    "zh-tw": "囂槍喧焰",
+    "en-us": "Bellicose Blaze",
+    "ja-jp": "憤怒の銃騒"
+   }
+  },
+  {
+   "id": "14131",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "玲珑妆匣",
+    "zh-tw": "玲瓏妝匣",
+    "en-us": "Elegant Vanity",
+    "ja-jp": "優美のヴァニティ"
+   }
+  },
+  {
+   "id": "14132",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "心弦夜响",
+    "zh-tw": "心弦夜響",
+    "en-us": "Heartstring Nocturne",
+    "ja-jp": "心弦のノクターン"
+   }
+  },
+  {
+   "id": "14133",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "飞鸟星梦",
+    "zh-tw": "飛鳥星夢",
+    "en-us": "Flight of Fancy",
+    "ja-jp": "鳥は夢へと羽ばたいて"
+   }
+  },
+  {
+   "id": "14134",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "半糖雪兔",
+    "zh-tw": "半糖雪兔",
+    "en-us": "Half-Sugar Bunny",
+    "ja-jp": "甘さ控えめ雪うさぎ"
+   }
+  },
+  {
+   "id": "14136",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "索魂影眸",
+    "zh-tw": "索魂影眸",
+    "en-us": "Spectral Gaze",
+    "ja-jp": "奪魂の瞑目"
+   }
+  },
+  {
+   "id": "14137",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "青溟笼舍",
+    "zh-tw": "青溟籠舍",
+    "en-us": "Qingming Birdcage",
+    "ja-jp": "青溟の鳥籠"
+   }
+  },
+  {
+   "id": "14138",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "牺牲洁纯",
+    "zh-tw": "犧牲潔純",
+    "en-us": "Severed Innocence",
+    "ja-jp": "純然たる犠牲"
+   }
+  },
+  {
+   "id": "14139",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "福虓炉炉",
+    "zh-tw": "福虓爐爐",
+    "en-us": "Roaring Fur-nace",
+    "ja-jp": "招福の虎炉"
+   }
+  },
+  {
+   "id": "14140",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "十方锻星",
+    "zh-tw": "十方鍛星",
+    "en-us": "Practiced Perfection",
+    "ja-jp": "十面百錬の星"
+   }
+  },
+  {
+   "id": "14141",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "狸法七变化",
+    "zh-tw": "狸法七變化",
+    "en-us": "Metanukimorphosis",
+    "ja-jp": "狸の七変化"
+   }
+  },
+  {
+   "id": "14143",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "云霓孤光",
+    "zh-tw": "雲霓孤光",
+    "en-us": "Cloudcleave Radiance",
+    "ja-jp": "孤光彩雲"
+   }
+  },
+  {
+   "id": "14145",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "铸梦炉歌",
+    "zh-tw": "鑄夢爐歌",
+    "en-us": "Dreamlit Hearth",
+    "ja-jp": "炉で歌い上げられる夢"
+   }
+  },
+  {
+   "id": "14146",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "机巧心种",
+    "zh-tw": "機巧心種",
+    "en-us": "Cordis Germina",
+    "ja-jp": "駆動する種"
+   }
+  },
+  {
+   "id": "14147",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "怒目金刚",
+    "zh-tw": "怒目金剛",
+    "en-us": "Wrathful Vajra",
+    "ja-jp": "金剛不壊怒髪衝冠"
+   }
+  },
+  {
+   "id": "14148",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "昨夜来电",
+    "zh-tw": "昨夜來電",
+    "en-us": "Yesterday Calls",
+    "ja-jp": "昨夜からの着信"
+   }
+  },
+  {
+   "id": "14149",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "思络成歌",
+    "zh-tw": "思絡成歌",
+    "en-us": "Thoughtbop",
+    "ja-jp": "想いが織りなす歌"
+   }
+  },
+  {
+   "id": "14150",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "壳中之灵",
+    "zh-tw": "殼中之靈",
+    "en-us": "Angel in the Shell",
+    "ja-jp": "殻の中の魂"
+   }
+  },
+  {
+   "id": "14151",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "霓虹妄想",
+    "zh-tw": "霓虹妄想",
+    "en-us": "Neon Fantasies",
+    "ja-jp": "妄想ディスコテック"
+   }
+  },
+  {
+   "id": "14152",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "鳞齿寻踪",
+    "zh-tw": "鱗齒尋蹤",
+    "en-us": "Serpentine Seeker",
+    "ja-jp": "影を追う白き牙"
+   }
+  },
+  {
+   "id": "14153",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "辉骑面铠",
+    "zh-tw": "輝騎面鎧",
+    "en-us": "Starlight Rider Faceplate",
+    "ja-jp": "スターライトバイザー"
+   }
+  },
+  {
+   "id": "14154",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "朔月裁霜",
+    "zh-tw": "朔月裁霜",
+    "en-us": "Frostfall Sickle",
+    "ja-jp": "フロスト・クレセント"
+   }
+  },
+  {
+   "id": "14155",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "日冕遗蜕",
+    "zh-tw": "日冕遺蛻",
+    "en-us": "Sol Exuvia",
+    "ja-jp": "太陽の抜け殻"
+   }
+  },
+  {
+   "id": "14156",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "琳琅鎏心",
+    "zh-tw": "琳琅鎏心",
+    "en-us": "Joyau Dore",
+    "ja-jp": "金襴の心"
+   }
+  },
+  {
+   "id": "14157",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "首席跟班",
+    "zh-tw": "首席跟班",
+    "en-us": "Chief Sidekick",
+    "ja-jp": "エースのオトモ"
+   }
+  },
+  {
+   "id": "14158",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "空羽复归之诗",
+    "zh-tw": "空羽復歸之詩",
+    "en-us": "Ode of Resurrected Wings",
+    "ja-jp": "目覚めし翼の聖歌"
+   }
+  },
+  {
+   "id": "14159",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "骁骑礼赞",
+    "zh-tw": "驍騎禮贊",
+    "en-us": "Knight's Extolment",
+    "ja-jp": "栄光の騎士道"
+   }
+  },
+  {
+   "id": "50001",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "伊埃斯",
+    "zh-tw": "伊埃斯",
+    "en-us": "Eous",
+    "ja-jp": "イアス"
+   }
+  },
+  {
+   "id": "53001",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "企鹅布",
+    "zh-tw": "企鵝布",
+    "en-us": "Penguinboo",
+    "ja-jp": "ペンギンボンプ"
+   }
+  },
+  {
+   "id": "53002",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "招财布",
+    "zh-tw": "招財布",
+    "en-us": "Luckyboo",
+    "ja-jp": "オマネキボンプ"
+   }
+  },
+  {
+   "id": "53003",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "寻宝布",
+    "zh-tw": "尋寶布",
+    "en-us": "Exploreboo",
+    "ja-jp": "タンケンボンプ"
+   }
+  },
+  {
+   "id": "53004",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "扑击布",
+    "zh-tw": "撲擊布",
+    "en-us": "Sumoboo",
+    "ja-jp": "オスモウボンプ"
+   }
+  },
+  {
+   "id": "53005",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "纸壳布",
+    "zh-tw": "紙箱布",
+    "en-us": "Paperboo",
+    "ja-jp": "ハコイリボンプ"
+   }
+  },
+  {
+   "id": "53006",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "纸袋布",
+    "zh-tw": "紙袋布",
+    "en-us": "Bagboo",
+    "ja-jp": "フクロノボンプ"
+   }
+  },
+  {
+   "id": "53007",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "泪眼布",
+    "zh-tw": "淚眼布",
+    "en-us": "Cryboo",
+    "ja-jp": "ウルリンボンプ"
+   }
+  },
+  {
+   "id": "53008",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "果核布",
+    "zh-tw": "果核布",
+    "en-us": "Avocaboo",
+    "ja-jp": "アボカドボンプ"
+   }
+  },
+  {
+   "id": "53009",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "飞靶布",
+    "zh-tw": "飛鏢布",
+    "en-us": "Boollseye",
+    "ja-jp": "ズバットボンプ"
+   }
+  },
+  {
+   "id": "53010",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "电击布",
+    "zh-tw": "電擊布",
+    "en-us": "Electroboo",
+    "ja-jp": "ビリビリボンプ"
+   }
+  },
+  {
+   "id": "53011",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "磁力布",
+    "zh-tw": "磁力布",
+    "en-us": "Magnetiboo",
+    "ja-jp": "クッツキボンプ"
+   }
+  },
+  {
+   "id": "53012",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "气压布",
+    "zh-tw": "氣壓布",
+    "en-us": "Booressure",
+    "ja-jp": "キアツデボンプ"
+   }
+  },
+  {
+   "id": "53013",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "不良布",
+    "zh-tw": "不良布",
+    "en-us": "Baddieboo",
+    "ja-jp": "カチコミボンプ"
+   }
+  },
+  {
+   "id": "53014",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "加班布",
+    "zh-tw": "加班布",
+    "en-us": "Overtimeboo",
+    "ja-jp": "サビザンボンプ"
+   }
+  },
+  {
+   "id": "53015",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "格斗布",
+    "zh-tw": "格鬥布",
+    "en-us": "Brawlerboo",
+    "ja-jp": "カクトウボンプ"
+   }
+  },
+  {
+   "id": "53016",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "圣剑布",
+    "zh-tw": "聖劍布",
+    "en-us": "Excaliboo",
+    "ja-jp": "セイケンボンプ"
+   }
+  },
+  {
+   "id": "53017",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "骑士布",
+    "zh-tw": "騎士布",
+    "en-us": "Knightboo",
+    "ja-jp": "キシドウボンプ"
+   }
+  },
+  {
+   "id": "53019",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "乐玩布",
+    "zh-tw": "樂玩布",
+    "en-us": "Bild N. Boolok",
+    "ja-jp": "ブロックボンプ"
+   }
+  },
+  {
+   "id": "53021",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "幽浮布",
+    "zh-tw": "幽浮布",
+    "en-us": "Booltergeist",
+    "ja-jp": "ユウレイボンプ"
+   }
+  },
+  {
+   "id": "54001",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "鲨牙布",
+    "zh-tw": "鯊牙布",
+    "en-us": "Sharkboo",
+    "ja-jp": "ガブットボンプ"
+   }
+  },
+  {
+   "id": "54002",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "阿全",
+    "zh-tw": "阿全",
+    "en-us": "Safety",
+    "ja-jp": "ゴアンゼン"
+   }
+  },
+  {
+   "id": "54003",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "恶魔布",
+    "zh-tw": "惡魔布",
+    "en-us": "Devilboo",
+    "ja-jp": "アクマデボンプ"
+   }
+  },
+  {
+   "id": "54004",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "巴特勒",
+    "zh-tw": "巴特勒",
+    "en-us": "Butler",
+    "ja-jp": "バトラー"
+   }
+  },
+  {
+   "id": "54005",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "艾米莉安",
+    "zh-tw": "艾米莉安",
+    "en-us": "Amillion",
+    "ja-jp": "アミリオン"
+   }
+  },
+  {
+   "id": "54006",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "飚速布",
+    "zh-tw": "飆速布",
+    "en-us": "Rocketboo",
+    "ja-jp": "ハヤスギボンプ"
+   }
+  },
+  {
+   "id": "54008",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "插头布",
+    "zh-tw": "插頭布",
+    "en-us": "Plugboo",
+    "ja-jp": "プラグノボンプ"
+   }
+  },
+  {
+   "id": "54009",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "共鸣布",
+    "zh-tw": "共鳴布",
+    "en-us": "Resonaboo",
+    "ja-jp": "レゾナンボンプ"
+   }
+  },
+  {
+   "id": "54010",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "阿饭",
+    "zh-tw": "阿飯",
+    "en-us": "Biggest Fan",
+    "ja-jp": "コサン"
+   }
+  },
+  {
+   "id": "54011",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "赤红莫库斯",
+    "zh-tw": "赤紅莫庫斯",
+    "en-us": "Red Moccus",
+    "ja-jp": "真紅のモックス"
+   }
+  },
+  {
+   "id": "54012",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "阿崔巡查",
+    "zh-tw": "阿崔巡查",
+    "en-us": "Officer Cui",
+    "ja-jp": "ツェイ巡査"
+   }
+  },
+  {
+   "id": "54013",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "左轮布",
+    "zh-tw": "左輪布",
+    "en-us": "Bangvolver",
+    "ja-jp": "リボルバボンプ"
+   }
+  },
+  {
+   "id": "54014",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "格列佛探员",
+    "zh-tw": "格列佛探員",
+    "en-us": "Agent Gulliver",
+    "ja-jp": "ガリバー隊員"
+   }
+  },
+  {
+   "id": "54015",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "咔嚓仔",
+    "zh-tw": "喀嚓仔",
+    "en-us": "Snap",
+    "ja-jp": "カチャコ"
+   }
+  },
+  {
+   "id": "54016",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "罗宾",
+    "zh-tw": "羅賓",
+    "en-us": "Robin",
+    "ja-jp": "ロビン"
+   }
+  },
+  {
+   "id": "54017",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "狮耶",
+    "zh-tw": "獅耶",
+    "en-us": "Belion",
+    "ja-jp": "オシシ"
+   }
+  },
+  {
+   "id": "54018",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "艾丝弥小姐",
+    "zh-tw": "艾絲彌小姐",
+    "en-us": "Miss Esme",
+    "ja-jp": "ミス・エスメ"
+   }
+  },
+  {
+   "id": "54019",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "「墨丘利」",
+    "zh-tw": "「墨丘利」",
+    "en-us": "Mercury",
+    "ja-jp": "「マーキュリー」"
+   }
+  },
+  {
+   "id": "54020",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "比克布利克",
+    "zh-tw": "比克布利克",
+    "en-us": "Birkblick",
+    "ja-jp": "ビャークブリック"
+   }
+  },
+  {
+   "id": "54021",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "芽芽",
+    "zh-tw": "芽芽",
+    "en-us": "Sprout",
+    "ja-jp": "メメ"
+   }
+  },
+  {
+   "id": "54022",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "超极杰克",
+    "zh-tw": "超極傑克",
+    "en-us": "Ultra Jake",
+    "ja-jp": "ウルトラネイヴ"
+   }
+  },
+  {
+   "id": "54023",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "艾瑞儿",
+    "zh-tw": "艾瑞兒",
+    "en-us": "Ariel",
+    "ja-jp": "アリエル"
+   }
+  }
+ ],
+ "standard": [
+  "1021",
+  "1041",
+  "1101",
+  "1141",
+  "1181",
+  "1211",
+  "1551",
+  "14102",
+  "14104",
+  "14110",
+  "14114",
+  "14118",
+  "14121",
+  "14155"
+ ],
+ "banners": [
+  {
+   "id": "zzz-character-2024-07-04",
+   "pool_type": "character",
+   "version": "1.0",
+   "start": "2024-07-04T06:00:00+08:00",
+   "end": "2024-07-24T11:59:59+08:00",
+   "up_top": [
+    "1191"
+   ],
+   "up_second": [
+    "1131",
+    "1111"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2024-07-04",
+   "pool_type": "w_engine",
+   "version": "1.0",
+   "start": "2024-07-04T06:00:00+08:00",
+   "end": "2024-07-24T11:59:59+08:00",
+   "up_top": [
+    "14119"
+   ],
+   "up_second": [
+    "13113",
+    "13111"
+   ]
+  },
+  {
+   "id": "zzz-character-2024-07-24",
+   "pool_type": "character",
+   "version": "1.0",
+   "start": "2024-07-24T12:00:00+08:00",
+   "end": "2024-08-13T14:59:59+08:00",
+   "up_top": [
+    "1241"
+   ],
+   "up_second": [
+    "1031",
+    "1121"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2024-07-24",
+   "pool_type": "w_engine",
+   "version": "1.0",
+   "start": "2024-07-24T12:00:00+08:00",
+   "end": "2024-08-13T14:59:59+08:00",
+   "up_top": [
+    "14124"
+   ],
+   "up_second": [
+    "13103",
+    "13112"
+   ]
+  },
+  {
+   "id": "zzz-character-2024-08-14",
+   "pool_type": "character",
+   "version": "1.1",
+   "start": "2024-08-14T06:00:00+08:00",
+   "end": "2024-09-04T11:59:59+08:00",
+   "up_top": [
+    "1251"
+   ],
+   "up_second": [
+    "1081",
+    "1061"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2024-08-14",
+   "pool_type": "w_engine",
+   "version": "1.1",
+   "start": "2024-08-14T06:00:00+08:00",
+   "end": "2024-09-04T11:59:59+08:00",
+   "up_top": [
+    "14125"
+   ],
+   "up_second": [
+    "13108",
+    "13106"
+   ]
+  },
+  {
+   "id": "zzz-character-2024-09-04",
+   "pool_type": "character",
+   "version": "1.1",
+   "start": "2024-09-04T12:00:00+08:00",
+   "end": "2024-09-24T14:59:59+08:00",
+   "up_top": [
+    "1261"
+   ],
+   "up_second": [
+    "1271",
+    "1011"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2024-09-04",
+   "pool_type": "w_engine",
+   "version": "1.1",
+   "start": "2024-09-04T12:00:00+08:00",
+   "end": "2024-09-24T14:59:59+08:00",
+   "up_top": [
+    "14126"
+   ],
+   "up_second": [
+    "13127",
+    "13101"
+   ]
+  },
+  {
+   "id": "zzz-character-2024-09-25",
+   "pool_type": "character",
+   "version": "1.2",
+   "start": "2024-09-25T06:00:00+08:00",
+   "end": "2024-10-16T11:59:59+08:00",
+   "up_top": [
+    "1071"
+   ],
+   "up_second": [
+    "1281",
+    "1111"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2024-09-25",
+   "pool_type": "w_engine",
+   "version": "1.2",
+   "start": "2024-09-25T06:00:00+08:00",
+   "end": "2024-10-16T11:59:59+08:00",
+   "up_top": [
+    "14107"
+   ],
+   "up_second": [
+    "13128",
+    "13111"
+   ]
+  },
+  {
+   "id": "zzz-character-2024-10-16",
+   "pool_type": "character",
+   "version": "1.2",
+   "start": "2024-10-16T12:00:00+08:00",
+   "end": "2024-11-05T14:59:59+08:00",
+   "up_top": [
+    "1171"
+   ],
+   "up_second": [
+    "1151",
+    "1031"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2024-10-16",
+   "pool_type": "w_engine",
+   "version": "1.2",
+   "start": "2024-10-16T12:00:00+08:00",
+   "end": "2024-11-05T14:59:59+08:00",
+   "up_top": [
+    "14117"
+   ],
+   "up_second": [
+    "13115",
+    "13103"
+   ]
+  },
+  {
+   "id": "zzz-character-2024-11-06",
+   "pool_type": "character",
+   "version": "1.3",
+   "start": "2024-11-06T06:00:00+08:00",
+   "end": "2024-11-27T11:59:59+08:00",
+   "up_top": [
+    "1221"
+   ],
+   "up_second": [
+    "1011",
+    "1081"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2024-11-06",
+   "pool_type": "w_engine",
+   "version": "1.3",
+   "start": "2024-11-06T06:00:00+08:00",
+   "end": "2024-11-27T11:59:59+08:00",
+   "up_top": [
+    "14122"
+   ],
+   "up_second": [
+    "13101",
+    "13108"
+   ]
+  },
+  {
+   "id": "zzz-character-2024-11-27",
+   "pool_type": "character",
+   "version": "1.3",
+   "start": "2024-11-27T12:00:00+08:00",
+   "end": "2024-12-17T14:59:59+08:00",
+   "up_top": [
+    "1161"
+   ],
+   "up_second": [
+    "1121",
+    "1061"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2024-11-27",
+   "pool_type": "w_engine",
+   "version": "1.3",
+   "start": "2024-11-27T12:00:00+08:00",
+   "end": "2024-12-17T14:59:59+08:00",
+   "up_top": [
+    "14116"
+   ],
+   "up_second": [
+    "13112",
+    "13106"
+   ]
+  },
+  {
+   "id": "zzz-character-2024-12-18",
+   "pool_type": "character",
+   "version": "1.4",
+   "start": "2024-12-18T06:00:00+08:00",
+   "end": "2025-01-21T14:59:59+08:00",
+   "up_top": [
+    "1091",
+    "1201"
+   ],
+   "up_second": [
+    "1281",
+    "1131",
+    "1151",
+    "1271"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2024-12-18",
+   "pool_type": "w_engine",
+   "version": "1.4",
+   "start": "2024-12-18T06:00:00+08:00",
+   "end": "2025-01-21T14:59:59+08:00",
+   "up_top": [
+    "14109",
+    "14120"
+   ],
+   "up_second": [
+    "13128",
+    "13113",
+    "13115",
+    "13127"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-01-22",
+   "pool_type": "character",
+   "version": "1.5",
+   "start": "2025-01-22T06:00:00+08:00",
+   "end": "2025-02-12T11:59:59+08:00",
+   "up_top": [
+    "1311",
+    "1191"
+   ],
+   "up_second": [
+    "1011",
+    "1061"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-01-22",
+   "pool_type": "w_engine",
+   "version": "1.5",
+   "start": "2025-01-22T06:00:00+08:00",
+   "end": "2025-02-12T11:59:59+08:00",
+   "up_top": [
+    "14131",
+    "14119"
+   ],
+   "up_second": [
+    "13101",
+    "13106"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-02-12",
+   "pool_type": "character",
+   "version": "1.5",
+   "start": "2025-02-12T12:00:00+08:00",
+   "end": "2025-03-11T14:59:59+08:00",
+   "up_top": [
+    "1321",
+    "1251"
+   ],
+   "up_second": [
+    "1111",
+    "1031"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-02-12",
+   "pool_type": "w_engine",
+   "version": "1.5",
+   "start": "2025-02-12T12:00:00+08:00",
+   "end": "2025-03-11T14:59:59+08:00",
+   "up_top": [
+    "14132",
+    "14125"
+   ],
+   "up_second": [
+    "13111",
+    "13103"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-03-12",
+   "pool_type": "character",
+   "version": "1.6",
+   "start": "2025-03-12T06:00:00+08:00",
+   "end": "2025-04-02T11:59:59+08:00",
+   "up_top": [
+    "1381",
+    "1171"
+   ],
+   "up_second": [
+    "1351",
+    "1121"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-03-12",
+   "pool_type": "w_engine",
+   "version": "1.6",
+   "start": "2025-03-12T06:00:00+08:00",
+   "end": "2025-04-02T11:59:59+08:00",
+   "up_top": [
+    "14138",
+    "14117"
+   ],
+   "up_second": [
+    "13135",
+    "13112"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-04-02",
+   "pool_type": "character",
+   "version": "1.6",
+   "start": "2025-04-02T12:00:00+08:00",
+   "end": "2025-04-22T14:59:59+08:00",
+   "up_top": [
+    "1361",
+    "1241"
+   ],
+   "up_second": [
+    "1151",
+    "1081"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-04-02",
+   "pool_type": "w_engine",
+   "version": "1.6",
+   "start": "2025-04-02T12:00:00+08:00",
+   "end": "2025-04-22T14:59:59+08:00",
+   "up_top": [
+    "14136",
+    "14124"
+   ],
+   "up_second": [
+    "13115",
+    "13108"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-04-23",
+   "pool_type": "character",
+   "version": "1.7",
+   "start": "2025-04-23T06:00:00+08:00",
+   "end": "2025-05-14T11:59:59+08:00",
+   "up_top": [
+    "1331",
+    "1261"
+   ],
+   "up_second": [
+    "1281",
+    "1271"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-04-23",
+   "pool_type": "w_engine",
+   "version": "1.7",
+   "start": "2025-04-23T06:00:00+08:00",
+   "end": "2025-05-14T11:59:59+08:00",
+   "up_top": [
+    "14133",
+    "14126"
+   ],
+   "up_second": [
+    "13128",
+    "13127"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-05-14",
+   "pool_type": "character",
+   "version": "1.7",
+   "start": "2025-05-14T12:00:00+08:00",
+   "end": "2025-06-05T14:59:59+08:00",
+   "up_top": [
+    "1291",
+    "1161"
+   ],
+   "up_second": [
+    "1131",
+    "1111"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-05-14",
+   "pool_type": "w_engine",
+   "version": "1.7",
+   "start": "2025-05-14T12:00:00+08:00",
+   "end": "2025-06-05T14:59:59+08:00",
+   "up_top": [
+    "14129",
+    "14116"
+   ],
+   "up_second": [
+    "13113",
+    "13111"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-06-06",
+   "pool_type": "character",
+   "version": "2.0",
+   "start": "2025-06-06T06:00:00+08:00",
+   "end": "2025-06-25T11:59:59+08:00",
+   "up_top": [
+    "1371",
+    "1311"
+   ],
+   "up_second": [
+    "1421",
+    "1351"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-06-06",
+   "pool_type": "w_engine",
+   "version": "2.0",
+   "start": "2025-06-06T06:00:00+08:00",
+   "end": "2025-06-25T11:59:59+08:00",
+   "up_top": [
+    "14137",
+    "14131"
+   ],
+   "up_second": [
+    "13142",
+    "13135"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-06-25",
+   "pool_type": "character",
+   "version": "2.0",
+   "start": "2025-06-25T12:00:00+08:00",
+   "end": "2025-07-15T14:59:59+08:00",
+   "up_top": [
+    "1391",
+    "1071"
+   ],
+   "up_second": [
+    "1061",
+    "1121"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-06-25",
+   "pool_type": "w_engine",
+   "version": "2.0",
+   "start": "2025-06-25T12:00:00+08:00",
+   "end": "2025-07-15T14:59:59+08:00",
+   "up_top": [
+    "14139",
+    "14107"
+   ],
+   "up_second": [
+    "13106",
+    "13112"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-07-16",
+   "pool_type": "character",
+   "version": "2.1",
+   "start": "2025-07-16T06:00:00+08:00",
+   "end": "2025-08-06T11:59:59+08:00",
+   "up_top": [
+    "1411",
+    "1091"
+   ],
+   "up_second": [
+    "1281",
+    "1081"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-07-16",
+   "pool_type": "w_engine",
+   "version": "2.1",
+   "start": "2025-07-16T06:00:00+08:00",
+   "end": "2025-08-06T11:59:59+08:00",
+   "up_top": [
+    "14141",
+    "14109"
+   ],
+   "up_second": [
+    "13128",
+    "13108"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-08-06",
+   "pool_type": "character",
+   "version": "2.1",
+   "start": "2025-08-06T12:00:00+08:00",
+   "end": "2025-09-03T14:59:59+08:00",
+   "up_top": [
+    "1401",
+    "1221"
+   ],
+   "up_second": [
+    "1131",
+    "1271"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-08-06",
+   "pool_type": "w_engine",
+   "version": "2.1",
+   "start": "2025-08-06T12:00:00+08:00",
+   "end": "2025-09-03T14:59:59+08:00",
+   "up_top": [
+    "14140",
+    "14122"
+   ],
+   "up_second": [
+    "13113",
+    "13127"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-09-04",
+   "pool_type": "character",
+   "version": "2.2",
+   "start": "2025-09-04T06:00:00+08:00",
+   "end": "2025-09-24T11:59:59+08:00",
+   "up_top": [
+    "1461",
+    "1361"
+   ],
+   "up_second": [
+    "1031",
+    "1011"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-09-04",
+   "pool_type": "w_engine",
+   "version": "2.2",
+   "start": "2025-09-04T06:00:00+08:00",
+   "end": "2025-09-24T11:59:59+08:00",
+   "up_top": [
+    "14146",
+    "14136"
+   ],
+   "up_second": [
+    "13103",
+    "13101"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-09-24",
+   "pool_type": "character",
+   "version": "2.2",
+   "start": "2025-09-24T12:00:00+08:00",
+   "end": "2025-10-14T14:59:59+08:00",
+   "up_top": [
+    "1301",
+    "1321"
+   ],
+   "up_second": [
+    "1151",
+    "1111"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-09-24",
+   "pool_type": "w_engine",
+   "version": "2.2",
+   "start": "2025-09-24T12:00:00+08:00",
+   "end": "2025-10-14T14:59:59+08:00",
+   "up_top": [
+    "14130",
+    "14132"
+   ],
+   "up_second": [
+    "13115",
+    "13111"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-10-15",
+   "pool_type": "character",
+   "version": "2.3",
+   "start": "2025-10-15T06:00:00+08:00",
+   "end": "2025-11-05T11:59:59+08:00",
+   "up_top": [
+    "1451",
+    "1331"
+   ],
+   "up_second": [
+    "1441",
+    "1281"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-10-15",
+   "pool_type": "w_engine",
+   "version": "2.3",
+   "start": "2025-10-15T06:00:00+08:00",
+   "end": "2025-11-05T11:59:59+08:00",
+   "up_top": [
+    "14145",
+    "14133"
+   ],
+   "up_second": [
+    "13144",
+    "13128"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-11-05",
+   "pool_type": "character",
+   "version": "2.3",
+   "start": "2025-11-05T12:00:00+08:00",
+   "end": "2025-11-25T14:59:59+08:00",
+   "up_top": [
+    "1051",
+    "1391"
+   ],
+   "up_second": [
+    "1421",
+    "1351"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-11-05",
+   "pool_type": "w_engine",
+   "version": "2.3",
+   "start": "2025-11-05T12:00:00+08:00",
+   "end": "2025-11-25T14:59:59+08:00",
+   "up_top": [
+    "14105",
+    "14139"
+   ],
+   "up_second": [
+    "13142",
+    "13135"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-11-26",
+   "pool_type": "character",
+   "version": "2.4",
+   "start": "2025-11-26T06:00:00+08:00",
+   "end": "2025-12-17T11:59:59+08:00",
+   "up_top": [
+    "1481",
+    "1291"
+   ],
+   "up_second": [
+    "1061",
+    "1081"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-11-26",
+   "pool_type": "w_engine",
+   "version": "2.4",
+   "start": "2025-11-26T06:00:00+08:00",
+   "end": "2025-12-17T11:59:59+08:00",
+   "up_top": [
+    "14148",
+    "14129"
+   ],
+   "up_second": [
+    "13106",
+    "13108"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-12-17",
+   "pool_type": "character",
+   "version": "2.4",
+   "start": "2025-12-17T12:00:00+08:00",
+   "end": "2025-12-29T14:59:59+08:00",
+   "up_top": [
+    "1471",
+    "1191"
+   ],
+   "up_second": [
+    "1131",
+    "1271"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-12-17",
+   "pool_type": "w_engine",
+   "version": "2.4",
+   "start": "2025-12-17T12:00:00+08:00",
+   "end": "2025-12-29T14:59:59+08:00",
+   "up_top": [
+    "14147",
+    "14119"
+   ],
+   "up_second": [
+    "13113",
+    "13127"
+   ]
+  },
+  {
+   "id": "zzz-character-2025-12-30",
+   "pool_type": "character",
+   "version": "2.5",
+   "start": "2025-12-30T06:00:00+08:00",
+   "end": "2026-02-05T14:59:59+08:00",
+   "up_top": [
+    "1431",
+    "1341"
+   ],
+   "up_second": [
+    "1031",
+    "1151",
+    "1011",
+    "1121"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2025-12-30",
+   "pool_type": "w_engine",
+   "version": "2.5",
+   "start": "2025-12-30T06:00:00+08:00",
+   "end": "2026-02-05T14:59:59+08:00",
+   "up_top": [
+    "14143",
+    "14134"
+   ],
+   "up_second": [
+    "13103",
+    "13115",
+    "13101",
+    "13112"
+   ]
+  },
+  {
+   "id": "zzz-exclusive_rescreening-2026-01-21",
+   "pool_type": "exclusive_rescreening",
+   "version": "2.5",
+   "start": "2026-01-21T12:00:00+08:00",
+   "end": "2026-02-05T14:59:59+08:00",
+   "up_top": [
+    "1401",
+    "1381",
+    "1311"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "zzz-w_engine_reverberation-2026-01-21",
+   "pool_type": "w_engine_reverberation",
+   "version": "2.5",
+   "start": "2026-01-21T12:00:00+08:00",
+   "end": "2026-02-05T14:59:59+08:00",
+   "up_top": [
+    "14140",
+    "14138",
+    "14131"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "zzz-character-2026-02-06",
+   "pool_type": "character",
+   "version": "2.6",
+   "start": "2026-02-06T06:00:00+08:00",
+   "end": "2026-03-04T11:59:59+08:00",
+   "up_top": [
+    "1491",
+    "1371"
+   ],
+   "up_second": [
+    "1061",
+    "1081"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2026-02-06",
+   "pool_type": "w_engine",
+   "version": "2.6",
+   "start": "2026-02-06T06:00:00+08:00",
+   "end": "2026-03-04T11:59:59+08:00",
+   "up_top": [
+    "14149",
+    "14137"
+   ],
+   "up_second": [
+    "13106",
+    "13108"
+   ]
+  },
+  {
+   "id": "zzz-character-2026-03-04",
+   "pool_type": "character",
+   "version": "2.6",
+   "start": "2026-03-04T12:00:00+08:00",
+   "end": "2026-03-23T14:59:59+08:00",
+   "up_top": [
+    "1501",
+    "1411"
+   ],
+   "up_second": [
+    "1111",
+    "1271"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2026-03-04",
+   "pool_type": "w_engine",
+   "version": "2.6",
+   "start": "2026-03-04T12:00:00+08:00",
+   "end": "2026-03-23T14:59:59+08:00",
+   "up_top": [
+    "14150",
+    "14141"
+   ],
+   "up_second": [
+    "13111",
+    "13127"
+   ]
+  },
+  {
+   "id": "zzz-character-2026-03-24",
+   "pool_type": "character",
+   "version": "2.7",
+   "start": "2026-03-24T06:00:00+08:00",
+   "end": "2026-04-15T11:59:59+08:00",
+   "up_top": [
+    "1511",
+    "1051"
+   ],
+   "up_second": [
+    "1031",
+    "1281"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2026-03-24",
+   "pool_type": "w_engine",
+   "version": "2.7",
+   "start": "2026-03-24T06:00:00+08:00",
+   "end": "2026-04-15T11:59:59+08:00",
+   "up_top": [
+    "14151",
+    "14105"
+   ],
+   "up_second": [
+    "13103",
+    "13128"
+   ]
+  },
+  {
+   "id": "zzz-character-2026-04-15",
+   "pool_type": "character",
+   "version": "2.7",
+   "start": "2026-04-15T12:00:00+08:00",
+   "end": "2026-05-05T14:59:59+08:00",
+   "up_top": [
+    "1521",
+    "1461"
+   ],
+   "up_second": [
+    "1351",
+    "1121"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2026-04-15",
+   "pool_type": "w_engine",
+   "version": "2.7",
+   "start": "2026-04-15T12:00:00+08:00",
+   "end": "2026-05-05T14:59:59+08:00",
+   "up_top": [
+    "14152",
+    "14146"
+   ],
+   "up_second": [
+    "13135",
+    "13112"
+   ]
+  },
+  {
+   "id": "zzz-character-2026-05-06",
+   "pool_type": "character",
+   "version": "2.8",
+   "start": "2026-05-06T06:00:00+08:00",
+   "end": "2026-05-27T11:59:59+08:00",
+   "up_top": [
+    "1541",
+    "1451"
+   ],
+   "up_second": [
+    "1131",
+    "1151"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2026-05-06",
+   "pool_type": "w_engine",
+   "version": "2.8",
+   "start": "2026-05-06T06:00:00+08:00",
+   "end": "2026-05-27T11:59:59+08:00",
+   "up_top": [
+    "14154",
+    "14145"
+   ],
+   "up_second": [
+    "13113",
+    "13115"
+   ]
+  },
+  {
+   "id": "zzz-character-2026-05-27",
+   "pool_type": "character",
+   "version": "2.8",
+   "start": "2026-05-27T12:00:00+08:00",
+   "end": "2026-06-16T14:59:59+08:00",
+   "up_top": [
+    "1531",
+    "1301"
+   ],
+   "up_second": [
+    "1421",
+    "1441"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2026-05-27",
+   "pool_type": "w_engine",
+   "version": "2.8",
+   "start": "2026-05-27T12:00:00+08:00",
+   "end": "2026-06-16T14:59:59+08:00",
+   "up_top": [
+    "14153",
+    "14130"
+   ],
+   "up_second": [
+    "13142",
+    "13144"
+   ]
+  },
+  {
+   "id": "zzz-character-2026-06-17",
+   "pool_type": "character",
+   "version": "3.0",
+   "start": "2026-06-17T06:00:00+08:00",
+   "end": "2026-07-08T11:59:59+08:00",
+   "up_top": [
+    "1561",
+    "1431"
+   ],
+   "up_second": [
+    "1031",
+    "1281"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2026-06-17",
+   "pool_type": "w_engine",
+   "version": "3.0",
+   "start": "2026-06-17T06:00:00+08:00",
+   "end": "2026-07-08T11:59:59+08:00",
+   "up_top": [
+    "14156",
+    "14143"
+   ],
+   "up_second": [
+    "13103",
+    "13128"
+   ]
+  },
+  {
+   "id": "zzz-character-2026-07-08",
+   "pool_type": "character",
+   "version": "3.0",
+   "start": "2026-07-08T12:00:00+08:00",
+   "end": "2026-07-28T14:59:59+08:00",
+   "up_top": [
+    "1571",
+    "1491"
+   ],
+   "up_second": [
+    "1351",
+    "1121"
+   ]
+  },
+  {
+   "id": "zzz-w_engine-2026-07-08",
+   "pool_type": "w_engine",
+   "version": "3.0",
+   "start": "2026-07-08T12:00:00+08:00",
+   "end": "2026-07-28T14:59:59+08:00",
+   "up_top": [
+    "14157",
+    "14149"
+   ],
+   "up_second": [
+    "13135",
+    "13112"
+   ]
+  },
+  {
+   "id": "zzz-character-2026-07-29",
+   "pool_type": "character",
+   "version": "3.1",
+   "start": "2026-07-29T06:00:00+08:00",
+   "end": "2026-08-19T11:59:59+08:00",
+   "up_top": [
+    "1581",
+    "1501"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "zzz-w_engine-2026-07-29",
+   "pool_type": "w_engine",
+   "version": "3.1",
+   "start": "2026-07-29T06:00:00+08:00",
+   "end": "2026-08-19T11:59:59+08:00",
+   "up_top": [
+    "14158",
+    "14150"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "zzz-character-2026-08-19",
+   "pool_type": "character",
+   "version": "3.1",
+   "start": "2026-08-19T12:00:00+08:00",
+   "end": "2026-09-08T14:59:59+08:00",
+   "up_top": [
+    "1581",
+    "1591"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "zzz-exclusive_rescreening-2026-08-19",
+   "pool_type": "exclusive_rescreening",
+   "version": "3.1",
+   "start": "2026-08-19T12:00:00+08:00",
+   "end": "2026-09-08T14:59:59+08:00",
+   "up_top": [
+    "1481",
+    "1411",
+    "1201"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "zzz-w_engine-2026-08-19",
+   "pool_type": "w_engine",
+   "version": "3.1",
+   "start": "2026-08-19T12:00:00+08:00",
+   "end": "2026-09-08T14:59:59+08:00",
+   "up_top": [
+    "14158",
+    "14159"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "zzz-w_engine_reverberation-2026-08-19",
+   "pool_type": "w_engine_reverberation",
+   "version": "3.1",
+   "start": "2026-08-19T12:00:00+08:00",
+   "end": "2026-09-08T14:59:59+08:00",
+   "up_top": [
+    "14148",
+    "14141",
+    "14120"
+   ],
+   "up_second": []
+  }
+ ]
+}

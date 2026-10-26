@@ -116,8 +116,19 @@ impl RecordRepository for MemRepo {
     fn timeline(&self, _a: &AccountId, _p: Option<&PoolTypeId>) -> Result<Vec<GachaRecord>> {
         Ok(self.records.lock().unwrap().clone())
     }
-    fn latest_cursor(&self, _a: &AccountId, _p: &PoolTypeId) -> Result<Option<Cursor>> {
-        unimplemented!()
+    fn latest_cursor(&self, a: &AccountId, p: &PoolTypeId) -> Result<Option<Cursor>> {
+        Ok(self
+            .records
+            .lock()
+            .unwrap()
+            .iter()
+            .filter(|r| &r.account_id == a && &r.data.pool_type == p)
+            .max_by_key(|r| (r.data.pulled_at, r.data.seq_in_sec))
+            .map(|r| Cursor {
+                ext_id: r.data.ext_id.clone(),
+                pulled_at: r.data.pulled_at,
+                seq_in_sec: r.data.seq_in_sec,
+            }))
     }
     fn backup(&self, _dest: &Path) -> Result<()> {
         unimplemented!()
@@ -498,4 +509,78 @@ fn now_is_reasonable() {
     assert!(now_ms() > T0);
     let r = ImportReport::default();
     assert_eq!((r.added(), r.skipped(), r.failed()), (0, 0, 0));
+}
+
+#[test]
+fn spawned_fetch_uses_since_and_imports() {
+    let repo = Arc::new(MemRepo::default());
+    let svc = service(repo.clone(), Some(Arc::new(CountingBackup::default())));
+    let tasks = TaskManager::new();
+    let events = Arc::new(Events::default());
+    let game = GameId::from("genshin");
+
+    // 第一次：账号不存在，起点为空
+    let report = svc
+        .spawn_fetch(
+            &tasks,
+            events.clone(),
+            FetchMode::Incremental,
+            ImportSource::Url,
+            |_ctx, since| {
+                assert!(since.since(&"genshin".into(), "1")?.is_empty());
+                Ok(vec![account(
+                    "1",
+                    vec![
+                        irec("301", "温迪", 5, 0, Some("1")),
+                        irec("400", "可莉", 5, 1, Some("2")),
+                    ],
+                )])
+            },
+        )
+        .wait()
+        .unwrap();
+    assert_eq!(report.added(), 2);
+
+    // 第二次：起点为各卡池类型最新的一条；未知游戏与未知账号为空
+    let lookup = svc.since_lookup(FetchMode::Incremental);
+    let since = lookup.since(&game, "1").unwrap();
+    assert_eq!(since.len(), 1);
+    assert_eq!(since["character"].ext_id.as_deref(), Some("2"));
+    assert!(lookup.since(&game, "2").unwrap().is_empty());
+    assert!(svc
+        .since_lookup(FetchMode::Full)
+        .since(&game, "1")
+        .unwrap()
+        .is_empty());
+    let other = RepoSince::new(Arc::new(PluginRegistry::new()), repo.clone());
+    assert!(other.since(&game, "1").unwrap().is_empty());
+
+    // 拉取失败或被取消时不写入
+    let err = svc
+        .spawn_fetch(
+            &tasks,
+            events.clone(),
+            FetchMode::Full,
+            ImportSource::Url,
+            |_ctx, _since| Err(AppError::AuthExpired),
+        )
+        .wait();
+    assert_eq!(err, Err(AppError::AuthExpired));
+    let cancelled = svc
+        .spawn_fetch(
+            &tasks,
+            events,
+            FetchMode::Full,
+            ImportSource::Url,
+            |ctx, _since| {
+                ctx.cancel_token().cancel();
+                Ok(vec![account(
+                    "1",
+                    vec![irec("301", "迪卢克", 5, 9, Some("9"))],
+                )])
+            },
+        )
+        .wait();
+    assert_eq!(cancelled, Err(AppError::Cancelled));
+    assert_eq!(repo.records.lock().unwrap().len(), 2);
 }

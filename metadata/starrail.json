@@ -1,0 +1,4599 @@
+{
+ "game": "starrail",
+ "items": [
+  {
+   "id": "1001",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "三月七",
+    "zh-tw": "三月七",
+    "en-us": "March 7th",
+    "ja-jp": "三月なのか"
+   }
+  },
+  {
+   "id": "1002",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "丹恒",
+    "zh-tw": "丹恆",
+    "en-us": "Dan Heng",
+    "ja-jp": "丹恒"
+   }
+  },
+  {
+   "id": "1003",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "姬子",
+    "zh-tw": "姬子",
+    "en-us": "Himeko",
+    "ja-jp": "姫子"
+   }
+  },
+  {
+   "id": "1004",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "瓦尔特",
+    "zh-tw": "瓦爾特",
+    "en-us": "Welt",
+    "ja-jp": "ヴェルト"
+   }
+  },
+  {
+   "id": "1005",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "卡芙卡",
+    "zh-tw": "卡芙卡",
+    "en-us": "Kafka",
+    "ja-jp": "カフカ"
+   }
+  },
+  {
+   "id": "1006",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "银狼",
+    "zh-tw": "銀狼",
+    "en-us": "Silver Wolf",
+    "ja-jp": "銀狼"
+   }
+  },
+  {
+   "id": "1008",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "阿兰",
+    "zh-tw": "阿蘭",
+    "en-us": "Arlan",
+    "ja-jp": "アーラン"
+   }
+  },
+  {
+   "id": "1009",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "艾丝妲",
+    "zh-tw": "艾絲妲",
+    "en-us": "Asta",
+    "ja-jp": "アスター"
+   }
+  },
+  {
+   "id": "1013",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "黑塔",
+    "zh-tw": "黑塔",
+    "en-us": "Herta",
+    "ja-jp": "ヘルタ"
+   }
+  },
+  {
+   "id": "1014",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "Saber",
+    "zh-tw": "Saber",
+    "en-us": "Saber",
+    "ja-jp": "セイバー"
+   }
+  },
+  {
+   "id": "1015",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "Archer",
+    "zh-tw": "Archer",
+    "en-us": "Archer",
+    "ja-jp": "アーチャー"
+   }
+  },
+  {
+   "id": "1101",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "布洛妮娅",
+    "zh-tw": "布洛妮婭",
+    "en-us": "Bronya",
+    "ja-jp": "ブローニャ"
+   }
+  },
+  {
+   "id": "1102",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "希儿",
+    "zh-tw": "希兒",
+    "en-us": "Seele",
+    "ja-jp": "ゼーレ"
+   }
+  },
+  {
+   "id": "1103",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "希露瓦",
+    "zh-tw": "希露瓦",
+    "en-us": "Serval",
+    "ja-jp": "セーバル"
+   }
+  },
+  {
+   "id": "1104",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "杰帕德",
+    "zh-tw": "傑帕德",
+    "en-us": "Gepard",
+    "ja-jp": "ジェパード"
+   }
+  },
+  {
+   "id": "1105",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "娜塔莎",
+    "zh-tw": "娜塔莎",
+    "en-us": "Natasha",
+    "ja-jp": "ナターシャ"
+   }
+  },
+  {
+   "id": "1106",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "佩拉",
+    "zh-tw": "佩拉",
+    "en-us": "Pela",
+    "ja-jp": "ペラ"
+   }
+  },
+  {
+   "id": "1107",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "克拉拉",
+    "zh-tw": "克拉拉",
+    "en-us": "Clara",
+    "ja-jp": "クラーラ"
+   }
+  },
+  {
+   "id": "1108",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "桑博",
+    "zh-tw": "桑博",
+    "en-us": "Sampo",
+    "ja-jp": "サンポ"
+   }
+  },
+  {
+   "id": "1109",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "虎克",
+    "zh-tw": "虎克",
+    "en-us": "Hook",
+    "ja-jp": "フック"
+   }
+  },
+  {
+   "id": "1110",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "玲可",
+    "zh-tw": "玲可",
+    "en-us": "Lynx",
+    "ja-jp": "リンクス"
+   }
+  },
+  {
+   "id": "1111",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "卢卡",
+    "zh-tw": "盧卡",
+    "en-us": "Luka",
+    "ja-jp": "ルカ"
+   }
+  },
+  {
+   "id": "1112",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "托帕&账账",
+    "zh-tw": "托帕&帳帳",
+    "en-us": "Topaz & Numby",
+    "ja-jp": "トパーズ&カブ"
+   }
+  },
+  {
+   "id": "1201",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "青雀",
+    "zh-tw": "青雀",
+    "en-us": "Qingque",
+    "ja-jp": "青雀"
+   }
+  },
+  {
+   "id": "1202",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "停云",
+    "zh-tw": "停雲",
+    "en-us": "Tingyun",
+    "ja-jp": "停雲"
+   }
+  },
+  {
+   "id": "1203",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "罗刹",
+    "zh-tw": "羅剎",
+    "en-us": "Luocha",
+    "ja-jp": "羅刹"
+   }
+  },
+  {
+   "id": "1204",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "景元",
+    "zh-tw": "景元",
+    "en-us": "Jing Yuan",
+    "ja-jp": "景元"
+   }
+  },
+  {
+   "id": "1205",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "刃",
+    "zh-tw": "刃",
+    "en-us": "Blade",
+    "ja-jp": "刃"
+   }
+  },
+  {
+   "id": "1206",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "素裳",
+    "zh-tw": "素裳",
+    "en-us": "Sushang",
+    "ja-jp": "素裳"
+   }
+  },
+  {
+   "id": "1207",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "驭空",
+    "zh-tw": "馭空",
+    "en-us": "Yukong",
+    "ja-jp": "御空"
+   }
+  },
+  {
+   "id": "1208",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "符玄",
+    "zh-tw": "符玄",
+    "en-us": "Fu Xuan",
+    "ja-jp": "符玄"
+   }
+  },
+  {
+   "id": "1209",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "彦卿",
+    "zh-tw": "彥卿",
+    "en-us": "Yanqing",
+    "ja-jp": "彦卿"
+   }
+  },
+  {
+   "id": "1210",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "桂乃芬",
+    "zh-tw": "桂乃芬",
+    "en-us": "Guinaifen",
+    "ja-jp": "桂乃芬"
+   }
+  },
+  {
+   "id": "1211",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "白露",
+    "zh-tw": "白露",
+    "en-us": "Bailu",
+    "ja-jp": "白露"
+   }
+  },
+  {
+   "id": "1212",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "镜流",
+    "zh-tw": "鏡流",
+    "en-us": "Jingliu",
+    "ja-jp": "鏡流"
+   }
+  },
+  {
+   "id": "1213",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "丹恒•饮月",
+    "zh-tw": "丹恆•飲月",
+    "en-us": "Dan Heng • Imbibitor Lunae",
+    "ja-jp": "丹恒・飲月"
+   }
+  },
+  {
+   "id": "1214",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "雪衣",
+    "zh-tw": "雪衣",
+    "en-us": "Xueyi",
+    "ja-jp": "雪衣"
+   }
+  },
+  {
+   "id": "1215",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "寒鸦",
+    "zh-tw": "寒鴉",
+    "en-us": "Hanya",
+    "ja-jp": "寒鴉"
+   }
+  },
+  {
+   "id": "1217",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "藿藿",
+    "zh-tw": "藿藿",
+    "en-us": "Huohuo",
+    "ja-jp": "フォフォ"
+   }
+  },
+  {
+   "id": "1218",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "椒丘",
+    "zh-tw": "椒丘",
+    "en-us": "Jiaoqiu",
+    "ja-jp": "椒丘"
+   }
+  },
+  {
+   "id": "1220",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "飞霄",
+    "zh-tw": "飛霄",
+    "en-us": "Feixiao",
+    "ja-jp": "飛霄"
+   }
+  },
+  {
+   "id": "1221",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "云璃",
+    "zh-tw": "雲璃",
+    "en-us": "Yunli",
+    "ja-jp": "雲璃"
+   }
+  },
+  {
+   "id": "1222",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "灵砂",
+    "zh-tw": "靈砂",
+    "en-us": "Lingsha",
+    "ja-jp": "霊砂"
+   }
+  },
+  {
+   "id": "1223",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "貊泽",
+    "zh-tw": "貊澤",
+    "en-us": "Moze",
+    "ja-jp": "モゼ"
+   }
+  },
+  {
+   "id": "1224",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "三月七",
+    "zh-tw": "三月七",
+    "en-us": "March 7th",
+    "ja-jp": "三月なのか"
+   }
+  },
+  {
+   "id": "1225",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "忘归人",
+    "zh-tw": "忘歸人",
+    "en-us": "Fugue",
+    "ja-jp": "帰忘の流離人"
+   }
+  },
+  {
+   "id": "1301",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "加拉赫",
+    "zh-tw": "加拉赫",
+    "en-us": "Gallagher",
+    "ja-jp": "ギャラガー"
+   }
+  },
+  {
+   "id": "1302",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "银枝",
+    "zh-tw": "銀枝",
+    "en-us": "Argenti",
+    "ja-jp": "アルジェンティ"
+   }
+  },
+  {
+   "id": "1303",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "阮•梅",
+    "zh-tw": "阮•梅",
+    "en-us": "Ruan Mei",
+    "ja-jp": "ルアン・メェイ"
+   }
+  },
+  {
+   "id": "1304",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "砂金",
+    "zh-tw": "砂金",
+    "en-us": "Aventurine",
+    "ja-jp": "アベンチュリン"
+   }
+  },
+  {
+   "id": "1305",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "真理医生",
+    "zh-tw": "真理醫生",
+    "en-us": "Dr. Ratio",
+    "ja-jp": "Dr.レイシオ"
+   }
+  },
+  {
+   "id": "1306",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "花火",
+    "zh-tw": "花火",
+    "en-us": "Sparkle",
+    "ja-jp": "花火"
+   }
+  },
+  {
+   "id": "1307",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "黑天鹅",
+    "zh-tw": "黑天鵝",
+    "en-us": "Black Swan",
+    "ja-jp": "ブラックスワン"
+   }
+  },
+  {
+   "id": "1308",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "黄泉",
+    "zh-tw": "黃泉",
+    "en-us": "Acheron",
+    "ja-jp": "黄泉"
+   }
+  },
+  {
+   "id": "1309",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "知更鸟",
+    "zh-tw": "知更鳥",
+    "en-us": "Robin",
+    "ja-jp": "ロビン"
+   }
+  },
+  {
+   "id": "1310",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "流萤",
+    "zh-tw": "流螢",
+    "en-us": "Firefly",
+    "ja-jp": "ホタル"
+   }
+  },
+  {
+   "id": "1312",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "米沙",
+    "zh-tw": "米沙",
+    "en-us": "Misha",
+    "ja-jp": "ミーシャ"
+   }
+  },
+  {
+   "id": "1313",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "星期日",
+    "zh-tw": "星期日",
+    "en-us": "Sunday",
+    "ja-jp": "サンデー"
+   }
+  },
+  {
+   "id": "1314",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "翡翠",
+    "zh-tw": "翡翠",
+    "en-us": "Jade",
+    "ja-jp": "ジェイド"
+   }
+  },
+  {
+   "id": "1315",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "波提欧",
+    "zh-tw": "波提歐",
+    "en-us": "Boothill",
+    "ja-jp": "ブートヒル"
+   }
+  },
+  {
+   "id": "1317",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "乱破",
+    "zh-tw": "亂破",
+    "en-us": "Rappa",
+    "ja-jp": "乱破"
+   }
+  },
+  {
+   "id": "1321",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "大丽花",
+    "zh-tw": "大理花",
+    "en-us": "The Dahlia",
+    "ja-jp": "ダリア"
+   }
+  },
+  {
+   "id": "1401",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "大黑塔",
+    "zh-tw": "大黑塔",
+    "en-us": "The Herta",
+    "ja-jp": "マダム・ヘルタ"
+   }
+  },
+  {
+   "id": "1402",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "阿格莱雅",
+    "zh-tw": "阿格萊雅",
+    "en-us": "Aglaea",
+    "ja-jp": "アグライア"
+   }
+  },
+  {
+   "id": "1403",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "缇宝",
+    "zh-tw": "緹寶",
+    "en-us": "Tribbie",
+    "ja-jp": "トリビー"
+   }
+  },
+  {
+   "id": "1404",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "万敌",
+    "zh-tw": "萬敵",
+    "en-us": "Mydei",
+    "ja-jp": "モーディス"
+   }
+  },
+  {
+   "id": "1405",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "那刻夏",
+    "zh-tw": "那刻夏",
+    "en-us": "Anaxa",
+    "ja-jp": "アナイクス"
+   }
+  },
+  {
+   "id": "1406",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "赛飞儿",
+    "zh-tw": "賽飛兒",
+    "en-us": "Cipher",
+    "ja-jp": "サフェル"
+   }
+  },
+  {
+   "id": "1407",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "遐蝶",
+    "zh-tw": "遐蝶",
+    "en-us": "Castorice",
+    "ja-jp": "キャストリス"
+   }
+  },
+  {
+   "id": "1408",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "白厄",
+    "zh-tw": "白厄",
+    "en-us": "Phainon",
+    "ja-jp": "ファイノン"
+   }
+  },
+  {
+   "id": "1409",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "风堇",
+    "zh-tw": "風堇",
+    "en-us": "Hyacine",
+    "ja-jp": "ヒアンシー"
+   }
+  },
+  {
+   "id": "1410",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "海瑟音",
+    "zh-tw": "海瑟音",
+    "en-us": "Hysilens",
+    "ja-jp": "セイレンス"
+   }
+  },
+  {
+   "id": "1412",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "刻律德菈",
+    "zh-tw": "刻律德菈",
+    "en-us": "Cerydra",
+    "ja-jp": "ケリュドラ"
+   }
+  },
+  {
+   "id": "1413",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "长夜月",
+    "zh-tw": "長夜月",
+    "en-us": "Evernight",
+    "ja-jp": "長夜月"
+   }
+  },
+  {
+   "id": "1414",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "丹恒•腾荒",
+    "zh-tw": "丹恆•騰荒",
+    "en-us": "Dan Heng • Permansor Terrae",
+    "ja-jp": "丹恒・騰荒"
+   }
+  },
+  {
+   "id": "1415",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "昔涟",
+    "zh-tw": "昔漣",
+    "en-us": "Cyrene",
+    "ja-jp": "キュレネ"
+   }
+  },
+  {
+   "id": "1501",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "火花",
+    "zh-tw": "火花",
+    "en-us": "Sparxie",
+    "ja-jp": "火花"
+   }
+  },
+  {
+   "id": "1502",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "爻光",
+    "zh-tw": "爻光",
+    "en-us": "Yao Guang",
+    "ja-jp": "爻光"
+   }
+  },
+  {
+   "id": "1504",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "不死途",
+    "zh-tw": "不死途",
+    "en-us": "Ashveil",
+    "ja-jp": "不死途"
+   }
+  },
+  {
+   "id": "1505",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "绯英",
+    "zh-tw": "緋英",
+    "en-us": "Evanescia",
+    "ja-jp": "緋英"
+   }
+  },
+  {
+   "id": "1506",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "银狼LV.999",
+    "zh-tw": "銀狼LV.999",
+    "en-us": "Silver Wolf LV.999",
+    "ja-jp": "銀狼LV.999"
+   }
+  },
+  {
+   "id": "1507",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "千冶•刃",
+    "zh-tw": "千冶•刃",
+    "en-us": "Mortenax Blade",
+    "ja-jp": "千冶・刃"
+   }
+  },
+  {
+   "id": "1508",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "远坂凛",
+    "zh-tw": "遠坂凜",
+    "en-us": "Rin Tohsaka",
+    "ja-jp": "遠坂凛"
+   }
+  },
+  {
+   "id": "1509",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "吉尔伽美什",
+    "zh-tw": "吉爾伽美什",
+    "en-us": "Gilgamesh",
+    "ja-jp": "ギルガメッシュ"
+   }
+  },
+  {
+   "id": "1510",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "姬子•启行",
+    "zh-tw": "姬子•啟行",
+    "en-us": "Himeko • Nova",
+    "ja-jp": "姫子・旅立ち"
+   }
+  },
+  {
+   "id": "8001",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "{NICKNAME}",
+    "zh-tw": "{NICKNAME}",
+    "en-us": "{NICKNAME}",
+    "ja-jp": "{NICKNAME}"
+   }
+  },
+  {
+   "id": "8002",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "{NICKNAME}",
+    "zh-tw": "{NICKNAME}",
+    "en-us": "{NICKNAME}",
+    "ja-jp": "{NICKNAME}"
+   }
+  },
+  {
+   "id": "8003",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "{NICKNAME}",
+    "zh-tw": "{NICKNAME}",
+    "en-us": "{NICKNAME}",
+    "ja-jp": "{NICKNAME}"
+   }
+  },
+  {
+   "id": "8004",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "{NICKNAME}",
+    "zh-tw": "{NICKNAME}",
+    "en-us": "{NICKNAME}",
+    "ja-jp": "{NICKNAME}"
+   }
+  },
+  {
+   "id": "8005",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "{NICKNAME}",
+    "zh-tw": "{NICKNAME}",
+    "en-us": "{NICKNAME}",
+    "ja-jp": "{NICKNAME}"
+   }
+  },
+  {
+   "id": "8006",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "{NICKNAME}",
+    "zh-tw": "{NICKNAME}",
+    "en-us": "{NICKNAME}",
+    "ja-jp": "{NICKNAME}"
+   }
+  },
+  {
+   "id": "8007",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "{NICKNAME}",
+    "zh-tw": "{NICKNAME}",
+    "en-us": "{NICKNAME}",
+    "ja-jp": "{NICKNAME}"
+   }
+  },
+  {
+   "id": "8008",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "{NICKNAME}",
+    "zh-tw": "{NICKNAME}",
+    "en-us": "{NICKNAME}",
+    "ja-jp": "{NICKNAME}"
+   }
+  },
+  {
+   "id": "8009",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "{NICKNAME}",
+    "zh-tw": "{NICKNAME}",
+    "en-us": "{NICKNAME}",
+    "ja-jp": "{NICKNAME}"
+   }
+  },
+  {
+   "id": "8010",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "{NICKNAME}",
+    "zh-tw": "{NICKNAME}",
+    "en-us": "{NICKNAME}",
+    "ja-jp": "{NICKNAME}"
+   }
+  },
+  {
+   "id": "20000",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "锋镝",
+    "zh-tw": "鋒鏑",
+    "en-us": "Arrows",
+    "ja-jp": "矢じり"
+   }
+  },
+  {
+   "id": "20001",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "物穰",
+    "zh-tw": "物穰",
+    "en-us": "Cornucopia",
+    "ja-jp": "物穣"
+   }
+  },
+  {
+   "id": "20002",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "天倾",
+    "zh-tw": "天傾",
+    "en-us": "Collapsing Sky",
+    "ja-jp": "天傾"
+   }
+  },
+  {
+   "id": "20003",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "琥珀",
+    "zh-tw": "琥珀",
+    "en-us": "Amber",
+    "ja-jp": "琥珀"
+   }
+  },
+  {
+   "id": "20004",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "幽邃",
+    "zh-tw": "幽邃",
+    "en-us": "Void",
+    "ja-jp": "幽邃"
+   }
+  },
+  {
+   "id": "20005",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "齐颂",
+    "zh-tw": "齊頌",
+    "en-us": "Chorus",
+    "ja-jp": "斉頌"
+   }
+  },
+  {
+   "id": "20006",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "智库",
+    "zh-tw": "智庫",
+    "en-us": "Data Bank",
+    "ja-jp": "アーカイブ"
+   }
+  },
+  {
+   "id": "20007",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "离弦",
+    "zh-tw": "離弦",
+    "en-us": "Darting Arrow",
+    "ja-jp": "離弦"
+   }
+  },
+  {
+   "id": "20008",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "嘉果",
+    "zh-tw": "嘉果",
+    "en-us": "Fine Fruit",
+    "ja-jp": "嘉果"
+   }
+  },
+  {
+   "id": "20009",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "乐圮",
+    "zh-tw": "樂圮",
+    "en-us": "Shattered Home",
+    "ja-jp": "楽壊"
+   }
+  },
+  {
+   "id": "20010",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "戍御",
+    "zh-tw": "戍禦",
+    "en-us": "Defense",
+    "ja-jp": "防衛"
+   }
+  },
+  {
+   "id": "20011",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "渊环",
+    "zh-tw": "淵環",
+    "en-us": "Loop",
+    "ja-jp": "淵環"
+   }
+  },
+  {
+   "id": "20012",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "轮契",
+    "zh-tw": "輪契",
+    "en-us": "Meshing Cogs",
+    "ja-jp": "輪契"
+   }
+  },
+  {
+   "id": "20013",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "灵钥",
+    "zh-tw": "靈鑰",
+    "en-us": "Passkey",
+    "ja-jp": "霊鍵"
+   }
+  },
+  {
+   "id": "20014",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "相抗",
+    "zh-tw": "相抗",
+    "en-us": "Adversarial",
+    "ja-jp": "相抗"
+   }
+  },
+  {
+   "id": "20015",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "蕃息",
+    "zh-tw": "蕃息",
+    "en-us": "Multiplication",
+    "ja-jp": "蕃殖"
+   }
+  },
+  {
+   "id": "20016",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "俱殁",
+    "zh-tw": "俱歿",
+    "en-us": "Mutual Demise",
+    "ja-jp": "倶歿"
+   }
+  },
+  {
+   "id": "20017",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "开疆",
+    "zh-tw": "開疆",
+    "en-us": "Pioneering",
+    "ja-jp": "新天地"
+   }
+  },
+  {
+   "id": "20018",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "匿影",
+    "zh-tw": "匿影",
+    "en-us": "Hidden Shadow",
+    "ja-jp": "匿影"
+   }
+  },
+  {
+   "id": "20019",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "调和",
+    "zh-tw": "調和",
+    "en-us": "Mediation",
+    "ja-jp": "同調"
+   }
+  },
+  {
+   "id": "20020",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "睿见",
+    "zh-tw": "睿見",
+    "en-us": "Sagacity",
+    "ja-jp": "見識"
+   }
+  },
+  {
+   "id": "20021",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "焚影",
+    "zh-tw": "焚影",
+    "en-us": "Shadowburn",
+    "ja-jp": "燃ゆる影"
+   }
+  },
+  {
+   "id": "20022",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "溯忆",
+    "zh-tw": "溯憶",
+    "en-us": "Reminiscence",
+    "ja-jp": "辿る記憶"
+   }
+  },
+  {
+   "id": "20023",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "嗤笑",
+    "zh-tw": "嗤笑",
+    "en-us": "Sneering",
+    "ja-jp": "嗤笑"
+   }
+  },
+  {
+   "id": "20024",
+   "rarity": 3,
+   "names": {
+    "zh-cn": "残泪",
+    "zh-tw": "殘淚",
+    "en-us": "Lingering Tear",
+    "ja-jp": "残涙"
+   }
+  },
+  {
+   "id": "21000",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "一场术后对话",
+    "zh-tw": "一場術後對話",
+    "en-us": "Post-Op Conversation",
+    "ja-jp": "手術後の会話"
+   }
+  },
+  {
+   "id": "21001",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "晚安与睡颜",
+    "zh-tw": "晚安與睡顏",
+    "en-us": "Good Night and Sleep Well",
+    "ja-jp": "おやすみなさいと寝顔"
+   }
+  },
+  {
+   "id": "21002",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "余生的第一天",
+    "zh-tw": "餘生的第一天",
+    "en-us": "Day One of My New Life",
+    "ja-jp": "余生の初日"
+   }
+  },
+  {
+   "id": "21003",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "唯有沉默",
+    "zh-tw": "唯有沉默",
+    "en-us": "Only Silence Remains",
+    "ja-jp": "沈黙のみ"
+   }
+  },
+  {
+   "id": "21004",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "记忆中的模样",
+    "zh-tw": "記憶中的模樣",
+    "en-us": "Memories of the Past",
+    "ja-jp": "記憶の中の姿"
+   }
+  },
+  {
+   "id": "21005",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "鼹鼠党欢迎你",
+    "zh-tw": "鼴鼠黨歡迎你",
+    "en-us": "The Moles Welcome You",
+    "ja-jp": "モグラ党へようこそ"
+   }
+  },
+  {
+   "id": "21006",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "「我」的诞生",
+    "zh-tw": "「我」的誕生",
+    "en-us": "The Birth of the Self",
+    "ja-jp": "「私」の誕生"
+   }
+  },
+  {
+   "id": "21007",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "同一种心情",
+    "zh-tw": "同一種心情",
+    "en-us": "Shared Feeling",
+    "ja-jp": "同じ気持ち"
+   }
+  },
+  {
+   "id": "21008",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "猎物的视线",
+    "zh-tw": "獵物的視線",
+    "en-us": "Eyes of the Prey",
+    "ja-jp": "獲物の視線"
+   }
+  },
+  {
+   "id": "21009",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "朗道的选择",
+    "zh-tw": "朗道的選擇",
+    "en-us": "Landau's Choice",
+    "ja-jp": "ランドゥーの選択"
+   }
+  },
+  {
+   "id": "21010",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "论剑",
+    "zh-tw": "論劍",
+    "en-us": "Swordplay",
+    "ja-jp": "論剣"
+   }
+  },
+  {
+   "id": "21011",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "与行星相会",
+    "zh-tw": "與行星相會",
+    "en-us": "Planetary Rendezvous",
+    "ja-jp": "惑星との出会い"
+   }
+  },
+  {
+   "id": "21012",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "秘密誓心",
+    "zh-tw": "秘密誓心",
+    "en-us": "A Secret Vow",
+    "ja-jp": "秘密の誓い"
+   }
+  },
+  {
+   "id": "21013",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "别让世界静下来",
+    "zh-tw": "別讓世界靜下來",
+    "en-us": "Make the World Clamor",
+    "ja-jp": "この世界に喧噪を"
+   }
+  },
+  {
+   "id": "21014",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "此时恰好",
+    "zh-tw": "此時恰好",
+    "en-us": "Perfect Timing",
+    "ja-jp": "今が丁度"
+   }
+  },
+  {
+   "id": "21015",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "决心如汗珠般闪耀",
+    "zh-tw": "決心如汗珠般閃耀",
+    "en-us": "Resolution Shines As Pearls of Sweat",
+    "ja-jp": "決意は汗のように輝く"
+   }
+  },
+  {
+   "id": "21016",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "宇宙市场趋势",
+    "zh-tw": "宇宙市場趨勢",
+    "en-us": "Trend of the Universal Market",
+    "ja-jp": "星間市場のトレンド"
+   }
+  },
+  {
+   "id": "21017",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "点个关注吧！",
+    "zh-tw": "按個追蹤吧！",
+    "en-us": "Subscribe for More!",
+    "ja-jp": "フォローして！"
+   }
+  },
+  {
+   "id": "21018",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "舞！舞！舞！",
+    "zh-tw": "舞！舞！舞！",
+    "en-us": "Dance! Dance! Dance!",
+    "ja-jp": "ダンス！ダンス！ダンス！"
+   }
+  },
+  {
+   "id": "21019",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "在蓝天下",
+    "zh-tw": "在藍天下",
+    "en-us": "Under the Blue Sky",
+    "ja-jp": "青空の下で"
+   }
+  },
+  {
+   "id": "21020",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "天才们的休憩",
+    "zh-tw": "天才們的休憩",
+    "en-us": "Geniuses' Repose",
+    "ja-jp": "天才たちの休息"
+   }
+  },
+  {
+   "id": "21021",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "等价交换",
+    "zh-tw": "等價交換",
+    "en-us": "Quid Pro Quo",
+    "ja-jp": "等価交換"
+   }
+  },
+  {
+   "id": "21022",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "延长记号",
+    "zh-tw": "延長記號",
+    "en-us": "Fermata",
+    "ja-jp": "フェルマータ"
+   }
+  },
+  {
+   "id": "21023",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "我们是地火",
+    "zh-tw": "我們是地火",
+    "en-us": "We Are Wildfire",
+    "ja-jp": "我ら地炎"
+   }
+  },
+  {
+   "id": "21024",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "春水初生",
+    "zh-tw": "春水初生",
+    "en-us": "River Flows in Spring",
+    "ja-jp": "春水に初生する"
+   }
+  },
+  {
+   "id": "21025",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "过往未来",
+    "zh-tw": "過往未來",
+    "en-us": "Past and Future",
+    "ja-jp": "過去と未来"
+   }
+  },
+  {
+   "id": "21026",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "汪！散步时间！",
+    "zh-tw": "汪！散步時間！",
+    "en-us": "Woof! Walk Time!",
+    "ja-jp": "ワン！散歩の時間！"
+   }
+  },
+  {
+   "id": "21027",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "早餐的仪式感",
+    "zh-tw": "早餐的儀式感",
+    "en-us": "The Seriousness of Breakfast",
+    "ja-jp": "朝食の儀式感"
+   }
+  },
+  {
+   "id": "21028",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "暖夜不会漫长",
+    "zh-tw": "暖夜不會漫長",
+    "en-us": "Warmth Shortens Cold Nights",
+    "ja-jp": "暖かい夜は長くない"
+   }
+  },
+  {
+   "id": "21029",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "后会有期",
+    "zh-tw": "後會有期",
+    "en-us": "We Will Meet Again",
+    "ja-jp": "またお会いしましょう"
+   }
+  },
+  {
+   "id": "21030",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "这就是我啦！",
+    "zh-tw": "這就是我啦！",
+    "en-us": "This Is Me!",
+    "ja-jp": "これがウチだよ！"
+   }
+  },
+  {
+   "id": "21031",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "重返幽冥",
+    "zh-tw": "重返幽冥",
+    "en-us": "Return to Darkness",
+    "ja-jp": "幽冥に帰す"
+   }
+  },
+  {
+   "id": "21032",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "镂月裁云之意",
+    "zh-tw": "鏤月裁雲之意",
+    "en-us": "Carve the Moon, Weave the Clouds",
+    "ja-jp": "彫月裁雲の意"
+   }
+  },
+  {
+   "id": "21033",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "无处可逃",
+    "zh-tw": "無處可逃",
+    "en-us": "Nowhere to Run",
+    "ja-jp": "逃げ場なし"
+   }
+  },
+  {
+   "id": "21034",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "今日亦是和平的一日",
+    "zh-tw": "今日亦是和平的一日",
+    "en-us": "Today Is Another Peaceful Day",
+    "ja-jp": "今日も平和な一日"
+   }
+  },
+  {
+   "id": "21035",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "何物为真",
+    "zh-tw": "何物為真",
+    "en-us": "What Is Real?",
+    "ja-jp": "何が真か"
+   }
+  },
+  {
+   "id": "21036",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "美梦小镇大冒险",
+    "zh-tw": "美夢小鎮大冒險",
+    "en-us": "Dreamville Adventure",
+    "ja-jp": "ドリームタウンの大冒険"
+   }
+  },
+  {
+   "id": "21037",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "最后的赢家",
+    "zh-tw": "最後的贏家",
+    "en-us": "Final Victor",
+    "ja-jp": "最後の勝者"
+   }
+  },
+  {
+   "id": "21038",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "在火的远处",
+    "zh-tw": "在火的遠處",
+    "en-us": "Flames Afar",
+    "ja-jp": "烈火の彼方"
+   }
+  },
+  {
+   "id": "21039",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "织造命运之线",
+    "zh-tw": "織造命運之線",
+    "en-us": "Destiny's Threads Forewoven",
+    "ja-jp": "運命を紡ぐ糸"
+   }
+  },
+  {
+   "id": "21040",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "银河沦陷日",
+    "zh-tw": "銀河淪陷日",
+    "en-us": "The Day The Cosmos Fell",
+    "ja-jp": "銀河が陥落した日"
+   }
+  },
+  {
+   "id": "21041",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "好戏开演",
+    "zh-tw": "好戲開演",
+    "en-us": "It's Showtime",
+    "ja-jp": "ショーの始まり"
+   }
+  },
+  {
+   "id": "21042",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "铭记于心的约定",
+    "zh-tw": "銘記於心的約定",
+    "en-us": "Indelible Promise",
+    "ja-jp": "心に刻まれた約束"
+   }
+  },
+  {
+   "id": "21043",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "两个人的演唱会",
+    "zh-tw": "兩個人的演唱會",
+    "en-us": "Concert for Two",
+    "ja-jp": "二人だけのコンサート"
+   }
+  },
+  {
+   "id": "21044",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "无边曼舞",
+    "zh-tw": "無邊曼舞",
+    "en-us": "Boundless Choreo",
+    "ja-jp": "終わりなき舞踏"
+   }
+  },
+  {
+   "id": "21045",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "谐乐静默之后",
+    "zh-tw": "諧樂靜默之後",
+    "en-us": "After the Charmony Fall",
+    "ja-jp": "調和が沈黙した後"
+   }
+  },
+  {
+   "id": "21046",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "芳华待灼",
+    "zh-tw": "芳華待灼",
+    "en-us": "Poised to Bloom",
+    "ja-jp": "美しき華よ今咲かん"
+   }
+  },
+  {
+   "id": "21047",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "黑夜如影随行",
+    "zh-tw": "黑夜如影隨行",
+    "en-us": "Shadowed by Night",
+    "ja-jp": "夜は影のように付き纏う"
+   }
+  },
+  {
+   "id": "21048",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "梦的蒙太奇",
+    "zh-tw": "夢的蒙太奇",
+    "en-us": "Dream's Montage",
+    "ja-jp": "夢のモンタージュ"
+   }
+  },
+  {
+   "id": "21050",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "胜利只在朝夕间",
+    "zh-tw": "勝利只在朝夕間",
+    "en-us": "Victory In a Blink",
+    "ja-jp": "瞬刻の勝機"
+   }
+  },
+  {
+   "id": "21051",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "天才们的问候",
+    "zh-tw": "天才們的問候",
+    "en-us": "Geniuses' Greetings",
+    "ja-jp": "天才たちの「挨拶」"
+   }
+  },
+  {
+   "id": "21052",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "多流汗，少流泪",
+    "zh-tw": "多流汗，少流淚",
+    "en-us": "Sweat Now, Cry Less",
+    "ja-jp": "流すなら涙より汗"
+   }
+  },
+  {
+   "id": "21053",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "愿旅途永远坦然",
+    "zh-tw": "願旅途永遠坦然",
+    "en-us": "Journey, Forever Peaceful",
+    "ja-jp": "旅が平穏であるように"
+   }
+  },
+  {
+   "id": "21054",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "故事的下一页",
+    "zh-tw": "故事的下一頁",
+    "en-us": "The Story's Next Page",
+    "ja-jp": "物語をめくって"
+   }
+  },
+  {
+   "id": "21055",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "直到明天的明天",
+    "zh-tw": "直到明天的明天",
+    "en-us": "Unto Tomorrow's Morrow",
+    "ja-jp": "明日の明日まで"
+   }
+  },
+  {
+   "id": "21056",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "追逐风的时候",
+    "zh-tw": "追逐風的時候",
+    "en-us": "In Pursuit of the Wind",
+    "ja-jp": "風を追う時"
+   }
+  },
+  {
+   "id": "21057",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "花儿不会忘记",
+    "zh-tw": "花兒不會忘記",
+    "en-us": "The Flower Remembers",
+    "ja-jp": "花は忘れない"
+   }
+  },
+  {
+   "id": "21058",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "一行往日的血",
+    "zh-tw": "一行往日的血",
+    "en-us": "A Trail of Bygone Blood",
+    "ja-jp": "古より受け継がれる血"
+   }
+  },
+  {
+   "id": "21060",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "氤氲麦香的梦",
+    "zh-tw": "氤氳麥香的夢",
+    "en-us": "A Dream Scented in Wheat",
+    "ja-jp": "麦の香り漂う夢"
+   }
+  },
+  {
+   "id": "21061",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "假日浴场大冒险",
+    "zh-tw": "假日浴場大冒險",
+    "en-us": "Holiday Thermae Escapade",
+    "ja-jp": "休日のバルネア大冒険"
+   }
+  },
+  {
+   "id": "21062",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "于那终点再见",
+    "zh-tw": "於那終點再見",
+    "en-us": "See You at the End",
+    "ja-jp": "終点でまた会おう"
+   }
+  },
+  {
+   "id": "21064",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "菇菇嘎嘎历险记",
+    "zh-tw": "菇菇嘎嘎歷險記",
+    "en-us": "Mushy Shroomy's Adventures",
+    "ja-jp": "タケタケ冒険記"
+   }
+  },
+  {
+   "id": "21065",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "今日好手气",
+    "zh-tw": "今日好手氣",
+    "en-us": "Today's Good Luck",
+    "ja-jp": "今日は好運"
+   }
+  },
+  {
+   "id": "22000",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "新手任务开始前",
+    "zh-tw": "新手任務開始前",
+    "en-us": "Before the Tutorial Mission Starts",
+    "ja-jp": "初めてのクエストの前に"
+   }
+  },
+  {
+   "id": "22001",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "嘿，我在这儿",
+    "zh-tw": "嘿，我在這裡",
+    "en-us": "Hey, Over Here",
+    "ja-jp": "よぉ、ここにいるぜ"
+   }
+  },
+  {
+   "id": "22002",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "为了明日的旅途",
+    "zh-tw": "為了明日的旅途",
+    "en-us": "For Tomorrow's Journey",
+    "ja-jp": "明日のための旅"
+   }
+  },
+  {
+   "id": "22003",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "忍事录•音律狩猎",
+    "zh-tw": "忍事錄•音律狩獵",
+    "en-us": "Ninja Record: Sound Hunt",
+    "ja-jp": "忍事録・音律狩猟"
+   }
+  },
+  {
+   "id": "22004",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "宇宙大生意",
+    "zh-tw": "宇宙大生意",
+    "en-us": "The Great Cosmic Enterprise",
+    "ja-jp": "宇宙一の大商い！"
+   }
+  },
+  {
+   "id": "22005",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "永远的迷境饭",
+    "zh-tw": "永遠的迷境飯",
+    "en-us": "The Forever Victual",
+    "ja-jp": "永遠の迷境ごはん"
+   }
+  },
+  {
+   "id": "22006",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "飞向粉色的明天",
+    "zh-tw": "飛向粉紅色的明天",
+    "en-us": "Fly Into a Pink Tomorrow",
+    "ja-jp": "ピンク色の明日へ"
+   }
+  },
+  {
+   "id": "22007",
+   "rarity": 4,
+   "names": {
+    "zh-cn": "未来，有我们一起",
+    "zh-tw": "未來，有我們一起",
+    "en-us": "Tomorrow, Together",
+    "ja-jp": "みんなで一緒に未来へ"
+   }
+  },
+  {
+   "id": "23000",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "银河铁道之夜",
+    "zh-tw": "銀河鐵道之夜",
+    "en-us": "Night on the Milky Way",
+    "ja-jp": "銀河鉄道の夜"
+   }
+  },
+  {
+   "id": "23001",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "于夜色中",
+    "zh-tw": "於夜色中",
+    "en-us": "In the Night",
+    "ja-jp": "夜の帳の中で"
+   }
+  },
+  {
+   "id": "23002",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "无可取代的东西",
+    "zh-tw": "無可取代的東西",
+    "en-us": "Something Irreplaceable",
+    "ja-jp": "かけがえのないもの"
+   }
+  },
+  {
+   "id": "23003",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "但战斗还未结束",
+    "zh-tw": "但戰鬥還未結束",
+    "en-us": "But the Battle Isn't Over",
+    "ja-jp": "だが戦争は終わらない"
+   }
+  },
+  {
+   "id": "23004",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "以世界之名",
+    "zh-tw": "以世界之名",
+    "en-us": "In the Name of the World",
+    "ja-jp": "世界の名を以て"
+   }
+  },
+  {
+   "id": "23005",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "制胜的瞬间",
+    "zh-tw": "制勝的瞬間",
+    "en-us": "Moment of Victory",
+    "ja-jp": "勝利の刹那"
+   }
+  },
+  {
+   "id": "23006",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "只需等待",
+    "zh-tw": "只需等待",
+    "en-us": "Patience Is All You Need",
+    "ja-jp": "待つのみ"
+   }
+  },
+  {
+   "id": "23007",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "雨一直下",
+    "zh-tw": "雨一直下",
+    "en-us": "Incessant Rain",
+    "ja-jp": "降りやまぬ雨"
+   }
+  },
+  {
+   "id": "23008",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "棺的回响",
+    "zh-tw": "棺的迴響",
+    "en-us": "Echoes of the Coffin",
+    "ja-jp": "棺のこだま"
+   }
+  },
+  {
+   "id": "23009",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "到不了的彼岸",
+    "zh-tw": "到不了的彼岸",
+    "en-us": "The Unreachable Side",
+    "ja-jp": "着かない彼岸"
+   }
+  },
+  {
+   "id": "23010",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "拂晓之前",
+    "zh-tw": "拂曉之前",
+    "en-us": "Before Dawn",
+    "ja-jp": "夜明け前"
+   }
+  },
+  {
+   "id": "23011",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "她已闭上双眼",
+    "zh-tw": "她已閉上雙眼",
+    "en-us": "She Already Shut Her Eyes",
+    "ja-jp": "閉ざした瞳"
+   }
+  },
+  {
+   "id": "23012",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "如泥酣眠",
+    "zh-tw": "如泥酣眠",
+    "en-us": "Sleep Like the Dead",
+    "ja-jp": "泥の如き眠り"
+   }
+  },
+  {
+   "id": "23013",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "时节不居",
+    "zh-tw": "時節不居",
+    "en-us": "Time Waits for No One",
+    "ja-jp": "時節は居らず"
+   }
+  },
+  {
+   "id": "23014",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "此身为剑",
+    "zh-tw": "此身為劍",
+    "en-us": "I Shall Be My Own Sword",
+    "ja-jp": "この身は剣なり"
+   }
+  },
+  {
+   "id": "23015",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "比阳光更明亮的",
+    "zh-tw": "比陽光更明亮的",
+    "en-us": "Brighter Than the Sun",
+    "ja-jp": "陽光より輝くもの"
+   }
+  },
+  {
+   "id": "23016",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "烦恼着，幸福着",
+    "zh-tw": "煩惱著，幸福著",
+    "en-us": "Worrisome, Blissful",
+    "ja-jp": "悩んで笑って"
+   }
+  },
+  {
+   "id": "23017",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "惊魂夜",
+    "zh-tw": "驚魂夜",
+    "en-us": "Night of Fright",
+    "ja-jp": "驚魂の夜"
+   }
+  },
+  {
+   "id": "23018",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "片刻，留在眼底",
+    "zh-tw": "片刻，留在眼底",
+    "en-us": "An Instant Before A Gaze",
+    "ja-jp": "その一刻、目に焼き付けて"
+   }
+  },
+  {
+   "id": "23019",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "镜中故我",
+    "zh-tw": "鏡中故我",
+    "en-us": "Past Self in Mirror",
+    "ja-jp": "鏡の中の私"
+   }
+  },
+  {
+   "id": "23020",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "纯粹思维的洗礼",
+    "zh-tw": "純粹思維的洗禮",
+    "en-us": "Baptism of Pure Thought",
+    "ja-jp": "純粋なる思惟の洗礼"
+   }
+  },
+  {
+   "id": "23021",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "游戏尘寰",
+    "zh-tw": "遊戲塵寰",
+    "en-us": "Earthly Escapade",
+    "ja-jp": "人生は遊び"
+   }
+  },
+  {
+   "id": "23022",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "重塑时光之忆",
+    "zh-tw": "重塑時光之憶",
+    "en-us": "Reforged Remembrance",
+    "ja-jp": "時間の記憶を再構築して"
+   }
+  },
+  {
+   "id": "23023",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "命运从未公平",
+    "zh-tw": "命運從未公平",
+    "en-us": "Inherently Unjust Destiny",
+    "ja-jp": "運命は常に不公平"
+   }
+  },
+  {
+   "id": "23024",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "行于流逝的岸",
+    "zh-tw": "行於流逝的岸",
+    "en-us": "Along the Passing Shore",
+    "ja-jp": "流れ逝く岸を歩いて"
+   }
+  },
+  {
+   "id": "23025",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "梦应归于何处",
+    "zh-tw": "夢應歸於何處",
+    "en-us": "Whereabouts Should Dreams Rest",
+    "ja-jp": "夢が帰り着く場所"
+   }
+  },
+  {
+   "id": "23026",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "夜色流光溢彩",
+    "zh-tw": "夜色流光溢彩",
+    "en-us": "Flowing Nightglow",
+    "ja-jp": "光あふれる夜"
+   }
+  },
+  {
+   "id": "23027",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "驶向第二次生命",
+    "zh-tw": "駛向第二次生命",
+    "en-us": "Sailing Towards a Second Life",
+    "ja-jp": "二度目の生に向かって"
+   }
+  },
+  {
+   "id": "23028",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "偏偏希望无价",
+    "zh-tw": "偏偏希望無價",
+    "en-us": "Yet Hope Is Priceless",
+    "ja-jp": "されど希望の銘は無価"
+   }
+  },
+  {
+   "id": "23029",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "那无数个春天",
+    "zh-tw": "那無數個春天",
+    "en-us": "Those Many Springs",
+    "ja-jp": "幾度目かの春"
+   }
+  },
+  {
+   "id": "23030",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "落日时起舞",
+    "zh-tw": "落日時起舞",
+    "en-us": "Dance at Sunset",
+    "ja-jp": "夕日に舞う"
+   }
+  },
+  {
+   "id": "23031",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "我将，巡征追猎",
+    "zh-tw": "我將，巡徵追獵",
+    "en-us": "I Venture Forth to Hunt",
+    "ja-jp": "我が征く巡狩の道"
+   }
+  },
+  {
+   "id": "23032",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "唯有香如故",
+    "zh-tw": "唯有香如故",
+    "en-us": "Scent Alone Stays True",
+    "ja-jp": "昔日の香りは今も猶"
+   }
+  },
+  {
+   "id": "23033",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "忍法帖•缭乱破魔",
+    "zh-tw": "忍法帖•繚亂破魔",
+    "en-us": "Ninjutsu Inscription: Dazzling Evilbreaker",
+    "ja-jp": "忍法帖・繚乱破魔"
+   }
+  },
+  {
+   "id": "23034",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "回到大地的飞行",
+    "zh-tw": "回到大地的飛行",
+    "en-us": "A Grounded Ascent",
+    "ja-jp": "大地より天を目指して"
+   }
+  },
+  {
+   "id": "23035",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "长路终有归途",
+    "zh-tw": "長路終有歸途",
+    "en-us": "Long Road Leads Home",
+    "ja-jp": "長途はやがて帰途へと続く"
+   }
+  },
+  {
+   "id": "23036",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "将光阴织成黄金",
+    "zh-tw": "將光陰織成黃金",
+    "en-us": "Time Woven Into Gold",
+    "ja-jp": "光陰を織り黄金と成す"
+   }
+  },
+  {
+   "id": "23037",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "向着不可追问处",
+    "zh-tw": "向著不可追問處",
+    "en-us": "Into the Unreachable Veil",
+    "ja-jp": "触れてはならぬ領域へ"
+   }
+  },
+  {
+   "id": "23038",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "如果时间是一朵花",
+    "zh-tw": "如果時間是一朵花",
+    "en-us": "If Time Were a Flower",
+    "ja-jp": "もしも時が花だったら"
+   }
+  },
+  {
+   "id": "23039",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "血火啊，燃烧前路",
+    "zh-tw": "血火啊，燃燒前路",
+    "en-us": "Flame of Blood, Blaze My Path",
+    "ja-jp": "前途燃やす血の如き炎"
+   }
+  },
+  {
+   "id": "23040",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "让告别，更美一些",
+    "zh-tw": "讓告別，更美一點",
+    "en-us": "Make Farewells More Beautiful",
+    "ja-jp": "永訣よ美しくあれ"
+   }
+  },
+  {
+   "id": "23041",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "生命当付之一炬",
+    "zh-tw": "生命當付之一炬",
+    "en-us": "Life Should Be Cast to Flames",
+    "ja-jp": "生命、焼滅すべし"
+   }
+  },
+  {
+   "id": "23042",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "愿虹光永驻天空",
+    "zh-tw": "願虹光永駐天空",
+    "en-us": "Long May Rainbows Adorn the Sky",
+    "ja-jp": "空の虹が消えぬように"
+   }
+  },
+  {
+   "id": "23043",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "谎言在风中飘扬",
+    "zh-tw": "謊言在風中飄揚",
+    "en-us": "Lies Dance on the Breeze",
+    "ja-jp": "風に揺蕩う虚言"
+   }
+  },
+  {
+   "id": "23044",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "黎明恰如此燃烧",
+    "zh-tw": "黎明恰如此燃燒",
+    "en-us": "Thus Burns the Dawn",
+    "ja-jp": "燃え盛る黎明のように"
+   }
+  },
+  {
+   "id": "23045",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "没有回报的加冕",
+    "zh-tw": "沒有回報的加冕",
+    "en-us": "A Thankless Coronation",
+    "ja-jp": "報われぬ戴冠"
+   }
+  },
+  {
+   "id": "23046",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "理想燃烧的地狱",
+    "zh-tw": "理想燃燒的地獄",
+    "en-us": "The Hell Where Ideals Burn",
+    "ja-jp": "理想を焼く奈落で"
+   }
+  },
+  {
+   "id": "23047",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "海洋为何而歌",
+    "zh-tw": "海洋為何而歌",
+    "en-us": "Why Does the Ocean Sing",
+    "ja-jp": "海の歌は何がため"
+   }
+  },
+  {
+   "id": "23048",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "金血铭刻的时代",
+    "zh-tw": "金血銘刻的時代",
+    "en-us": "Epoch Etched in Golden Blood",
+    "ja-jp": "黄金の血で刻む時代"
+   }
+  },
+  {
+   "id": "23049",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "致长夜的星光",
+    "zh-tw": "致長夜的星光",
+    "en-us": "To Evernight's Stars",
+    "ja-jp": "長き夜に輝く星へ"
+   }
+  },
+  {
+   "id": "23050",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "勿忘她的火焰",
+    "zh-tw": "勿忘她的火焰",
+    "en-us": "Never Forget Her Flame",
+    "ja-jp": "彼女の炎を忘れずに"
+   }
+  },
+  {
+   "id": "23051",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "纵然山河万程",
+    "zh-tw": "縱然山河萬程",
+    "en-us": "Though Worlds Apart",
+    "ja-jp": "万里の山河を越えて"
+   }
+  },
+  {
+   "id": "23052",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "爱如此刻永恒",
+    "zh-tw": "愛如此刻永恆",
+    "en-us": "This Love, Forever",
+    "ja-jp": "愛はいま永遠に"
+   }
+  },
+  {
+   "id": "23053",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "花花世界迷人眼",
+    "zh-tw": "花花世界迷人眼",
+    "en-us": "Dazzled by a Flowery World",
+    "ja-jp": "きらびやかな世界"
+   }
+  },
+  {
+   "id": "23054",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "当她决定看见",
+    "zh-tw": "當她決定看見",
+    "en-us": "When She Decided to See",
+    "ja-jp": "彼女が視ると決めた時"
+   }
+  },
+  {
+   "id": "23056",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "一场谎言的终幕",
+    "zh-tw": "一場謊言的終幕",
+    "en-us": "The Finale of a Lie",
+    "ja-jp": "或る嘘の終幕"
+   }
+  },
+  {
+   "id": "23057",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "欢迎来到银河城",
+    "zh-tw": "歡迎來到銀河城",
+    "en-us": "Welcome to the Cosmic City",
+    "ja-jp": "銀河シティへようこそ"
+   }
+  },
+  {
+   "id": "23058",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "邂逅于下一个花季",
+    "zh-tw": "邂逅於下一個花季",
+    "en-us": "Until the Flowers Bloom Again",
+    "ja-jp": "再び花が咲く季節に"
+   }
+  },
+  {
+   "id": "23059",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "灼尽炼狱的新骸",
+    "zh-tw": "灼盡煉獄的新骸",
+    "en-us": "Reforged in Hellfire",
+    "ja-jp": "煉獄に焼かれし新身"
+   }
+  },
+  {
+   "id": "23060",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "当一颗星照亮夜空",
+    "zh-tw": "當一顆星照亮夜空",
+    "en-us": "A Star That Lights the Night",
+    "ja-jp": "夜を照らす導きの星"
+   }
+  },
+  {
+   "id": "23061",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "星火悄然闪耀",
+    "zh-tw": "星火悄然閃耀",
+    "en-us": "Flickering Stars",
+    "ja-jp": "静かに瞬く小さな火"
+   }
+  },
+  {
+   "id": "23062",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "所见即我",
+    "zh-tw": "所見即我",
+    "en-us": "I Am As You Behold",
+    "ja-jp": "在るがままの我"
+   }
+  },
+  {
+   "id": "24000",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "记一位星神的陨落",
+    "zh-tw": "記一位星神的殞落",
+    "en-us": "On the Fall of an Aeon",
+    "ja-jp": "とある星神の殞落を記す"
+   }
+  },
+  {
+   "id": "24001",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "星海巡航",
+    "zh-tw": "星海巡航",
+    "en-us": "Cruising in the Stellar Sea",
+    "ja-jp": "星海巡航"
+   }
+  },
+  {
+   "id": "24002",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "记忆的质料",
+    "zh-tw": "記憶的質料",
+    "en-us": "Texture of Memories",
+    "ja-jp": "記憶の素材"
+   }
+  },
+  {
+   "id": "24003",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "孤独的疗愈",
+    "zh-tw": "孤獨的療癒",
+    "en-us": "Solitary Healing",
+    "ja-jp": "孤独の癒し"
+   }
+  },
+  {
+   "id": "24004",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "不息的演算",
+    "zh-tw": "不息的演算",
+    "en-us": "Eternal Calculus",
+    "ja-jp": "絶え間ない演算"
+   }
+  },
+  {
+   "id": "24005",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "记忆永不落幕",
+    "zh-tw": "記憶永不落幕",
+    "en-us": "Memory's Curtain Never Falls",
+    "ja-jp": "尽きぬ追憶"
+   }
+  },
+  {
+   "id": "24006",
+   "rarity": 5,
+   "names": {
+    "zh-cn": "欢愉满溢祝福",
+    "zh-tw": "歡愉滿溢祝福",
+    "en-us": "Elation Brimming With Blessings",
+    "ja-jp": "愉悦溢れる祝福"
+   }
+  }
+ ],
+ "standard": [
+  "1003",
+  "1004",
+  "1101",
+  "1104",
+  "1107",
+  "1209",
+  "1211",
+  "23000",
+  "23002",
+  "23003",
+  "23004",
+  "23005",
+  "23012",
+  "23013"
+ ],
+ "banners": [
+  {
+   "id": "starrail-character-2023-04-26",
+   "pool_type": "character",
+   "version": "1.0",
+   "start": "2023-04-26T06:00:00+08:00",
+   "end": "2023-05-17T17:59:59+08:00",
+   "up_top": [
+    "1102"
+   ],
+   "up_second": [
+    "1109",
+    "1106",
+    "1105"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2023-04-26",
+   "pool_type": "light_cone",
+   "version": "1.0",
+   "start": "2023-04-26T06:00:00+08:00",
+   "end": "2023-05-17T17:59:59+08:00",
+   "up_top": [
+    "23001"
+   ],
+   "up_second": [
+    "21005",
+    "21001",
+    "21000"
+   ]
+  },
+  {
+   "id": "starrail-character-2023-05-17",
+   "pool_type": "character",
+   "version": "1.0",
+   "start": "2023-05-17T18:00:00+08:00",
+   "end": "2023-06-06T14:59:59+08:00",
+   "up_top": [
+    "1204"
+   ],
+   "up_second": [
+    "1202",
+    "1206",
+    "1001"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2023-05-17",
+   "pool_type": "light_cone",
+   "version": "1.0",
+   "start": "2023-05-17T18:00:00+08:00",
+   "end": "2023-06-06T14:59:59+08:00",
+   "up_top": [
+    "23010"
+   ],
+   "up_second": [
+    "21011",
+    "21003",
+    "21002"
+   ]
+  },
+  {
+   "id": "starrail-character-2023-06-07",
+   "pool_type": "character",
+   "version": "1.1",
+   "start": "2023-06-07T06:00:00+08:00",
+   "end": "2023-06-28T11:59:59+08:00",
+   "up_top": [
+    "1006"
+   ],
+   "up_second": [
+    "1002",
+    "1009",
+    "1103"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2023-06-07",
+   "pool_type": "light_cone",
+   "version": "1.1",
+   "start": "2023-06-07T06:00:00+08:00",
+   "end": "2023-06-28T11:59:59+08:00",
+   "up_top": [
+    "23007"
+   ],
+   "up_second": [
+    "21017",
+    "21004",
+    "21013"
+   ]
+  },
+  {
+   "id": "starrail-character-2023-06-28",
+   "pool_type": "character",
+   "version": "1.1",
+   "start": "2023-06-28T12:00:00+08:00",
+   "end": "2023-07-18T14:59:59+08:00",
+   "up_top": [
+    "1203"
+   ],
+   "up_second": [
+    "1207",
+    "1106",
+    "1201"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2023-06-28",
+   "pool_type": "light_cone",
+   "version": "1.1",
+   "start": "2023-06-28T12:00:00+08:00",
+   "end": "2023-07-18T14:59:59+08:00",
+   "up_top": [
+    "23008"
+   ],
+   "up_second": [
+    "21001",
+    "21020",
+    "21018"
+   ]
+  },
+  {
+   "id": "starrail-character-2023-07-19",
+   "pool_type": "character",
+   "version": "1.2",
+   "start": "2023-07-19T06:00:00+08:00",
+   "end": "2023-08-09T11:59:59+08:00",
+   "up_top": [
+    "1205"
+   ],
+   "up_second": [
+    "1008",
+    "1105",
+    "1206"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2023-07-19",
+   "pool_type": "light_cone",
+   "version": "1.2",
+   "start": "2023-07-19T06:00:00+08:00",
+   "end": "2023-08-09T11:59:59+08:00",
+   "up_top": [
+    "23009"
+   ],
+   "up_second": [
+    "21012",
+    "21007",
+    "21010"
+   ]
+  },
+  {
+   "id": "starrail-character-2023-08-09",
+   "pool_type": "character",
+   "version": "1.2",
+   "start": "2023-08-09T12:00:00+08:00",
+   "end": "2023-08-29T14:59:59+08:00",
+   "up_top": [
+    "1005"
+   ],
+   "up_second": [
+    "1111",
+    "1108",
+    "1103"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2023-08-09",
+   "pool_type": "light_cone",
+   "version": "1.2",
+   "start": "2023-08-09T12:00:00+08:00",
+   "end": "2023-08-29T14:59:59+08:00",
+   "up_top": [
+    "23006"
+   ],
+   "up_second": [
+    "21015",
+    "21008",
+    "21006"
+   ]
+  },
+  {
+   "id": "starrail-character-2023-08-30",
+   "pool_type": "character",
+   "version": "1.3",
+   "start": "2023-08-30T06:00:00+08:00",
+   "end": "2023-09-20T11:59:59+08:00",
+   "up_top": [
+    "1213"
+   ],
+   "up_second": [
+    "1207",
+    "1009",
+    "1001"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2023-08-30",
+   "pool_type": "light_cone",
+   "version": "1.3",
+   "start": "2023-08-30T06:00:00+08:00",
+   "end": "2023-09-20T11:59:59+08:00",
+   "up_top": [
+    "23015"
+   ],
+   "up_second": [
+    "21018",
+    "21011",
+    "21009"
+   ]
+  },
+  {
+   "id": "starrail-character-2023-09-20",
+   "pool_type": "character",
+   "version": "1.3",
+   "start": "2023-09-20T12:00:00+08:00",
+   "end": "2023-10-10T14:59:59+08:00",
+   "up_top": [
+    "1208"
+   ],
+   "up_second": [
+    "1110",
+    "1109",
+    "1106"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2023-09-20",
+   "pool_type": "light_cone",
+   "version": "1.3",
+   "start": "2023-09-20T12:00:00+08:00",
+   "end": "2023-10-10T14:59:59+08:00",
+   "up_top": [
+    "23011"
+   ],
+   "up_second": [
+    "21014",
+    "21019",
+    "21016"
+   ]
+  },
+  {
+   "id": "starrail-character-2023-10-11",
+   "pool_type": "character",
+   "version": "1.4",
+   "start": "2023-10-11T06:00:00+08:00",
+   "end": "2023-10-27T11:59:59+08:00",
+   "up_top": [
+    "1212"
+   ],
+   "up_second": [
+    "1202",
+    "1201",
+    "1108"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2023-10-11",
+   "pool_type": "light_cone",
+   "version": "1.4",
+   "start": "2023-10-11T06:00:00+08:00",
+   "end": "2023-10-27T11:59:59+08:00",
+   "up_top": [
+    "23014"
+   ],
+   "up_second": [
+    "21004",
+    "21013",
+    "21008"
+   ]
+  },
+  {
+   "id": "starrail-character-2023-10-27",
+   "pool_type": "character",
+   "version": "1.4",
+   "start": "2023-10-27T12:00:00+08:00",
+   "end": "2023-11-14T14:59:59+08:00",
+   "up_top": [
+    "1112",
+    "1102"
+   ],
+   "up_second": [
+    "1210",
+    "1111",
+    "1206"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2023-10-27",
+   "pool_type": "light_cone",
+   "version": "1.4",
+   "start": "2023-10-27T12:00:00+08:00",
+   "end": "2023-11-14T14:59:59+08:00",
+   "up_top": [
+    "23016",
+    "23001"
+   ],
+   "up_second": [
+    "21005",
+    "21015",
+    "21003"
+   ]
+  },
+  {
+   "id": "starrail-character-2023-11-15",
+   "pool_type": "character",
+   "version": "1.5",
+   "start": "2023-11-15T06:00:00+08:00",
+   "end": "2023-12-06T11:59:59+08:00",
+   "up_top": [
+    "1217"
+   ],
+   "up_second": [
+    "1002",
+    "1008",
+    "1103"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2023-11-15",
+   "pool_type": "light_cone",
+   "version": "1.5",
+   "start": "2023-11-15T06:00:00+08:00",
+   "end": "2023-12-06T11:59:59+08:00",
+   "up_top": [
+    "23017"
+   ],
+   "up_second": [
+    "21007",
+    "21017",
+    "21016"
+   ]
+  },
+  {
+   "id": "starrail-character-2023-12-06",
+   "pool_type": "character",
+   "version": "1.5",
+   "start": "2023-12-06T12:00:00+08:00",
+   "end": "2023-12-26T14:59:59+08:00",
+   "up_top": [
+    "1302",
+    "1006"
+   ],
+   "up_second": [
+    "1215",
+    "1110",
+    "1009"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2023-12-06",
+   "pool_type": "light_cone",
+   "version": "1.5",
+   "start": "2023-12-06T12:00:00+08:00",
+   "end": "2023-12-26T14:59:59+08:00",
+   "up_top": [
+    "23018",
+    "23007"
+   ],
+   "up_second": [
+    "21019",
+    "21000",
+    "21006"
+   ]
+  },
+  {
+   "id": "starrail-character-2023-12-27",
+   "pool_type": "character",
+   "version": "1.6",
+   "start": "2023-12-27T06:00:00+08:00",
+   "end": "2024-01-17T11:59:00+08:00",
+   "up_top": [
+    "1303",
+    "1205"
+   ],
+   "up_second": [
+    "1214",
+    "1001",
+    "1202"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2023-12-27",
+   "pool_type": "light_cone",
+   "version": "1.6",
+   "start": "2023-12-27T06:00:00+08:00",
+   "end": "2024-01-17T11:59:00+08:00",
+   "up_top": [
+    "23019",
+    "23009"
+   ],
+   "up_second": [
+    "21011",
+    "21002",
+    "21012"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-01-17",
+   "pool_type": "character",
+   "version": "1.6",
+   "start": "2024-01-17T12:00:00+08:00",
+   "end": "2024-02-05T14:59:00+08:00",
+   "up_top": [
+    "1305",
+    "1005"
+   ],
+   "up_second": [
+    "1206",
+    "1105",
+    "1109"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-01-17",
+   "pool_type": "light_cone",
+   "version": "1.6",
+   "start": "2024-01-17T12:00:00+08:00",
+   "end": "2024-02-05T14:59:00+08:00",
+   "up_top": [
+    "23020",
+    "23006"
+   ],
+   "up_second": [
+    "21014",
+    "21003",
+    "21009"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-02-06",
+   "pool_type": "character",
+   "version": "2.0",
+   "start": "2024-02-06T06:00:00+08:00",
+   "end": "2024-02-29T11:59:00+08:00",
+   "up_top": [
+    "1307",
+    "1213"
+   ],
+   "up_second": [
+    "1312",
+    "1202",
+    "1210"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-02-06",
+   "pool_type": "light_cone",
+   "version": "2.0",
+   "start": "2024-02-06T06:00:00+08:00",
+   "end": "2024-02-29T11:59:00+08:00",
+   "up_top": [
+    "23022",
+    "23015"
+   ],
+   "up_second": [
+    "21042",
+    "21015",
+    "21018"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-02-29",
+   "pool_type": "character",
+   "version": "2.0",
+   "start": "2024-02-29T12:00:00+08:00",
+   "end": "2024-03-26T14:59:00+08:00",
+   "up_top": [
+    "1306",
+    "1204"
+   ],
+   "up_second": [
+    "1108",
+    "1201",
+    "1215"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-02-29",
+   "pool_type": "light_cone",
+   "version": "2.0",
+   "start": "2024-02-29T12:00:00+08:00",
+   "end": "2024-03-26T14:59:00+08:00",
+   "up_top": [
+    "23021",
+    "23010"
+   ],
+   "up_second": [
+    "21011",
+    "21019",
+    "21020"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-03-27",
+   "pool_type": "character",
+   "version": "2.1",
+   "start": "2024-03-27T06:00:00+08:00",
+   "end": "2024-04-17T11:59:59+08:00",
+   "up_top": [
+    "1308",
+    "1203"
+   ],
+   "up_second": [
+    "1301",
+    "1106",
+    "1002"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-03-27",
+   "pool_type": "light_cone",
+   "version": "2.1",
+   "start": "2024-03-27T06:00:00+08:00",
+   "end": "2024-04-17T11:59:59+08:00",
+   "up_top": [
+    "23024",
+    "23008"
+   ],
+   "up_second": [
+    "21001",
+    "21000",
+    "21017"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-04-17",
+   "pool_type": "character",
+   "version": "2.1",
+   "start": "2024-04-17T12:00:00+08:00",
+   "end": "2024-05-07T15:00:00+08:00",
+   "up_top": [
+    "1304",
+    "1212"
+   ],
+   "up_second": [
+    "1110",
+    "1111",
+    "1103"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-04-17",
+   "pool_type": "light_cone",
+   "version": "2.1",
+   "start": "2024-04-17T12:00:00+08:00",
+   "end": "2024-05-07T15:00:00+08:00",
+   "up_top": [
+    "23023",
+    "23014"
+   ],
+   "up_second": [
+    "21043",
+    "21007",
+    "21013"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-05-08",
+   "pool_type": "character",
+   "version": "2.2",
+   "start": "2024-05-08T06:00:00+08:00",
+   "end": "2024-05-29T11:59:59+08:00",
+   "up_top": [
+    "1309",
+    "1112"
+   ],
+   "up_second": [
+    "1001",
+    "1215",
+    "1214"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-05-08",
+   "pool_type": "light_cone",
+   "version": "2.2",
+   "start": "2024-05-08T06:00:00+08:00",
+   "end": "2024-05-29T11:59:59+08:00",
+   "up_top": [
+    "23026",
+    "23016"
+   ],
+   "up_second": [
+    "21044",
+    "21010",
+    "21014"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-05-29",
+   "pool_type": "character",
+   "version": "2.2",
+   "start": "2024-05-29T12:00:00+08:00",
+   "end": "2024-06-18T15:00:00+08:00",
+   "up_top": [
+    "1315",
+    "1208"
+   ],
+   "up_second": [
+    "1106",
+    "1111",
+    "1109"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-05-29",
+   "pool_type": "light_cone",
+   "version": "2.2",
+   "start": "2024-05-29T12:00:00+08:00",
+   "end": "2024-06-18T15:00:00+08:00",
+   "up_top": [
+    "23027",
+    "23011"
+   ],
+   "up_second": [
+    "21020",
+    "21012",
+    "21009"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-06-19",
+   "pool_type": "character",
+   "version": "2.3",
+   "start": "2024-06-19T06:00:00+08:00",
+   "end": "2024-07-10T11:59:59+08:00",
+   "up_top": [
+    "1310",
+    "1303"
+   ],
+   "up_second": [
+    "1301",
+    "1312",
+    "1214"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-06-19",
+   "pool_type": "light_cone",
+   "version": "2.3",
+   "start": "2024-06-19T06:00:00+08:00",
+   "end": "2024-07-10T11:59:59+08:00",
+   "up_top": [
+    "23025",
+    "23019"
+   ],
+   "up_second": [
+    "21004",
+    "21002",
+    "21008"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-07-10",
+   "pool_type": "character",
+   "version": "2.3",
+   "start": "2024-07-10T12:00:00+08:00",
+   "end": "2024-07-30T15:00:00+08:00",
+   "up_top": [
+    "1314",
+    "1302"
+   ],
+   "up_second": [
+    "1103",
+    "1105",
+    "1009"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-07-10",
+   "pool_type": "light_cone",
+   "version": "2.3",
+   "start": "2024-07-10T12:00:00+08:00",
+   "end": "2024-07-30T15:00:00+08:00",
+   "up_top": [
+    "23028",
+    "23018"
+   ],
+   "up_second": [
+    "21045",
+    "21007",
+    "21016"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-07-31",
+   "pool_type": "character",
+   "version": "2.4",
+   "start": "2024-07-31T06:00:00+08:00",
+   "end": "2024-08-21T11:59:59+08:00",
+   "up_top": [
+    "1221",
+    "1217"
+   ],
+   "up_second": [
+    "1215",
+    "1207",
+    "1110"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-07-31",
+   "pool_type": "light_cone",
+   "version": "2.4",
+   "start": "2024-07-31T06:00:00+08:00",
+   "end": "2024-08-21T11:59:59+08:00",
+   "up_top": [
+    "23030",
+    "23017"
+   ],
+   "up_second": [
+    "21005",
+    "21014",
+    "21006"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-08-21",
+   "pool_type": "character",
+   "version": "2.4",
+   "start": "2024-08-21T12:00:00+08:00",
+   "end": "2024-09-09T15:00:00+08:00",
+   "up_top": [
+    "1218",
+    "1306"
+   ],
+   "up_second": [
+    "1109",
+    "1210",
+    "1008"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-08-21",
+   "pool_type": "light_cone",
+   "version": "2.4",
+   "start": "2024-08-21T12:00:00+08:00",
+   "end": "2024-09-09T15:00:00+08:00",
+   "up_top": [
+    "23029",
+    "23021"
+   ],
+   "up_second": [
+    "21046",
+    "21008",
+    "21012"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-09-10",
+   "pool_type": "character",
+   "version": "2.5",
+   "start": "2024-09-10T06:00:00+08:00",
+   "end": "2024-10-02T11:59:59+08:00",
+   "up_top": [
+    "1220",
+    "1309",
+    "1307",
+    "1005"
+   ],
+   "up_second": [
+    "1223",
+    "1009",
+    "1111"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-09-10",
+   "pool_type": "light_cone",
+   "version": "2.5",
+   "start": "2024-09-10T06:00:00+08:00",
+   "end": "2024-10-02T11:59:59+08:00",
+   "up_top": [
+    "23031",
+    "23026",
+    "23022",
+    "23006"
+   ],
+   "up_second": [
+    "21010",
+    "21015",
+    "21006"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-10-02",
+   "pool_type": "character",
+   "version": "2.5",
+   "start": "2024-10-02T12:00:00+08:00",
+   "end": "2024-10-22T15:00:00+08:00",
+   "up_top": [
+    "1222",
+    "1112"
+   ],
+   "up_second": [
+    "1312",
+    "1105",
+    "1210"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-10-02",
+   "pool_type": "light_cone",
+   "version": "2.5",
+   "start": "2024-10-02T12:00:00+08:00",
+   "end": "2024-10-22T15:00:00+08:00",
+   "up_top": [
+    "23032",
+    "23016"
+   ],
+   "up_second": [
+    "21047",
+    "21007",
+    "21011"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-10-23",
+   "pool_type": "character",
+   "version": "2.6",
+   "start": "2024-10-23T06:00:00+08:00",
+   "end": "2024-11-13T11:59:59+08:00",
+   "up_top": [
+    "1317",
+    "1213"
+   ],
+   "up_second": [
+    "1110",
+    "1214",
+    "1207"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-10-23",
+   "pool_type": "light_cone",
+   "version": "2.6",
+   "start": "2024-10-23T06:00:00+08:00",
+   "end": "2024-11-13T11:59:59+08:00",
+   "up_top": [
+    "23033",
+    "23015"
+   ],
+   "up_second": [
+    "21048",
+    "21045",
+    "21019"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-11-13",
+   "pool_type": "character",
+   "version": "2.6",
+   "start": "2024-11-13T12:00:00+08:00",
+   "end": "2024-12-03T15:00:00+08:00",
+   "up_top": [
+    "1308",
+    "1304"
+   ],
+   "up_second": [
+    "1001",
+    "1106",
+    "1108"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-11-13",
+   "pool_type": "light_cone",
+   "version": "2.6",
+   "start": "2024-11-13T12:00:00+08:00",
+   "end": "2024-12-03T15:00:00+08:00",
+   "up_top": [
+    "23024",
+    "23023"
+   ],
+   "up_second": [
+    "21002",
+    "21044",
+    "21013"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-12-04",
+   "pool_type": "character",
+   "version": "2.7",
+   "start": "2024-12-04T06:00:00+08:00",
+   "end": "2024-12-25T11:59:59+08:00",
+   "up_top": [
+    "1313",
+    "1204"
+   ],
+   "up_second": [
+    "1201",
+    "1008",
+    "1202"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-12-04",
+   "pool_type": "light_cone",
+   "version": "2.7",
+   "start": "2024-12-04T06:00:00+08:00",
+   "end": "2024-12-25T11:59:59+08:00",
+   "up_top": [
+    "23034",
+    "23010"
+   ],
+   "up_second": [
+    "21046",
+    "21006",
+    "21010"
+   ]
+  },
+  {
+   "id": "starrail-character-2024-12-25",
+   "pool_type": "character",
+   "version": "2.7",
+   "start": "2024-12-25T12:00:00+08:00",
+   "end": "2025-01-14T15:00:00+08:00",
+   "up_top": [
+    "1225",
+    "1310"
+   ],
+   "up_second": [
+    "1301",
+    "1207",
+    "1312"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2024-12-25",
+   "pool_type": "light_cone",
+   "version": "2.7",
+   "start": "2024-12-25T12:00:00+08:00",
+   "end": "2025-01-14T15:00:00+08:00",
+   "up_top": [
+    "23035",
+    "23025"
+   ],
+   "up_second": [
+    "21042",
+    "21015",
+    "21043"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-01-15",
+   "pool_type": "character",
+   "version": "3.0",
+   "start": "2025-01-15T06:00:00+08:00",
+   "end": "2025-02-05T11:59:59+08:00",
+   "up_top": [
+    "1401",
+    "1222",
+    "1220",
+    "1314"
+   ],
+   "up_second": [
+    "1105",
+    "1009",
+    "1223"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-01-15",
+   "pool_type": "light_cone",
+   "version": "3.0",
+   "start": "2025-01-15T06:00:00+08:00",
+   "end": "2025-02-05T11:59:59+08:00",
+   "up_top": [
+    "23037",
+    "23032",
+    "23031",
+    "23028"
+   ],
+   "up_second": [
+    "21003",
+    "21009",
+    "21020"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-02-05",
+   "pool_type": "character",
+   "version": "3.0",
+   "start": "2025-02-05T12:00:00+08:00",
+   "end": "2025-02-25T15:00:00+08:00",
+   "up_top": [
+    "1402",
+    "1315",
+    "1309",
+    "1006"
+   ],
+   "up_second": [
+    "1202",
+    "1215",
+    "1206"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-02-05",
+   "pool_type": "light_cone",
+   "version": "3.0",
+   "start": "2025-02-05T12:00:00+08:00",
+   "end": "2025-02-25T15:00:00+08:00",
+   "up_top": [
+    "23036",
+    "23027",
+    "23026",
+    "23007"
+   ],
+   "up_second": [
+    "21051",
+    "21017",
+    "21018"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-02-26",
+   "pool_type": "character",
+   "version": "3.1",
+   "start": "2025-02-26T06:00:00+08:00",
+   "end": "2025-03-19T11:59:59+08:00",
+   "up_top": [
+    "1403",
+    "1221"
+   ],
+   "up_second": [
+    "1110",
+    "1109",
+    "1210"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-02-26",
+   "pool_type": "light_cone",
+   "version": "3.1",
+   "start": "2025-02-26T06:00:00+08:00",
+   "end": "2025-03-19T11:59:59+08:00",
+   "up_top": [
+    "23038",
+    "23030"
+   ],
+   "up_second": [
+    "21011",
+    "21000",
+    "21016"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-03-19",
+   "pool_type": "character",
+   "version": "3.1",
+   "start": "2025-03-19T12:00:00+08:00",
+   "end": "2025-04-08T15:00:00+08:00",
+   "up_top": [
+    "1404",
+    "1217"
+   ],
+   "up_second": [
+    "1008",
+    "1214",
+    "1105"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-03-19",
+   "pool_type": "light_cone",
+   "version": "3.1",
+   "start": "2025-03-19T12:00:00+08:00",
+   "end": "2025-04-08T15:00:00+08:00",
+   "up_top": [
+    "23039",
+    "23017"
+   ],
+   "up_second": [
+    "21014",
+    "21012",
+    "21004"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-04-09",
+   "pool_type": "character",
+   "version": "3.2",
+   "start": "2025-04-09T06:00:00+08:00",
+   "end": "2025-04-30T11:59:59+08:00",
+   "up_top": [
+    "1407",
+    "1225",
+    "1218",
+    "1308"
+   ],
+   "up_second": [
+    "1106",
+    "1301",
+    "1110"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-04-09",
+   "pool_type": "light_cone",
+   "version": "3.2",
+   "start": "2025-04-09T06:00:00+08:00",
+   "end": "2025-04-30T11:59:59+08:00",
+   "up_top": [
+    "23040",
+    "23035",
+    "23029",
+    "23024"
+   ],
+   "up_second": [
+    "21001",
+    "21000",
+    "21044"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-04-30",
+   "pool_type": "character",
+   "version": "3.2",
+   "start": "2025-04-30T12:00:00+08:00",
+   "end": "2025-05-20T15:00:00+08:00",
+   "up_top": [
+    "1405",
+    "1305"
+   ],
+   "up_second": [
+    "1002",
+    "1103",
+    "1223"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-04-30",
+   "pool_type": "light_cone",
+   "version": "3.2",
+   "start": "2025-04-30T12:00:00+08:00",
+   "end": "2025-05-20T15:00:00+08:00",
+   "up_top": [
+    "23041",
+    "23020"
+   ],
+   "up_second": [
+    "21016",
+    "21045",
+    "21005"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-05-21",
+   "pool_type": "character",
+   "version": "3.3",
+   "start": "2025-05-21T06:00:00+08:00",
+   "end": "2025-06-11T11:59:59+08:00",
+   "up_top": [
+    "1409",
+    "1401"
+   ],
+   "up_second": [
+    "1312",
+    "1103",
+    "1105"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-05-21",
+   "pool_type": "light_cone",
+   "version": "3.3",
+   "start": "2025-05-21T06:00:00+08:00",
+   "end": "2025-06-11T11:59:59+08:00",
+   "up_top": [
+    "23042",
+    "23037"
+   ],
+   "up_second": [
+    "21013",
+    "21047",
+    "21002"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-06-11",
+   "pool_type": "character",
+   "version": "3.3",
+   "start": "2025-06-11T12:00:00+08:00",
+   "end": "2025-07-01T15:00:00+08:00",
+   "up_top": [
+    "1406",
+    "1402"
+   ],
+   "up_second": [
+    "1201",
+    "1214",
+    "1206"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-06-11",
+   "pool_type": "light_cone",
+   "version": "3.3",
+   "start": "2025-06-11T12:00:00+08:00",
+   "end": "2025-07-01T15:00:00+08:00",
+   "up_top": [
+    "23043",
+    "23036"
+   ],
+   "up_second": [
+    "21051",
+    "21008",
+    "21007"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-07-02",
+   "pool_type": "character",
+   "version": "3.4",
+   "start": "2025-07-02T06:00:00+08:00",
+   "end": "2025-07-23T11:59:59+08:00",
+   "up_top": [
+    "1408",
+    "1403",
+    "1313",
+    "1306"
+   ],
+   "up_second": [
+    "1202",
+    "1001",
+    "1207"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-07-02",
+   "pool_type": "light_cone",
+   "version": "3.4",
+   "start": "2025-07-02T06:00:00+08:00",
+   "end": "2025-07-23T11:59:59+08:00",
+   "up_top": [
+    "23044",
+    "23038",
+    "23034",
+    "23021"
+   ],
+   "up_second": [
+    "21054",
+    "21011",
+    "21019"
+   ]
+  },
+  {
+   "id": "starrail-collab_character-2025-07-11",
+   "pool_type": "collab_character",
+   "version": null,
+   "start": "2025-07-11T12:00:00+08:00",
+   "end": "2026-07-24T11:59:59+08:00",
+   "up_top": [
+    "1014",
+    "1015"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "starrail-collab_light_cone-2025-07-11",
+   "pool_type": "collab_light_cone",
+   "version": null,
+   "start": "2025-07-11T12:00:00+08:00",
+   "end": "2026-07-24T11:59:59+08:00",
+   "up_top": [
+    "23045",
+    "23046"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "starrail-character-2025-07-23",
+   "pool_type": "character",
+   "version": "3.4",
+   "start": "2025-07-23T12:00:00+08:00",
+   "end": "2025-08-12T15:00:00+08:00",
+   "up_top": [
+    "1310",
+    "1212",
+    "1205"
+   ],
+   "up_second": [
+    "1215",
+    "1110",
+    "1111"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-07-23",
+   "pool_type": "light_cone",
+   "version": "3.4",
+   "start": "2025-07-23T12:00:00+08:00",
+   "end": "2025-08-12T15:00:00+08:00",
+   "up_top": [
+    "23025",
+    "23014",
+    "23009"
+   ],
+   "up_second": [
+    "21012",
+    "21017",
+    "21015"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-08-13",
+   "pool_type": "character",
+   "version": "3.5",
+   "start": "2025-08-13T06:00:00+08:00",
+   "end": "2025-09-02T11:59:59+08:00",
+   "up_top": [
+    "1410",
+    "1005"
+   ],
+   "up_second": [
+    "1009",
+    "1008",
+    "1109"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-08-13",
+   "pool_type": "light_cone",
+   "version": "3.5",
+   "start": "2025-08-13T06:00:00+08:00",
+   "end": "2025-09-02T11:59:59+08:00",
+   "up_top": [
+    "23047",
+    "23006"
+   ],
+   "up_second": [
+    "21008",
+    "21046",
+    "21042"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-09-02",
+   "pool_type": "character",
+   "version": "3.5",
+   "start": "2025-09-02T12:00:00+08:00",
+   "end": "2025-09-23T15:00:00+08:00",
+   "up_top": [
+    "1412",
+    "1006"
+   ],
+   "up_second": [
+    "1108",
+    "1201",
+    "1002"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-09-02",
+   "pool_type": "light_cone",
+   "version": "3.5",
+   "start": "2025-09-02T12:00:00+08:00",
+   "end": "2025-09-23T15:00:00+08:00",
+   "up_top": [
+    "23048",
+    "23007"
+   ],
+   "up_second": [
+    "21006",
+    "21010",
+    "21001"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-09-24",
+   "pool_type": "character",
+   "version": "3.6",
+   "start": "2025-09-24T06:00:00+08:00",
+   "end": "2025-10-15T11:59:59+08:00",
+   "up_top": [
+    "1413",
+    "1401"
+   ],
+   "up_second": [
+    "1312",
+    "1210",
+    "1214"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-09-24",
+   "pool_type": "light_cone",
+   "version": "3.6",
+   "start": "2025-09-24T06:00:00+08:00",
+   "end": "2025-10-15T11:59:59+08:00",
+   "up_top": [
+    "23049",
+    "23037"
+   ],
+   "up_second": [
+    "21048",
+    "21045",
+    "21018"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-10-15",
+   "pool_type": "character",
+   "version": "3.6",
+   "start": "2025-10-15T12:00:00+08:00",
+   "end": "2025-11-04T15:00:00+08:00",
+   "up_top": [
+    "1414",
+    "1405"
+   ],
+   "up_second": [
+    "1206",
+    "1215",
+    "1103"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-10-15",
+   "pool_type": "light_cone",
+   "version": "3.6",
+   "start": "2025-10-15T12:00:00+08:00",
+   "end": "2025-11-04T15:00:00+08:00",
+   "up_top": [
+    "23051",
+    "23041"
+   ],
+   "up_second": [
+    "21009",
+    "21003",
+    "21014"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-11-05",
+   "pool_type": "character",
+   "version": "3.7",
+   "start": "2025-11-05T06:00:00+08:00",
+   "end": "2025-11-26T11:59:59+08:00",
+   "up_top": [
+    "1415",
+    "1407",
+    "1409",
+    "1403"
+   ],
+   "up_second": [
+    "1223",
+    "1110",
+    "1106"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-11-05",
+   "pool_type": "light_cone",
+   "version": "3.7",
+   "start": "2025-11-05T06:00:00+08:00",
+   "end": "2025-11-26T11:59:59+08:00",
+   "up_top": [
+    "23052",
+    "23040",
+    "23042",
+    "23038"
+   ],
+   "up_second": [
+    "21054",
+    "21043",
+    "21044"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-11-26",
+   "pool_type": "character",
+   "version": "3.7",
+   "start": "2025-11-26T12:00:00+08:00",
+   "end": "2025-12-16T15:00:00+08:00",
+   "up_top": [
+    "1415",
+    "1408",
+    "1406",
+    "1404"
+   ],
+   "up_second": [
+    "1223",
+    "1110",
+    "1106"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-11-26",
+   "pool_type": "light_cone",
+   "version": "3.7",
+   "start": "2025-11-26T12:00:00+08:00",
+   "end": "2025-12-16T15:00:00+08:00",
+   "up_top": [
+    "23052",
+    "23044",
+    "23043",
+    "23039"
+   ],
+   "up_second": [
+    "21054",
+    "21043",
+    "21044"
+   ]
+  },
+  {
+   "id": "starrail-character-2025-12-17",
+   "pool_type": "character",
+   "version": "3.8",
+   "start": "2025-12-17T06:00:00+08:00",
+   "end": "2026-01-07T11:59:59+08:00",
+   "up_top": [
+    "1321",
+    "1310"
+   ],
+   "up_second": [
+    "1301",
+    "1111",
+    "1001"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2025-12-17",
+   "pool_type": "light_cone",
+   "version": "3.8",
+   "start": "2025-12-17T06:00:00+08:00",
+   "end": "2026-01-07T11:59:59+08:00",
+   "up_top": [
+    "23050",
+    "23025"
+   ],
+   "up_second": [
+    "21043",
+    "21004",
+    "21001"
+   ]
+  },
+  {
+   "id": "starrail-character-2026-01-07",
+   "pool_type": "character",
+   "version": "3.8",
+   "start": "2026-01-07T12:00:00+08:00",
+   "end": "2026-01-28T11:59:59+08:00",
+   "up_top": [
+    "1225",
+    "1222"
+   ],
+   "up_second": [
+    "1105",
+    "1108",
+    "1008"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2026-01-07",
+   "pool_type": "light_cone",
+   "version": "3.8",
+   "start": "2026-01-07T12:00:00+08:00",
+   "end": "2026-01-28T11:59:59+08:00",
+   "up_top": [
+    "23035",
+    "23032"
+   ],
+   "up_second": [
+    "21020",
+    "21000",
+    "21005"
+   ]
+  },
+  {
+   "id": "starrail-character-2026-01-28",
+   "pool_type": "character",
+   "version": "3.8",
+   "start": "2026-01-28T12:00:00+08:00",
+   "end": "2026-02-12T15:00:00+08:00",
+   "up_top": [
+    "1402",
+    "1313"
+   ],
+   "up_second": [
+    "1202",
+    "1207",
+    "1002"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2026-01-28",
+   "pool_type": "light_cone",
+   "version": "3.8",
+   "start": "2026-01-28T12:00:00+08:00",
+   "end": "2026-02-12T15:00:00+08:00",
+   "up_top": [
+    "23036",
+    "23034"
+   ],
+   "up_second": [
+    "21051",
+    "21016",
+    "21018"
+   ]
+  },
+  {
+   "id": "starrail-character-2026-02-13",
+   "pool_type": "character",
+   "version": "4.0",
+   "start": "2026-02-13T06:00:00+08:00",
+   "end": "2026-03-03T11:59:59+08:00",
+   "up_top": [
+    "1502",
+    "1413",
+    "1410",
+    "1307"
+   ],
+   "up_second": [
+    "1106",
+    "1201",
+    "1215"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2026-02-13",
+   "pool_type": "light_cone",
+   "version": "4.0",
+   "start": "2026-02-13T06:00:00+08:00",
+   "end": "2026-03-03T11:59:59+08:00",
+   "up_top": [
+    "23054",
+    "23049",
+    "23047",
+    "23022"
+   ],
+   "up_second": [
+    "21011",
+    "21015",
+    "21054"
+   ]
+  },
+  {
+   "id": "starrail-character-2026-03-03",
+   "pool_type": "character",
+   "version": "4.0",
+   "start": "2026-03-03T12:00:00+08:00",
+   "end": "2026-03-24T15:00:00+08:00",
+   "up_top": [
+    "1502",
+    "1501",
+    "1412",
+    "1317",
+    "1306"
+   ],
+   "up_second": [
+    "1106",
+    "1201",
+    "1215"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2026-03-03",
+   "pool_type": "light_cone",
+   "version": "4.0",
+   "start": "2026-03-03T12:00:00+08:00",
+   "end": "2026-03-24T15:00:00+08:00",
+   "up_top": [
+    "23054",
+    "23053",
+    "23048",
+    "23033",
+    "23021"
+   ],
+   "up_second": [
+    "21011",
+    "21015",
+    "21054"
+   ]
+  },
+  {
+   "id": "starrail-character-2026-03-25",
+   "pool_type": "character",
+   "version": "4.1",
+   "start": "2026-03-25T06:00:00+08:00",
+   "end": "2026-04-08T11:59:59+08:00",
+   "up_top": [
+    "1504",
+    "1409"
+   ],
+   "up_second": [
+    "1009",
+    "1223",
+    "1312"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2026-03-25",
+   "pool_type": "light_cone",
+   "version": "4.1",
+   "start": "2026-03-25T06:00:00+08:00",
+   "end": "2026-04-08T11:59:59+08:00",
+   "up_top": [
+    "23056",
+    "23042"
+   ],
+   "up_second": [
+    "21013",
+    "21047",
+    "21048"
+   ]
+  },
+  {
+   "id": "starrail-character-2026-04-08",
+   "pool_type": "character",
+   "version": "4.1",
+   "start": "2026-04-08T12:00:00+08:00",
+   "end": "2026-04-21T15:00:00+08:00",
+   "up_top": [
+    "1504",
+    "1315"
+   ],
+   "up_second": [
+    "1009",
+    "1223",
+    "1312"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2026-04-08",
+   "pool_type": "light_cone",
+   "version": "4.1",
+   "start": "2026-04-08T12:00:00+08:00",
+   "end": "2026-04-21T15:00:00+08:00",
+   "up_top": [
+    "23056",
+    "23027"
+   ],
+   "up_second": [
+    "21013",
+    "21047",
+    "21048"
+   ]
+  },
+  {
+   "id": "starrail-character-2026-04-22",
+   "pool_type": "character",
+   "version": "4.2",
+   "start": "2026-04-22T06:00:00+08:00",
+   "end": "2026-05-13T11:59:59+08:00",
+   "up_top": [
+    "1506",
+    "1321",
+    "1407",
+    "1310"
+   ],
+   "up_second": [
+    "1301",
+    "1214",
+    "1109"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2026-04-22",
+   "pool_type": "light_cone",
+   "version": "4.2",
+   "start": "2026-04-22T06:00:00+08:00",
+   "end": "2026-05-13T11:59:59+08:00",
+   "up_top": [
+    "23057",
+    "23050",
+    "23040",
+    "23025"
+   ],
+   "up_second": [
+    "21046",
+    "21042",
+    "21008"
+   ]
+  },
+  {
+   "id": "starrail-character-2026-05-13",
+   "pool_type": "character",
+   "version": "4.2",
+   "start": "2026-05-13T12:00:00+08:00",
+   "end": "2026-06-01T03:59:59+08:00",
+   "up_top": [
+    "1505",
+    "1403",
+    "1313",
+    "1220"
+   ],
+   "up_second": [
+    "1210",
+    "1110",
+    "1206"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2026-05-13",
+   "pool_type": "light_cone",
+   "version": "4.2",
+   "start": "2026-05-13T12:00:00+08:00",
+   "end": "2026-06-01T03:59:59+08:00",
+   "up_top": [
+    "23058",
+    "23038",
+    "23034",
+    "23031"
+   ],
+   "up_second": [
+    "21010",
+    "21004",
+    "21007"
+   ]
+  },
+  {
+   "id": "starrail-character-2026-06-01",
+   "pool_type": "character",
+   "version": "4.3",
+   "start": "2026-06-01T06:00:00+08:00",
+   "end": "2026-06-24T11:59:59+08:00",
+   "up_top": [
+    "1507",
+    "1502"
+   ],
+   "up_second": [
+    "1108",
+    "1111",
+    "1202"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2026-06-01",
+   "pool_type": "light_cone",
+   "version": "4.3",
+   "start": "2026-06-01T06:00:00+08:00",
+   "end": "2026-06-24T11:59:59+08:00",
+   "up_top": [
+    "23059",
+    "23054"
+   ],
+   "up_second": [
+    "21001",
+    "21002",
+    "21005"
+   ]
+  },
+  {
+   "id": "starrail-character-2026-06-24",
+   "pool_type": "character",
+   "version": "4.3",
+   "start": "2026-06-24T12:00:00+08:00",
+   "end": "2026-07-14T15:00:00+08:00",
+   "up_top": [
+    "1415",
+    "1408"
+   ],
+   "up_second": [
+    "1001",
+    "1008",
+    "1207"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2026-06-24",
+   "pool_type": "light_cone",
+   "version": "4.3",
+   "start": "2026-06-24T12:00:00+08:00",
+   "end": "2026-07-14T15:00:00+08:00",
+   "up_top": [
+    "23052",
+    "23044"
+   ],
+   "up_second": [
+    "21012",
+    "21017",
+    "21018"
+   ]
+  },
+  {
+   "id": "starrail-character-2026-07-15",
+   "pool_type": "character",
+   "version": "4.4",
+   "start": "2026-07-15T06:00:00+08:00",
+   "end": "2026-08-05T11:59:59+08:00",
+   "up_top": [
+    "1510",
+    "1501",
+    "1414",
+    "1413"
+   ],
+   "up_second": [
+    "1223",
+    "1215",
+    "1103"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2026-07-15",
+   "pool_type": "light_cone",
+   "version": "4.4",
+   "start": "2026-07-15T06:00:00+08:00",
+   "end": "2026-08-05T11:59:59+08:00",
+   "up_top": [
+    "23060",
+    "23053",
+    "23051",
+    "23049"
+   ],
+   "up_second": [
+    "21045",
+    "21019",
+    "21006"
+   ]
+  },
+  {
+   "id": "starrail-collab_character-2026-07-24",
+   "pool_type": "collab_character",
+   "version": null,
+   "start": "2026-07-24T12:00:00+08:00",
+   "end": "9999-12-31T23:59:59+08:00",
+   "up_top": [
+    "1014",
+    "1015",
+    "1508",
+    "1509"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "starrail-collab_light_cone-2026-07-24",
+   "pool_type": "collab_light_cone",
+   "version": null,
+   "start": "2026-07-24T12:00:00+08:00",
+   "end": "9999-12-31T23:59:59+08:00",
+   "up_top": [
+    "23045",
+    "23046",
+    "23061",
+    "23062"
+   ],
+   "up_second": []
+  },
+  {
+   "id": "starrail-character-2026-08-05",
+   "pool_type": "character",
+   "version": "4.4",
+   "start": "2026-08-05T12:00:00+08:00",
+   "end": "2026-08-25T15:00:00+08:00",
+   "up_top": [
+    "1510",
+    "1412",
+    "1405",
+    "1304"
+   ],
+   "up_second": [
+    "1223",
+    "1215",
+    "1103"
+   ]
+  },
+  {
+   "id": "starrail-light_cone-2026-08-05",
+   "pool_type": "light_cone",
+   "version": "4.4",
+   "start": "2026-08-05T12:00:00+08:00",
+   "end": "2026-08-25T15:00:00+08:00",
+   "up_top": [
+    "23060",
+    "23048",
+    "23041",
+    "23023"
+   ],
+   "up_second": [
+    "21045",
+    "21019",
+    "21006"
+   ]
+  }
+ ]
+}
