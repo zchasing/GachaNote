@@ -10,6 +10,9 @@ use gachanote_core::meta::UpStatus;
 use gachanote_core::model::{Account, GachaRecord};
 use gachanote_core::plugin::{FetchKind, GamePlugin, Vendor};
 use gachanote_core::rules::{rule_at, Mechanic, PityScope, UpRule};
+use gachanote_core::stats::analysis::{achievements, Achievement, AchievementKind, MonthBucket};
+use gachanote_core::stats::luck::{luck, Luck, LuckMetric};
+use gachanote_core::stats::predict::{predict, Prediction};
 use gachanote_core::stats::{AccountStats, LossRate, PoolStats, RecordMark};
 use gachanote_core::task::{ProgressEvent, Stage};
 use gachanote_core::AppError;
@@ -95,7 +98,7 @@ pub struct GameDto {
     pub pools: Vec<PoolInfo>,
     /// 在线拉取方式：`url` / `account_token`，没有时为空。
     pub fetch: Option<String>,
-    /// 本版本能否在线拉取（鹰角 token 拉取在 v0.2）。
+    /// 能否在线拉取（有拉取器）。
     pub can_fetch: bool,
     /// 支持导入的文件格式。
     pub formats: Vec<String>,
@@ -160,7 +163,7 @@ impl GameDto {
                 }
                 .into()
             }),
-            can_fetch: info.fetch == Some(FetchKind::Url) && p.fetcher().is_some(),
+            can_fetch: info.fetch.is_some() && p.fetcher().is_some(),
             formats: info.formats.iter().map(|f| f.as_str().into()).collect(),
         }
     }
@@ -340,10 +343,24 @@ pub struct PoolStatsDto {
     pub first_at: Option<i64>,
     /// 最近一条记录。
     pub last_at: Option<i64>,
+    /// 下一抽出最高星的概率。
+    pub next_top: f64,
+    /// 下一抽出 UP 的概率；常驻池为空。
+    pub next_up: Option<f64>,
+    /// 欧非评价；还没有出过最高星时为空。
+    pub luck: Option<LuckDto>,
+    /// 成就徽章；还没有出过最高星时为空。
+    pub achievements: Vec<AchievementDto>,
 }
 
 impl PoolStatsDto {
-    fn new(p: &PoolStats, has_up: bool, range: (Option<i64>, Option<i64>)) -> Self {
+    fn new(
+        p: &PoolStats,
+        rule: Option<&gachanote_core::rules::PoolRule>,
+        range: (Option<i64>, Option<i64>),
+    ) -> Self {
+        let has_up = rule.is_some_and(|r| r.up.has_up());
+        let next = rule.map(|r| predict(r, &p.pity, 1).at(1));
         Self {
             pool_type: p.pool_type.to_string(),
             total_pulls: p.total_pulls,
@@ -383,6 +400,12 @@ impl PoolStatsDto {
             },
             first_at: range.0,
             last_at: range.1,
+            next_top: next.map_or(0.0, |c| c.top),
+            next_up: next.and_then(|c| c.up),
+            luck: rule.and_then(|r| luck(r, p)).map(Into::into),
+            achievements: rule
+                .map(|r| achievements(r, p).into_iter().map(Into::into).collect())
+                .unwrap_or_default(),
         }
     }
 }
@@ -443,9 +466,8 @@ impl AccountStatsDto {
             e.0 = e.0.min(r.data.pulled_at);
             e.1 = e.1.max(r.data.pulled_at);
         }
-        let has_up = |p: &PoolStats| {
-            rule_at(plugin.rules(), &p.pool_type, None).is_some_and(|r| r.up.has_up())
-        };
+        let rule = |p: &PoolStats| rule_at(plugin.rules(), &p.pool_type, None);
+        let has_up = |p: &PoolStats| rule(p).is_some_and(|r| r.up.has_up());
         let pools: Vec<PoolStatsDto> = stats
             .pools
             .iter()
@@ -453,7 +475,7 @@ impl AccountStatsDto {
                 let range = ranges
                     .get(p.pool_type.as_str())
                     .map_or((None, None), |&(a, b)| (Some(a), Some(b)));
-                PoolStatsDto::new(p, has_up(p), range)
+                PoolStatsDto::new(p, rule(p), range)
             })
             .collect();
         let top_count: u32 = pools.iter().map(|p| count_u32(p.tops.iter())).sum();
@@ -519,6 +541,287 @@ pub struct OverviewEntry {
     pub account: AccountDto,
     /// 统计。
     pub stats: AccountStatsDto,
+}
+
+/// 欧非评价口径。
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub enum LuckMetricDto {
+    /// 平均出 UP 抽数。
+    PerUp,
+    /// 平均出最高星抽数。
+    PerTop,
+}
+
+/// 欧非评价（F-17）。评级文案由前端按百分位分档。
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub struct LuckDto {
+    /// 口径。
+    pub metric: LuckMetricDto,
+    /// 样本数。
+    pub samples: u32,
+    /// 你的平均抽数。
+    pub user_avg: f64,
+    /// 理论平均抽数。
+    pub expected_avg: f64,
+    /// 比多少比例的人运气好（0–1）；最高星少于 5 只时为空。
+    pub percentile: Option<f64>,
+}
+
+impl From<Luck> for LuckDto {
+    fn from(l: Luck) -> Self {
+        Self {
+            metric: match l.metric {
+                LuckMetric::PerUp => LuckMetricDto::PerUp,
+                LuckMetric::PerTop => LuckMetricDto::PerTop,
+            },
+            samples: l.samples,
+            user_avg: l.user_avg,
+            expected_avg: l.expected_avg,
+            percentile: l.percentile,
+        }
+    }
+}
+
+/// 成就种类。
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub enum AchievementKindDto {
+    /// 欧皇时刻。
+    Lucky,
+    /// 非酋时刻。
+    Unlucky,
+    /// 不歪连胜。
+    Streak,
+    /// 漫长等待。
+    LongWait,
+}
+
+/// 成就徽章。
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub struct AchievementDto {
+    /// 种类。
+    pub kind: AchievementKindDto,
+    /// 是否达成。
+    pub done: bool,
+    /// 当前最好成绩。
+    pub value: u32,
+    /// 达成条件。
+    pub threshold: u32,
+    /// 对应物品名。
+    pub item_name: Option<String>,
+}
+
+impl From<Achievement> for AchievementDto {
+    fn from(a: Achievement) -> Self {
+        Self {
+            kind: match a.kind {
+                AchievementKind::Lucky => AchievementKindDto::Lucky,
+                AchievementKind::Unlucky => AchievementKindDto::Unlucky,
+                AchievementKind::Streak => AchievementKindDto::Streak,
+                AchievementKind::LongWait => AchievementKindDto::LongWait,
+            },
+            done: a.done,
+            value: a.value,
+            threshold: a.threshold,
+            item_name: a.item_name,
+        }
+    }
+}
+
+/// 概率曲线上的一点。
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub struct CurvePointDto {
+    /// 再抽多少抽。
+    pub pulls: u32,
+    /// 至少出一只最高星的概率。
+    pub top: f64,
+    /// 至少出一只 UP 的概率；常驻池为空。
+    pub up: Option<f64>,
+}
+
+/// 出金 / 出 UP 概率预测（F-16）。
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub struct PredictionDto {
+    /// 卡池类型。
+    pub pool_type: String,
+    /// 当前已垫抽数。
+    pub since_top: u32,
+    /// 下一只最高星是否大保底。
+    pub guaranteed: bool,
+    /// 累计概率曲线，`points[k]` 为再抽 k 抽内。
+    pub points: Vec<CurvePointDto>,
+    /// 出最高星累计概率达到 50% / 90% 的抽数。
+    pub top_q50: Option<u32>,
+    /// 同上，90%。
+    pub top_q90: Option<u32>,
+    /// 出 UP 累计概率达到 50% 的抽数。
+    pub up_q50: Option<u32>,
+    /// 同上，90%。
+    pub up_q90: Option<u32>,
+    /// 最多再抽几抽必出最高星。
+    pub top_guaranteed_within: u32,
+    /// 最多再抽几抽必得 UP；没有这种保证时为空。
+    pub up_guaranteed_within: Option<u32>,
+}
+
+impl PredictionDto {
+    /// 由预测结果组成。
+    pub fn new(pool_type: &str, pity: &gachanote_core::stats::PityStatus, p: &Prediction) -> Self {
+        Self {
+            pool_type: pool_type.into(),
+            since_top: pity.since_top,
+            guaranteed: pity.guaranteed,
+            points: p
+                .points
+                .iter()
+                .map(|c| CurvePointDto {
+                    pulls: c.pulls,
+                    top: c.top,
+                    up: c.up,
+                })
+                .collect(),
+            top_q50: p.quantile(0.5, false),
+            top_q90: p.quantile(0.9, false),
+            up_q50: p.quantile(0.5, true),
+            up_q90: p.quantile(0.9, true),
+            top_guaranteed_within: p.top_guaranteed_within,
+            up_guaranteed_within: p.up_guaranteed_within,
+        }
+    }
+}
+
+/// 一个月的抽卡情况（F-15）。
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub struct MonthDto {
+    /// 年月，如 `2026-10`（服务器时区）。
+    pub month: String,
+    /// 抽数。
+    pub pulls: u32,
+    /// 最高星数。
+    pub tops: u32,
+    /// 其中 UP 数。
+    pub ups: u32,
+}
+
+impl From<MonthBucket> for MonthDto {
+    fn from(m: MonthBucket) -> Self {
+        Self {
+            month: m.month,
+            pulls: m.pulls,
+            tops: m.tops,
+            ups: m.ups,
+        }
+    }
+}
+
+/// 鹰角 token 的来源。token 本身只在「手动粘贴」时经过前端。
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Type)]
+#[serde(tag = "kind", rename_all = "camelCase")]
+pub enum TokenSource {
+    /// 登录窗口取得的 token（`hg_login` 返回的编号）。
+    Login {
+        /// 编号。
+        id: String,
+    },
+    /// 用户粘贴的 token（或官网返回的整段 JSON）。
+    Pasted {
+        /// 内容。
+        token: String,
+    },
+    /// 某账号已保存的 token。
+    Saved {
+        /// 账号。
+        #[serde(rename = "accountId")]
+        account_id: String,
+    },
+}
+
+/// 鹰角账号下的一个游戏角色。
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub struct HgRoleDto {
+    /// 游戏。
+    pub game: String,
+    /// UID。
+    pub uid: String,
+    /// 游戏内昵称。
+    pub nickname: Option<String>,
+    /// 渠道（官服 / B 服）。
+    pub channel: Option<String>,
+    /// 本地是否已有该账号。
+    pub exists: bool,
+}
+
+/// 一条已保存的凭证（不含内容）。
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub struct CredentialDto {
+    /// 账号。
+    pub account_id: String,
+    /// 游戏。
+    pub game: String,
+    /// UID。
+    pub uid: String,
+    /// 备注名。
+    pub nickname: Option<String>,
+    /// 种类（`hg_account_token`）。
+    pub kind: String,
+    /// 保存时间。
+    pub updated_at: i64,
+}
+
+/// 可以用系统浏览器打开的外部页面。
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub enum ExternalPage {
+    /// 鹰角官网登录页（手动获取 token 第 1 步）。
+    HgLogin,
+    /// 鹰角 token 查询页（第 2 步）。
+    HgToken,
+    /// GitHub 发布页（自动更新不可用时手动下载）。
+    Releases,
+}
+
+impl ExternalPage {
+    /// 网址。
+    pub fn url(self) -> &'static str {
+        match self {
+            Self::HgLogin => gachanote_games::hypergryph::LOGIN_URL,
+            Self::HgToken => gachanote_games::hypergryph::TOKEN_URL,
+            Self::Releases => "https://github.com/zchasing/GachaNote/releases",
+        }
+    }
+}
+
+/// 新版本信息（F-24）。
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub struct UpdateInfo {
+    /// 新版本号。
+    pub version: String,
+    /// 当前版本号。
+    pub current_version: String,
+    /// 发布时间（RFC 3339）。
+    pub date: Option<String>,
+    /// 更新说明（Markdown）。
+    pub notes: Option<String>,
+}
+
+/// 下载更新的进度（`update://progress`）。
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Type, tauri_specta::Event)]
+#[serde(rename_all = "camelCase")]
+#[tauri_specta(event_name = "update://progress")]
+pub struct UpdateProgress {
+    /// 已下载字节数。
+    pub downloaded: u64,
+    /// 总字节数（服务器没给时为空）。
+    pub total: Option<u64>,
 }
 
 /// 记录列表查询。
@@ -848,6 +1151,8 @@ pub struct Settings {
     pub last_accounts: BTreeMap<String, String>,
     /// 启动时检查卡池数据包更新。
     pub meta_auto_update: bool,
+    /// 启动时检查软件新版本。
+    pub update_auto_check: bool,
 }
 
 impl Default for Settings {
@@ -859,6 +1164,7 @@ impl Default for Settings {
             sidebar_games: Vec::new(),
             last_accounts: BTreeMap::new(),
             meta_auto_update: true,
+            update_auto_check: true,
         }
     }
 }
@@ -913,6 +1219,8 @@ pub struct AppInfo {
     pub db_size: u64,
     /// 是否在桌面端能自动查找游戏链接（Windows）。
     pub can_discover: bool,
+    /// 能否加密保存 token（Windows DPAPI）。
+    pub can_remember_token: bool,
 }
 
 /// `open_dir` 可以打开的目录。
