@@ -148,5 +148,8 @@ docs: 补充架构文档 ER 图
    必选检查只需要「CI 通过」「PR 标题」「提交信息」三项。
 2. **合并方式**：Settings → General → Pull Requests，只保留「Allow squash merging」，
    默认提交信息选「Pull request title」。
-3. **自动更新签名**（v0.2 起）：用 `pnpm tauri signer generate` 生成密钥，
-   把私钥和密码分别存入仓库 Secrets `TAURI_SIGNING_PRIVATE_KEY`、`TAURI_SIGNING_PRIVATE_KEY_PASSWORD`。
+3. **自动更新签名**（v0.2 起）：在本机运行 `pnpm -C ui tauri signer generate -w ~/.tauri/gachanote.key` 生成密钥，
+   把私钥文件内容和密码分别存入仓库 Secrets `TAURI_SIGNING_PRIVATE_KEY`、`TAURI_SIGNING_PRIVATE_KEY_PASSWORD`，
+   把公钥（`.key.pub` 文件内容）存入仓库 Variables `TAURI_UPDATER_PUBKEY`。私钥不要提交到仓库，也不要丢：
+   换了密钥，旧版本就验证不了新安装包，只能手动下载升级。三项都配置后，发布工作流才会生成更新包与 `latest.json`
+   并把公钥写进应用；没配置时照常发布，应用的「检查更新」会提示到发布页手动下载。

@@ -313,7 +313,7 @@ pub trait BackupService: Send + Sync {        // store 中的 BackupManager 实�
 
 ### 5.1 命令清单
 
-M3 起已实现的命令（以 `src-tauri/src/commands.rs` 与生成的 `bindings.ts` 为准）：
+已实现的命令（以 `src-tauri/src/commands.rs` 与生成的 `bindings.ts` 为准）：
 
 | 模块 | 命令 | 说明 | 对应需求 |
 | --- | --- | --- | --- |
@@ -323,14 +323,22 @@ M3 起已实现的命令（以 `src-tauri/src/commands.rs` 与生成的 `binding
 | 导入 | `import_file(path, only?) -> TaskId` | 异步执行，`only` 为空表示导入文件里的全部账号；结果走事件 | F-02, F-05, F-06 |
 | 拉取 | `discover_url(game) -> { sourceId, game, display }` | 自动查找缓存/日志中的抽卡链接；完整链接只留在后端，前端拿到脱敏的显示文本和来源 ID | F-03 |
 | 拉取 | `fetch_by_url(game, source, mode) -> TaskId` | `source` 为 `{ kind: "discovered", id }` 或 `{ kind: "pasted", url }`；`mode` 为 `incremental` / `full` | F-03 |
+| 拉取 | `hg_login(title, hint) -> id` | 打开鹰角官网登录窗口，登录后自动取得账号 token 并关窗；token 留在后端，前端只拿到编号；关窗为 `cancelled`，5 分钟未登录为 `network`（v0.2） | F-04 |
+| 拉取 | `hg_roles(source) -> HgRoleDto[]` | `source` 为 `{ kind: "login", id }` / `{ kind: "pasted", token }` / `{ kind: "saved", accountId }`；列出账号下绑定的明日方舟、终末地角色及本地是否已有 | F-04 |
+| 拉取 | `fetch_by_token(source, roles, remember, mode) -> TaskId` | 一个任务拉取选中的多个角色；`remember` 时任务完成后把加密的 token 保存到写入的账号 | F-04 |
+| 凭证 | `list_credentials` / `clear_credentials(accountId?)` | 已保存的 token（只有账号与保存时间，不含内容）；清除某账号或全部 | FR-FET-09 |
+| 外部页面 | `open_external(page)` | 用系统浏览器打开固定页面：鹰角登录页、token 页、GitHub 发布页（前端传不了任意网址） | — |
 | 任务 | `cancel_task(taskId)` | 取消导入/拉取 | — |
 | 导出 | `export_accounts(accountIds, format, path)` | `format` 为 `uigf`（v4.2，仅米哈游三款）/ `gnj` / `csv`；先写临时文件再替换 | F-07 |
 | 元数据 | `meta_info` / `update_metadata` | 当前卡池数据包版本与来源；检查并下载（结果为 `updated` / `upToDate` / `appTooOld`） | F-08 |
-| 统计 | `get_stats(accountId)` | 账号与各卡池的保底计数、平均 UP 抽数、歪率、星级构成、出金历史 | F-09–F-12 |
+| 统计 | `get_stats(accountId)` | 账号与各卡池的保底计数、平均 UP 抽数、歪率、星级构成、出金历史；v0.2 起每个卡池附带下一抽出金 / 出 UP 概率、欧非评价、成就 | F-09–F-12, F-14, F-17 |
+| 统计 | `predict(accountId, poolType, pulls)` | 再抽 0..n 抽的累计出金 / 出 UP 概率曲线，至少到两条曲线都超过 99.9%；附 50% / 90% 分位与「最多再抽几抽必出」 | F-16 |
+| 统计 | `get_monthly_trend(accountId, poolType?)` | 按月（服务器时区）汇总抽数、最高星数、UP 数，中间没有抽卡的月份补 0 | F-15 |
 | 记录 | `query_records(query)` | 按卡池、星级、时间、名称筛选并分页；附带当次抽数与 UP 标记（后端按账号缓存） | F-13 |
 | 总览 | `get_overview()` | 跨游戏总览卡片数据 | F-18 |
-| 设置 | `get_settings` / `set_settings(settings)` | 整个设置对象（语言、主题、代理、边栏手动添加的游戏、各游戏上次查看的账号、自动检查数据包），存在 `setting` 表的 `app.settings` 键 | F-21, F-22 |
-| 设置 | `app_info` | 版本、数据目录、默认目录、日志目录、数据库大小、是否支持自动查找链接 | — |
+| 设置 | `get_settings` / `set_settings(settings)` | 整个设置对象（语言、主题、代理、边栏手动添加的游戏、各游戏上次查看的账号、自动检查数据包、启动时检查新版本），存在 `setting` 表的 `app.settings` 键 | F-21, F-22 |
+| 设置 | `app_info` | 版本、数据目录、默认目录、日志目录、数据库大小、是否支持自动查找链接、能否加密保存 token | — |
+| 更新 | `check_update -> UpdateInfo?` / `install_update` | 检查 GitHub Releases 的 `latest.json`（走设置里的代理）；确认后下载、验证签名、安装并重启，进度走 `update://progress`；没有配置签名公钥时 `check_update` 返回 `invalid` | F-24 |
 | 设置 | `set_data_dir(dir)` / `restart_app` | 复制数据库与备份到新目录，在默认目录写 `location.json` 指向它，重启后生效；原目录不删除 | F-23 |
 | 备份 | `list_backups` / `create_backup` / `restore_backup(name)` | 恢复前先备份当前数据 | NFR |
 | 诊断 | `open_dir(kind)` | 用系统文件管理器打开数据、备份或日志目录 | NFR |
@@ -339,12 +347,7 @@ M3 起已实现的命令（以 `src-tauri/src/commands.rs` 与生成的 `binding
 
 | 模块 | 命令 | 说明 | 对应需求 |
 | --- | --- | --- | --- |
-| 拉取 | `open_hg_login() -> token` / `save_hg_token(token)` / `fetch_by_token(account) -> TaskId` | 鹰角登录窗口获取 token、手动保存 token、按 token 拉取（v0.2） | F-04 |
-| 统计 | `get_distribution` / `get_monthly_trend` | 出金分布、月度趋势 | F-14, F-15 |
-| 统计 | `predict(account, pool, pulls)` | 出金/出 UP 概率曲线 | F-16 |
-| 统计 | `get_luck(account, pool?)` | 欧非评价百分位 | F-17 |
 | 时间线 | `get_banner_timeline(account)` | 按期聚合抽数与所得（v0.3） | F-19 |
-| 更新 | `check_update` / `install_update` | Tauri updater（v0.2） | F-24 |
 | 诊断 | `export_diagnostics` | 打包脱敏日志供反馈 | NFR |
 
 分享图（F-20）在前端用 DOM 渲染成 PNG，只需一个 `save_image(bytes, path)` 命令落盘。
@@ -358,6 +361,7 @@ M3 起已实现的命令（以 `src-tauri/src/commands.rs` 与生成的 `binding
 | `task://failed` | `{ taskId, error: AppError }` | 已回滚，数据不变 |
 | `data://changed` | `{ accountIds }` | 任何写入后广播，`accountIds` 为空表示全部；统一使缓存失效 |
 | `meta://updated` | `{ version }` | 元数据包更新后重算 UP 判定 |
+| `update://progress` | `{ downloaded, total? }` | 下载软件更新的进度（字节） |
 
 前端在启动时就订阅全部 `task://*` 事件，按任务 ID 记录状态，避免任务在命令返回 ID 之前就结束而丢失结果。
 
@@ -430,9 +434,13 @@ stateDiagram-v2
 - 输出一条「抽数 → 累计概率」曲线，前端展示 50% / 90% 分位点。
 - 用蒙特卡洛模拟（测试中 10 万次）校验 DP 结果，误差需 < 0.5 个百分点。
 
+实现（`stats::predict`）：DP 的状态是 (`since_top`, 是否大保底, 命定值)，`since_up` 与 `banner_pulls` 随抽数确定性增长，不进状态。各种「必得 UP」的规则按出 UP 的吸收态处理：大保底或命定值满时的最高星即 UP；当期 N 抽必出 UP（`per_banner`）在当期第 N 抽强制出 UP，且只在本期还没出过 UP 时生效；非当期的 N 抽必出 UP 为「距上次 UP 满 N 抽后的下一只最高星必为 UP」；井在当期抽数达到上限时直接得到 UP。曲线算到两条都超过 99.9% 为止（最多 1000 抽）。
+
 ### 6.4 欧非评价
 
-由单抽曲线得到「出一只最高星所需抽数」的理论分布，再结合 UP 规则得到「出一只 UP 所需抽数」的分布。用户的平均抽数在该分布下的百分位（样本量大时用正态近似均值分布）即为欧非分数，样本不足 3 只时只显示「样本不足」。评级文案分档由前端 i18n 决定。
+由单抽曲线得到「出一只最高星所需抽数」的理论分布 K，再结合 UP 规则得到「出一只 UP 所需抽数」的分布 X：大小保底为 rate · K + (1 − rate) · (K ∗ K)，固定概率（方舟、终末地）为几何个 K 之和。有 UP 的卡池用平均出 UP 抽数评价，常驻池或还没出过 UP 时用平均出最高星抽数。用户的平均值放在「n 个独立样本均值」的分布下比较，「比 x% 的人运气好」= P(别人的 n 样本均值 > 你的均值)；n ≤ 12 时精确卷积，更大时用正态近似。最高星少于 5 只时只显示数值不评级。井与 N 抽必出 UP 只截断少数情况的尾部，理论分布里不计入。评级分五档（≥ 90% 大欧皇、≥ 65% 欧、≥ 35% 平、≥ 10% 非、其余大非酋），文案由前端 i18n 决定。
+
+成就（`stats::analysis::achievements`）按当前卡池的出金序列计算，阈值在规则模板的 `achievements` 字段（`lucky_ratio`、`unlucky_soft_pulls`、`streak`、`long_wait_days`），缺省为 0.35、5、3、45。
 
 ### 6.5 性能
 
@@ -494,7 +502,23 @@ sequenceDiagram
 
 ### 7.3 鹰角 token 拉取（v0.2）
 
-账号 token 有两种来源：默认由 `open_hg_login` 打开独立的 Tauri WebviewWindow 载入鹰角官网登录页，用户登录后由后端从该窗口取得 token 并关闭窗口（取 token 的方式需技术验证，窗口不开放 IPC 给官网页面）；备用为用户手动粘贴。拿到 token 后，后端依次换取 OAuth 授权码、游戏角色 token，再分页拉取：明日方舟用 `pos + gachaTs` 分页，终末地用 `seqId`。接口只参考 arknights-gacha-export 的行为，不复制其代码（该项目无许可证）。账号 token 用 DPAPI 加密后存入 `credential` 表，中间 token 只在内存中使用。
+账号 token 有三种来源：
+
+1. **登录窗口**（默认）：`hg_login` 打开标签为 `hg-login` 的独立 WebviewWindow，载入 `https://ak.hypergryph.com/user/login`。窗口是隐身模式（不留登录状态），没有任何 capability，官网页面调用不了应用命令；初始化脚本只在页面顶部插入一行提示。后端每 1.5 秒用 `cookies_for_url` 读取窗口里 `web-api.hypergryph.com` 的 Cookie，带着它请求 `GET /account/info/hg`，拿到 `data.content` 即为账号 token，随即关窗。用户关窗返回 `cancelled`，5 分钟未完成返回 `network`。读 Cookie 必须在异步命令里做（Windows 上在主线程同步调用会死锁）。这一步依赖官网行为，改版后失效时仍可用下面两种方式。
+2. **手动粘贴**：用户在浏览器登录后打开 `https://web-api.hypergryph.com/account/info/hg`，复制页面内容粘贴；后端接受 token 本身或整段 JSON（`normalize_token`）。
+3. **已保存的 token**：从 `credential` 表读出密文，用 DPAPI 解密。
+
+拿到 token 后的接口链（`gachanote-games::hypergryph`）：
+
+- `POST as.hypergryph.com/user/oauth2/v2/grant`（`appCode` 固定、`type: 1`）换 OAuth token，`status ≠ 0` 视为 token 失效（`AuthExpired`）；
+- `GET binding-api-account-prod.hypergryph.com/account/binding/v1/binding_list` 列出 `arknights`、`endfield` 下绑定的角色；
+- `POST .../u8_token_by_uid` 按 UID 换角色 token；
+- 明日方舟：`POST ak.hypergryph.com/user/api/role/login` 与 `GET /user/api/role/info` 建立会话 Cookie，`GET /user/api/inquiry/gacha/cate` 列出寻访类别，`GET /user/api/inquiry/gacha/history` 按 `pos + gachaTs` 从新到旧分页（每页 10 条，`rarity` 0–5 对应 1–6 星）；
+- 终末地：`ef-webview.hypergryph.com/api/record/char` 按 `pool_type` 逐类查询（元数据接口的 tabs + 固定四类 + 有 `joint_` 卡池时的联合池），`/api/record/weapon/pool` 列出武器池后按 `pool_id` 查询，都用 `seq_id` 从新到旧分页。记录的卡池代码与官方 ID 与 CSV 导入一致（`char:<poolId>`、`poolId:kind:seqId`），所以拉取和导入的同一条记录能互相去重；赠送条目记为 1 星且不计抽数，免费抽不计抽数。
+
+增量时明日方舟遇到 `(pulled_at, pos)` 不晚于游标、终末地遇到早于游标的记录即停止该卡池。接口只参考 arknights-gacha-export 的行为，不复制其代码（该项目无许可证）。
+
+账号 token 只在「记住 token」时保存：任务完成后由 `CredentialSaver` 把 DPAPI 加密后的密文写入 `credential` 表（每个账号每种凭证一条，迁移 0003 加了唯一索引），附加熵为固定字符串，`CRYPTPROTECT_UI_FORBIDDEN`；换 Windows 用户或换电脑解不开时按 `AuthExpired` 处理。非 Windows 平台不保存 token，界面隐藏「记住 token」。OAuth token、角色 token 只在内存中使用；登录窗口取得的 token 只保留最近一次，用过即丢。所有 token 都包在 `Redacted` 里，不进日志。
 
 ### 7.4 错误处理
 
@@ -525,7 +549,7 @@ pub enum AppError {
 
 ### 7.6 安全
 
-- Tauri capability 白名单：只开放自定义命令、文件对话框和更新插件；前端不直接访问文件系统和 shell。
+- Tauri capability 白名单：只给主窗口开放自定义命令与文件对话框；鹰角登录窗口没有任何 capability。更新在后端完成，前端不直接访问文件系统、shell 和更新插件；外部网页只能通过 `open_external` 打开固定的几个地址。
 - CSP 禁止远程脚本；元数据包里的图标通过后端下载、校验 SHA-256 后以本地 asset 协议提供。
 - 所有网络请求在后端发出，屏蔽前端直连外网；支持系统代理或自定义代理。
 - 不收集任何遥测数据。
@@ -588,6 +612,7 @@ ui/src/
 ### 9.3 打包与更新
 
 - NSIS 安装包，当前用户安装（不需管理员），WebView2 采用在线引导，目标 ≤ 20 MB。安装包内置一份元数据包作为离线兜底（不含图标）。
-- v0.2 起启用 Tauri updater：从 GitHub Releases 读取 `latest.json`，验证签名后提示更新。更新签名私钥只存于 GitHub Secrets。
+- v0.2 起启用 Tauri updater：从 `https://github.com/zchasing/GachaNote/releases/latest/download/latest.json` 读取新版本，下载后用公钥验证签名，安装（NSIS passive 模式）并重启。启动时按设置在后台检查一次，设置 → 关于里可手动检查。
+- 更新签名私钥与密码只存于 GitHub Secrets，公钥存于仓库 Variables（`TAURI_UPDATER_PUBKEY`）。发布工作流在三者都配置时才用 `--config` 打开 `bundle.createUpdaterArtifacts` 并把公钥写进应用；`tauri.conf.json` 里的公钥默认留空，未配置时应用的「检查更新」提示到发布页手动下载。v0.1 没有更新器，升级到 v0.2 需手动安装一次。
 - 暂不购买代码签名证书，README 说明 SmartScreen 提示；用户量上来后再评估。
 - 版本号遵循 SemVer，数据库 schema 版本独立递增；元数据包有自己的版本号和最低应用版本字段。
