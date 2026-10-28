@@ -112,6 +112,31 @@ pub enum PityScope {
     PerBanner,
 }
 
+/// 成就徽章的阈值（UI/UX 文档 3.5）。放在规则模板里，各游戏可调。
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+#[serde(default)]
+pub struct AchievementRule {
+    /// 欧皇时刻：某只最高星的抽数不超过硬保底的这个比例。
+    pub lucky_ratio: f64,
+    /// 非酋时刻：进入软保底第几抽之后才出（没有软保底时为到达硬保底）。
+    pub unlucky_soft_pulls: u32,
+    /// 不歪连胜：连续几只最高星都是 UP。
+    pub streak: u32,
+    /// 漫长等待：两次出最高星相隔的天数。
+    pub long_wait_days: u32,
+}
+
+impl Default for AchievementRule {
+    fn default() -> Self {
+        Self {
+            lucky_ratio: 0.35,
+            unlucky_soft_pulls: 5,
+            streak: 3,
+            long_wait_days: 45,
+        }
+    }
+}
+
 /// 一种卡池类型的规则模板。
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct PoolRule {
@@ -132,6 +157,9 @@ pub struct PoolRule {
     /// 保底继承范围。
     #[serde(default)]
     pub pity_scope: PityScope,
+    /// 成就阈值。
+    #[serde(default)]
+    pub achievements: AchievementRule,
 }
 
 impl PoolRule {
@@ -248,6 +276,7 @@ mod tests {
                 Mechanic::Spark { n: 300 },
             ],
             pity_scope: PityScope::SharedByType,
+            achievements: AchievementRule::default(),
         }
     }
 

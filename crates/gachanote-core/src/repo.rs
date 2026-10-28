@@ -75,3 +75,38 @@ pub trait BackupService: Send + Sync {
     /// 立即做一份备份。
     fn snapshot(&self, reason: BackupReason) -> Result<BackupInfo>;
 }
+
+/// 已保存凭证的 `kind`：鹰角账号 token（架构文档 7.3）。
+pub const HG_ACCOUNT_TOKEN: &str = "hg_account_token";
+
+/// 凭证加密（Windows 上是 DPAPI，绑定当前 Windows 用户），由外壳注入（FR-FET-09、NFR-07）。
+/// 数据库里只存加密后的密文。
+pub trait SecretStore: Send + Sync {
+    /// 加密。
+    fn protect(&self, plain: &[u8]) -> Result<Vec<u8>>;
+    /// 解密；密文损坏、换了用户或换了电脑时失败。
+    fn unprotect(&self, blob: &[u8]) -> Result<Vec<u8>>;
+}
+
+/// 一条已保存的凭证（不含内容）。
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct CredentialInfo {
+    /// 所属账号。
+    pub account_id: AccountId,
+    /// 种类，如 [`HG_ACCOUNT_TOKEN`]。
+    pub kind: String,
+    /// 保存时间（UTC 毫秒）。
+    pub updated_at: i64,
+}
+
+/// 凭证仓库：`credential` 表，每个账号每种凭证一条，内容是 [`SecretStore`] 加密后的密文。
+pub trait CredentialRepository: Send + Sync {
+    /// 保存（同一账号同一种类已存在时覆盖）。
+    fn save_credential(&self, account: &AccountId, kind: &str, blob: &[u8]) -> Result<()>;
+    /// 读取密文。
+    fn credential(&self, account: &AccountId, kind: &str) -> Result<Option<Vec<u8>>>;
+    /// 全部已保存的凭证，按保存时间倒序。
+    fn credentials(&self) -> Result<Vec<CredentialInfo>>;
+    /// 删除某账号的凭证，`None` 表示全部；返回删除条数。
+    fn delete_credentials(&self, account: Option<&AccountId>) -> Result<u32>;
+}
