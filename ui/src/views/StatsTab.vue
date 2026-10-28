@@ -5,6 +5,7 @@ import type { AccountStatsDto, PoolInfo, PoolStatsDto, TopPullDto } from '@/bind
 import CompositionCard from '@/components/CompositionCard.vue'
 import PityTag from '@/components/PityTag.vue'
 import SegmentedControl from '@/components/SegmentedControl.vue'
+import { luckTier } from '@/composables/chart'
 import { fmtAvg, fmtDate, fmtInt, fmtPct } from '@/composables/format'
 import { useErrors } from '@/composables/useErrors'
 import { useNames } from '@/composables/useNames'
@@ -162,6 +163,18 @@ function share(p: PoolStatsDto, rarity: number) {
 }
 
 const tz = computed(() => account.value?.tzOffsetMin ?? 480)
+
+/** 次级指标行末尾的一句话结论（v0.2）：下一抽出金概率 + 欧非评级，点击进入分析标签。 */
+const verdict = computed(() => {
+  const p = current.value?.stats
+  if (!p) return null
+  const parts = [t('stats.nextTop', { name: topName.value, p: fmtPct(p.nextTop, locale.value) })]
+  const pct = p.luck?.percentile
+  if (pct !== null && pct !== undefined) {
+    parts.push(t('stats.luckShort', { tier: t(`analysis.tiers.${luckTier(pct)}`), p: fmtPct(1 - pct, locale.value) }))
+  }
+  return parts.join(' · ')
+})
 </script>
 
 <template>
@@ -321,6 +334,10 @@ const tz = computed(() => account.value?.tzOffsetMin ?? 480)
               <span class="muted">{{ t('stats.lossRate') }}</span>
               <b class="num">{{ fmtPct(current.stats.loss.rate, locale) }}</b>
             </div>
+            <RouterLink v-if="verdict" :to="`/account/${id}/analysis`" class="verdict" data-test="verdict">
+              <span class="muted">{{ t('stats.verdict') }}</span>
+              <b class="num">{{ verdict }}</b>
+            </RouterLink>
           </div>
           <div class="notes muted">
             <div v-if="current.stats.firstAt && current.stats.lastAt">
@@ -435,15 +452,24 @@ const tz = computed(() => account.value?.tzOffsetMin ?? 480)
   gap: 0;
   padding: 0;
 }
-.secondary > div {
+.secondary > div,
+.secondary > .verdict {
   flex: 1 1 140px;
   padding: 12px 16px;
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
-.secondary > div + div {
+.secondary > * + * {
   border-left: 1px solid var(--border);
+}
+.verdict {
+  color: inherit;
+  text-decoration: none;
+  flex-grow: 2 !important;
+}
+.verdict:hover b {
+  color: var(--primary);
 }
 .secondary b {
   font-size: 16px;

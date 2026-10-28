@@ -1,5 +1,14 @@
 // 前端测试与 Playwright 冒烟测试共用的后端数据。数字按后端 get_stats 的结果手写，界面只负责展示。
-import type { AccountDto, AccountStatsDto, GameDto, PoolStatsDto, RecordPage, Settings } from '@/bindings'
+import type {
+  AccountDto,
+  AccountStatsDto,
+  GameDto,
+  MonthDto,
+  PoolStatsDto,
+  PredictionDto,
+  RecordPage,
+  Settings,
+} from '@/bindings'
 
 const pool = (id: string, extra: Partial<GameDto['pools'][number]> = {}) => ({
   id,
@@ -46,8 +55,8 @@ export const GAMES: GameDto[] = [
     vendor: 'hypergryph',
     themeColor: '#1f2937',
     pools: [pool('standard', { rarityTop: 6, hard: 99, spark: 300 })],
-    fetch: null,
-    canFetch: false,
+    fetch: 'account_token',
+    canFetch: true,
     formats: ['ak_export_csv', 'gnj'],
     rarityTop: 6,
   },
@@ -112,6 +121,15 @@ const charPool: PoolStatsDto = {
   pity: { ...emptyPity, sinceTop: 3, remainingToHard: 87 },
   firstAt: Date.UTC(2026, 0, 10),
   lastAt: Date.UTC(2026, 2, 5),
+  nextTop: 0.006,
+  nextUp: 0.003,
+  luck: { metric: 'perUp', samples: 1, userAvg: 87, expectedAvg: 93.5, percentile: null },
+  achievements: [
+    { kind: 'lucky', done: true, value: 10, threshold: 31, itemName: '刻晴' },
+    { kind: 'unlucky', done: true, value: 77, threshold: 77, itemName: '纳西妲' },
+    { kind: 'streak', done: false, value: 1, threshold: 3, itemName: null },
+    { kind: 'longWait', done: false, value: 28, threshold: 45, itemName: null },
+  ],
 }
 
 const stdPool: PoolStatsDto = {
@@ -130,6 +148,9 @@ const stdPool: PoolStatsDto = {
   loss: null,
   estimatedCount: 0,
   pity: { ...emptyPity, sinceTop: 12, remainingToHard: 78 },
+  nextUp: null,
+  luck: null,
+  achievements: [],
 }
 
 export const STATS: AccountStatsDto = {
@@ -197,4 +218,38 @@ export const SETTINGS: Settings = {
   sidebarGames: [],
   lastAccounts: {},
   metaAutoUpdate: false,
+  updateAutoCheck: false,
 }
+
+/** 原神角色池：已垫 3 抽，不是大保底。曲线按 0.6% 单抽、74 抽起软保底近似。 */
+export function prediction(pulls = 10): PredictionDto {
+  const points = []
+  let miss = 1
+  for (let k = 0; k <= Math.max(pulls, 87); k++) {
+    if (k > 0) {
+      const at = 3 + k
+      const p = at >= 90 ? 1 : at >= 74 ? 0.006 + 0.06 * (at - 73) : 0.006
+      miss *= 1 - Math.min(1, p)
+    }
+    const top = 1 - miss
+    points.push({ pulls: k, top, up: top / 2 })
+  }
+  return {
+    poolType: 'character',
+    sinceTop: 3,
+    guaranteed: false,
+    points,
+    topQ50: 72,
+    topQ90: 78,
+    upQ50: 85,
+    upQ90: null,
+    topGuaranteedWithin: 87,
+    upGuaranteedWithin: 177,
+  }
+}
+
+export const MONTHS: MonthDto[] = [
+  { month: '2026-01', pulls: 10, tops: 0, ups: 0 },
+  { month: '2026-02', pulls: 20, tops: 1, ups: 0 },
+  { month: '2026-03', pulls: 10, tops: 1, ups: 1 },
+]

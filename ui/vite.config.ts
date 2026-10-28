@@ -28,5 +28,7 @@ export default defineConfig({
     target: 'chrome105',
     minify: !process.env.TAURI_ENV_DEBUG,
     sourcemap: !!process.env.TAURI_ENV_DEBUG,
+    // ECharts 已按需引入并单独成块，只在打开分析页时从本地加载（约 190 KB gzip）
+    chunkSizeWarningLimit: 600,
   },
 })

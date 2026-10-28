@@ -7,9 +7,9 @@ import type { AccountDto } from '@/bindings'
 import App from '@/App.vue'
 import { i18n, setLocale } from '@/i18n'
 import { createAppRouter } from '@/router'
-import { ACCOUNT, GAMES, PAGE, SETTINGS, STATS } from './data'
+import { ACCOUNT, GAMES, MONTHS, PAGE, SETTINGS, STATS, prediction } from './data'
 
-export { ACCOUNT, GAMES, PAGE, SETTINGS, STATS }
+export { ACCOUNT, GAMES, MONTHS, PAGE, SETTINGS, STATS, prediction }
 
 export type Handler = (args: Record<string, unknown>) => unknown
 
@@ -32,9 +32,13 @@ export function setupIpc(overrides: Record<string, Handler> = {}) {
       logDir: '/data/GachaNote/logs',
       dbSize: 4096,
       canDiscover: false,
+      canRememberToken: true,
     }),
     list_backups: () => [],
     meta_info: () => ({ version: '2026.10.1', origin: 'bundled' }),
+    predict: (a) => prediction(Number(a.pulls)),
+    get_monthly_trend: () => MONTHS,
+    list_credentials: () => [],
   }
   const handlers = { ...defaults, ...overrides }
   mockIPC(

@@ -10,6 +10,7 @@ export const DEFAULT_SETTINGS: Settings = {
   sidebarGames: [],
   lastAccounts: {},
   metaAutoUpdate: true,
+  updateAutoCheck: true,
 }
 
 /** 用户设置：保存在后端数据库，界面改动后立即写回。 */

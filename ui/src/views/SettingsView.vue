@@ -2,7 +2,7 @@
 import { open } from '@tauri-apps/plugin-dialog'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import type { AppInfo, BackupDto, MetaInfo } from '@/bindings'
+import type { AppInfo, BackupDto, CredentialDto, MetaInfo } from '@/bindings'
 import { api, inTauri } from '@/api'
 import AppIcon from '@/components/AppIcon.vue'
 import ExportDialog from '@/components/ExportDialog.vue'
@@ -15,12 +15,14 @@ import { useNames } from '@/composables/useNames'
 import { useAccountsStore } from '@/stores/accounts'
 import { useSettingsStore } from '@/stores/settings'
 import { useUiStore } from '@/stores/ui'
+import { useUpdaterStore } from '@/stores/updater'
 
 // 设置（UI/UX 文档 3.6）：通用、数据、卡池数据包、凭证、关于。
 const route = useRoute()
 const settings = useSettingsStore()
 const accounts = useAccountsStore()
 const ui = useUiStore()
+const updater = useUpdaterStore()
 const { report } = useErrors()
 const { t, locale, gameName } = useNames()
 
@@ -38,14 +40,21 @@ const proxy = ref(settings.settings.proxy ?? '')
 const needsRestart = ref(false)
 const checking = ref(false)
 const exportIds = ref<string[] | null>(null)
+const credentials = ref<CredentialDto[]>([])
 
 async function refresh() {
   if (!inTauri()) return
   try {
-    const [i, b, m] = await Promise.all([api.appInfo(), api.listBackups(), api.metaInfo()])
+    const [i, b, m, c] = await Promise.all([
+      api.appInfo(),
+      api.listBackups(),
+      api.metaInfo(),
+      api.listCredentials(),
+    ])
     info.value = i
     backups.value = b
     meta.value = m
+    credentials.value = c
   } catch (e) {
     report(e)
   }
@@ -158,6 +167,36 @@ async function checkMeta() {
   } finally {
     checking.value = false
   }
+}
+
+// ── 凭证 ──
+async function clearCredential(c: CredentialDto | null) {
+  const ok = await ui.confirm({
+    title: t('settings.clearTitle'),
+    body: c
+      ? t('settings.clearBody', { name: `${gameName(c.game)} · ${c.nickname ?? c.uid}` })
+      : t('settings.clearAllBody', { n: credentials.value.length }),
+    confirm: c ? t('settings.clear') : t('settings.clearAll'),
+    danger: true,
+  })
+  if (!ok) return
+  try {
+    const n = await api.clearCredentials(c?.accountId ?? null)
+    ui.toast(t('settings.cleared', { n }))
+    credentials.value = await api.listCredentials()
+  } catch (e) {
+    report(e)
+  }
+}
+
+// ── 关于 ──
+async function checkUpdate() {
+  await updater.check()
+  if (updater.status === 'upToDate') ui.toast(t('update.upToDate'))
+}
+
+function openReleases() {
+  api.openExternal('releases').catch(report)
 }
 
 function openDir(kind: 'data' | 'backups' | 'logs') {
@@ -338,7 +377,31 @@ const version = __APP_VERSION__
 
       <!-- 凭证 -->
       <template v-else-if="section === 'credentials'">
-        <div class="empty">{{ t('settings.credentialsEmpty') }}</div>
+        <div class="card" data-test="credentials">
+          <div class="row" style="justify-content: space-between">
+            <div>
+              <div class="ct">{{ t('settings.credentials') }}</div>
+              <div class="muted">{{ t('settings.credentialsHint') }}</div>
+            </div>
+            <button
+              class="btn small danger"
+              :disabled="credentials.length === 0"
+              data-test="clear-all-credentials"
+              @click="clearCredential(null)"
+            >
+              {{ t('settings.clearAll') }}
+            </button>
+          </div>
+          <div v-if="info && !info.canRememberToken" class="notice info">{{ t('settings.credentialsUnsupported') }}</div>
+          <div v-if="credentials.length === 0" class="muted">{{ t('settings.credentialsEmpty') }}</div>
+          <div v-for="c in credentials" :key="c.accountId" class="lrow" data-test="credential-row">
+            <GameIcon :game="c.game" :size="20" />
+            <span>{{ gameName(c.game) }} · {{ c.nickname ?? c.uid }}</span>
+            <span class="muted">{{ t('settings.savedAt', { time: fmtLocal(c.updatedAt) }) }}</span>
+            <span style="margin-left: auto" />
+            <button class="btn small" @click="clearCredential(c)">{{ t('settings.clear') }}</button>
+          </div>
+        </div>
       </template>
 
       <!-- 关于 -->
@@ -348,6 +411,46 @@ const version = __APP_VERSION__
             <div>{{ t('settings.version') }}</div>
             <b class="num">v{{ info?.version ?? version }}</b>
           </div>
+          <div class="srow">
+            <div>
+              {{ t('update.check') }}
+              <div v-if="updater.status === 'upToDate'" class="muted" data-test="update-status">{{ t('update.upToDate') }}</div>
+              <div v-else-if="updater.status === 'available' && updater.info" class="muted" data-test="update-status">
+                {{ t('update.available', { version: updater.info.version }) }}
+              </div>
+              <div v-else-if="updater.status === 'error' && updater.notConfigured()" class="muted" data-test="update-status">
+                {{ t('update.notConfigured') }}
+              </div>
+              <div v-else-if="updater.status === 'error'" class="muted" data-test="update-status">{{ t('update.checkFailed') }}</div>
+            </div>
+            <div class="row">
+              <button v-if="updater.status === 'error'" class="btn small" @click="openReleases">{{ t('update.releases') }}</button>
+              <button
+                v-if="updater.status === 'available'"
+                class="btn small primary"
+                @click="updater.prompt = true"
+              >
+                {{ t('update.install') }}
+              </button>
+              <button
+                class="btn small"
+                :disabled="updater.status === 'checking' || updater.status === 'downloading'"
+                data-test="update-check"
+                @click="checkUpdate"
+              >
+                <AppIcon name="refresh" :size="14" />{{ updater.status === 'checking' ? t('update.checking') : t('update.check') }}
+              </button>
+            </div>
+          </div>
+          <label class="check">
+            <input
+              type="checkbox"
+              :checked="settings.settings.updateAutoCheck"
+              data-test="update-auto"
+              @change="settings.update({ updateAutoCheck: ($event.target as HTMLInputElement).checked })"
+            />
+            {{ t('update.auto') }}
+          </label>
           <div class="srow">
             <div>
               {{ t('settings.logs') }}

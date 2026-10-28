@@ -3,7 +3,7 @@
 import { emit } from '@tauri-apps/api/event'
 import { mockIPC } from '@tauri-apps/api/mocks'
 import type { AccountDto, FilePreviewDto, ImportReportDto, Settings } from '@/bindings'
-import { ACCOUNT, GAMES, PAGE, SETTINGS, STATS } from '@/__tests__/data'
+import { ACCOUNT, GAMES, MONTHS, PAGE, SETTINGS, STATS, prediction } from '@/__tests__/data'
 
 const params = new URLSearchParams(location.search)
 let accounts: AccountDto[] = params.has('empty') ? [] : [ACCOUNT]
@@ -80,9 +80,14 @@ const handlers: Record<string, (args: Record<string, unknown>) => unknown> = {
     logDir: 'C:\\Users\\me\\AppData\\Roaming\\GachaNote\\logs',
     dbSize: 4096,
     canDiscover: false,
+    canRememberToken: true,
   }),
   list_backups: () => [],
   meta_info: () => ({ version: '2026.10.1', origin: 'bundled' }),
+  predict: (a) => prediction(Number(a.pulls)),
+  get_monthly_trend: () => MONTHS,
+  list_credentials: () => [],
+  check_update: () => null,
   'plugin:dialog|open': () => FILE,
   sniff_file: () => PREVIEW,
   import_file: () => {

@@ -6,6 +6,7 @@ import AppSidebar from '@/components/AppSidebar.vue'
 import ConfirmDialog from '@/components/ConfirmDialog.vue'
 import ImportWizard from '@/components/ImportWizard.vue'
 import ToastHost from '@/components/ToastHost.vue'
+import UpdateDialog from '@/components/UpdateDialog.vue'
 import { useErrors } from '@/composables/useErrors'
 import { useTheme } from '@/composables/useTheme'
 import { resolveLocale, setLocale } from '@/i18n'
@@ -14,12 +15,14 @@ import { useGamesStore } from '@/stores/games'
 import { useSettingsStore } from '@/stores/settings'
 import { useTasksStore } from '@/stores/tasks'
 import { useUiStore } from '@/stores/ui'
+import { useUpdaterStore } from '@/stores/updater'
 
 const settings = useSettingsStore()
 const games = useGamesStore()
 const accounts = useAccountsStore()
 const tasks = useTasksStore()
 const ui = useUiStore()
+const updater = useUpdaterStore()
 const route = useRoute()
 const router = useRouter()
 const { report } = useErrors()
@@ -56,6 +59,8 @@ onMounted(async () => {
   } finally {
     ready.value = true
   }
+  // 启动时在后台检查软件新版本（F-24），失败不打扰
+  if (settings.settings.updateAutoCheck) void updater.check(true)
 })
 
 onBeforeUnmount(() => {
@@ -94,9 +99,11 @@ function onKey(e: KeyboardEvent) {
       break
     case '1':
     case '2':
+    case '3':
       if (accountId) {
         e.preventDefault()
-        void router.push(`/account/${accountId}/${e.key === '1' ? 'stats' : 'records'}`)
+        const tab = { '1': 'stats', '2': 'records', '3': 'analysis' }[e.key]
+        void router.push(`/account/${accountId}/${tab}`)
       }
       break
   }
@@ -111,6 +118,7 @@ function onKey(e: KeyboardEvent) {
     </main>
     <ImportWizard v-if="ui.importRequest" :request="ui.importRequest" @close="ui.closeImport()" />
     <ConfirmDialog />
+    <UpdateDialog />
     <ToastHost />
   </div>
 </template>

@@ -54,7 +54,7 @@ onBeforeUnmount(() => document.removeEventListener('mousedown', closeMenu))
 
 function switchTo(target: string) {
   menu.value = null
-  const tab = route.name === 'records' ? 'records' : 'stats'
+  const tab = route.name === 'records' || route.name === 'analysis' ? route.name : 'stats'
   void router.push(`/account/${target}/${tab}`)
 }
 
@@ -200,6 +200,9 @@ async function remove() {
           </RouterLink>
           <RouterLink :to="`/account/${account.id}/records`" class="tab" active-class="on">
             {{ t('account.tabs.records') }}
+          </RouterLink>
+          <RouterLink :to="`/account/${account.id}/analysis`" class="tab" active-class="on" data-test="tab-analysis">
+            {{ t('account.tabs.analysis') }}
           </RouterLink>
         </nav>
       </template>
