@@ -22,6 +22,7 @@ pub(crate) fn rule(pool_type: &str, rarity_top: u8, curve: PityCurve, up: UpRule
         up,
         extras: Vec::new(),
         pity_scope: PityScope::SharedByType,
+        achievements: Default::default(),
     }
 }
 

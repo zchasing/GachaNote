@@ -1,12 +1,13 @@
-//! 明日方舟：终末地：规则模板与卡池类型映射（T-24）。token 拉取在 v0.2（T-51）。
+//! 明日方舟：终末地：规则模板与卡池类型映射（T-24）。token 拉取见 [`crate::hypergryph`]。
 //!
 //! 记录的官方卡池代码由转换器写成 `<char|weapon>:<poolId>`。免费抽与赠送条目在解码时已标为
 //! `is_pull = false`，不计抽数与保底（[`Mechanic::FreePulls`]）。
 
-use gachanote_core::plugin::{GameInfo, GamePlugin, Vendor};
+use gachanote_core::plugin::{FetchKind, Fetcher, GameInfo, GamePlugin, Vendor};
 use gachanote_core::rules::{Mechanic, PoolRule, UpRule};
 use gachanote_core::{FormatId, GameId, PoolTypeId};
 
+use crate::hypergryph::HgFetcher;
 use crate::rules::{curve, digits, rule, RuleExt};
 
 /// 官方卡池代码 → 卡池类型。
@@ -55,11 +56,26 @@ pub fn rules() -> Vec<PoolRule> {
 /// 终末地插件。
 pub struct Endfield {
     rules: Vec<PoolRule>,
+    fetcher: Option<HgFetcher>,
 }
 
 impl Default for Endfield {
+    /// 没有拉取器（只能导入文件）。
     fn default() -> Self {
-        Self { rules: rules() }
+        Self {
+            rules: rules(),
+            fetcher: None,
+        }
+    }
+}
+
+impl Endfield {
+    /// 带鹰角 token 拉取器。
+    pub fn new(fetcher: HgFetcher) -> Self {
+        Self {
+            rules: rules(),
+            fetcher: Some(fetcher),
+        }
     }
 }
 
@@ -74,7 +90,7 @@ impl GamePlugin for Endfield {
             vendor: Vendor::Hypergryph,
             theme_color: "#F2C200".into(),
             pool_types: crate::pool_order(&self.rules),
-            fetch: None,
+            fetch: Some(FetchKind::AccountToken),
             formats: vec![FormatId::Gnj, FormatId::AkExportCsv, FormatId::GnCsv],
         }
     }
@@ -85,6 +101,10 @@ impl GamePlugin for Endfield {
 
     fn pool_type(&self, official: &str) -> Option<PoolTypeId> {
         pool_type(official)
+    }
+
+    fn fetcher(&self) -> Option<&dyn Fetcher> {
+        self.fetcher.as_ref().map(|f| f as &dyn Fetcher)
     }
 
     /// 1–16 位数字。

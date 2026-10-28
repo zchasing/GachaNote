@@ -9,10 +9,17 @@ use gachanote_core::stats::account_stats;
 use gachanote_core::FormatId;
 
 use super::*;
+use arknights::Arknights;
+use endfield::Endfield;
 
 fn registry() -> PluginRegistry {
     let mut reg = PluginRegistry::new();
-    register_all(&mut reg, &default_client(), &Pacing::default());
+    register_all(
+        &mut reg,
+        &default_client(),
+        &Pacing::default(),
+        &HgClient::new(default_client(), Pacing::default()),
+    );
     reg
 }
 
@@ -55,7 +62,10 @@ fn six_games_registered_with_consistent_info() {
         }
         assert_eq!(info.fetch.is_some(), g.fetcher().is_some());
         if let Some(f) = g.fetcher() {
-            assert_eq!(f.kind(), FetchKind::Url);
+            // 鹰角两款用账号 token，其余用抽卡链接
+            let token = info.vendor == Vendor::Hypergryph;
+            assert_eq!(f.kind() == FetchKind::AccountToken, token);
+            assert_eq!(info.fetch, Some(f.kind()));
         }
     }
     let vendors: Vec<_> = reg.games().iter().map(|g| g.info().vendor).collect();
@@ -72,6 +82,8 @@ fn six_games_registered_with_consistent_info() {
         "Default 构造"
     );
     let _ = (StarRail::default(), Zzz::default(), Wuwa::default());
+    assert!(Arknights::default().fetcher().is_none());
+    assert!(Endfield::default().fetcher().is_none());
 }
 
 use genshin::Genshin;

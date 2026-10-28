@@ -1,12 +1,13 @@
-//! 明日方舟：规则模板与卡池类型映射（T-24）。token 拉取在 v0.2（T-51）。
+//! 明日方舟：规则模板与卡池类型映射（T-24）。token 拉取见 [`crate::hypergryph`]。
 //!
 //! 记录自带卡池 ID（`poolId`，如 `LIMITED_37_0_1`），按前缀归入卡池类型；
 //! 没有大小保底，歪率口径为「非 UP 六星占比」（[`UpRule::Fixed`]）。
 
-use gachanote_core::plugin::{GameInfo, GamePlugin, Vendor};
+use gachanote_core::plugin::{FetchKind, Fetcher, GameInfo, GamePlugin, Vendor};
 use gachanote_core::rules::{Mechanic, PoolRule, UpRule};
 use gachanote_core::{FormatId, GameId, PoolTypeId};
 
+use crate::hypergryph::HgFetcher;
 use crate::rules::{curve, digits, rule, RuleExt};
 
 /// 卡池 ID 前缀 → 卡池类型。不认识的前缀（`ATTAIN`、`SPECIAL` 定向甄选等）归入 `other`
@@ -60,11 +61,26 @@ pub fn rules() -> Vec<PoolRule> {
 /// 明日方舟插件。
 pub struct Arknights {
     rules: Vec<PoolRule>,
+    fetcher: Option<HgFetcher>,
 }
 
 impl Default for Arknights {
+    /// 没有拉取器（只能导入文件）。
     fn default() -> Self {
-        Self { rules: rules() }
+        Self {
+            rules: rules(),
+            fetcher: None,
+        }
+    }
+}
+
+impl Arknights {
+    /// 带鹰角 token 拉取器。
+    pub fn new(fetcher: HgFetcher) -> Self {
+        Self {
+            rules: rules(),
+            fetcher: Some(fetcher),
+        }
     }
 }
 
@@ -79,7 +95,7 @@ impl GamePlugin for Arknights {
             vendor: Vendor::Hypergryph,
             theme_color: "#2F8FE0".into(),
             pool_types: crate::pool_order(&self.rules),
-            fetch: None,
+            fetch: Some(FetchKind::AccountToken),
             formats: vec![FormatId::Gnj, FormatId::AkExportCsv, FormatId::GnCsv],
         }
     }
@@ -90,6 +106,10 @@ impl GamePlugin for Arknights {
 
     fn pool_type(&self, official: &str) -> Option<PoolTypeId> {
         pool_type(official)
+    }
+
+    fn fetcher(&self) -> Option<&dyn Fetcher> {
+        self.fetcher.as_ref().map(|f| f as &dyn Fetcher)
     }
 
     /// 1–16 位数字。

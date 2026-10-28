@@ -16,7 +16,8 @@ fn source(url: &str) -> FetchSource {
     FetchSource {
         game: GameId::WUWA.into(),
         url: Some(Redacted::url(url.to_owned())),
-        account: None,
+        token: None,
+        uid: None,
     }
 }
 
