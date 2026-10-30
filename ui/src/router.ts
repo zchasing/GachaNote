@@ -15,6 +15,7 @@ export function createAppRouter(history: RouterHistory = createWebHashHistory())
           { path: 'stats', name: 'stats', component: () => import('./views/StatsTab.vue') },
           { path: 'records', name: 'records', component: () => import('./views/RecordsTab.vue') },
           { path: 'analysis', name: 'analysis', component: () => import('./views/AnalysisTab.vue') },
+          { path: 'timeline', name: 'timeline', component: () => import('./views/TimelineTab.vue') },
         ],
       },
       {

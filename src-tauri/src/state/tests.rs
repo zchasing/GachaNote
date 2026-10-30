@@ -688,3 +688,114 @@ fn token_cannot_be_saved_without_secret_store() {
     let err = tauri::async_runtime::block_on(f.state.hg_roles(saved)).unwrap_err();
     assert_eq!(err.code(), "invalid");
 }
+
+#[test]
+fn timeline_by_banner_and_by_pool_id() {
+    let f = Fixture::new();
+    f.state.import_file(sample("uigf-v4.json"), genshin_only());
+    f.wait().unwrap();
+    let id = f.state.list_accounts().unwrap()[0].id.clone();
+    let stats = f.state.get_stats(&id).unwrap();
+    let character = stats
+        .pools
+        .iter()
+        .find(|p| p.pool_type == "character")
+        .unwrap();
+    // 2024-03-01 00:00 UTC
+    let now = 1_709_251_200_000;
+    let tl = f.state.get_timeline_at(&id, "character", now).unwrap();
+    assert_eq!(tl.pool_type, "character");
+    let d = &tl.daily;
+    assert_eq!(d.start, "2024-01-01");
+    assert_eq!(d.top.len(), d.second.len());
+    assert_eq!(d.top.len(), d.other.len());
+    let daily_total: u32 = (0..d.top.len())
+        .map(|i| d.top[i] + d.second[i] + d.other[i])
+        .sum();
+    assert_eq!(daily_total, character.total_pulls);
+    assert_eq!(d.top.iter().sum::<u32>() as usize, character.tops.len());
+
+    // 记录都在 2024-01-01，落在元数据包里的一期；之后到 3 月的几期列为未参与
+    let joined: Vec<_> = tl.periods.iter().filter(|p| p.pulls > 0).collect();
+    assert_eq!(joined.len(), 1);
+    let p = joined[0];
+    assert_eq!(p.kind, crate::dto::PeriodKind::Banner);
+    assert_eq!(p.pulls, character.total_pulls);
+    assert_eq!(p.tops, character.tops);
+    assert!(!p.up_top.is_empty());
+    assert!(p.up_top.iter().all(|u| !u.names.is_empty()));
+    assert!(p.start <= 1_704_081_600_000 && 1_704_081_600_000 < p.end);
+    let skipped: Vec<_> = tl.periods.iter().filter(|p| p.pulls == 0).collect();
+    assert!(!skipped.is_empty());
+    assert!(skipped.iter().all(|s| s.start <= now && s.tops.is_empty()));
+    assert!(tl.periods.windows(2).all(|w| w[0].start >= w[1].start));
+    assert_eq!(
+        f.state.get_timeline(&id, "nope").unwrap_err().code(),
+        "not_found"
+    );
+
+    // 明日方舟：元数据包里没有卡池，按记录自带的卡池 ID 分期，卡池名取自原文
+    f.state.import_file(sample("ak-export-arknights.csv"), None);
+    f.wait().unwrap();
+    let ak = f
+        .state
+        .list_accounts()
+        .unwrap()
+        .into_iter()
+        .find(|a| a.game == "arknights")
+        .unwrap();
+    let ak_stats = f.state.get_stats(&ak.id).unwrap();
+    let pool = ak_stats
+        .pools
+        .iter()
+        .find(|p| p.total_pulls > 0 && p.tops.len() == 1)
+        .unwrap();
+    let tl = f.state.get_timeline(&ak.id, &pool.pool_type).unwrap();
+    let p = &tl.periods[0];
+    assert_eq!(p.kind, crate::dto::PeriodKind::Pool);
+    assert_eq!(p.raw_name.as_deref(), Some("限定寻访, 春节"));
+    assert_eq!(p.tops[0].item_name, "能天使");
+    assert!(p.up_top.is_empty() && p.names.is_empty());
+}
+
+#[test]
+fn item_icons_and_cached_icon() {
+    let f = Fixture::new();
+    // 内置包暂无头像
+    assert!(f.state.item_icons("genshin").is_empty());
+    assert!(f.state.item_icons("unknown").is_empty());
+
+    let bytes = b"RIFF0000WEBPVP8 ".to_vec();
+    let sha = gachanote_meta::sha256_hex(&bytes);
+    let dir = f.dir.path().join("base/icons/genshin");
+    fs::create_dir_all(&dir).unwrap();
+    fs::write(dir.join(format!("{sha}.webp")), &bytes).unwrap();
+    let got = tauri::async_runtime::block_on(f.state.icon("genshin", &sha)).unwrap();
+    assert_eq!(got, bytes);
+    let e = tauri::async_runtime::block_on(f.state.icon("genshin", "../../x")).unwrap_err();
+    assert_eq!(e.code(), "invalid");
+}
+
+#[test]
+fn saves_png_only() {
+    use base64::Engine as _;
+    let f = Fixture::new();
+    let png = b"\x89PNG\r\n\x1a\nrest".to_vec();
+    let path = f.dir.path().join("share.png");
+    let b64 = base64::engine::general_purpose::STANDARD.encode(&png);
+    f.state.save_png(&path, &b64).unwrap();
+    assert_eq!(fs::read(&path).unwrap(), png);
+    assert!(!path.with_extension("gachanote-tmp").exists());
+
+    let other = base64::engine::general_purpose::STANDARD.encode(b"GIF89a");
+    assert_eq!(
+        f.state.save_png(&path, &other).unwrap_err().code(),
+        "invalid"
+    );
+    assert_eq!(
+        f.state.save_png(&path, "%%%").unwrap_err().code(),
+        "invalid"
+    );
+    let missing = f.dir.path().join("no/such/dir/x.png");
+    assert!(f.state.save_png(&missing, &b64).is_err());
+}

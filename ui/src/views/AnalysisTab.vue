@@ -7,7 +7,7 @@ import CompositionCard from '@/components/CompositionCard.vue'
 import EChart from '@/components/EChart.vue'
 import PityTag from '@/components/PityTag.vue'
 import SegmentedControl from '@/components/SegmentedControl.vue'
-import { baseOption, luckTier, type CssVar } from '@/composables/chart'
+import { baseOption, luckTier, monthlyOption, type CssVar } from '@/composables/chart'
 import { fmtAvg, fmtDate, fmtPct } from '@/composables/format'
 import { useErrors } from '@/composables/useErrors'
 import { useNames } from '@/composables/useNames'
@@ -267,33 +267,10 @@ watch(
 )
 
 function monthOption(css: CssVar) {
-  const base = baseOption(css)
-  return {
-    ...base,
-    xAxis: { type: 'category', data: months.value.map((m) => m.month), ...base.axis, splitLine: { show: false } },
-    yAxis: [
-      { type: 'value', ...base.axis },
-      { type: 'value', ...base.axis, minInterval: 1, splitLine: { show: false } },
-    ],
-    series: [
-      {
-        name: t('analysis.monthPulls'),
-        type: 'bar',
-        barMaxWidth: 24,
-        itemStyle: { color: css('--bar3'), borderRadius: [3, 3, 0, 0] },
-        data: months.value.map((m) => m.pulls),
-      },
-      {
-        name: t('analysis.monthTops', { name: topName.value }),
-        type: 'line',
-        yAxisIndex: 1,
-        symbolSize: 6,
-        lineStyle: { color: css('--bar5'), width: 2 },
-        itemStyle: { color: css('--bar5') },
-        data: months.value.map((m) => m.tops),
-      },
-    ],
-  }
+  return monthlyOption(css, months.value, {
+    pulls: t('analysis.monthPulls'),
+    tops: t('analysis.monthTops', { name: topName.value }),
+  })
 }
 
 // ---------- 成就 ----------

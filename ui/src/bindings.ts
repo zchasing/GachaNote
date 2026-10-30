@@ -21,6 +21,8 @@ export const commands = {
 	predict: (accountId: string, poolType: string, pulls: number) => __TAURI_INVOKE<PredictionDto>("predict", { accountId, poolType, pulls }),
 	/**  按月汇总抽数与出金；`pool_type` 为空表示全部卡池。 */
 	getMonthlyTrend: (accountId: string, poolType: string | null) => __TAURI_INVOKE<MonthDto[]>("get_monthly_trend", { accountId, poolType }),
+	/**  一个卡池的时间线：按日抽数与各期列表（F-19）。 */
+	getTimeline: (accountId: string, poolType: string) => __TAURI_INVOKE<TimelineDto>("get_timeline", { accountId, poolType }),
 	/**  跨游戏总览。 */
 	getOverview: () => __TAURI_INVOKE<OverviewEntry[]>("get_overview"),
 	/**  分页查询记录。 */
@@ -50,6 +52,8 @@ export const commands = {
 	cancelTask: (taskId: number) => __TAURI_INVOKE<boolean>("cancel_task", { taskId }),
 	/**  导出账号到文件。 */
 	exportAccounts: (accountIds: string[], format: ExportFormat, path: string) => __TAURI_INVOKE<ExportResult>("export_accounts", { accountIds, format, path }),
+	/**  保存分享图：`data` 为 base64 编码的 PNG（F-20）。 */
+	saveImage: (path: string, data: string) => __TAURI_INVOKE<null>("save_image", { path, data }),
 	/**  读取设置。 */
 	getSettings: () => __TAURI_INVOKE<Settings>("get_settings"),
 	/**  保存设置。 */
@@ -72,6 +76,8 @@ export const commands = {
 	restoreBackup: (name: string) => __TAURI_INVOKE<null>("restore_backup", { name }),
 	/**  当前卡池数据包。 */
 	metaInfo: () => __TAURI_INVOKE<MetaInfo>("meta_info"),
+	/**  一款游戏的头像索引：物品 ID 与各语言名称 → 图标哈希。图片地址为 `gnicon://localhost/<game>/<hash>`。 */
+	getItemIcons: (game: string) => __TAURI_INVOKE<{ [key in string]: string }>("get_item_icons", { game }),
 	/**  检查并下载卡池数据包。 */
 	updateMetadata: () => __TAURI_INVOKE<MetaUpdateResult>("update_metadata"),
 	/**  检查软件新版本；没有新版本时为空。 */
@@ -252,6 +258,18 @@ export type CurvePointDto = {
 	up: number | null,
 };
 
+/**  按日抽数（时间线图表，F-19）：从 `start` 起每天一项，三个数组等长。 */
+export type DailyDto = {
+	/**  第一天（服务器时区），如 `2026-10-01`；没有记录时为空串。 */
+	start: string,
+	/**  每天的最高星数。 */
+	top: number[],
+	/**  每天的次高星数。 */
+	second: number[],
+	/**  每天的其他星级数。 */
+	other: number[],
+};
+
 /**  数据有写入（`data://changed`）：前端据此刷新统计与边栏。`account_ids` 为空表示全部。 */
 export type DataChanged = {
 	/**  受影响的账号。 */
@@ -396,6 +414,14 @@ export type ImportReportDto = {
 	backup: string | null,
 };
 
+/**  物品的各语言名称（卡池 UP 名单用）。 */
+export type ItemNameDto = {
+	/**  元数据包里的写法（物品 ID 或名称），找不到物品时直接显示它。 */
+	key: string,
+	/**  各语言名称，键为 `zh-cn`、`en-us` 等。 */
+	names: { [key in string]: string },
+};
+
 /**  歪率。 */
 export type LossDto = {
 	/**  歪的次数。 */
@@ -470,6 +496,39 @@ export type OverviewEntry = {
 	/**  统计。 */
 	stats: AccountStatsDto,
 };
+
+/**  时间线上的一期（F-19）。 */
+export type PeriodDto = {
+	/**  划分方式。 */
+	kind: PeriodKind,
+	/**  卡池 ID。 */
+	id: string | null,
+	/**  卡池名：元数据包里的各语言名称。 */
+	names: { [key in string]: string },
+	/**  卡池名：记录原文（方舟、终末地记录自带）。 */
+	rawName: string | null,
+	/**  开始时间。 */
+	start: number,
+	/**  结束时间。 */
+	end: number,
+	/**  UP 最高星。 */
+	upTop: ItemNameDto[],
+	/**  UP 次高星。 */
+	upSecond: ItemNameDto[],
+	/**  本期抽数；为 0 表示未参与。 */
+	pulls: number,
+	/**  本期出的最高星，按时间顺序。 */
+	tops: TopPullDto[],
+};
+
+/**  时间线上的一期是怎么划分的。 */
+export type PeriodKind = 
+/**  元数据包里的一期卡池。 */
+"banner" | 
+/**  记录自带的卡池 ID。 */
+"pool" | 
+/**  按时间自动分段。 */
+"auto";
 
 /**  当前保底状态。 */
 export type PityDto = {
@@ -625,6 +684,8 @@ export type RecordDto = {
 	poolType: string,
 	/**  物品名。 */
 	itemName: string,
+	/**  物品 ID（查头像用）。 */
+	itemId: string | null,
 	/**  物品类型。 */
 	itemType: string | null,
 	/**  星级。 */
@@ -732,6 +793,16 @@ export type TaskProgress = {
 	total: number | null,
 	/**  说明（如当前卡池代码）。 */
 	message: string,
+};
+
+/**  一个卡池的时间线：按日图表与各期列表（最新在前）。 */
+export type TimelineDto = {
+	/**  卡池类型。 */
+	poolType: string,
+	/**  按日抽数。 */
+	daily: DailyDto,
+	/**  各期。 */
+	periods: PeriodDto[],
 };
 
 /**  鹰角 token 的来源。token 本身只在「手动粘贴」时经过前端。 */

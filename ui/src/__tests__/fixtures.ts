@@ -7,9 +7,9 @@ import type { AccountDto } from '@/bindings'
 import App from '@/App.vue'
 import { i18n, setLocale } from '@/i18n'
 import { createAppRouter } from '@/router'
-import { ACCOUNT, GAMES, MONTHS, PAGE, SETTINGS, STATS, prediction } from './data'
+import { ACCOUNT, GAMES, MONTHS, PAGE, SETTINGS, STATS, prediction, timeline } from './data'
 
-export { ACCOUNT, GAMES, MONTHS, PAGE, SETTINGS, STATS, prediction }
+export { ACCOUNT, GAMES, MONTHS, PAGE, SETTINGS, STATS, prediction, timeline }
 
 export type Handler = (args: Record<string, unknown>) => unknown
 
@@ -38,6 +38,8 @@ export function setupIpc(overrides: Record<string, Handler> = {}) {
     meta_info: () => ({ version: '2026.10.1', origin: 'bundled' }),
     predict: (a) => prediction(Number(a.pulls)),
     get_monthly_trend: () => MONTHS,
+    get_timeline: () => timeline(),
+    get_item_icons: () => ({}),
     list_credentials: () => [],
   }
   const handlers = { ...defaults, ...overrides }

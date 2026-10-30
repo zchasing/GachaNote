@@ -54,6 +54,7 @@ GachaNote 只会连接下面这些地址：
 | 你查询鹰角角色或开始拉取 | 鹰角官方接口：`as.hypergryph.com`、`binding-api-account-prod.hypergryph.com`（授权与角色列表）、`ak.hypergryph.com`（明日方舟寻访记录）、`ef-webview.hypergryph.com`（终末地抽卡记录） | 账号 token 与所选角色的 UID，与在官网查询寻访记录时发送的内容相同 |
 | 启动时（可关闭）或你在「设置 → 关于」点「检查更新」 | GitHub Releases（`github.com` 及其下载服务器） | 只是下载公开的版本信息（`latest.json`）；你确认更新时再下载安装包 |
 | 启动时（可关闭）或你点「检查更新」 | `raw.githubusercontent.com`，失败时改用 `cdn.jsdelivr.net`（本仓库 `metadata/` 目录） | 只是下载公开文件，不附带任何个人信息 |
+| 界面第一次显示某个物品的头像时 | 同上（本仓库 `metadata/icons/` 目录），下载后缓存在本机 | 只是下载公开的图片文件，不附带任何个人信息 |
 | 你打开项目主页、Releases 等链接 | GitHub（在浏览器中打开） | — |
 
 - 卡池数据包的自动检查可以在「设置 → 卡池数据包 → 启动时自动检查」关闭；关闭后完全离线也能正常使用（使用安装包内置的数据包）。

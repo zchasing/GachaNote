@@ -16,6 +16,7 @@ name = "gachanote_app_lib"
 tauri-build = { workspace = true, features = [] }
 
 [dependencies]
+base64.workspace = true
 gachanote-core.workspace = true
 gachanote-formats.workspace = true
 gachanote-games.workspace = true

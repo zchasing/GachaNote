@@ -6,7 +6,8 @@ manifest.json 结构（见架构文档 2 节与 SRS）：
      "files": [{"path": "genshin.json", "sha256": "<hex>"}, ...]}
 
 用法：
-    python scripts/check_metadata.py           校验所有文件存在、可解析、SHA-256 与 manifest 一致
+    python scripts/check_metadata.py           校验所有文件存在、可解析、SHA-256 与 manifest 一致，
+                                               物品头像 icons/<game>/<sha256>.webp 存在且内容一致
     python scripts/check_metadata.py --fix     按当前文件内容重写 manifest 中的 sha256
     python scripts/check_metadata.py --schema  额外用 metadata/schema/ 下的 JSON Schema 校验（需 check-jsonschema）：
                                                manifest.json → manifest.schema.json，各游戏文件 → game.schema.json
@@ -56,6 +57,33 @@ def main() -> int:
             entry["sha256"] = actual
         elif entry.get("sha256") != actual:
             errors.append(f"{rel}: sha256 不一致，请运行 python scripts/check_metadata.py --fix")
+
+    # 头像不登记在 manifest 里，由游戏文件中物品的 icon（SHA-256）校验：文件要存在且内容一致
+    referenced = set()
+    for entry in files:
+        path = ROOT / entry.get("path", "")
+        if path.suffix != ".json" or not path.is_file():
+            continue
+        try:
+            pack = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            continue
+        game = pack.get("game", "")
+        for item in pack.get("items", []):
+            icon = item.get("icon")
+            if not icon:
+                continue
+            rel = f"icons/{game}/{icon}.webp"
+            referenced.add(rel)
+            icon_path = ROOT / rel
+            if not icon_path.is_file():
+                errors.append(f"{entry['path']}: 物品 {item.get('id')} 的头像 {rel} 不存在")
+            elif sha256(icon_path) != icon:
+                errors.append(f"{rel}: 内容与文件名中的 sha256 不一致")
+    for path in sorted(ROOT.glob("icons/*/*")):
+        rel = path.relative_to(ROOT).as_posix()
+        if rel not in referenced:
+            errors.append(f"{rel}: 没有物品引用这个头像，请删除或运行 scripts/build_icons.py")
 
     listed = {e.get("path") for e in files}
     for path in ROOT.glob("*.json"):

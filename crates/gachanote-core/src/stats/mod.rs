@@ -17,6 +17,7 @@ use crate::rules::{rule_at, PityScope, PoolRule, UpRule};
 pub mod analysis;
 pub mod luck;
 pub mod predict;
+pub mod timeline;
 
 /// 一只最高星。
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]

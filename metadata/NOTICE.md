@@ -7,6 +7,8 @@
 
 `wuwa.json`、`arknights.json`、`endfield.json` 为本项目手工维护。
 
+`icons/` 下的物品头像由 [`scripts/build_icons.py`](../scripts/build_icons.py) 从维护者提供的图片转换（64×64 WebP，按内容的 SHA-256 命名）。新增头像时在此注明图片来源。
+
 游戏名称、角色与物品名称归各游戏的权利人所有。
 
 ---

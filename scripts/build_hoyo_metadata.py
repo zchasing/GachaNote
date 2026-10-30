@@ -113,6 +113,12 @@ def main():
             continue
         game, pack = build(business)
         path = OUT / f"{game}.json"
+        # 头像由 scripts/build_icons.py 维护，重新生成时保留已有的 icon 字段
+        if path.is_file():
+            icons = {i["id"]: i["icon"] for i in json.loads(path.read_text(encoding="utf-8"))["items"] if i.get("icon")}
+            for item in pack["items"]:
+                if item["id"] in icons:
+                    item["icon"] = icons[item["id"]]
         path.write_text(json.dumps(pack, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
         print(f"{path.name}: {len(pack['items'])} items, {len(pack['banners'])} banners")
 

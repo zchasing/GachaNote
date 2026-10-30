@@ -275,7 +275,7 @@ erDiagram
 - **终末地的官方 ID**：记录接口的 `seqId` 只在卡池内有意义，`ext_id` 取 `poolId:kind:seqId`。
 - **不存派生数据**：保底计数、是否歪等都由统计引擎实时计算，规则或元数据更新后自动变正确。统计结果只在内存中按 (account, pool\_type, 数据版本) 缓存。
 - **`raw_json` 必存**：保证 UIGF/GNJ 导出不丢字段，也方便以后发现解析错误时重算。
-- **元数据不入库**：卡池元数据包以 JSON 文件形式缓存在 `%APPDATA%/GachaNote/metadata/`，启动时加载到内存（`gachanote-meta`：缓存合法且不比内置包旧时用缓存，否则用编译进安装包的 `metadata/`）。更新时依次尝试 raw.githubusercontent.com、jsDelivr，逐个校验 SHA-256，全部通过才整体替换缓存。
+- **元数据不入库**：卡池元数据包以 JSON 文件形式缓存在 `%APPDATA%/GachaNote/metadata/`，启动时加载到内存（`gachanote-meta`：缓存合法且不比内置包旧时用缓存，否则用编译进安装包的 `metadata/`）。更新时依次尝试 raw.githubusercontent.com、jsDelivr，逐个校验 SHA-256，全部通过才整体替换缓存。物品头像不随包下载，界面显示时由 `IconStore` 按需从同样的来源取 `icons/<game>/<sha256>.webp`，校验哈希后缓存在 `%APPDATA%/GachaNote/icons/`（按内容寻址，不会过期）。
 
 ### 4.2 迁移与备份
 
@@ -334,6 +334,9 @@ pub trait BackupService: Send + Sync {        // store 中的 BackupManager 实�
 | 统计 | `get_stats(accountId)` | 账号与各卡池的保底计数、平均 UP 抽数、歪率、星级构成、出金历史；v0.2 起每个卡池附带下一抽出金 / 出 UP 概率、欧非评价、成就 | F-09–F-12, F-14, F-17 |
 | 统计 | `predict(accountId, poolType, pulls)` | 再抽 0..n 抽的累计出金 / 出 UP 概率曲线，至少到两条曲线都超过 99.9%；附 50% / 90% 分位与「最多再抽几抽必出」 | F-16 |
 | 统计 | `get_monthly_trend(accountId, poolType?)` | 按月（服务器时区）汇总抽数、最高星数、UP 数，中间没有抽卡的月份补 0 | F-15 |
+| 时间线 | `get_timeline(accountId, poolType)` | 按日（服务器时区）三档星级抽数，从第一条记录到今天；各期列表（最新在前），每期含起止时间、UP 名单（各语言名称）、本期抽数与出金。记录先按元数据包的卡池起止时间归期，没有对应卡池时按记录自带的卡池 ID（方舟、终末地）归组，再不行按时间自动分段（相隔超过 3 天或一段超过 21 天另起一段）；第一条记录之后开放过但没抽的期也列出，`pulls` 为 0（v0.3） | F-19 |
+| 头像 | `get_item_icons(game)` | 物品 ID 与各语言名称 → 图标哈希；图片地址为自定义协议 `gnicon://localhost/<game>/<sha256>`（Windows 上为 `http://gnicon.localhost/...`），由后端从缓存或下载来源取得，找不到时返回 404，前端回退到文字（v0.3） | — |
+| 分享 | `save_image(path, data)` | 保存分享图：`data` 为 base64 编码的 PNG，校验文件头后先写临时文件再替换（v0.3） | F-20 |
 | 记录 | `query_records(query)` | 按卡池、星级、时间、名称筛选并分页；附带当次抽数与 UP 标记（后端按账号缓存） | F-13 |
 | 总览 | `get_overview()` | 跨游戏总览卡片数据 | F-18 |
 | 设置 | `get_settings` / `set_settings(settings)` | 整个设置对象（语言、主题、代理、边栏手动添加的游戏、各游戏上次查看的账号、自动检查数据包、启动时检查新版本），存在 `setting` 表的 `app.settings` 键 | F-21, F-22 |
@@ -347,10 +350,9 @@ pub trait BackupService: Send + Sync {        // store 中的 BackupManager 实�
 
 | 模块 | 命令 | 说明 | 对应需求 |
 | --- | --- | --- | --- |
-| 时间线 | `get_banner_timeline(account)` | 按期聚合抽数与所得（v0.3） | F-19 |
 | 诊断 | `export_diagnostics` | 打包脱敏日志供反馈 | NFR |
 
-分享图（F-20）在前端用 DOM 渲染成 PNG，只需一个 `save_image(bytes, path)` 命令落盘。
+分享图（F-20）在前端用 Canvas 2D 按固定版式绘制（不依赖 DOM 截图库），复制到剪贴板走浏览器剪贴板接口，保存走 `save_image`。
 
 ### 5.2 事件清单
 
@@ -550,7 +552,7 @@ pub enum AppError {
 ### 7.6 安全
 
 - Tauri capability 白名单：只给主窗口开放自定义命令与文件对话框；鹰角登录窗口没有任何 capability。更新在后端完成，前端不直接访问文件系统、shell 和更新插件；外部网页只能通过 `open_external` 打开固定的几个地址。
-- CSP 禁止远程脚本；元数据包里的图标通过后端下载、校验 SHA-256 后以本地 asset 协议提供。
+- CSP 禁止远程脚本；元数据包里的头像通过后端下载、校验 SHA-256 后以自定义协议 `gnicon` 提供（CSP 的 `img-src` 只放行 `gnicon:` 与本地资源）。
 - 所有网络请求在后端发出，屏蔽前端直连外网；支持系统代理或自定义代理。
 - 不收集任何遥测数据。
 

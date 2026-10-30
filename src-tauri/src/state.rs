@@ -21,19 +21,20 @@ use gachanote_core::repo::{
 use gachanote_core::rules::rule_at;
 use gachanote_core::stats::analysis::monthly;
 use gachanote_core::stats::predict::predict;
+use gachanote_core::stats::timeline::{daily, periods, Period, PeriodSource};
 use gachanote_core::stats::{account_stats, record_marks, AccountStats, PoolStats, RecordMark};
 use gachanote_core::task::{CancelToken, TaskEvents, TaskId, TaskManager};
 use gachanote_core::{AccountId, AppError, FormatId, GameId, RecordId, Redacted, Result};
 use gachanote_games::hypergryph::{normalize_token, HgEndpoints};
 use gachanote_games::{HgClient, Pacing, StandardPaths};
-use gachanote_meta::{MetaSet, MetaStore, UpdateOutcome};
+use gachanote_meta::{GamePack, IconStore, MetaSet, MetaStore, UpdateOutcome};
 use gachanote_store::{BackupManager, SqliteStore, DEFAULT_KEEP};
 
 use crate::dto::{
-    AccountDto, AccountKey, AccountStatsDto, AppInfo, BackupDto, CredentialDto, DirKind,
-    ExportFormat, ExportResult, FetchModeDto, FilePreviewDto, GameDto, HgRoleDto, MetaInfo,
-    MetaUpdateResult, MonthDto, OverviewEntry, PredictionDto, RecordDto, RecordPage,
-    RecordQueryDto, Settings, TokenSource, UrlSource,
+    AccountDto, AccountKey, AccountStatsDto, AppInfo, BackupDto, CredentialDto, DailyDto, DirKind,
+    ExportFormat, ExportResult, FetchModeDto, FilePreviewDto, GameDto, HgRoleDto, ItemNameDto,
+    MetaInfo, MetaUpdateResult, MonthDto, OverviewEntry, PeriodDto, PredictionDto, RecordDto,
+    RecordPage, RecordQueryDto, Settings, TimelineDto, TokenSource, TopPullDto, UrlSource,
 };
 
 /// 数据库文件名。
@@ -84,6 +85,11 @@ impl Paths {
     /// 元数据缓存目录。
     pub fn metadata(&self) -> PathBuf {
         self.base.join("metadata")
+    }
+
+    /// 物品头像缓存目录。
+    pub fn icons(&self) -> PathBuf {
+        self.base.join("icons")
     }
 }
 
@@ -222,6 +228,7 @@ pub struct AppState {
     tasks: TaskManager,
     meta: RwLock<Arc<MetaSet>>,
     meta_store: MetaStore,
+    icons: IconStore,
     client: reqwest::Client,
     sink: Arc<dyn EventSink>,
     cache: Cache,
@@ -294,6 +301,7 @@ impl AppState {
         let meta = meta_store.load();
         tracing::info!(version = meta.version(), origin = ?meta.origin, "已加载卡池数据包");
         Ok(Self {
+            icons: IconStore::new(paths.icons()),
             paths,
             registry,
             store,
@@ -475,6 +483,54 @@ impl AppState {
             .into_iter()
             .map(Into::into)
             .collect())
+    }
+
+    /// 一个卡池的时间线（F-19）：按日星级堆叠与各期列表。
+    pub fn get_timeline(&self, account_id: &str, pool_type: &str) -> Result<TimelineDto> {
+        self.get_timeline_at(account_id, pool_type, now_ms())
+    }
+
+    fn get_timeline_at(&self, account_id: &str, pool_type: &str, now: i64) -> Result<TimelineDto> {
+        let computed = self.computed(account_id)?;
+        let plugin = self.plugin(&computed.game)?;
+        let pool = computed
+            .raw
+            .pools
+            .iter()
+            .find(|p| p.pool_type.as_str() == pool_type)
+            .ok_or_else(|| AppError::NotFound(format!("pool {pool_type}")))?;
+        let rule = rule_at(plugin.rules(), &pool.pool_type, None);
+        let rarity_top = rule.map_or(5, |r| r.rarity_top);
+        let has_up = rule.is_some_and(|r| r.up.has_up());
+        // 与统计时的分组顺序相同，`pool.tops` 的下标才能对上
+        let records = self.store.timeline(&AccountId::from(account_id), None)?;
+        let recs: Vec<&NewRecord> = records
+            .iter()
+            .map(|r| &r.data)
+            .filter(|r| r.pool_type == pool.pool_type)
+            .collect();
+        let meta = self.meta();
+        let game_meta = meta.game(&computed.game);
+        let banners: Vec<_> = game_meta
+            .banners
+            .iter()
+            .filter(|b| b.pool_type == pool.pool_type)
+            .collect();
+        let d = daily(&recs, rarity_top, computed.tz_offset_min, now);
+        let pack = meta.packs.get(&computed.game);
+        Ok(TimelineDto {
+            pool_type: pool_type.to_owned(),
+            daily: DailyDto {
+                start: d.start,
+                top: d.counts.iter().map(|c| c[0]).collect(),
+                second: d.counts.iter().map(|c| c[1]).collect(),
+                other: d.counts.iter().map(|c| c[2]).collect(),
+            },
+            periods: periods(&recs, &pool.tops, &banners, now)
+                .into_iter()
+                .map(|p| period_dto(p, pack, &recs, has_up))
+                .collect(),
+        })
     }
 
     /// 跨游戏总览（F-18）。
@@ -863,6 +919,23 @@ impl AppState {
         })
     }
 
+    /// 保存分享图（F-20）：`data` 为 base64 编码的 PNG，先写临时文件再替换。
+    pub fn save_png(&self, path: &Path, data: &str) -> Result<()> {
+        use base64::Engine as _;
+        let bytes = base64::engine::general_purpose::STANDARD
+            .decode(data.trim())
+            .map_err(|e| AppError::Invalid(format!("invalid base64: {e}")))?;
+        if !bytes.starts_with(b"\x89PNG\r\n\x1a\n") {
+            return Err(AppError::Invalid("not a png image".into()));
+        }
+        let tmp = path.with_extension("gachanote-tmp");
+        let result = fs::write(&tmp, &bytes).and_then(|()| fs::rename(&tmp, path));
+        if result.is_err() {
+            let _ = fs::remove_file(&tmp);
+        }
+        Ok(result?)
+    }
+
     // ---------- 设置 ----------
 
     /// 读取设置。
@@ -985,6 +1058,24 @@ impl AppState {
 
     // ---------- 卡池数据包 ----------
 
+    /// 一款游戏的头像索引：物品 ID 与各语言名称 → 图标哈希（T-63）。
+    pub fn item_icons(&self, game: &str) -> BTreeMap<String, String> {
+        self.meta()
+            .packs
+            .get(&GameId::from(game))
+            .map(GamePack::icon_index)
+            .unwrap_or_default()
+    }
+
+    /// 取一个头像：有缓存时直接返回，否则从数据包的下载来源取并校验（T-60）。
+    pub async fn icon(&self, game: &str, sha256: &str) -> Result<Vec<u8>> {
+        if let Some(bytes) = self.icons.cached(game, sha256) {
+            return Ok(bytes);
+        }
+        let sources = gachanote_meta::default_sources(&self.client);
+        self.icons.get(game, sha256, &sources).await
+    }
+
     /// 当前数据包。
     pub fn meta_info(&self) -> MetaInfo {
         let meta = self.meta();
@@ -1032,6 +1123,56 @@ impl AppState {
                 min_app_version: Some(min_app_version),
             },
         }
+    }
+}
+
+fn now_ms() -> i64 {
+    std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map_or(0, |d| i64::try_from(d.as_millis()).unwrap_or(i64::MAX))
+}
+
+/// 把一期换算成 DTO：卡池名与 UP 名单从数据包取，记录自带的卡池名从原文取。
+fn period_dto(p: Period, pack: Option<&GamePack>, recs: &[&NewRecord], has_up: bool) -> PeriodDto {
+    let banner = pack.and_then(|pk| {
+        p.id.as_ref()
+            .and_then(|id| pk.banners.iter().find(|b| &b.id == id))
+    });
+    let names = |refs: &[String]| -> Vec<ItemNameDto> {
+        refs.iter()
+            .map(|key| ItemNameDto {
+                key: key.clone(),
+                names: pack
+                    .and_then(|pk| pk.item(key))
+                    .map(|i| i.names.clone())
+                    .unwrap_or_default(),
+            })
+            .collect()
+    };
+    let raw_name = if p.source == PeriodSource::Pool {
+        p.first_record
+            .and_then(|i| recs.get(i))
+            .and_then(|r| serde_json::from_str::<serde_json::Value>(&r.raw_json).ok())
+            .and_then(|v| {
+                ["poolName", "pool_name", "gacha_name"]
+                    .iter()
+                    .find_map(|k| v.get(k)?.as_str().map(str::to_owned))
+            })
+            .filter(|n| !n.is_empty())
+    } else {
+        None
+    };
+    PeriodDto {
+        kind: p.source.into(),
+        names: banner.map(|b| b.names.clone()).unwrap_or_default(),
+        raw_name,
+        start: p.start,
+        end: p.end,
+        up_top: banner.map(|b| names(&b.up_top)).unwrap_or_default(),
+        up_second: banner.map(|b| names(&b.up_second)).unwrap_or_default(),
+        pulls: p.pulls,
+        tops: p.tops.iter().map(|t| TopPullDto::new(t, has_up)).collect(),
+        id: p.id,
     }
 }
 

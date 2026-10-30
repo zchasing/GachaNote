@@ -1,8 +1,8 @@
 import { emit } from '@tauri-apps/api/event'
-import { clearMocks } from '@tauri-apps/api/mocks'
+import { clearMocks, mockConvertFileSrc } from '@tauri-apps/api/mocks'
 import type { VueWrapper } from '@vue/test-utils'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { ACCOUNT, mountApp, setupIpc, settle, STATS } from './fixtures'
+import { ACCOUNT, mountApp, SETTINGS, setupIpc, settle, STATS } from './fixtures'
 
 let wrapper: VueWrapper | undefined
 afterEach(() => {
@@ -416,5 +416,132 @@ describe('设置', () => {
     expect(w.get('[data-test="data-dir"]').text()).toBe('/data/GachaNote')
     expect(w.findAll('[data-test="settings-account"]')).toHaveLength(1)
     expect(STATS.totalPulls).toBe(52)
+  })
+})
+
+describe('时间线', () => {
+  it('按日图表的选区、快捷范围与数据表', async () => {
+    const { wrapper: w, ipc } = await start('/account/acc-1/timeline')
+    await settle()
+    expect(ipc.called('get_timeline')[0]!.args).toEqual({ accountId: 'acc-1', poolType: 'character' })
+    expect(w.get('[data-test="day-range"]').text()).toContain('2026-01-10 – 2026-03-10')
+    expect(w.get('[data-test="day-range"]').text()).toContain('共 40 抽')
+    // 全部时不能平移
+    expect(w.get('[data-test="pan-left"]').attributes('disabled')).toBeDefined()
+
+    await w.get('[data-test="quick-d30"]').trigger('click')
+    await settle()
+    expect(w.get('[data-test="day-range"]').text()).toContain('2026-02-09 – 2026-03-10')
+    expect(w.get('[data-test="day-range"]').text()).toContain('共 10 抽')
+    expect(w.get('[data-test="selected-range"]').text()).toContain('30 天')
+    expect(w.get('[data-test="quick-d30"]').classes()).toContain('on')
+
+    // 键盘平移选区 1 天、拉开始手柄 1 天
+    await w.get('[data-test="brush-window"]').trigger('keydown', { key: 'ArrowLeft' })
+    await settle()
+    expect(w.get('[data-test="day-range"]').text()).toContain('2026-02-08 – 2026-03-09')
+    await w.get('[data-test="brush-start"]').trigger('keydown', { key: 'ArrowRight' })
+    await settle()
+    expect(w.get('[data-test="selected-range"]').text()).toContain('29 天')
+    // 两侧按钮每次平移半个选区
+    await w.get('[data-test="pan-left"]').trigger('click')
+    await settle()
+    expect(w.get('[data-test="day-range"]').text()).toContain('2026-01-26 – 2026-02-23')
+
+    await w.get('[data-test="toggle-day-table"]').trigger('click')
+    await settle()
+    const rows = w.findAll('[data-test="day-table"] tbody tr')
+    expect(rows).toHaveLength(1)
+    expect(rows[0]!.text()).toContain('2026-02-01')
+  })
+
+  it('卡池期数：未参与的默认折叠，没有元数据时按时间自动分段', async () => {
+    const { wrapper: w } = await start('/account/acc-1/timeline')
+    await settle()
+    const periods = w.findAll('[data-test="period"]')
+    expect(periods).toHaveLength(3)
+    expect(periods[0]!.text()).toContain('纳西妲')
+    expect(periods[0]!.text()).toContain('香菱')
+    expect(periods[0]!.text()).toContain('本期 10 抽')
+    expect(periods[0]!.text()).toContain('UP')
+    expect(periods[1]!.text()).toContain('刻晴')
+    expect(periods[1]!.text()).toContain('歪')
+    expect(periods[2]!.text()).toContain('2026-01-10 – 01-10 的记录')
+    expect(periods[2]!.text()).toContain('本期未出 5 星')
+    expect(w.text()).toContain('按记录时间自动分段')
+    expect(w.find('[data-test="period-skipped"]').exists()).toBe(false)
+
+    await w.get('[data-test="show-skipped"]').setValue(true)
+    await settle()
+    expect(w.get('[data-test="period-skipped"]').text()).toContain('神里绫华 · 未参与')
+  })
+
+  it('英文界面用英文 UP 名', async () => {
+    const ipc = setupIpc({ get_settings: () => ({ ...SETTINGS, language: 'en' }) })
+    const { wrapper: w } = await start('/account/acc-1/timeline', ipc)
+    await settle()
+    expect(w.findAll('[data-test="period"]')[0]!.text()).toContain('Nahida')
+  })
+})
+
+describe('分享图', () => {
+  it('默认隐藏 UID，保存时把 PNG 交给后端', async () => {
+    // jsdom 没有 canvas 实现，导出结果用固定值代替
+    const toDataURL = vi
+      .spyOn(HTMLCanvasElement.prototype, 'toDataURL')
+      .mockReturnValue('data:image/png;base64,iVBORw0KGgo=')
+    const ipc = setupIpc({ 'plugin:dialog|save': () => '/tmp/share.png' })
+    const { wrapper: w } = await start('/account/acc-1/stats', ipc)
+    await w.get('[data-test="account-more"]').trigger('click')
+    await w.get('[data-test="open-share"]').trigger('click')
+    await settle()
+    const canvas = w.get('[data-test="share-canvas"]')
+    const label = canvas.attributes('aria-label')!
+    expect(label).toContain('UID 1****0001')
+    expect(label).not.toContain('100000001')
+    expect(label).toContain('当前保底 3 / 90')
+    expect(label).toContain('纳西妲 77 抽')
+    expect((canvas.element as HTMLCanvasElement).width).toBe(1080)
+
+    await w.get('[data-test="share-hide-uid"]').setValue(false)
+    await settle()
+    expect(w.get('[data-test="share-canvas"]').attributes('aria-label')).toContain('100000001')
+
+    await w.get('[data-test="share-save"]').trigger('click')
+    await settle()
+    const saved = ipc.called('save_image')
+    expect(saved).toHaveLength(1)
+    expect(saved[0]!.args).toEqual({ path: '/tmp/share.png', data: 'iVBORw0KGgo=' })
+    toDataURL.mockRestore()
+
+    await w.get('[data-test="share-close"]').trigger('click')
+    await settle()
+    expect(w.find('[data-test="share-dialog"]').exists()).toBe(false)
+  })
+})
+
+describe('头像', () => {
+  it('有头像时显示图片，加载失败回退到文字', async () => {
+    mockConvertFileSrc('linux')
+    const hash = 'ab'.repeat(32)
+    const ipc = setupIpc({ get_item_icons: () => ({ 10000073: hash, 刻晴: 'cd'.repeat(32) }) })
+    const { wrapper: w } = await start('/account/acc-1/records', ipc)
+    await settle()
+    const rows = w.findAll('[data-test="record-row"]')
+    const img = rows[0]!.find('[data-test="item-icon"]')
+    expect(img.attributes('src')).toBe(`gnicon://localhost/genshin%2F${hash}`)
+    expect(rows[1]!.find('[data-test="item-icon"]').exists()).toBe(false)
+    expect(ipc.called('get_item_icons')).toHaveLength(1)
+
+    await img.trigger('error')
+    await settle()
+    expect(rows[0]!.find('[data-test="item-icon"]').exists()).toBe(false)
+    expect(rows[0]!.text()).toContain('纳西妲')
+  })
+
+  it('总览显示上次出金', async () => {
+    const { wrapper: w } = await start('/')
+    expect(w.get('[data-test="overview-last"]').text()).toContain('上次出 5 星')
+    expect(w.get('[data-test="overview-last"]').text()).toContain('纳西妲')
   })
 })

@@ -5,6 +5,7 @@
 //! 远程版本更新时下载全部文件，逐个校验 SHA-256，全部通过才整体替换缓存；
 //! 哈希不符或下载失败时换下一个来源，都失败时保留旧包。
 
+pub mod icons;
 pub mod pack;
 
 use std::collections::BTreeMap;
@@ -17,7 +18,8 @@ use gachanote_core::{AppError, GameId, Result};
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 
-pub use pack::{cmp_version, GamePack, Manifest, ManifestFile};
+pub use icons::{icon_path, IconStore, ICON_MIME};
+pub use pack::{cmp_version, is_sha256, GamePack, Manifest, ManifestFile, PackItem};
 
 /// 本应用版本。
 pub const APP_VERSION: &str = env!("CARGO_PKG_VERSION");
