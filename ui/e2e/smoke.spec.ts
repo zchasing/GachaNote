@@ -1,4 +1,4 @@
-// 冒烟测试（T-41）：首次导入、总览、主题与语言切换。
+// 冒烟测试（T-41、T-53）：首次导入、总览、分析图表、主题与语言切换。
 import { expect, test, type Page } from '@playwright/test'
 
 /** 打开应用；`empty` 表示从没有账号开始。 */
@@ -64,4 +64,22 @@ test('语言：设置里切到 English，界面文案随之变化', async ({ pag
   await expect(page.locator('html')).toHaveAttribute('lang', 'en')
   await page.getByRole('tab', { name: '简体中文' }).click()
   await expect(page.getByRole('link', { name: '总览' })).toBeVisible()
+})
+
+test('分析：图表按需加载并跟随主题配色', async ({ page }) => {
+  await open(page, '/account/acc-1/stats')
+  await page.getByTestId('tab-analysis').click()
+  await expect(page).toHaveURL(/#\/account\/acc-1\/analysis$/)
+  await expect(page.getByTestId('next-top')).toHaveText('0.6%')
+  // 三张图（预测曲线、出金分布、月度趋势）都渲染成 SVG
+  const charts = page.locator('.echart svg')
+  await expect(charts).toHaveCount(3)
+  const bars = page.getByTestId('distribution').locator('svg path[fill="#1f7a4d"]')
+  await expect(bars).toHaveCount(1)
+  // 深色主题下 UP 柱子换成深色主题的颜色
+  await page.getByTestId('toggle-theme').click()
+  await expect(page.getByTestId('distribution').locator('svg path[fill="#5ccb94"]')).toHaveCount(1)
+  // 切换为数据表
+  await page.getByTestId('toggle-dist').click()
+  await expect(page.getByTestId('distribution').locator('table')).toContainText('纳西妲')
 })

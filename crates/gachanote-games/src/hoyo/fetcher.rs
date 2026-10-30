@@ -168,7 +168,8 @@ impl Fetcher for HoyoFetcher {
                     return Ok(vec![FetchSource {
                         game: id,
                         url: Some(Redacted::url(raw)),
-                        account: None,
+                        token: None,
+                        uid: None,
                     }])
                 }
                 Err(AppError::AuthExpired) => {

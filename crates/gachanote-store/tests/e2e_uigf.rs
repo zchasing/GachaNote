@@ -35,6 +35,7 @@ impl Genshin {
             up,
             extras: vec![],
             pity_scope: PityScope::SharedByType,
+            achievements: Default::default(),
         };
         Self(vec![
             rule(

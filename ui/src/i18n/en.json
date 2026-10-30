@@ -273,7 +273,8 @@
     "lastUpdated": "Last updated: {time}",
     "tabs": {
       "stats": "Stats",
-      "records": "Records"
+      "records": "Records",
+      "analysis": "Analysis"
     },
     "renameTitle": "Rename account",
     "renamePlaceholder": "Nickname; leave empty to show the UID",
@@ -327,7 +328,10 @@
     "viewDetail": "Details",
     "pools": "Banners",
     "noData": "No records on this banner yet.",
-    "pulls": "Pulls"
+    "pulls": "Pulls",
+    "nextTop": "Next pull {name} {p}",
+    "luckShort": "{tier} · top {p}",
+    "verdict": "In short"
   },
   "records": {
     "pool": "Banner",
@@ -378,9 +382,12 @@
       "file": "Import file",
       "fileDesc": "Supports {formats}",
       "login": "Sign in to Hypergryph",
-      "loginDesc": "Recommended; gets the token after you sign in",
+      "loginDesc": "Recommended; gets the token after you sign in on the official site",
       "token": "Paste token",
-      "tokenDesc": "Fallback when the sign-in window does not work"
+      "tokenDesc": "If the sign-in window fails, copy the token by hand",
+      "saved": "Use saved token",
+      "savedDesc": "Fetch in one click without signing in again",
+      "recommended": "Recommended"
     },
     "formatNames": {
       "uigf_v4": "UIGF v4",
@@ -449,6 +456,30 @@
       "cancelled": "Cancelled. Nothing was written.",
       "failedTitle": "The import did not finish. The database is unchanged.",
       "nothing": "There was nothing to write."
+    },
+    "hg": {
+      "windowTitle": "Sign in to Hypergryph · GachaNote",
+      "loginHint": "You sign in on Hypergryph's own page. GachaNote never sees your password; it only keeps the token issued after sign-in.",
+      "openLogin": "Open sign-in window",
+      "waiting": "Waiting for sign-in… (finish it in the new window)",
+      "login_closed": "The sign-in window was closed before a token was received.",
+      "login_timeout": "Sign-in was not finished within 5 minutes, so the window was closed.",
+      "usePaste": "Paste a token instead",
+      "step1": "Open the Hypergryph website in your browser and sign in.",
+      "step2": "Then open the token page; it shows a short piece of text.",
+      "step3": "Copy all of it (or the value after content) and paste it below.",
+      "openSite": "Open website",
+      "openToken": "Open token page",
+      "pastePlaceholder": "Paste the token, or all the text on the token page",
+      "tokenSafety": "The token works like a signed-in session. Don't share it. GachaNote only uses it to read gacha history.",
+      "queryRoles": "Find characters",
+      "loadingRoles": "Looking up game roles on this account…",
+      "pickSaved": "Choose a saved token",
+      "noRoles": "No Arknights or Endfield role is bound to this Hypergryph account.",
+      "colNickname": "Name",
+      "colChannel": "Server",
+      "remember": "Remember token (encrypted on this computer for one-click updates)",
+      "start": "Fetch {n} roles"
     }
   },
   "settings": {
@@ -506,13 +537,23 @@
     "metaAppTooOld": "Banner data {version} needs app version {min} or later",
     "metaAuto": "Check on startup",
     "metaHint": "Banner data lists past banners and standard pools, used to tell featured pulls apart.",
-    "credentialsEmpty": "No saved credentials. Hypergryph token fetching arrives in v0.2; saved tokens are encrypted on this computer.",
+    "credentialsEmpty": "No saved tokens. Tick \"Remember token\" when fetching Hypergryph records to save one.",
     "version": "Version",
     "logs": "Log folder",
     "openLogs": "Open log folder",
     "license": "Open source under the MIT license",
     "privacy": "All data stays on this computer. No usage data is collected.",
-    "source": "Source code"
+    "source": "Source code",
+    "credentials": "Saved tokens",
+    "credentialsHint": "Hypergryph tokens are encrypted with Windows Data Protection (DPAPI) and can only be decrypted by the current Windows user. Contents are never shown.",
+    "credentialsUnsupported": "This system cannot store tokens encrypted.",
+    "savedAt": "Saved {time}",
+    "clear": "Clear",
+    "clearAll": "Clear all",
+    "clearTitle": "Clear token",
+    "clearBody": "Clear the saved token of {name}? Records are kept; you will need to sign in again next time.",
+    "clearAllBody": "Clear all {n} saved tokens? Records are kept; you will need to sign in again next time.",
+    "cleared": "Cleared {n} token(s)"
   },
   "export": {
     "format": "Format",
@@ -574,6 +615,89 @@
     "unknown": {
       "title": "Something went wrong",
       "hint": "Try again."
+    },
+    "auth_expired_token": {
+      "title": "Token is invalid or expired",
+      "hint": "Sign in to Hypergryph again, or copy a fresh token."
     }
+  },
+  "analysis": {
+    "prediction": "Odds",
+    "sinceTop": "{n} pulls since last",
+    "nextTop": "Next pull is {name}",
+    "nextUp": "Next pull is featured",
+    "withinPrefix": "Within",
+    "withinSuffix": "pulls",
+    "withinTop": "{name}",
+    "withinUp": "Featured",
+    "guaranteeTop": "{name} guaranteed within {n} pulls",
+    "guaranteeUp": "featured guaranteed within {n} pulls",
+    "curveTop": "{name}",
+    "curveUp": "Featured",
+    "now": "Now",
+    "pityAxis": "Pity count",
+    "morePulls": "More pulls",
+    "showTable": "Table",
+    "showChart": "Chart",
+    "luck": "Luck",
+    "tiers": {
+      "great": "Very lucky",
+      "lucky": "Lucky",
+      "even": "Average",
+      "unlucky": "Unlucky",
+      "awful": "Very unlucky"
+    },
+    "beat": "Luckier than {p} of players",
+    "fewSamples": "Fewer than {n} {name}; too few to rate",
+    "yourAvg": "Your {metric}",
+    "avgTopName": "avg. pulls per {name}",
+    "expectedAvg": "Expected",
+    "samples": "Samples",
+    "distribution": "Pulls per {name}",
+    "expected": "Expected {n}",
+    "monthly": "Monthly trend",
+    "month": "Month",
+    "monthPulls": "Pulls",
+    "monthTops": "{name}",
+    "achievements": "Achievements",
+    "achieved": "Done",
+    "ach": {
+      "lucky": {
+        "title": "Lucky strike",
+        "rule": "{name} within {n} pulls",
+        "value": "Fastest: {item} in {n}"
+      },
+      "unlucky": {
+        "title": "Long haul",
+        "rule": "{name} at pull {n} or later",
+        "value": "Slowest: {item} in {n}"
+      },
+      "streak": {
+        "title": "Winning streak",
+        "rule": "{n} featured {name} in a row",
+        "value": "Longest streak: {n}"
+      },
+      "longWait": {
+        "title": "Patience",
+        "rule": "{n}+ days between two {name}",
+        "value": "Longest gap: {n} days"
+      }
+    }
+  },
+  "update": {
+    "title": "Update available",
+    "body": "GachaNote v{version} is out (you have v{current}). Updating downloads the installer and restarts the app; your data is kept.",
+    "later": "Later",
+    "install": "Update now",
+    "downloading": "Downloading…",
+    "failed": "Update failed. Try again later, or download the installer from the releases page.",
+    "check": "Check for updates",
+    "checking": "Checking…",
+    "upToDate": "You're up to date",
+    "available": "v{version} is available",
+    "checkFailed": "Could not check for updates. Check your network or proxy.",
+    "notConfigured": "This version can't update itself; download the new version from the releases page.",
+    "releases": "Open releases",
+    "auto": "Check for app updates at startup"
   }
 }

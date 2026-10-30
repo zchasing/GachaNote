@@ -298,7 +298,8 @@ impl Fetcher for KuroFetcher {
                     out.push(FetchSource {
                         game: game.clone(),
                         url: Some(Redacted::url(url)),
-                        account: None,
+                        token: None,
+                        uid: None,
                     });
                 }
             }

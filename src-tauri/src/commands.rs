@@ -9,9 +9,10 @@ use specta::Type;
 use tauri::State;
 
 use crate::dto::{
-    AccountDto, AccountKey, AccountStatsDto, AppInfo, BackupDto, CmdResult, DirKind, DiscoveredUrl,
-    ErrorDto, ExportFormat, ExportResult, FetchModeDto, FilePreviewDto, GameDto, MetaInfo,
-    MetaUpdateResult, OverviewEntry, RecordPage, RecordQueryDto, Settings, UrlSource,
+    AccountDto, AccountKey, AccountStatsDto, AppInfo, BackupDto, CmdResult, CredentialDto, DirKind,
+    DiscoveredUrl, ErrorDto, ExportFormat, ExportResult, ExternalPage, FetchModeDto,
+    FilePreviewDto, GameDto, HgRoleDto, MetaInfo, MetaUpdateResult, MonthDto, OverviewEntry,
+    PredictionDto, RecordPage, RecordQueryDto, Settings, TokenSource, UpdateInfo, UrlSource,
 };
 use crate::state::AppState;
 
@@ -84,6 +85,31 @@ pub fn get_stats(state: State<'_, AppState>, account_id: String) -> CmdResult<Ac
     state.get_stats(&account_id).map_err(err)
 }
 
+/// 一个卡池再抽 `pulls` 抽内的出货概率曲线。
+#[tauri::command]
+#[specta::specta]
+pub fn predict(
+    state: State<'_, AppState>,
+    account_id: String,
+    pool_type: String,
+    pulls: u32,
+) -> CmdResult<PredictionDto> {
+    state.predict(&account_id, &pool_type, pulls).map_err(err)
+}
+
+/// 按月汇总抽数与出金；`pool_type` 为空表示全部卡池。
+#[tauri::command]
+#[specta::specta]
+pub fn get_monthly_trend(
+    state: State<'_, AppState>,
+    account_id: String,
+    pool_type: Option<String>,
+) -> CmdResult<Vec<MonthDto>> {
+    state
+        .get_monthly_trend(&account_id, pool_type.as_deref())
+        .map_err(err)
+}
+
 /// 跨游戏总览。
 #[tauri::command]
 #[specta::specta]
@@ -129,6 +155,61 @@ pub fn fetch_by_url(
     mode: FetchModeDto,
 ) -> CmdResult<u64> {
     state.fetch_by_url(&game, source, mode).map_err(err)
+}
+
+/// 打开鹰角官网登录窗口，登录后自动取得 token；返回编号，token 留在后端。
+/// `title`、`hint` 为窗口标题与页面顶部的提示（随界面语言）。用户关窗时以 `cancelled` 失败。
+#[tauri::command]
+#[specta::specta]
+pub async fn hg_login(
+    app: tauri::AppHandle,
+    state: State<'_, AppState>,
+    title: String,
+    hint: String,
+) -> CmdResult<String> {
+    let token = crate::login::hg_login(&app, &title, &hint, state.hg())
+        .await
+        .map_err(err)?;
+    Ok(state.put_login_token(token))
+}
+
+/// 查询 token 对应的鹰角账号下绑定的角色。
+#[tauri::command]
+#[specta::specta]
+pub async fn hg_roles(
+    state: State<'_, AppState>,
+    source: TokenSource,
+) -> CmdResult<Vec<HgRoleDto>> {
+    state.hg_roles(source).await.map_err(err)
+}
+
+/// 后台用鹰角 token 拉取选中的角色，返回任务 ID。
+#[tauri::command]
+#[specta::specta]
+pub fn fetch_by_token(
+    state: State<'_, AppState>,
+    source: TokenSource,
+    roles: Vec<AccountKey>,
+    remember: bool,
+    mode: FetchModeDto,
+) -> CmdResult<u64> {
+    state
+        .fetch_by_token(source, roles, remember, mode)
+        .map_err(err)
+}
+
+/// 已保存的凭证（不含内容）。
+#[tauri::command]
+#[specta::specta]
+pub fn list_credentials(state: State<'_, AppState>) -> CmdResult<Vec<CredentialDto>> {
+    state.list_credentials().map_err(err)
+}
+
+/// 删除某账号（为空表示全部）已保存的凭证，返回删除条数。
+#[tauri::command]
+#[specta::specta]
+pub fn clear_credentials(state: State<'_, AppState>, account_id: Option<String>) -> CmdResult<u32> {
+    state.clear_credentials(account_id.as_deref()).map_err(err)
 }
 
 /// 取消导入或拉取。
@@ -180,12 +261,8 @@ pub fn set_data_dir(state: State<'_, AppState>, dir: String) -> CmdResult<String
     state.set_data_dir(&PathBuf::from(dir)).map_err(err)
 }
 
-/// 用系统文件管理器打开数据、备份或日志目录。
-#[tauri::command]
-#[specta::specta]
-pub fn open_dir(state: State<'_, AppState>, kind: DirKind) -> CmdResult<()> {
-    let dir = state.dir(kind);
-    std::fs::create_dir_all(&dir).map_err(|e| err(e.into()))?;
+/// 用系统文件管理器或浏览器打开目录或网址。
+fn open_with_system(target: &std::ffi::OsStr) -> CmdResult<()> {
     let program = if cfg!(windows) {
         "explorer"
     } else if cfg!(target_os = "macos") {
@@ -194,10 +271,26 @@ pub fn open_dir(state: State<'_, AppState>, kind: DirKind) -> CmdResult<()> {
         "xdg-open"
     };
     std::process::Command::new(program)
-        .arg(&dir)
+        .arg(target)
         .spawn()
         .map(|_| ())
         .map_err(|e| err(e.into()))
+}
+
+/// 用系统文件管理器打开数据、备份或日志目录。
+#[tauri::command]
+#[specta::specta]
+pub fn open_dir(state: State<'_, AppState>, kind: DirKind) -> CmdResult<()> {
+    let dir = state.dir(kind);
+    std::fs::create_dir_all(&dir).map_err(|e| err(e.into()))?;
+    open_with_system(dir.as_os_str())
+}
+
+/// 用系统浏览器打开固定的外部页面（只能是这几个，前端传不了任意网址）。
+#[tauri::command]
+#[specta::specta]
+pub fn open_external(page: ExternalPage) -> CmdResult<()> {
+    open_with_system(std::ffi::OsStr::new(page.url()))
 }
 
 /// 重启应用（更改数据目录或代理后）。
@@ -240,6 +333,26 @@ pub fn meta_info(state: State<'_, AppState>) -> MetaInfo {
 #[specta::specta]
 pub async fn update_metadata(state: State<'_, AppState>) -> CmdResult<MetaUpdateResult> {
     state.update_metadata().await.map_err(err)
+}
+
+/// 检查软件新版本；没有新版本时为空。
+#[tauri::command]
+#[specta::specta]
+pub async fn check_update(
+    app: tauri::AppHandle,
+    state: State<'_, AppState>,
+) -> CmdResult<Option<UpdateInfo>> {
+    let proxy = state.get_settings().map_err(err)?.proxy;
+    crate::updater::check(&app, proxy.as_deref())
+        .await
+        .map_err(err)
+}
+
+/// 下载并安装上次检查到的新版本，完成后重启；进度通过 `update://progress` 推送。
+#[tauri::command]
+#[specta::specta]
+pub async fn install_update(app: tauri::AppHandle) -> CmdResult<()> {
+    crate::updater::install(&app).await.map_err(err)
 }
 
 #[cfg(test)]

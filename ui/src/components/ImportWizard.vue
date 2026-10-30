@@ -3,7 +3,15 @@ import { open } from '@tauri-apps/plugin-dialog'
 import { getCurrentWebview } from '@tauri-apps/api/webview'
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import type { DiscoveredUrl, FetchModeDto, FilePreviewDto, PreviewAccountDto } from '@/bindings'
+import type {
+  CredentialDto,
+  DiscoveredUrl,
+  FetchModeDto,
+  FilePreviewDto,
+  HgRoleDto,
+  PreviewAccountDto,
+  TokenSource,
+} from '@/bindings'
 import { api, inTauri } from '@/api'
 import { fmtDate, fmtInt } from '@/composables/format'
 import { useErrors } from '@/composables/useErrors'
@@ -16,7 +24,7 @@ import AppIcon from './AppIcon.vue'
 import GameIcon from './GameIcon.vue'
 import SegmentedControl from './SegmentedControl.vue'
 
-// 导入 / 拉取向导（UI/UX 文档 4.1）：选择游戏 → 选择方式 → 准备 → 进度 → 报告。
+// 导入 / 拉取向导（UI/UX 文档 4.1、4.4）：选择游戏 → 选择方式 → 准备 → 进度 → 报告。
 const props = defineProps<{ request: ImportRequest }>()
 const emit = defineEmits<{ close: [] }>()
 const router = useRouter()
@@ -27,7 +35,8 @@ const { describe } = useErrors()
 const { t, locale, gameName } = useNames()
 
 type Step = 'game' | 'method' | 'prepare' | 'progress' | 'report'
-type Method = 'url' | 'file'
+/** `login` / `token` / `saved` 为鹰角 token 拉取：登录窗口、手动粘贴、已保存的 token。 */
+type Method = 'url' | 'file' | 'login' | 'token' | 'saved'
 const STEPS: Step[] = ['game', 'method', 'prepare', 'progress', 'report']
 
 /** 选择的游戏；`null` 表示直接导入文件、自动识别游戏。 */
@@ -54,7 +63,7 @@ function pickGame(id: string | null) {
     return
   }
   // 从总览的「从游戏拉取」进来时，游戏支持就直接进入准备步骤
-  if (props.request.method === 'url' && games.game(id)?.canFetch) {
+  if (props.request.method === 'url' && games.game(id)?.canFetch && games.game(id)?.fetch === 'url') {
     method.value = 'url'
     step.value = 'prepare'
   } else {
@@ -65,7 +74,9 @@ function pickGame(id: string | null) {
 function pickMethod(m: Method) {
   method.value = m
   startError.value = null
+  resetToken()
   step.value = 'prepare'
+  if (m === 'saved' && savedOfGame.value[0]) void useSaved(savedOfGame.value[0])
 }
 
 function back() {
@@ -141,6 +152,113 @@ async function startUrl() {
     showStartError(e)
   }
 }
+
+// ── 鹰角 token ───────────────────────────────────────────
+const canRemember = ref(false)
+const credentials = ref<CredentialDto[]>([])
+const savedOfGame = computed(() => credentials.value.filter((c) => c.game === game.value))
+const tokenSource = ref<TokenSource | null>(null)
+const roles = ref<HgRoleDto[] | null>(null)
+const chosenRoles = ref<Set<string>>(new Set())
+const remember = ref(true)
+const loggingIn = ref(false)
+const loadingRoles = ref(false)
+const loginError = ref<string | null>(null)
+const pastedToken = ref('')
+const savedAccount = ref<string | null>(null)
+
+watch(
+  [step, game],
+  async () => {
+    if (step.value !== 'method' || info.value?.vendor !== 'hypergryph' || !inTauri()) return
+    try {
+      const [app, creds] = await Promise.all([api.appInfo(), api.listCredentials()])
+      canRemember.value = app.canRememberToken
+      credentials.value = creds
+    } catch {
+      credentials.value = []
+    }
+  },
+  { immediate: true },
+)
+
+function resetToken() {
+  tokenSource.value = null
+  roles.value = null
+  loginError.value = null
+  savedAccount.value = null
+  mode.value = hasAccount.value ? 'incremental' : 'full'
+  remember.value = canRemember.value
+}
+
+async function loadRoles(source: TokenSource) {
+  loadingRoles.value = true
+  startError.value = null
+  roles.value = null
+  try {
+    const list = await api.hgRoles(source)
+    tokenSource.value = source
+    roles.value = list
+    // 默认全选
+    chosenRoles.value = new Set(list.map(key))
+  } catch (e) {
+    showStartError(e)
+  } finally {
+    loadingRoles.value = false
+  }
+}
+
+async function login() {
+  loggingIn.value = true
+  loginError.value = null
+  startError.value = null
+  try {
+    const id = await api.hgLogin(t('import.hg.windowTitle'), t('import.hg.loginHint'))
+    await loadRoles({ kind: 'login', id })
+  } catch (e) {
+    const code = describe(e).error.code
+    loginError.value = code === 'cancelled' ? 'closed' : code === 'network' ? 'timeout' : null
+    if (!loginError.value) showStartError(e)
+  } finally {
+    loggingIn.value = false
+  }
+}
+
+function useSaved(c: CredentialDto) {
+  savedAccount.value = c.accountId
+  remember.value = false
+  return loadRoles({ kind: 'saved', accountId: c.accountId })
+}
+
+function switchToPaste() {
+  method.value = 'token'
+  resetToken()
+}
+
+function toggleRole(r: HgRoleDto) {
+  const next = new Set(chosenRoles.value)
+  if (next.has(key(r))) next.delete(key(r))
+  else next.add(key(r))
+  chosenRoles.value = next
+}
+
+function openPage(page: 'hgLogin' | 'hgToken') {
+  api.openExternal(page).catch(showStartError)
+}
+
+async function startToken() {
+  if (!tokenSource.value || !roles.value) return
+  startError.value = null
+  const picked = roles.value.filter((r) => chosenRoles.value.has(key(r))).map((r) => ({ game: r.game, uid: r.uid }))
+  try {
+    taskId.value = await api.fetchByToken(tokenSource.value, picked, remember.value, mode.value)
+    step.value = 'progress'
+  } catch (e) {
+    showStartError(e)
+  }
+}
+
+const isToken = computed(() => method.value === 'login' || method.value === 'token' || method.value === 'saved')
 
 // ── 文件导入 ──────────────────────────────────────────────
 const sniffing = ref(false)
@@ -266,7 +384,7 @@ const report = computed(() => task.value?.report ?? null)
 const failure = computed(() => {
   const err = task.value?.error
   if (!err) return null
-  return { ...describe(err), cancelled: err.code === 'cancelled' }
+  return { ...describe(err, isToken.value ? 'token' : undefined), cancelled: err.code === 'cancelled' }
 })
 const created = computed(() =>
   (report.value?.accounts ?? []).filter((a) => a.created).map((a) => `${gameName(a.game)} ${a.uid}`),
@@ -280,7 +398,7 @@ function viewAccount() {
 }
 
 function showStartError(e: unknown) {
-  const d = describe(e)
+  const d = describe(e, isToken.value ? 'token' : undefined)
   startError.value = { title: d.title, hint: d.hint, detail: d.error.detail ?? d.error.message }
 }
 
@@ -341,20 +459,30 @@ const running = computed(() => step.value === 'progress')
           <button class="linkbtn" @click="step = 'game'">{{ t('import.changeGame') }}</button>
         </div>
         <div class="mgrid">
-          <button v-if="info.canFetch" class="mcard" data-test="method-url" @click="pickMethod('url')">
+          <button
+            v-if="info.canFetch && info.fetch === 'url'"
+            class="mcard"
+            data-test="method-url"
+            @click="pickMethod('url')"
+          >
             <AppIcon name="link" :size="20" />
             <b>{{ t('import.methods.url') }}</b>
             <span class="muted">{{ info.id === 'wuwa' ? t('import.methods.urlDescWuwa') : t('import.methods.urlDesc') }}</span>
           </button>
-          <template v-if="info.vendor === 'hypergryph'">
-            <button class="mcard" disabled>
+          <template v-if="info.vendor === 'hypergryph' && info.canFetch">
+            <button v-if="savedOfGame.length" class="mcard" data-test="method-saved" @click="pickMethod('saved')">
+              <AppIcon name="refresh" :size="20" />
+              <b>{{ t('import.methods.saved') }}</b>
+              <span class="muted">{{ t('import.methods.savedDesc') }}</span>
+            </button>
+            <button class="mcard" data-test="method-login" @click="pickMethod('login')">
               <AppIcon name="user" :size="20" />
-              <b>{{ t('import.methods.login') }} <span class="ver">v0.2</span></b>
+              <b>{{ t('import.methods.login') }} <span class="ver">{{ t('import.methods.recommended') }}</span></b>
               <span class="muted">{{ t('import.methods.loginDesc') }}</span>
             </button>
-            <button class="mcard" disabled>
+            <button class="mcard" data-test="method-token" @click="pickMethod('token')">
               <AppIcon name="key" :size="20" />
-              <b>{{ t('import.methods.token') }} <span class="ver">v0.2</span></b>
+              <b>{{ t('import.methods.token') }}</b>
               <span class="muted">{{ t('import.methods.tokenDesc') }}</span>
             </button>
           </template>
@@ -405,6 +533,105 @@ const running = computed(() => step.value === 'progress')
             ]"
           />
         </div>
+      </template>
+
+      <!-- 3c. 准备：鹰角 token -->
+      <template v-else-if="step === 'prepare' && isToken && info">
+        <template v-if="!roles">
+          <template v-if="method === 'login'">
+            <div class="notice info">{{ t('import.hg.loginHint') }}</div>
+            <div v-if="loginError" class="notice error" data-test="login-error">
+              <span>{{ t(`import.hg.login_${loginError}`) }}</span>
+              <button class="linkbtn" style="align-self: flex-start" @click="switchToPaste">
+                {{ t('import.hg.usePaste') }}
+              </button>
+            </div>
+            <button class="btn primary" style="align-self: flex-start" :disabled="loggingIn || loadingRoles" data-test="hg-login" @click="login">
+              <AppIcon name="user" />{{ loggingIn ? t('import.hg.waiting') : t('import.hg.openLogin') }}
+            </button>
+          </template>
+          <template v-else-if="method === 'token'">
+            <ol class="guide">
+              <li>
+                {{ t('import.hg.step1') }}
+                <button class="linkbtn" @click="openPage('hgLogin')">{{ t('import.hg.openSite') }}</button>
+              </li>
+              <li>
+                {{ t('import.hg.step2') }}
+                <button class="linkbtn" @click="openPage('hgToken')">{{ t('import.hg.openToken') }}</button>
+              </li>
+              <li>{{ t('import.hg.step3') }}</li>
+            </ol>
+            <textarea
+              v-model="pastedToken"
+              class="input"
+              :placeholder="t('import.hg.pastePlaceholder')"
+              data-test="paste-token"
+            />
+            <div class="notice info">{{ t('import.hg.tokenSafety') }}</div>
+          </template>
+          <template v-else-if="method === 'saved'">
+            <div class="field">
+              {{ t('import.hg.pickSaved') }}
+              <label v-for="c in savedOfGame" :key="c.accountId" class="check">
+                <input type="radio" :checked="savedAccount === c.accountId" @change="useSaved(c)" />
+                {{ c.nickname ?? c.uid }} <span class="muted">{{ t('account.uid', { uid: c.uid }) }}</span>
+              </label>
+            </div>
+          </template>
+          <div v-if="loadingRoles" class="muted">{{ t('import.hg.loadingRoles') }}</div>
+        </template>
+        <template v-else>
+          <div v-if="roles.length === 0" class="notice error">{{ t('import.hg.noRoles') }}</div>
+          <div v-else class="tablebox">
+            <table data-test="role-table">
+              <thead>
+                <tr>
+                  <th style="width: 32px" />
+                  <th>{{ t('import.file.colGame') }}</th>
+                  <th>{{ t('import.hg.colNickname') }}</th>
+                  <th>{{ t('import.file.colUid') }}</th>
+                  <th>{{ t('import.hg.colChannel') }}</th>
+                  <th>{{ t('import.file.colStatus') }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="r in roles" :key="key(r)">
+                  <td>
+                    <input
+                      type="checkbox"
+                      :checked="chosenRoles.has(key(r))"
+                      :aria-label="`${gameName(r.game)} ${r.uid}`"
+                      @change="toggleRole(r)"
+                    />
+                  </td>
+                  <td>{{ gameName(r.game) }}</td>
+                  <td>{{ r.nickname ?? '—' }}</td>
+                  <td class="num">{{ r.uid }}</td>
+                  <td>{{ r.channel ?? '—' }}</td>
+                  <td>
+                    <span v-if="r.exists" class="tag neutral">{{ t('import.file.exists') }}</span>
+                    <span v-else class="tag up">{{ t('import.file.new') }}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <label v-if="canRemember && method !== 'saved'" class="check">
+            <input v-model="remember" type="checkbox" data-test="remember-token" />
+            {{ t('import.hg.remember') }}
+          </label>
+          <div class="field">
+            {{ t('import.url.mode') }}
+            <SegmentedControl
+              v-model="mode"
+              :options="[
+                { value: 'incremental', label: t('import.url.incremental') },
+                { value: 'full', label: t('import.url.full') },
+              ]"
+            />
+          </div>
+        </template>
       </template>
 
       <!-- 3b. 准备：文件 -->
@@ -535,6 +762,21 @@ const running = computed(() => step.value === 'progress')
         <template v-if="step === 'prepare' && method === 'url'">
           <button class="btn primary" :disabled="!canStartUrl || discovering" data-test="start-url" @click="startUrl">
             {{ t('import.url.start') }}
+          </button>
+        </template>
+        <template v-else-if="step === 'prepare' && method === 'token' && !roles">
+          <button
+            class="btn primary"
+            :disabled="!pastedToken.trim() || loadingRoles"
+            data-test="query-roles"
+            @click="loadRoles({ kind: 'pasted', token: pastedToken.trim() })"
+          >
+            {{ t('import.hg.queryRoles') }}
+          </button>
+        </template>
+        <template v-else-if="step === 'prepare' && isToken && roles">
+          <button class="btn primary" :disabled="chosenRoles.size === 0" data-test="start-token" @click="startToken">
+            {{ t('import.hg.start', { n: chosenRoles.size }) }}
           </button>
         </template>
         <template v-else-if="step === 'prepare' && method === 'file' && preview">
@@ -704,5 +946,13 @@ const running = computed(() => step.value === 'progress')
 }
 .tablebox {
   max-height: 320px;
+}
+.guide {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
 }
 </style>

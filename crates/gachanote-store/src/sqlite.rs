@@ -8,7 +8,9 @@ use gachanote_core::model::{
     Account, AccountImport, AccountInsert, Cursor, GachaRecord, ImportMeta, InsertSummary,
     NewAccount, NewRecord, Page, RecordQuery, SortOrder,
 };
-use gachanote_core::repo::{BackupReason, BackupService, RecordRepository};
+use gachanote_core::repo::{
+    BackupReason, BackupService, CredentialInfo, CredentialRepository, RecordRepository,
+};
 use gachanote_core::task::CancelToken;
 use gachanote_core::{AccountId, AppError, GameId, PoolTypeId, Result};
 use rusqlite::types::Value;
@@ -19,6 +21,7 @@ use rusqlite_migration::{Migrations, M};
 const MIGRATIONS: &[&str] = &[
     include_str!("../migrations/0001_init.sql"),
     include_str!("../migrations/0002_record_time_index.sql"),
+    include_str!("../migrations/0003_credential_unique.sql"),
 ];
 
 /// 当前数据库结构版本（`PRAGMA user_version`）。
@@ -569,3 +572,57 @@ impl RecordRepository for SqliteStore {
 
 #[cfg(test)]
 mod tests;
+
+impl CredentialRepository for SqliteStore {
+    fn save_credential(&self, account: &AccountId, kind: &str, blob: &[u8]) -> Result<()> {
+        self.conn()
+            .execute(
+                "INSERT INTO credential (id, account_id, kind, blob, updated_at) VALUES (?1, ?2, ?3, ?4, ?5) \
+                 ON CONFLICT(account_id, kind) DO UPDATE SET blob = excluded.blob, updated_at = excluded.updated_at",
+                params![new_id(), account.as_str(), kind, blob, now_ms()],
+            )
+            .map_err(storage)?;
+        Ok(())
+    }
+
+    fn credential(&self, account: &AccountId, kind: &str) -> Result<Option<Vec<u8>>> {
+        self.conn()
+            .query_row(
+                "SELECT blob FROM credential WHERE account_id = ?1 AND kind = ?2",
+                params![account.as_str(), kind],
+                |r| r.get(0),
+            )
+            .optional()
+            .map_err(storage)
+    }
+
+    fn credentials(&self) -> Result<Vec<CredentialInfo>> {
+        let conn = self.conn();
+        let mut stmt = conn
+            .prepare(
+                "SELECT account_id, kind, updated_at FROM credential ORDER BY updated_at DESC, id",
+            )
+            .map_err(storage)?;
+        let rows = stmt
+            .query_map([], |r| {
+                Ok(CredentialInfo {
+                    account_id: r.get::<_, String>(0)?.into(),
+                    kind: r.get(1)?,
+                    updated_at: r.get(2)?,
+                })
+            })
+            .map_err(storage)?;
+        rows.collect::<rusqlite::Result<_>>().map_err(storage)
+    }
+
+    fn delete_credentials(&self, account: Option<&AccountId>) -> Result<u32> {
+        let n = self
+            .conn()
+            .execute(
+                "DELETE FROM credential WHERE ?1 IS NULL OR account_id = ?1",
+                [account.map(AccountId::as_str)],
+            )
+            .map_err(storage)?;
+        Ok(u32::try_from(n).unwrap_or(u32::MAX))
+    }
+}

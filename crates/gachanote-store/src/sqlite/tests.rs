@@ -447,3 +447,31 @@ fn account_activity_counts_records_and_last_import() {
     assert_eq!(act[1].records, sample().len() as u64);
     assert!(act[1].last_import_at.is_some_and(|t| t >= T0));
 }
+
+#[test]
+fn credentials_overwrite_list_and_cascade() {
+    let store = SqliteStore::open_in_memory().unwrap();
+    let s = insert(&store, &[imp("1", sample()), imp("2", sample())]).unwrap();
+    let a = s.accounts[0].account.id.clone();
+    let b = s.accounts[1].account.id.clone();
+    let kind = gachanote_core::repo::HG_ACCOUNT_TOKEN;
+    assert_eq!(store.credential(&a, kind).unwrap(), None);
+    store.save_credential(&a, kind, b"one").unwrap();
+    store.save_credential(&a, kind, b"two").unwrap();
+    store.save_credential(&b, kind, b"three").unwrap();
+    assert_eq!(
+        store.credential(&a, kind).unwrap().as_deref(),
+        Some(&b"two"[..])
+    );
+    assert_eq!(store.credential(&a, "other").unwrap(), None);
+    let all = store.credentials().unwrap();
+    assert_eq!(all.len(), 2);
+    assert!(all.iter().all(|c| c.kind == kind && c.updated_at > 0));
+    assert_eq!(store.delete_credentials(Some(&a)).unwrap(), 1);
+    assert_eq!(store.credentials().unwrap().len(), 1);
+    // 删除账号时凭证一起删除
+    store.delete_account(&b).unwrap();
+    assert!(store.credentials().unwrap().is_empty());
+    store.save_credential(&a, kind, b"x").unwrap();
+    assert_eq!(store.delete_credentials(None).unwrap(), 1);
+}

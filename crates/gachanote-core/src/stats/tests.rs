@@ -73,6 +73,7 @@ fn rule(pool: &str, up: UpRule, extras: Vec<Mechanic>, scope: PityScope) -> Pool
         up,
         extras,
         pity_scope: scope,
+        achievements: Default::default(),
     }
 }
 

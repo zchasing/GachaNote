@@ -3,7 +3,10 @@
 mod commands;
 mod dto;
 mod logging;
+mod login;
+mod secret;
 mod state;
+mod updater;
 
 use std::sync::Arc;
 
@@ -33,12 +36,19 @@ fn specta_builder() -> Builder<tauri::Wry> {
             commands::rename_account,
             commands::delete_account,
             commands::get_stats,
+            commands::predict,
+            commands::get_monthly_trend,
             commands::get_overview,
             commands::query_records,
             commands::sniff_file,
             commands::import_file,
             commands::discover_url,
             commands::fetch_by_url,
+            commands::hg_login,
+            commands::hg_roles,
+            commands::fetch_by_token,
+            commands::list_credentials,
+            commands::clear_credentials,
             commands::cancel_task,
             commands::export_accounts,
             commands::get_settings,
@@ -46,12 +56,15 @@ fn specta_builder() -> Builder<tauri::Wry> {
             commands::app_info,
             commands::set_data_dir,
             commands::open_dir,
+            commands::open_external,
             commands::restart_app,
             commands::list_backups,
             commands::create_backup,
             commands::restore_backup,
             commands::meta_info,
             commands::update_metadata,
+            commands::check_update,
+            commands::install_update,
         ])
         .events(collect_events![
             dto::TaskProgress,
@@ -59,6 +72,7 @@ fn specta_builder() -> Builder<tauri::Wry> {
             dto::TaskFailed,
             dto::DataChanged,
             dto::MetaUpdated,
+            dto::UpdateProgress,
         ])
 }
 
@@ -99,6 +113,8 @@ pub fn run() {
 
     tauri::Builder::default()
         .plugin(tauri_plugin_dialog::init())
+        .plugin(tauri_plugin_updater::Builder::new().build())
+        .manage(updater::PendingUpdate::default())
         .invoke_handler(builder.invoke_handler())
         .setup(move |app| {
             let base = app.path().data_dir()?.join("GachaNote");

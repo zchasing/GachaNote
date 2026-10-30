@@ -4,17 +4,18 @@
 
 [English](#english) · [使用说明](docs/user-guide.md) · [隐私说明](docs/privacy.md) · [下载](https://github.com/zchasing/GachaNote/releases)
 
-## 功能（v0.1）
+## 功能（v0.2）
 
 - **六款游戏**：原神、崩坏：星穹铁道、绝区零、鸣潮、明日方舟、明日方舟：终末地；同一游戏可以有多个账号。
-- **导入**：米哈游三款与鸣潮可直接从游戏里拉取（自动查找抽卡链接，也可粘贴）；所有游戏都可导入文件（UIGF v2–v4、SRGF、GNJ、CSV）。重复导入自动去重，写入前自动备份。
+- **导入**：米哈游三款与鸣潮可直接从游戏里拉取（自动查找抽卡链接，也可粘贴）；明日方舟、终末地登录鹰角账号即可拉取（也可粘贴 token，可加密记住 token 一键更新）；所有游戏都可导入文件（UIGF v2–v4、SRGF、GNJ、CSV）。重复导入自动去重，写入前自动备份。
 - **统计**：各卡池当前保底与距保底抽数、平均出 UP 抽数、小保底歪率、出金历史、稀有度构成；估算的数字会标注。
+- **分析**：下一抽 / 未来 N 抽的出金与出 UP 概率曲线、欧非评价（和同样抽数的玩家比）、出金抽数分布、月度趋势、成就徽章。
 - **总览**：一屏看所有游戏、所有账号的保底与总抽数。
 - **记录列表**：按卡池、稀有度、时间、名称筛选，高星显示当次抽数与是否 UP。
 - **导出与备份**：米哈游三款导出 UIGF v4.2，其余导出 GNJ，全部可导出 CSV；数据库自动保留最近 5 份备份。
-- **其他**：中文 / English，浅色 / 深色 / 跟随系统。
+- **其他**：中文 / English，浅色 / 深色 / 跟随系统；应用内检查并安装新版本。
 
-后续版本计划加入鹰角账号登录拉取、出金分布与趋势图、概率预测、欧非评价、自动更新（v0.2），以及卡池时间线和分享图（v0.3）。完整规划见 [开发计划](docs/05-dev-plan.md)。
+后续版本计划加入卡池时间线和分享图（v0.3）。完整规划见 [开发计划](docs/05-dev-plan.md)。
 
 ## 安装
 
@@ -49,10 +50,11 @@ GachaNote 是非官方的个人项目，与米哈游、库洛、鹰角网络没�
 
 GachaNote is a personal gacha history tracker and analyzer for Windows. It imports pull records for Genshin Impact, Honkai: Star Rail, Zenless Zone Zero, Wuthering Waves, Arknights and Arknights: Endfield, and shows the current pity, average pulls per featured item and 50/50 loss rate for every account.
 
-- **Import**: fetch directly from the miHoYo games and Wuthering Waves (the gacha URL is found automatically, or paste it), or import UIGF v2–v4, SRGF, GNJ or CSV files. Duplicates are skipped and the database is backed up before every write.
+- **Import**: fetch directly from the miHoYo games and Wuthering Waves (the gacha URL is found automatically, or paste it), sign in to a Hypergryph account to fetch Arknights and Endfield (or paste a token; it can be remembered, encrypted with Windows DPAPI), or import UIGF v2–v4, SRGF, GNJ or CSV files. Duplicates are skipped and the database is backed up before every write.
 - **Stats**: pity per banner, average pulls per featured item, 50/50 loss rate, top-rarity history and a cross-game overview. Estimated values are marked.
+- **Analysis**: odds of a top-rarity or featured pull within the next N pulls, a luck rating against players with the same number of pulls, pull distribution, monthly trend and achievements.
 - **Export**: UIGF v4.2 for the miHoYo games, GNJ for the others, CSV for all.
-- **Privacy**: everything stays on your computer. No telemetry, no account, no server. See [docs/privacy.md](docs/privacy.md) (Chinese).
+- **Privacy**: everything stays on your computer. No telemetry, no account, no server. The app can check GitHub Releases for updates (can be turned off). See [docs/privacy.md](docs/privacy.md) (Chinese).
 
 **Install**: download the `.exe` from [Releases](https://github.com/zchasing/GachaNote/releases) and run it (per-user install, no admin rights). The installer is not code-signed yet, so Windows SmartScreen may warn you: click **More info → Run anyway**. SHA-256 checksums are listed on each release page.
 

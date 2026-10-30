@@ -17,6 +17,10 @@ export const commands = {
 	deleteAccount: (accountId: string) => __TAURI_INVOKE<null>("delete_account", { accountId }),
 	/**  一个账号的统计。 */
 	getStats: (accountId: string) => __TAURI_INVOKE<AccountStatsDto>("get_stats", { accountId }),
+	/**  一个卡池再抽 `pulls` 抽内的出货概率曲线。 */
+	predict: (accountId: string, poolType: string, pulls: number) => __TAURI_INVOKE<PredictionDto>("predict", { accountId, poolType, pulls }),
+	/**  按月汇总抽数与出金；`pool_type` 为空表示全部卡池。 */
+	getMonthlyTrend: (accountId: string, poolType: string | null) => __TAURI_INVOKE<MonthDto[]>("get_monthly_trend", { accountId, poolType }),
 	/**  跨游戏总览。 */
 	getOverview: () => __TAURI_INVOKE<OverviewEntry[]>("get_overview"),
 	/**  分页查询记录。 */
@@ -29,6 +33,19 @@ export const commands = {
 	discoverUrl: (game: string) => __TAURI_INVOKE<DiscoveredUrl>("discover_url", { game }),
 	/**  后台按链接拉取，返回任务 ID。 */
 	fetchByUrl: (game: string, source: UrlSource, mode: FetchModeDto) => __TAURI_INVOKE<number>("fetch_by_url", { game, source, mode }),
+	/**
+	 *  打开鹰角官网登录窗口，登录后自动取得 token；返回编号，token 留在后端。
+	 *  `title`、`hint` 为窗口标题与页面顶部的提示（随界面语言）。用户关窗时以 `cancelled` 失败。
+	 */
+	hgLogin: (title: string, hint: string) => __TAURI_INVOKE<string>("hg_login", { title, hint }),
+	/**  查询 token 对应的鹰角账号下绑定的角色。 */
+	hgRoles: (source: TokenSource) => __TAURI_INVOKE<HgRoleDto[]>("hg_roles", { source }),
+	/**  后台用鹰角 token 拉取选中的角色，返回任务 ID。 */
+	fetchByToken: (source: TokenSource, roles: AccountKey[], remember: boolean, mode: FetchModeDto) => __TAURI_INVOKE<number>("fetch_by_token", { source, roles, remember, mode }),
+	/**  已保存的凭证（不含内容）。 */
+	listCredentials: () => __TAURI_INVOKE<CredentialDto[]>("list_credentials"),
+	/**  删除某账号（为空表示全部）已保存的凭证，返回删除条数。 */
+	clearCredentials: (accountId: string | null) => __TAURI_INVOKE<number>("clear_credentials", { accountId }),
 	/**  取消导入或拉取。 */
 	cancelTask: (taskId: number) => __TAURI_INVOKE<boolean>("cancel_task", { taskId }),
 	/**  导出账号到文件。 */
@@ -43,6 +60,8 @@ export const commands = {
 	setDataDir: (dir: string) => __TAURI_INVOKE<string>("set_data_dir", { dir }),
 	/**  用系统文件管理器打开数据、备份或日志目录。 */
 	openDir: (kind: DirKind) => __TAURI_INVOKE<null>("open_dir", { kind }),
+	/**  用系统浏览器打开固定的外部页面（只能是这几个，前端传不了任意网址）。 */
+	openExternal: (page: ExternalPage) => __TAURI_INVOKE<null>("open_external", { page }),
 	/**  重启应用（更改数据目录或代理后）。 */
 	restartApp: () => __TAURI_INVOKE<void>("restart_app"),
 	/**  全部备份。 */
@@ -55,6 +74,10 @@ export const commands = {
 	metaInfo: () => __TAURI_INVOKE<MetaInfo>("meta_info"),
 	/**  检查并下载卡池数据包。 */
 	updateMetadata: () => __TAURI_INVOKE<MetaUpdateResult>("update_metadata"),
+	/**  检查软件新版本；没有新版本时为空。 */
+	checkUpdate: () => __TAURI_INVOKE<UpdateInfo | null>("check_update"),
+	/**  下载并安装上次检查到的新版本，完成后重启；进度通过 `update://progress` 推送。 */
+	installUpdate: () => __TAURI_INVOKE<null>("install_update"),
 };
 
 /** Events */
@@ -64,6 +87,7 @@ export const events = {
 	taskDone: makeEvent<TaskDone, TaskDone>("task://done"),
 	taskFailed: makeEvent<TaskFailed, TaskFailed>("task://failed"),
 	taskProgress: makeEvent<TaskProgress, TaskProgress>("task://progress"),
+	updateProgress: makeEvent<UpdateProgress, UpdateProgress>("update://progress"),
 };
 
 /* Types */
@@ -149,6 +173,31 @@ export type AccountStatsDto = {
 	lastAt: number | null,
 };
 
+/**  成就徽章。 */
+export type AchievementDto = {
+	/**  种类。 */
+	kind: AchievementKindDto,
+	/**  是否达成。 */
+	done: boolean,
+	/**  当前最好成绩。 */
+	value: number,
+	/**  达成条件。 */
+	threshold: number,
+	/**  对应物品名。 */
+	itemName: string | null,
+};
+
+/**  成就种类。 */
+export type AchievementKindDto = 
+/**  欧皇时刻。 */
+"lucky" | 
+/**  非酋时刻。 */
+"unlucky" | 
+/**  不歪连胜。 */
+"streak" | 
+/**  漫长等待。 */
+"longWait";
+
 /**  应用与目录信息（设置页「关于」「数据」）。 */
 export type AppInfo = {
 	/**  应用版本。 */
@@ -163,6 +212,8 @@ export type AppInfo = {
 	dbSize: number,
 	/**  是否在桌面端能自动查找游戏链接（Windows）。 */
 	canDiscover: boolean,
+	/**  能否加密保存 token（Windows DPAPI）。 */
+	canRememberToken: boolean,
 };
 
 /**  一份备份。 */
@@ -173,6 +224,32 @@ export type BackupDto = {
 	createdAt: number,
 	/**  大小（字节）。 */
 	size: number,
+};
+
+/**  一条已保存的凭证（不含内容）。 */
+export type CredentialDto = {
+	/**  账号。 */
+	accountId: string,
+	/**  游戏。 */
+	game: string,
+	/**  UID。 */
+	uid: string,
+	/**  备注名。 */
+	nickname: string | null,
+	/**  种类（`hg_account_token`）。 */
+	kind: string,
+	/**  保存时间。 */
+	updatedAt: number,
+};
+
+/**  概率曲线上的一点。 */
+export type CurvePointDto = {
+	/**  再抽多少抽。 */
+	pulls: number,
+	/**  至少出一只最高星的概率。 */
+	top: number | null,
+	/**  至少出一只 UP 的概率；常驻池为空。 */
+	up: number | null,
 };
 
 /**  数据有写入（`data://changed`）：前端据此刷新统计与边栏。`account_ids` 为空表示全部。 */
@@ -229,6 +306,15 @@ export type ExportResult = {
 	records: number,
 };
 
+/**  可以用系统浏览器打开的外部页面。 */
+export type ExternalPage = 
+/**  鹰角官网登录页（手动获取 token 第 1 步）。 */
+"hgLogin" | 
+/**  鹰角 token 查询页（第 2 步）。 */
+"hgToken" | 
+/**  GitHub 发布页（自动更新不可用时手动下载）。 */
+"releases";
+
 /**  一条失败记录。 */
 export type FailureDto = {
 	/**  游戏。 */
@@ -272,12 +358,26 @@ export type GameDto = {
 	pools: PoolInfo[],
 	/**  在线拉取方式：`url` / `account_token`，没有时为空。 */
 	fetch: string | null,
-	/**  本版本能否在线拉取（鹰角 token 拉取在 v0.2）。 */
+	/**  能否在线拉取（有拉取器）。 */
 	canFetch: boolean,
 	/**  支持导入的文件格式。 */
 	formats: string[],
 	/**  最高星级。 */
 	rarityTop: number,
+};
+
+/**  鹰角账号下的一个游戏角色。 */
+export type HgRoleDto = {
+	/**  游戏。 */
+	game: string,
+	/**  UID。 */
+	uid: string,
+	/**  游戏内昵称。 */
+	nickname: string | null,
+	/**  渠道（官服 / B 服）。 */
+	channel: string | null,
+	/**  本地是否已有该账号。 */
+	exists: boolean,
 };
 
 /**  导入报告（FR-IMP-07）。 */
@@ -306,6 +406,27 @@ export type LossDto = {
 	rate: number | null,
 };
 
+/**  欧非评价（F-17）。评级文案由前端按百分位分档。 */
+export type LuckDto = {
+	/**  口径。 */
+	metric: LuckMetricDto,
+	/**  样本数。 */
+	samples: number,
+	/**  你的平均抽数。 */
+	userAvg: number | null,
+	/**  理论平均抽数。 */
+	expectedAvg: number | null,
+	/**  比多少比例的人运气好（0–1）；最高星少于 5 只时为空。 */
+	percentile: number | null,
+};
+
+/**  欧非评价口径。 */
+export type LuckMetricDto = 
+/**  平均出 UP 抽数。 */
+"perUp" | 
+/**  平均出最高星抽数。 */
+"perTop";
+
 /**  卡池数据包状态。 */
 export type MetaInfo = {
 	/**  版本。 */
@@ -328,6 +449,18 @@ export type MetaUpdateResult = {
 export type MetaUpdated = {
 	/**  新版本。 */
 	version: string,
+};
+
+/**  一个月的抽卡情况（F-15）。 */
+export type MonthDto = {
+	/**  年月，如 `2026-10`（服务器时区）。 */
+	month: string,
+	/**  抽数。 */
+	pulls: number,
+	/**  最高星数。 */
+	tops: number,
+	/**  其中 UP 数。 */
+	ups: number,
 };
 
 /**  总览中的一个账号。 */
@@ -422,6 +555,38 @@ export type PoolStatsDto = {
 	firstAt: number | null,
 	/**  最近一条记录。 */
 	lastAt: number | null,
+	/**  下一抽出最高星的概率。 */
+	nextTop: number | null,
+	/**  下一抽出 UP 的概率；常驻池为空。 */
+	nextUp: number | null,
+	/**  欧非评价；还没有出过最高星时为空。 */
+	luck: LuckDto | null,
+	/**  成就徽章；还没有出过最高星时为空。 */
+	achievements: AchievementDto[],
+};
+
+/**  出金 / 出 UP 概率预测（F-16）。 */
+export type PredictionDto = {
+	/**  卡池类型。 */
+	poolType: string,
+	/**  当前已垫抽数。 */
+	sinceTop: number,
+	/**  下一只最高星是否大保底。 */
+	guaranteed: boolean,
+	/**  累计概率曲线，`points[k]` 为再抽 k 抽内。 */
+	points: CurvePointDto[],
+	/**  出最高星累计概率达到 50% / 90% 的抽数。 */
+	topQ50: number | null,
+	/**  同上，90%。 */
+	topQ90: number | null,
+	/**  出 UP 累计概率达到 50% 的抽数。 */
+	upQ50: number | null,
+	/**  同上，90%。 */
+	upQ90: number | null,
+	/**  最多再抽几抽必出最高星。 */
+	topGuaranteedWithin: number,
+	/**  最多再抽几抽必得 UP；没有这种保证时为空。 */
+	upGuaranteedWithin: number | null,
 };
 
 /**  文件预览中的一个账号。 */
@@ -522,6 +687,8 @@ export type Settings = {
 	lastAccounts: { [key in string]: string },
 	/**  启动时检查卡池数据包更新。 */
 	metaAutoUpdate: boolean,
+	/**  启动时检查软件新版本。 */
+	updateAutoCheck: boolean,
 };
 
 /**  任务阶段。 */
@@ -567,6 +734,21 @@ export type TaskProgress = {
 	message: string,
 };
 
+/**  鹰角 token 的来源。token 本身只在「手动粘贴」时经过前端。 */
+export type TokenSource = 
+/**  登录窗口取得的 token（`hg_login` 返回的编号）。 */
+{ kind: "login"; 
+/**  编号。 */
+id: string } | 
+/**  用户粘贴的 token（或官网返回的整段 JSON）。 */
+{ kind: "pasted"; 
+/**  内容。 */
+token: string } | 
+/**  某账号已保存的 token。 */
+{ kind: "saved"; 
+/**  账号。 */
+accountId: string };
+
 /**  一只最高星（出金历史）。 */
 export type TopPullDto = {
 	/**  物品名。 */
@@ -600,6 +782,26 @@ export type UpMark =
 "notUp" | 
 /**  缺卡池数据，无法判断。 */
 "unknown";
+
+/**  新版本信息（F-24）。 */
+export type UpdateInfo = {
+	/**  新版本号。 */
+	version: string,
+	/**  当前版本号。 */
+	currentVersion: string,
+	/**  发布时间（RFC 3339）。 */
+	date: string | null,
+	/**  更新说明（Markdown）。 */
+	notes: string | null,
+};
+
+/**  下载更新的进度（`update://progress`）。 */
+export type UpdateProgress = {
+	/**  已下载字节数。 */
+	downloaded: number,
+	/**  总字节数（服务器没给时为空）。 */
+	total: number | null,
+};
 
 /**  拉取用的链接来源。 */
 export type UrlSource = 

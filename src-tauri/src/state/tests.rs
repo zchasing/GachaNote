@@ -33,6 +33,13 @@ struct Fixture {
 
 impl Fixture {
     fn new() -> Self {
+        Self::with(Options {
+            secrets: None,
+            ..Options::default()
+        })
+    }
+
+    fn with(options: Options) -> Self {
         let dir = tempfile::tempdir().unwrap();
         let paths = Paths::resolve(dir.path().join("base"));
         let (tx, rx) = mpsc::channel();
@@ -40,7 +47,7 @@ impl Fixture {
             events: Mutex::new(Vec::new()),
             finished: Mutex::new(tx),
         });
-        let state = AppState::open(paths, sink.clone()).unwrap();
+        let state = AppState::open_with(paths, sink.clone(), options).unwrap();
         Self {
             state,
             sink,
@@ -102,9 +109,8 @@ fn lists_six_games_with_pool_rules() {
     let weapon = genshin.pools.iter().find(|p| p.id == "weapon").unwrap();
     assert_eq!(weapon.path_max, Some(1));
     let ak = &games[3];
-    assert!(!ak.can_fetch);
-    // 鹰角 token 拉取在 v0.2
-    assert_eq!(ak.fetch, None);
+    assert!(ak.can_fetch);
+    assert_eq!(ak.fetch.as_deref(), Some("account_token"));
     let limited = ak.pools.iter().find(|p| p.id == "limited").unwrap();
     assert_eq!(
         (limited.up, limited.spark, limited.per_banner),
@@ -297,6 +303,7 @@ fn settings_round_trip_and_tolerate_old_values() {
         proxy: Some("http://127.0.0.1:7890".into()),
         sidebar_games: vec!["wuwa".into()],
         meta_auto_update: false,
+        update_auto_check: false,
         ..Settings::default()
     };
     s.last_accounts.insert("genshin".into(), "acc".into());
@@ -415,3 +422,269 @@ fn paths_ignore_broken_location_file() {
 
 /// 性能基准（T-40），默认不跑。
 mod perf;
+
+#[test]
+fn prediction_and_monthly_trend() {
+    let f = Fixture::new();
+    f.state.import_file(sample("uigf-v4.json"), genshin_only());
+    f.wait().unwrap();
+    let id = f.state.list_accounts().unwrap()[0].id.clone();
+    let stats = f.state.get_stats(&id).unwrap();
+    let character = stats
+        .pools
+        .iter()
+        .find(|p| p.pool_type == "character")
+        .unwrap();
+    assert!(character.next_top > 0.0 && character.next_top <= 1.0);
+    assert!(character.next_up.is_some());
+
+    let p = f.state.predict(&id, "character", 10).unwrap();
+    assert_eq!(p.pool_type, "character");
+    assert_eq!(p.since_top, character.pity.since_top);
+    assert!(p.points.len() > 10);
+    assert!((p.points[1].top - character.next_top).abs() < 1e-9);
+    assert!(p.points.windows(2).all(|w| w[1].top >= w[0].top - 1e-12));
+    assert!(p.top_q50 <= p.top_q90);
+    assert!(p.top_guaranteed_within <= 90);
+    assert_eq!(
+        f.state.predict(&id, "nope", 10).unwrap_err().code(),
+        "not_found"
+    );
+    // 次数被限制在 1–1000
+    assert!(f.state.predict(&id, "character", 0).is_ok());
+
+    let all = f.state.get_monthly_trend(&id, None).unwrap();
+    assert!(!all.is_empty());
+    assert_eq!(all.iter().map(|m| m.pulls).sum::<u32>(), stats.total_pulls);
+    let tops: u32 = stats.pools.iter().map(|p| p.tops.len() as u32).sum();
+    assert_eq!(all.iter().map(|m| m.tops).sum::<u32>(), tops);
+    let ch = f.state.get_monthly_trend(&id, Some("character")).unwrap();
+    assert_eq!(
+        ch.iter().map(|m| m.pulls).sum::<u32>(),
+        character.total_pulls
+    );
+}
+
+/// 测试用加密：逐字节异或，能区分明文与密文。
+struct Xor;
+
+impl SecretStore for Xor {
+    fn protect(&self, plain: &[u8]) -> Result<Vec<u8>> {
+        Ok(plain.iter().map(|b| b ^ 0x5A).collect())
+    }
+
+    fn unprotect(&self, blob: &[u8]) -> Result<Vec<u8>> {
+        self.protect(blob)
+    }
+}
+
+const HG_TOKEN: &str = "account-token-0123456789";
+const AK_UID: &str = "12345678";
+
+/// 鹰角账号接口与明日方舟寻访记录（一个限定池、两条记录）。
+async fn hg_server() -> wiremock::MockServer {
+    use serde_json::json;
+    use wiremock::matchers::{body_partial_json, method, path};
+    use wiremock::{Mock, MockServer, ResponseTemplate};
+
+    let ok = |data: serde_json::Value| {
+        ResponseTemplate::new(200).set_body_json(json!({ "status": 0, "msg": "OK", "data": data }))
+    };
+    let game_ok = |data: serde_json::Value| {
+        ResponseTemplate::new(200).set_body_json(json!({ "code": 0, "msg": "", "data": data }))
+    };
+    let server = MockServer::start().await;
+    Mock::given(method("POST"))
+        .and(path("/user/oauth2/v2/grant"))
+        .and(body_partial_json(json!({ "token": HG_TOKEN })))
+        .respond_with(ok(json!({ "token": "oauth" })))
+        .mount(&server)
+        .await;
+    Mock::given(method("POST"))
+        .and(path("/user/oauth2/v2/grant"))
+        .respond_with(
+            ResponseTemplate::new(200).set_body_json(json!({ "status": 3, "msg": "expired" })),
+        )
+        .with_priority(10)
+        .mount(&server)
+        .await;
+    Mock::given(method("GET"))
+        .and(path("/account/binding/v1/binding_list"))
+        .respond_with(ok(json!({ "list": [
+            { "appCode": "arknights", "bindingList": [
+                { "uid": AK_UID, "channelName": "官服", "nickName": "博士#1234" }
+            ] }
+        ] })))
+        .mount(&server)
+        .await;
+    Mock::given(method("POST"))
+        .and(path("/account/binding/v1/u8_token_by_uid"))
+        .respond_with(ok(json!({ "token": "u8" })))
+        .mount(&server)
+        .await;
+    Mock::given(method("POST"))
+        .and(path("/user/api/role/login"))
+        .respond_with(game_ok(json!({})).insert_header("set-cookie", "ak-user-center=s; Path=/"))
+        .mount(&server)
+        .await;
+    Mock::given(method("GET"))
+        .and(path("/user/api/role/info"))
+        .respond_with(game_ok(json!({ "uid": AK_UID })))
+        .mount(&server)
+        .await;
+    Mock::given(method("GET"))
+        .and(path("/user/api/inquiry/gacha/cate"))
+        .respond_with(game_ok(json!([{ "id": "anniver_fest" }])))
+        .mount(&server)
+        .await;
+    let item = |name: &str, rarity: u8, pos: u32| {
+        json!({ "poolId": "LIMITED_37_0_1", "charName": name, "rarity": rarity,
+                "gachaTs": "1761292800000", "pos": pos })
+    };
+    Mock::given(method("GET"))
+        .and(path("/user/api/inquiry/gacha/history"))
+        .respond_with(game_ok(json!({
+            "list": [item("能天使", 5, 0), item("芬", 2, 1)], "hasMore": false
+        })))
+        .mount(&server)
+        .await;
+    server
+}
+
+#[test]
+fn hypergryph_token_fetch_and_credentials() {
+    let rt = tokio::runtime::Runtime::new().unwrap();
+    let server = rt.block_on(hg_server());
+    let f = Fixture::with(Options {
+        pacing: Pacing::immediate(),
+        hg_endpoints: HgEndpoints::all(&server.uri()),
+        secrets: Some(Arc::new(Xor)),
+    });
+    assert!(f.state.app_info().can_remember_token);
+    let pasted = || TokenSource::Pasted {
+        token: format!(r#"{{"code":0,"data":{{"content":"{HG_TOKEN}"}}}}"#),
+    };
+    let block = |fut| tauri::async_runtime::block_on(fut);
+
+    // 粘贴整段 JSON 也能识别；角色列表标注本地是否已有
+    let roles = block(f.state.hg_roles(pasted())).unwrap();
+    assert_eq!(roles.len(), 1);
+    assert_eq!(
+        (
+            roles[0].game.as_str(),
+            roles[0].uid.as_str(),
+            roles[0].exists
+        ),
+        ("arknights", AK_UID, false)
+    );
+    let bad = TokenSource::Pasted { token: "x".into() };
+    assert_eq!(block(f.state.hg_roles(bad)).unwrap_err().code(), "invalid");
+    let expired = TokenSource::Pasted {
+        token: "expired-token-0123456789".into(),
+    };
+    assert_eq!(
+        block(f.state.hg_roles(expired)).unwrap_err().code(),
+        "auth_expired"
+    );
+    let login = TokenSource::Login {
+        id: "login-1".into(),
+    };
+    assert_eq!(
+        block(f.state.hg_roles(login)).unwrap_err().code(),
+        "not_found"
+    );
+
+    let key = || {
+        vec![AccountKey {
+            game: "arknights".into(),
+            uid: AK_UID.into(),
+        }]
+    };
+    let mode = FetchModeDto::Incremental;
+    assert_eq!(
+        f.state
+            .fetch_by_token(pasted(), vec![], true, mode)
+            .unwrap_err()
+            .code(),
+        "invalid"
+    );
+    let genshin = vec![AccountKey {
+        game: "genshin".into(),
+        uid: "1".into(),
+    }];
+    assert_eq!(
+        f.state
+            .fetch_by_token(pasted(), genshin, true, mode)
+            .unwrap_err()
+            .code(),
+        "invalid"
+    );
+
+    // 登录窗口取得的 token：拉取并记住
+    let id = f.state.put_login_token(HG_TOKEN.into());
+    f.state
+        .fetch_by_token(TokenSource::Login { id: id.clone() }, key(), true, mode)
+        .unwrap();
+    let done = f.wait().unwrap();
+    assert_eq!(done.report.added, 2);
+    // 用过一次就丢弃
+    assert_eq!(
+        block(f.state.hg_roles(TokenSource::Login { id }))
+            .unwrap_err()
+            .code(),
+        "not_found"
+    );
+    let creds = f.state.list_credentials().unwrap();
+    assert_eq!(creds.len(), 1);
+    assert_eq!(
+        (
+            creds[0].game.as_str(),
+            creds[0].uid.as_str(),
+            creds[0].kind.as_str()
+        ),
+        ("arknights", AK_UID, HG_ACCOUNT_TOKEN)
+    );
+    let account_id = creds[0].account_id.clone();
+    // 数据库里只有密文
+    let blob = f
+        .state
+        .store
+        .credential(&AccountId::from(account_id.as_str()), HG_ACCOUNT_TOKEN)
+        .unwrap()
+        .unwrap();
+    assert!(!blob
+        .windows(HG_TOKEN.len())
+        .any(|w| w == HG_TOKEN.as_bytes()));
+    let accounts = f.state.list_accounts().unwrap();
+    assert_eq!(accounts[0].nickname.as_deref(), Some("博士#1234"));
+    let stats = f.state.get_stats(&account_id).unwrap();
+    assert_eq!(stats.total_pulls, 2);
+
+    // 已保存的 token：增量拉取，没有新记录
+    let saved = || TokenSource::Saved {
+        account_id: account_id.clone(),
+    };
+    assert!(block(f.state.hg_roles(saved())).unwrap()[0].exists);
+    f.state.fetch_by_token(saved(), key(), false, mode).unwrap();
+    assert_eq!(f.wait().unwrap().report.added, 0);
+
+    // 清除
+    assert_eq!(f.state.clear_credentials(Some(&account_id)).unwrap(), 1);
+    assert!(f.state.list_credentials().unwrap().is_empty());
+    assert_eq!(
+        block(f.state.hg_roles(saved())).unwrap_err().code(),
+        "not_found"
+    );
+    assert_eq!(f.state.clear_credentials(None).unwrap(), 0);
+}
+
+#[test]
+fn token_cannot_be_saved_without_secret_store() {
+    let f = Fixture::new();
+    assert!(!f.state.app_info().can_remember_token);
+    let saved = TokenSource::Saved {
+        account_id: "x".into(),
+    };
+    let err = tauri::async_runtime::block_on(f.state.hg_roles(saved)).unwrap_err();
+    assert_eq!(err.code(), "invalid");
+}

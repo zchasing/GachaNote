@@ -7,9 +7,16 @@ export function useErrors() {
   const { t, te } = useI18n()
   const ui = useUiStore()
 
-  function describe(e: unknown): { title: string; hint: string; error: ApiError } {
+  /** `variant` 为场景（如 `token`）：有 `errors.<code>_<variant>` 文案时优先用它。 */
+  function describe(e: unknown, variant?: string): { title: string; hint: string; error: ApiError } {
     const error = toApiError(e)
-    const key = te(`errors.${error.code}.title`) ? error.code : 'unknown'
+    const specific = variant ? `${error.code}_${variant}` : null
+    const key =
+      specific && te(`errors.${specific}.title`)
+        ? specific
+        : te(`errors.${error.code}.title`)
+          ? error.code
+          : 'unknown'
     return { title: t(`errors.${key}.title`), hint: t(`errors.${key}.hint`), error }
   }
 

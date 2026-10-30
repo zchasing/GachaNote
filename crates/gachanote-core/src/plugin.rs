@@ -14,10 +14,10 @@ use serde::{Deserialize, Serialize};
 
 use crate::error::Result;
 use crate::exchange::{ExportAccount, ImportedAccount};
-use crate::ids::{AccountId, FormatId, GameId, PoolTypeId};
+use crate::ids::{FormatId, GameId, PoolTypeId};
 use crate::meta::{Classified, GameMeta};
 use crate::model::{Cursor, NewRecord};
-use crate::redact::{Redacted, Url};
+use crate::redact::{Redacted, Secret, Url};
 use crate::rules::PoolRule;
 use crate::task::{CancelToken, Progress};
 
@@ -69,8 +69,10 @@ pub struct FetchSource {
     pub game: GameId,
     /// 抽卡记录链接（URL 拉取）。
     pub url: Option<Redacted<String, Url>>,
-    /// 已保存凭据所属的账号（token 拉取）。
-    pub account: Option<AccountId>,
+    /// 账号 token（token 拉取）。
+    pub token: Option<Redacted<String, Secret>>,
+    /// 要拉取的游戏 UID（token 拉取：一个 token 下可能有多个角色）。
+    pub uid: Option<String>,
 }
 
 /// 增量拉取的起点：每个卡池类型最新的一条记录。
@@ -249,6 +251,7 @@ pub(crate) mod testing {
                 up,
                 extras: vec![],
                 pity_scope: PityScope::SharedByType,
+                achievements: Default::default(),
             };
             Self {
                 id: "genshin",

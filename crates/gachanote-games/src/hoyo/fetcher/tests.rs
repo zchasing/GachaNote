@@ -21,7 +21,8 @@ fn source(key: &str) -> FetchSource {
     FetchSource {
         game: GameId::GENSHIN.into(),
         url: Some(Redacted::url(url(key))),
-        account: None,
+        token: None,
+        uid: None,
     }
 }
 
@@ -267,7 +268,8 @@ async fn invalid_source_and_cancel() {
     let none = FetchSource {
         game: GameId::GENSHIN.into(),
         url: None,
-        account: None,
+        token: None,
+        uid: None,
     };
     let other = FetchSource {
         url: Some(Redacted::url(

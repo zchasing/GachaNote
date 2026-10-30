@@ -14,6 +14,7 @@ export function createAppRouter(history: RouterHistory = createWebHashHistory())
           { path: '', redirect: (to) => `/account/${String(to.params.id)}/stats` },
           { path: 'stats', name: 'stats', component: () => import('./views/StatsTab.vue') },
           { path: 'records', name: 'records', component: () => import('./views/RecordsTab.vue') },
+          { path: 'analysis', name: 'analysis', component: () => import('./views/AnalysisTab.vue') },
         ],
       },
       {

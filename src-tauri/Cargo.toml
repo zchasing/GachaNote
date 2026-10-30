@@ -28,14 +28,27 @@ specta.workspace = true
 specta-typescript.workspace = true
 tauri = { workspace = true, features = [] }
 tauri-plugin-dialog = "2"
+tauri-plugin-updater = "2"
 tauri-specta.workspace = true
+tokio.workspace = true
 tracing.workspace = true
 tracing-appender.workspace = true
 tracing-subscriber.workspace = true
 
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = ["Win32_Foundation", "Win32_Security_Cryptography"] }
+
 [dev-dependencies]
+async-trait.workspace = true
 tempfile.workspace = true
+wiremock.workspace = true
 tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
 
-[lints]
-workspace = true
+# 与 workspace 的 lints 相同，只是 unsafe_code 从 forbid 放宽为 deny：
+# DPAPI 需要调用 Windows API，只在 secret.rs 的 Windows 实现里局部允许
+[lints.rust]
+unsafe_code = "deny"
+missing_docs = "warn"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }
