@@ -263,7 +263,8 @@
     "fromGame": "Fetch from game",
     "importFile": "Import file",
     "noPulls": "No records",
-    "updated": "updated {time}"
+    "updated": "updated {time}",
+    "lastTop": "Last {name}"
   },
   "account": {
     "uid": "UID {uid}",
@@ -274,7 +275,8 @@
     "tabs": {
       "stats": "Stats",
       "records": "Records",
-      "analysis": "Analysis"
+      "analysis": "Analysis",
+      "timeline": "Timeline"
     },
     "renameTitle": "Rename account",
     "renamePlaceholder": "Nickname; leave empty to show the UID",
@@ -286,7 +288,8 @@
     "renamed": "Renamed",
     "notFound": "This account no longer exists.",
     "emptyGame": "No {game} account yet. One is created automatically when you fetch or import records.",
-    "goImport": "Import"
+    "goImport": "Import",
+    "share": "Create share image"
   },
   "stats": {
     "overview": "Overview",
@@ -699,5 +702,61 @@
     "notConfigured": "This version can't update itself; download the new version from the releases page.",
     "releases": "Open releases",
     "auto": "Check for app updates at startup"
+  },
+  "timeline": {
+    "chart": "Pull timeline",
+    "byDay": "Daily",
+    "byMonth": "Monthly",
+    "granularity": "Granularity",
+    "total": " ({n} pulls)",
+    "dayPulls": "Pulls that day",
+    "quick": {
+      "d30": "Last 30 days",
+      "d90": "Last 90 days",
+      "d180": "Last 6 months",
+      "all": "All"
+    },
+    "selected": "{from} – {to} · {days} days selected (records {first} – {last})",
+    "panLeft": "Move selection earlier",
+    "panRight": "Move selection later",
+    "startHandle": "Start date",
+    "endHandle": "End date",
+    "window": "Drag to move the selection, or use the arrow keys",
+    "brush": "Date range",
+    "hint": "Each bar is one day, stacked by rarity. Hover for details; the busiest day is labelled.",
+    "monthHint": "Bars = pulls · line = {name} count",
+    "periods": "Newest first · {pool}",
+    "showSkipped": "Show banners you skipped",
+    "skipped": "Skipped",
+    "periodPulls": "{n} pulls this banner",
+    "noTop": "No {name} this banner",
+    "autoTitle": "Records {from} – {to}",
+    "autoNote": "Without the banner data pack, records are grouped by time.",
+    "empty": "No records in this banner type yet",
+    "periodList": "Banners",
+    "table": "Table",
+    "chartView": "Chart",
+    "date": "Date",
+    "andBelow": "{name} & below"
+  },
+  "share": {
+    "title": "Create share image",
+    "hideUid": "Hide UID",
+    "uidHidden": "UID hidden",
+    "background": "Background",
+    "light": "Light",
+    "dark": "Dark",
+    "pool": "Banner",
+    "size": "Exported as a 1080 px wide PNG",
+    "copy": "Copy to clipboard",
+    "save": "Save PNG",
+    "recent": "Last {n} {name}",
+    "noTops": "No {name} yet",
+    "saved": "Share image saved",
+    "copied": "Copied to clipboard",
+    "copyFailed": "Couldn't copy; please save instead",
+    "preview": "Share image preview",
+    "fileName": "PNG image",
+    "guaranteed": "Guaranteed"
   }
 }

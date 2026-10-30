@@ -18,6 +18,7 @@ gachanote-meta = { path = "crates/gachanote-meta" }
 gachanote-store = { path = "crates/gachanote-store" }
 
 async-trait = "0.1"
+base64 = "0.22"
 chrono = { version = "0.4", default-features = false, features = ["std", "clock"] }
 csv = "1"
 insta = { version = "1", features = ["json", "redactions"] }

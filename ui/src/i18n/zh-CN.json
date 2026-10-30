@@ -263,7 +263,8 @@
     "fromGame": "从游戏拉取",
     "importFile": "导入文件",
     "noPulls": "暂无记录",
-    "updated": "{time}更新"
+    "updated": "{time}更新",
+    "lastTop": "上次出 {name}"
   },
   "account": {
     "uid": "UID {uid}",
@@ -274,7 +275,8 @@
     "tabs": {
       "stats": "统计",
       "records": "记录",
-      "analysis": "分析"
+      "analysis": "分析",
+      "timeline": "时间线"
     },
     "renameTitle": "重命名账号",
     "renamePlaceholder": "备注名，留空则显示 UID",
@@ -286,7 +288,8 @@
     "renamed": "已重命名",
     "notFound": "找不到这个账号，可能已被删除。",
     "emptyGame": "{game}还没有账号。从游戏拉取或导入文件后会自动创建。",
-    "goImport": "去导入"
+    "goImport": "去导入",
+    "share": "生成分享图"
   },
   "stats": {
     "overview": "总览",
@@ -699,5 +702,61 @@
     "notConfigured": "当前版本还不支持自动更新，请到发布页下载新版。",
     "releases": "打开发布页",
     "auto": "启动时检查软件新版本"
+  },
+  "timeline": {
+    "chart": "抽卡时间线",
+    "byDay": "按日",
+    "byMonth": "按月",
+    "granularity": "时间粒度",
+    "total": "（共 {n} 抽）",
+    "dayPulls": "当日抽卡次数",
+    "quick": {
+      "d30": "近 30 天",
+      "d90": "近 90 天",
+      "d180": "近半年",
+      "all": "全部"
+    },
+    "selected": "已选 {from} – {to} · {days} 天（记录范围 {first} – {last}）",
+    "panLeft": "选区向前移动",
+    "panRight": "选区向后移动",
+    "startHandle": "开始日期",
+    "endHandle": "结束日期",
+    "window": "拖动平移选区，或按左右方向键",
+    "brush": "时间范围",
+    "hint": "每根柱是一天，按星级堆叠；悬停查看当天明细，最高的一天标出抽数。",
+    "monthHint": "柱 = 抽数 · 线 = 出{name}数",
+    "periods": "最新一期在上 · {pool}",
+    "showSkipped": "显示未参与的卡池",
+    "skipped": "未参与",
+    "periodPulls": "本期 {n} 抽",
+    "noTop": "本期未出 {name}",
+    "autoTitle": "{from} – {to} 的记录",
+    "autoNote": "没有卡池数据包时按记录时间自动分段。",
+    "empty": "这个卡池还没有记录",
+    "periodList": "卡池期数",
+    "table": "数据表",
+    "chartView": "图表",
+    "date": "日期",
+    "andBelow": "{name}及以下"
+  },
+  "share": {
+    "title": "生成分享图",
+    "hideUid": "隐藏 UID",
+    "uidHidden": "UID 已隐藏",
+    "background": "背景",
+    "light": "浅色",
+    "dark": "深色",
+    "pool": "卡池",
+    "size": "导出为 1080 px 宽的 PNG",
+    "copy": "复制到剪贴板",
+    "save": "保存 PNG",
+    "recent": "最近 {n} 个 {name}",
+    "noTops": "还没有出过 {name}",
+    "saved": "已保存分享图",
+    "copied": "已复制到剪贴板",
+    "copyFailed": "复制失败，请改用保存",
+    "preview": "分享图预览",
+    "fileName": "PNG 图片",
+    "guaranteed": "大保底"
   }
 }

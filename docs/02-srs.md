@@ -224,6 +224,7 @@ flowchart LR
 - 每款游戏文件含：物品表（`id`、星级、各语言名称）、常驻最高星名单（`standard`）、卡池列表（`banners`：`id`、卡池类型、各语言名称、起止时间、UP 最高星与次高星名单）。
 - 名单里写物品 ID 或名称，加载时展开成「ID + 各语言名称」，不论记录里是 ID 还是哪种语言的名称都能匹配。
 - 物品名称至少保存中英两种语言（米哈游三款另有繁中、日文），用于切换语言后显示。
+- 物品可带头像（v0.3）：`icon` 为图标文件的 SHA-256，文件按内容寻址存放在 `icons/<game>/<sha256>.webp`（64×64 WebP）。头像不列在 manifest 里，也不进安装包：游戏文件已由 manifest 校验，头像由文件名里的哈希校验，界面需要时由后端按需下载并缓存。图片由 `scripts/build_icons.py` 从本地目录转换写入。
 - 应用版本低于 `minAppVersion` 时不使用远程包，继续用当前包。
 - 米哈游三款的数据由 `scripts/build_hoyo_metadata.py` 从 HoYo.Gacha（MIT）转换，来源与许可见 `metadata/NOTICE.md`。
 

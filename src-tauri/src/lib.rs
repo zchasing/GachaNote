@@ -38,6 +38,7 @@ fn specta_builder() -> Builder<tauri::Wry> {
             commands::get_stats,
             commands::predict,
             commands::get_monthly_trend,
+            commands::get_timeline,
             commands::get_overview,
             commands::query_records,
             commands::sniff_file,
@@ -51,6 +52,7 @@ fn specta_builder() -> Builder<tauri::Wry> {
             commands::clear_credentials,
             commands::cancel_task,
             commands::export_accounts,
+            commands::save_image,
             commands::get_settings,
             commands::set_settings,
             commands::app_info,
@@ -62,6 +64,7 @@ fn specta_builder() -> Builder<tauri::Wry> {
             commands::create_backup,
             commands::restore_backup,
             commands::meta_info,
+            commands::get_item_icons,
             commands::update_metadata,
             commands::check_update,
             commands::install_update,
@@ -102,6 +105,22 @@ impl EventSink for TauriSink {
     }
 }
 
+/// 头像请求的响应：找不到时返回 404，前端回退到文字。
+fn icon_response(bytes: Option<Vec<u8>>) -> tauri::http::Response<Vec<u8>> {
+    let builder = tauri::http::Response::builder();
+    let response = match bytes {
+        Some(b) => builder
+            .header(tauri::http::header::CONTENT_TYPE, gachanote_meta::ICON_MIME)
+            .header(
+                tauri::http::header::CACHE_CONTROL,
+                "max-age=31536000, immutable",
+            )
+            .body(b),
+        None => builder.status(404).body(Vec::new()),
+    };
+    response.unwrap_or_default()
+}
+
 /// 启动应用。
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -116,6 +135,26 @@ pub fn run() {
         .plugin(tauri_plugin_updater::Builder::new().build())
         .manage(updater::PendingUpdate::default())
         .invoke_handler(builder.invoke_handler())
+        // 物品头像：`gnicon://localhost/<game>/<sha256>`（Windows 上为 `http://gnicon.localhost/...`），
+        // 由后端从缓存或数据包来源取得并校验，前端不直接访问外网
+        .register_asynchronous_uri_scheme_protocol("gnicon", |ctx, request, responder| {
+            let app = ctx.app_handle().clone();
+            // 前端用 convertFileSrc 生成地址，路径里的 `/` 会被编码成 `%2F`
+            let path = request
+                .uri()
+                .path()
+                .trim_start_matches('/')
+                .replace("%2F", "/")
+                .replace("%2f", "/");
+            tauri::async_runtime::spawn(async move {
+                let state = app.state::<AppState>();
+                let bytes = match path.split_once('/') {
+                    Some((game, sha)) => state.icon(game, sha).await.ok(),
+                    None => None,
+                };
+                responder.respond(icon_response(bytes));
+            });
+        })
         .setup(move |app| {
             let base = app.path().data_dir()?.join("GachaNote");
             let paths = Paths::resolve(base);

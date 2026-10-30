@@ -7,13 +7,14 @@ import { useRelative } from '@/composables/useRelative'
 import { useGamesStore } from '@/stores/games'
 import AppIcon from './AppIcon.vue'
 import GameIcon from './GameIcon.vue'
+import ItemIcon from './ItemIcon.vue'
 import PityTag from './PityTag.vue'
 
 // 总览账号卡片（UI/UX 文档 3.2）：默认显示角色与武器类限定池，其余卡池收在「展开」里。
 const props = defineProps<{ account: AccountDto; stats: AccountStatsDto }>()
 const emit = defineEmits<{ open: [] }>()
 const games = useGamesStore()
-const { t, locale, gameName, poolName } = useNames()
+const { t, locale, gameName, poolName, rarityName } = useNames()
 const { rel, abs } = useRelative()
 const expanded = ref(false)
 
@@ -35,6 +36,8 @@ const rest = computed(() =>
 const visible = computed(() => (expanded.value ? [...featured.value, ...rest.value] : featured.value))
 
 const title = computed(() => props.account.nickname ?? props.account.uid)
+
+const topName = computed(() => rarityName(props.account.game, games.game(props.account.game)?.rarityTop ?? 5))
 
 function pct(p: PoolStatsDto, hard: number) {
   return `${Math.min(100, (p.pity.sinceTop / Math.max(1, hard)) * 100)}%`
@@ -78,6 +81,12 @@ function pct(p: PoolStatsDto, hard: number) {
         </div>
         <div class="track">
           <div class="fill" :style="{ width: pct(r.stats, r.info?.hard ?? 1), background: color }" />
+        </div>
+        <div v-if="r.stats.tops.length" class="olast muted" data-test="overview-last">
+          <span>{{ t('overview.lastTop', { name: topName }) }}</span>
+          <ItemIcon :game="account.game" :name="r.stats.tops.at(-1)!.itemName" :size="20" />
+          <span class="r-top">{{ r.stats.tops.at(-1)!.itemName }}</span>
+          <span class="num">{{ t('common.pulls', { n: r.stats.tops.at(-1)!.pulls }) }}</span>
         </div>
       </div>
       <button v-if="rest.length" class="linkbtn" style="align-self: flex-start" @click="expanded = !expanded">
@@ -145,6 +154,13 @@ function pct(p: PoolStatsDto, hard: number) {
 }
 .pity {
   font-size: 18px;
+}
+.olast {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  min-width: 0;
 }
 .ostats {
   margin-top: auto;

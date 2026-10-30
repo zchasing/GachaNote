@@ -5,11 +5,21 @@ import {
   GridComponent,
   LegendComponent,
   MarkLineComponent,
+  MarkPointComponent,
   TooltipComponent,
 } from 'echarts/components'
 import { init, use } from 'echarts/core'
 import { SVGRenderer } from 'echarts/renderers'
 
-use([BarChart, LineChart, GridComponent, LegendComponent, MarkLineComponent, TooltipComponent, SVGRenderer])
+use([
+  BarChart,
+  LineChart,
+  GridComponent,
+  LegendComponent,
+  MarkLineComponent,
+  MarkPointComponent,
+  TooltipComponent,
+  SVGRenderer,
+])
 
 export { init }

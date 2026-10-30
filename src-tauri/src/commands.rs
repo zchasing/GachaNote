@@ -2,6 +2,7 @@
 //!
 //! 业务逻辑都在 [`AppState`] 里，这里只做参数转换；失败时返回 [`ErrorDto`]。
 
+use std::collections::BTreeMap;
 use std::path::PathBuf;
 
 use serde::Serialize;
@@ -12,7 +13,8 @@ use crate::dto::{
     AccountDto, AccountKey, AccountStatsDto, AppInfo, BackupDto, CmdResult, CredentialDto, DirKind,
     DiscoveredUrl, ErrorDto, ExportFormat, ExportResult, ExternalPage, FetchModeDto,
     FilePreviewDto, GameDto, HgRoleDto, MetaInfo, MetaUpdateResult, MonthDto, OverviewEntry,
-    PredictionDto, RecordPage, RecordQueryDto, Settings, TokenSource, UpdateInfo, UrlSource,
+    PredictionDto, RecordPage, RecordQueryDto, Settings, TimelineDto, TokenSource, UpdateInfo,
+    UrlSource,
 };
 use crate::state::AppState;
 
@@ -231,6 +233,31 @@ pub fn export_accounts(
     state
         .export(&account_ids, format, &PathBuf::from(path))
         .map_err(err)
+}
+
+/// 一个卡池的时间线：按日抽数与各期列表（F-19）。
+#[tauri::command]
+#[specta::specta]
+pub fn get_timeline(
+    state: State<'_, AppState>,
+    account_id: String,
+    pool_type: String,
+) -> CmdResult<TimelineDto> {
+    state.get_timeline(&account_id, &pool_type).map_err(err)
+}
+
+/// 一款游戏的头像索引：物品 ID 与各语言名称 → 图标哈希。图片地址为 `gnicon://localhost/<game>/<hash>`。
+#[tauri::command]
+#[specta::specta]
+pub fn get_item_icons(state: State<'_, AppState>, game: String) -> BTreeMap<String, String> {
+    state.item_icons(&game)
+}
+
+/// 保存分享图：`data` 为 base64 编码的 PNG（F-20）。
+#[tauri::command]
+#[specta::specta]
+pub fn save_image(state: State<'_, AppState>, path: String, data: String) -> CmdResult<()> {
+    state.save_png(&PathBuf::from(path), &data).map_err(err)
 }
 
 /// 读取设置。

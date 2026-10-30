@@ -13,7 +13,8 @@ use gachanote_core::rules::{rule_at, Mechanic, PityScope, UpRule};
 use gachanote_core::stats::analysis::{achievements, Achievement, AchievementKind, MonthBucket};
 use gachanote_core::stats::luck::{luck, Luck, LuckMetric};
 use gachanote_core::stats::predict::{predict, Prediction};
-use gachanote_core::stats::{AccountStats, LossRate, PoolStats, RecordMark};
+use gachanote_core::stats::timeline::PeriodSource;
+use gachanote_core::stats::{AccountStats, LossRate, PoolStats, RecordMark, TopPull};
 use gachanote_core::task::{ProgressEvent, Stage};
 use gachanote_core::AppError;
 use serde::{Deserialize, Serialize};
@@ -267,6 +268,20 @@ pub struct TopPullDto {
     pub was_guaranteed: bool,
 }
 
+impl TopPullDto {
+    /// 换算；`has_up` 为假（常驻池）时不带 UP 标注。
+    pub fn new(t: &TopPull, has_up: bool) -> Self {
+        Self {
+            item_name: t.item_name.clone(),
+            pulled_at: t.pulled_at,
+            pulls: t.pulls,
+            up: has_up.then(|| t.up.into()),
+            estimated: has_up && t.estimated,
+            was_guaranteed: t.was_guaranteed,
+        }
+    }
+}
+
 /// 当前保底状态。
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Type)]
 #[serde(rename_all = "camelCase")]
@@ -366,18 +381,7 @@ impl PoolStatsDto {
             total_pulls: p.total_pulls,
             free_count: p.free_count,
             rarity_counts: rarity_counts(&p.rarity_counts),
-            tops: p
-                .tops
-                .iter()
-                .map(|t| TopPullDto {
-                    item_name: t.item_name.clone(),
-                    pulled_at: t.pulled_at,
-                    pulls: t.pulls,
-                    up: has_up.then(|| t.up.into()),
-                    estimated: has_up && t.estimated,
-                    was_guaranteed: t.was_guaranteed,
-                })
-                .collect(),
+            tops: p.tops.iter().map(|t| TopPullDto::new(t, has_up)).collect(),
             avg_pulls_per_top: p.avg_pulls_per_top,
             up_count: p.up_count,
             lost_count: if has_up {
@@ -720,6 +724,90 @@ impl From<MonthBucket> for MonthDto {
     }
 }
 
+/// 按日抽数（时间线图表，F-19）：从 `start` 起每天一项，三个数组等长。
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub struct DailyDto {
+    /// 第一天（服务器时区），如 `2026-10-01`；没有记录时为空串。
+    pub start: String,
+    /// 每天的最高星数。
+    pub top: Vec<u32>,
+    /// 每天的次高星数。
+    pub second: Vec<u32>,
+    /// 每天的其他星级数。
+    pub other: Vec<u32>,
+}
+
+/// 物品的各语言名称（卡池 UP 名单用）。
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub struct ItemNameDto {
+    /// 元数据包里的写法（物品 ID 或名称），找不到物品时直接显示它。
+    pub key: String,
+    /// 各语言名称，键为 `zh-cn`、`en-us` 等。
+    pub names: BTreeMap<String, String>,
+}
+
+/// 时间线上的一期是怎么划分的。
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub enum PeriodKind {
+    /// 元数据包里的一期卡池。
+    Banner,
+    /// 记录自带的卡池 ID。
+    Pool,
+    /// 按时间自动分段。
+    Auto,
+}
+
+impl From<PeriodSource> for PeriodKind {
+    fn from(s: PeriodSource) -> Self {
+        match s {
+            PeriodSource::Banner => Self::Banner,
+            PeriodSource::Pool => Self::Pool,
+            PeriodSource::Auto => Self::Auto,
+        }
+    }
+}
+
+/// 时间线上的一期（F-19）。
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub struct PeriodDto {
+    /// 划分方式。
+    pub kind: PeriodKind,
+    /// 卡池 ID。
+    pub id: Option<String>,
+    /// 卡池名：元数据包里的各语言名称。
+    pub names: BTreeMap<String, String>,
+    /// 卡池名：记录原文（方舟、终末地记录自带）。
+    pub raw_name: Option<String>,
+    /// 开始时间。
+    pub start: i64,
+    /// 结束时间。
+    pub end: i64,
+    /// UP 最高星。
+    pub up_top: Vec<ItemNameDto>,
+    /// UP 次高星。
+    pub up_second: Vec<ItemNameDto>,
+    /// 本期抽数；为 0 表示未参与。
+    pub pulls: u32,
+    /// 本期出的最高星，按时间顺序。
+    pub tops: Vec<TopPullDto>,
+}
+
+/// 一个卡池的时间线：按日图表与各期列表（最新在前）。
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Type)]
+#[serde(rename_all = "camelCase")]
+pub struct TimelineDto {
+    /// 卡池类型。
+    pub pool_type: String,
+    /// 按日抽数。
+    pub daily: DailyDto,
+    /// 各期。
+    pub periods: Vec<PeriodDto>,
+}
+
 /// 鹰角 token 的来源。token 本身只在「手动粘贴」时经过前端。
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Type)]
 #[serde(tag = "kind", rename_all = "camelCase")]
@@ -856,6 +944,8 @@ pub struct RecordDto {
     pub pool_type: String,
     /// 物品名。
     pub item_name: String,
+    /// 物品 ID（查头像用）。
+    pub item_id: Option<String>,
     /// 物品类型。
     pub item_type: Option<String>,
     /// 星级。
@@ -879,6 +969,7 @@ impl RecordDto {
             id: r.id.to_string(),
             pool_type: r.data.pool_type.to_string(),
             item_name: r.data.item_name,
+            item_id: r.data.item_id,
             item_type: r.data.item_type,
             rarity: r.data.rarity,
             pulled_at: r.data.pulled_at,

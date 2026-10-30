@@ -45,6 +45,23 @@ pub struct PackItem {
     /// 各语言名称，键为 `zh-cn`、`en-us` 等。
     #[serde(default)]
     pub names: BTreeMap<String, String>,
+    /// 头像图标的 SHA-256（小写十六进制），文件在 `icons/<game>/<sha256>.webp`；没有头像时为空。
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub icon: Option<String>,
+}
+
+impl PackItem {
+    /// 物品 ID 或任一语言的名称是否等于 `key`。
+    pub fn matches(&self, key: &str) -> bool {
+        self.id == key || self.names.values().any(|n| n == key)
+    }
+}
+
+/// 是否为合法的 SHA-256 十六进制串（小写）。
+pub fn is_sha256(s: &str) -> bool {
+    s.len() == 64
+        && s.bytes()
+            .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
 }
 
 /// 一期卡池。
@@ -95,10 +112,20 @@ fn time_ms(s: &str, location: &str) -> Result<i64> {
 }
 
 impl GamePack {
-    /// 解析并检查：时间合法且开始早于结束、卡池 ID 不重复。
+    /// 解析并检查：时间合法且开始早于结束、卡池 ID 不重复、图标哈希格式正确。
     pub fn parse(bytes: &[u8]) -> Result<Self> {
         let pack: Self = serde_json::from_slice(bytes)?;
         pack.to_game_meta()?;
+        if let Some(i) = pack
+            .items
+            .iter()
+            .find(|i| i.icon.as_deref().is_some_and(|h| !is_sha256(h)))
+        {
+            return Err(AppError::parse(
+                format!("items.{}", i.id),
+                "invalid icon sha256",
+            ));
+        }
         let mut ids = std::collections::HashSet::new();
         for b in &pack.banners {
             if !ids.insert(&b.id) {
@@ -120,14 +147,28 @@ impl GamePack {
             .map(String::as_str)
     }
 
+    /// 按物品 ID 或任一语言名称查找物品。
+    pub fn item(&self, key: &str) -> Option<&PackItem> {
+        self.items.iter().find(|i| i.matches(key))
+    }
+
+    /// 头像索引：物品 ID 与各语言名称 → 图标哈希。记录里不论是 ID 还是哪种语言的名称都能查到。
+    pub fn icon_index(&self) -> BTreeMap<String, String> {
+        let mut out = BTreeMap::new();
+        for item in &self.items {
+            let Some(icon) = &item.icon else { continue };
+            for key in std::iter::once(&item.id).chain(item.names.values()) {
+                out.entry(key.clone()).or_insert_with(|| icon.clone());
+            }
+        }
+        out
+    }
+
     /// 名单展开：每个引用加上该物品的各语言名称。
     fn expand(&self, refs: &[String]) -> Vec<String> {
         let mut out: Vec<String> = Vec::new();
         for r in refs {
-            let item = self
-                .items
-                .iter()
-                .find(|i| &i.id == r || i.names.values().any(|n| n == r));
+            let item = self.item(r);
             let names = item
                 .into_iter()
                 .flat_map(|i| std::iter::once(&i.id).chain(i.names.values()));
@@ -241,6 +282,34 @@ mod tests {
             .to_string()
             .contains("duplicate"));
         assert!(GamePack::parse(b"[]").is_err());
+    }
+
+    #[test]
+    fn icon_index_and_lookup() {
+        let sha = "ab".repeat(32);
+        let with_icon = PACK.replace(
+            r#""names": {"zh-cn": "温迪", "en-us": "Venti"}}"#,
+            &format!(r#""names": {{"zh-cn": "温迪", "en-us": "Venti"}}, "icon": "{sha}"}}"#),
+        );
+        let pack = GamePack::parse(with_icon.as_bytes()).unwrap();
+        let index = pack.icon_index();
+        assert_eq!(index.len(), 3);
+        assert_eq!(index["Venti"], sha);
+        assert_eq!(index["10000022"], sha);
+        assert!(!index.contains_key("迪卢克"));
+        assert_eq!(pack.item("迪卢克").unwrap().id, "10000016");
+        assert!(pack.item("可莉").is_none());
+        // 序列化时没有图标的物品不写 icon 字段
+        let out = serde_json::to_string(&pack).unwrap();
+        assert_eq!(out.matches("icon").count(), 1);
+
+        let bad = with_icon.replace(&sha, "ABC");
+        assert!(GamePack::parse(bad.as_bytes())
+            .unwrap_err()
+            .to_string()
+            .contains("invalid icon"));
+        assert!(!is_sha256(&"AB".repeat(32)));
+        assert!(!is_sha256("../x"));
     }
 
     #[test]

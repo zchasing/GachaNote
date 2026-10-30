@@ -30,6 +30,8 @@ export const useUiStore = defineStore('ui', () => {
   const importRequest = ref<ImportRequest | null>(null)
   /** 统计、记录标签共用的卡池选择：账号 ID → 卡池类型（`overview` 表示账号总览）。 */
   const selectedPool = ref<Record<string, string>>({})
+  /** 时间线图表的选区，按「距今天几天」保存，切换卡池或账号后仍然生效；`null` 表示全部。 */
+  const timelineRange = ref<{ from: number; to: number } | null>(null)
   let nextId = 0
 
   function toast(text: string, kind: Toast['kind'] = 'info', error?: ApiError) {
@@ -68,6 +70,7 @@ export const useUiStore = defineStore('ui', () => {
     confirmState,
     importRequest,
     selectedPool,
+    timelineRange,
     toast,
     dismiss,
     confirm,

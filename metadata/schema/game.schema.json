@@ -24,7 +24,12 @@
         "properties": {
           "id": { "type": "string", "minLength": 1 },
           "rarity": { "type": "integer", "minimum": 1, "maximum": 6 },
-          "names": { "$ref": "#/$defs/names" }
+          "names": { "$ref": "#/$defs/names" },
+          "icon": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "description": "头像的 SHA-256，文件为 icons/<game>/<sha256>.webp"
+          }
         }
       }
     },

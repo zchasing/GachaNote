@@ -6,6 +6,7 @@ import AppIcon from '@/components/AppIcon.vue'
 import ExportDialog from '@/components/ExportDialog.vue'
 import GameIcon from '@/components/GameIcon.vue'
 import PageHeader from '@/components/PageHeader.vue'
+import ShareDialog from '@/components/ShareDialog.vue'
 import { fmtInt } from '@/composables/format'
 import { useErrors } from '@/composables/useErrors'
 import { useNames } from '@/composables/useNames'
@@ -14,7 +15,7 @@ import { useAccountsStore } from '@/stores/accounts'
 import { useSettingsStore } from '@/stores/settings'
 import { useUiStore } from '@/stores/ui'
 
-// 账号详情（UI/UX 文档 3.3）：顶栏是游戏名 + 账号切换 + 更新记录，下行是「统计 / 记录」标签。
+// 账号详情（UI/UX 文档 3.3）：顶栏是游戏名 + 账号切换 + 更新记录，下行是「统计 / 记录 / 分析 / 时间线」标签。
 const route = useRoute()
 const router = useRouter()
 const accounts = useAccountsStore()
@@ -54,7 +55,7 @@ onBeforeUnmount(() => document.removeEventListener('mousedown', closeMenu))
 
 function switchTo(target: string) {
   menu.value = null
-  const tab = route.name === 'records' || route.name === 'analysis' ? route.name : 'stats'
+  const tab = ['records', 'analysis', 'timeline'].includes(String(route.name)) ? String(route.name) : 'stats'
   void router.push(`/account/${target}/${tab}`)
 }
 
@@ -78,6 +79,18 @@ function importNew() {
 }
 
 const exporting = ref(false)
+const sharing = ref(false)
+const shareStats = computed(() => accounts.stats[id.value])
+
+async function openShare() {
+  menu.value = null
+  try {
+    await accounts.loadStats(id.value)
+    sharing.value = true
+  } catch (e) {
+    report(e)
+  }
+}
 const renaming = ref(false)
 const nickname = ref('')
 const renameInput = ref<HTMLInputElement | null>(null)
@@ -187,6 +200,7 @@ async function remove() {
           </button>
           <div v-if="menu === 'more'" class="menu right">
             <button class="mi" @click="((menu = null), (exporting = true))">{{ t('common.export') }}</button>
+            <button class="mi" data-test="open-share" @click="openShare">{{ t('account.share') }}</button>
             <button class="mi" @click="startRename">{{ t('common.rename') }}</button>
             <div class="msep" />
             <button class="mi danger" data-test="delete-account" @click="remove">{{ t('common.delete') }}</button>
@@ -204,12 +218,22 @@ async function remove() {
           <RouterLink :to="`/account/${account.id}/analysis`" class="tab" active-class="on" data-test="tab-analysis">
             {{ t('account.tabs.analysis') }}
           </RouterLink>
+          <RouterLink :to="`/account/${account.id}/timeline`" class="tab" active-class="on" data-test="tab-timeline">
+            {{ t('account.tabs.timeline') }}
+          </RouterLink>
         </nav>
       </template>
     </PageHeader>
     <RouterView :key="account.id" />
 
     <ExportDialog v-if="exporting" :account-ids="[account.id]" @close="exporting = false" />
+    <ShareDialog
+      v-if="sharing && shareStats"
+      :account="account"
+      :stats="shareStats"
+      :pool="ui.selectedPool[account.id]"
+      @close="sharing = false"
+    />
     <div v-if="renaming" class="overlay" @click.self="renaming = false">
       <form
         class="modal"

@@ -11,6 +11,7 @@ import { useErrors } from '@/composables/useErrors'
 import { useTheme } from '@/composables/useTheme'
 import { resolveLocale, setLocale } from '@/i18n'
 import { useAccountsStore } from '@/stores/accounts'
+import { useIconsStore } from '@/stores/icons'
 import { useGamesStore } from '@/stores/games'
 import { useSettingsStore } from '@/stores/settings'
 import { useTasksStore } from '@/stores/tasks'
@@ -20,6 +21,7 @@ import { useUpdaterStore } from '@/stores/updater'
 const settings = useSettingsStore()
 const games = useGamesStore()
 const accounts = useAccountsStore()
+const icons = useIconsStore()
 const tasks = useTasksStore()
 const ui = useUiStore()
 const updater = useUpdaterStore()
@@ -50,7 +52,10 @@ onMounted(async () => {
       await tasks.listen()
       unlisten.push(
         await events.dataChanged.listen(({ payload }) => void accounts.invalidate(payload.accountIds)),
-        await events.metaUpdated.listen(() => void accounts.invalidate([])),
+        await events.metaUpdated.listen(() => {
+          icons.reset()
+          void accounts.invalidate([])
+        }),
       )
     }
     await Promise.all([settings.load(), games.load(), accounts.load()])
@@ -100,9 +105,10 @@ function onKey(e: KeyboardEvent) {
     case '1':
     case '2':
     case '3':
+    case '4':
       if (accountId) {
         e.preventDefault()
-        const tab = { '1': 'stats', '2': 'records', '3': 'analysis' }[e.key]
+        const tab = { '1': 'stats', '2': 'records', '3': 'analysis', '4': 'timeline' }[e.key]
         void router.push(`/account/${accountId}/${tab}`)
       }
       break

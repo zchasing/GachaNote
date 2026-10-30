@@ -3,7 +3,7 @@
 import { emit } from '@tauri-apps/api/event'
 import { mockIPC } from '@tauri-apps/api/mocks'
 import type { AccountDto, FilePreviewDto, ImportReportDto, Settings } from '@/bindings'
-import { ACCOUNT, GAMES, MONTHS, PAGE, SETTINGS, STATS, prediction } from '@/__tests__/data'
+import { ACCOUNT, GAMES, MONTHS, PAGE, SETTINGS, STATS, prediction, timeline } from '@/__tests__/data'
 
 const params = new URLSearchParams(location.search)
 let accounts: AccountDto[] = params.has('empty') ? [] : [ACCOUNT]
@@ -86,9 +86,13 @@ const handlers: Record<string, (args: Record<string, unknown>) => unknown> = {
   meta_info: () => ({ version: '2026.10.1', origin: 'bundled' }),
   predict: (a) => prediction(Number(a.pulls)),
   get_monthly_trend: () => MONTHS,
+  get_timeline: () => timeline(),
+  get_item_icons: () => ({}),
   list_credentials: () => [],
   check_update: () => null,
   'plugin:dialog|open': () => FILE,
+  'plugin:dialog|save': () => 'C:\\Users\\me\\Pictures\\share.png',
+  save_image: () => null,
   sniff_file: () => PREVIEW,
   import_file: () => {
     const task = nextTask++

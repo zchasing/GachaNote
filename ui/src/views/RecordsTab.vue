@@ -5,6 +5,7 @@ import type { RecordDto, RecordPage } from '@/bindings'
 import { api } from '@/api'
 import AppPager from '@/components/AppPager.vue'
 import DropdownSelect from '@/components/DropdownSelect.vue'
+import ItemIcon from '@/components/ItemIcon.vue'
 import { fmtDateTime } from '@/composables/format'
 import { useErrors } from '@/composables/useErrors'
 import { rarityClass, useNames } from '@/composables/useNames'
@@ -174,6 +175,7 @@ function markText(r: RecordDto) {
               <td class="num muted">{{ fmtDateTime(r.pulledAt, tz) }}</td>
               <td>{{ poolName(game, r.poolType) }}</td>
               <td :class="rarityClass(r.rarity, rarityTop)">
+                <ItemIcon :game="game" :name="r.itemName" :item-id="r.itemId" :size="20" class="ricon" />
                 {{ r.itemName }}
                 <span v-if="!r.isPull" class="tag neutral">{{ t('records.free') }}</span>
               </td>
@@ -209,6 +211,9 @@ function markText(r: RecordDto) {
   max-height: calc(100vh - 320px);
   min-height: 240px;
   transition: opacity var(--dur);
+}
+.ricon {
+  margin-right: 6px;
 }
 .tablebox.busy {
   opacity: 0.6;

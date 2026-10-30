@@ -1,4 +1,4 @@
-// 冒烟测试（T-41、T-53）：首次导入、总览、分析图表、主题与语言切换。
+// 冒烟测试（T-41、T-53、T-61、T-62）：首次导入、总览、分析图表、时间线、分享图、主题与语言切换。
 import { expect, test, type Page } from '@playwright/test'
 
 /** 打开应用；`empty` 表示从没有账号开始。 */
@@ -82,4 +82,43 @@ test('分析：图表按需加载并跟随主题配色', async ({ page }) => {
   // 切换为数据表
   await page.getByTestId('toggle-dist').click()
   await expect(page.getByTestId('distribution').locator('table')).toContainText('纳西妲')
+})
+
+test('时间线：按日堆叠图、拖动选区与卡池期数', async ({ page }) => {
+  await open(page, '/account/acc-1/timeline')
+  await expect(page.getByTestId('day-range')).toContainText('2026-01-10 – 2026-03-10')
+  // 三档星级堆叠，金色柱子有两天
+  await expect(page.getByTestId('timeline-chart').locator('svg path[fill="#f5b83d"]')).toHaveCount(2)
+  await expect(page.getByTestId('period')).toHaveCount(3)
+
+  // 按住右手柄向左拖到一半，选区缩小
+  const brush = await page.getByTestId('brush').boundingBox()
+  const handle = await page.getByTestId('brush-end').boundingBox()
+  await page.mouse.move(handle!.x + handle!.width / 2, handle!.y + handle!.height / 2)
+  await page.mouse.down()
+  await page.mouse.move(brush!.x + brush!.width / 2, handle!.y + handle!.height / 2, { steps: 5 })
+  await page.mouse.up()
+  await expect(page.getByTestId('selected-range')).toContainText('2026-01-10 – 2026-02-0')
+  await expect(page.getByTestId('pan-right')).toBeEnabled()
+
+  await page.getByTestId('quick-all').click()
+  await expect(page.getByTestId('pan-right')).toBeDisabled()
+})
+
+test('分享图：画布按 1080 px 绘制，可切深色并保存', async ({ page }) => {
+  await open(page, '/account/acc-1/stats')
+  await page.getByTestId('account-more').click()
+  await page.getByTestId('open-share').click()
+  const canvas = page.getByTestId('share-canvas')
+  await expect(canvas).toHaveAttribute('aria-label', /UID 1\*\*\*\*0001/)
+  const pixel = () =>
+    canvas.evaluate((c: HTMLCanvasElement) => {
+      const d = c.getContext('2d')!.getImageData(4, 4, 1, 1).data
+      return { width: c.width, rgb: [d[0], d[1], d[2]] }
+    })
+  expect(await pixel()).toEqual({ width: 1080, rgb: [247, 247, 248] })
+  await page.getByRole('tab', { name: '深色' }).click()
+  await expect.poll(async () => (await pixel()).rgb).toEqual([20, 21, 24])
+  await page.getByTestId('share-save').click()
+  await expect(page.getByText('已保存分享图')).toBeVisible()
 })

@@ -8,6 +8,7 @@ import type {
   PredictionDto,
   RecordPage,
   Settings,
+  TimelineDto,
 } from '@/bindings'
 
 const pool = (id: string, extra: Partial<GameDto['pools'][number]> = {}) => ({
@@ -185,6 +186,7 @@ export const PAGE: RecordPage = {
       id: 'r2',
       poolType: 'character',
       itemName: '纳西妲',
+      itemId: '10000073',
       itemType: '角色',
       rarity: 5,
       pulledAt: Date.UTC(2026, 2, 1, 4, 5),
@@ -197,6 +199,7 @@ export const PAGE: RecordPage = {
       id: 'r1',
       poolType: 'character',
       itemName: '香菱',
+      itemId: null,
       itemType: '角色',
       rarity: 4,
       pulledAt: Date.UTC(2026, 1, 20),
@@ -253,3 +256,71 @@ export const MONTHS: MonthDto[] = [
   { month: '2026-02', pulls: 20, tops: 1, ups: 0 },
   { month: '2026-03', pulls: 10, tops: 1, ups: 1 },
 ]
+
+/** 原神角色池时间线：2026-01-10 起 60 天，两期有记录、一期未参与、一段自动分段。 */
+export function timeline(): TimelineDto {
+  const n = 60
+  const top = Array<number>(n).fill(0)
+  const second = Array<number>(n).fill(0)
+  const other = Array<number>(n).fill(0)
+  other[0] = 10
+  top[22] = 1
+  second[22] = 2
+  other[22] = 17
+  top[50] = 1
+  other[50] = 9
+  return {
+    poolType: 'character',
+    daily: { start: '2026-01-10', top, second, other },
+    periods: [
+      {
+        kind: 'banner',
+        id: 'b3',
+        names: {},
+        rawName: null,
+        start: Date.UTC(2026, 1, 25),
+        end: Date.UTC(2026, 2, 17),
+        upTop: [{ key: '10000073', names: { 'zh-cn': '纳西妲', 'en-us': 'Nahida' } }],
+        upSecond: [{ key: '10000023', names: { 'zh-cn': '香菱', 'en-us': 'Xiangling' } }],
+        pulls: 10,
+        tops: [STATS.pools[0]!.tops[1]!],
+      },
+      {
+        kind: 'banner',
+        id: 'b2',
+        names: {},
+        rawName: null,
+        start: Date.UTC(2026, 1, 4),
+        end: Date.UTC(2026, 1, 25),
+        upTop: [{ key: '10000002', names: { 'zh-cn': '神里绫华', 'en-us': 'Kamisato Ayaka' } }],
+        upSecond: [],
+        pulls: 0,
+        tops: [],
+      },
+      {
+        kind: 'banner',
+        id: 'b1',
+        names: {},
+        rawName: null,
+        start: Date.UTC(2026, 0, 14),
+        end: Date.UTC(2026, 1, 4),
+        upTop: [{ key: '10000022', names: { 'zh-cn': '温迪', 'en-us': 'Venti' } }],
+        upSecond: [],
+        pulls: 20,
+        tops: [STATS.pools[0]!.tops[0]!],
+      },
+      {
+        kind: 'auto',
+        id: null,
+        names: {},
+        rawName: null,
+        start: Date.UTC(2026, 0, 10),
+        end: Date.UTC(2026, 0, 10, 2),
+        upTop: [],
+        upSecond: [],
+        pulls: 10,
+        tops: [],
+      },
+    ],
+  }
+}

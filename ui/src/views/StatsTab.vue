@@ -3,9 +3,11 @@ import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import type { AccountStatsDto, PoolInfo, PoolStatsDto, TopPullDto } from '@/bindings'
 import CompositionCard from '@/components/CompositionCard.vue'
+import ItemIcon from '@/components/ItemIcon.vue'
 import PityTag from '@/components/PityTag.vue'
 import SegmentedControl from '@/components/SegmentedControl.vue'
 import { luckTier } from '@/composables/chart'
+import { pctOf, poolCards } from '@/composables/poolCards'
 import { fmtAvg, fmtDate, fmtInt, fmtPct } from '@/composables/format'
 import { useErrors } from '@/composables/useErrors'
 import { useNames } from '@/composables/useNames'
@@ -78,63 +80,8 @@ const segments = computed(() => [
 
 const current = computed(() => withPulls.value.find((r) => r.stats.poolType === selected.value))
 
-function pctOf(n: number, of: number | null | undefined) {
-  return `${Math.min(100, (n / Math.max(1, of ?? 1)) * 100)}%`
-}
-
 /** 单卡池的三张指标卡，按卡池规则选择（UI/UX 文档 3.3 表格）。 */
-const cards = computed(() => {
-  const r = current.value
-  if (!r) return null
-  const p = r.stats
-  const info = r.info
-  const hasUp = info?.up && info.up !== 'none'
-  const second = hasUp
-    ? {
-        key: 'avgUp',
-        label: t('stats.avgUp'),
-        value: fmtAvg(p.avgPullsPerUp, locale.value),
-        sub: t('stats.upCount', { n: p.upCount }),
-        estimated: p.estimatedCount > 0,
-      }
-    : {
-        key: 'avgTop',
-        label: t('stats.avgTop'),
-        value: fmtAvg(p.avgPullsPerTop, locale.value),
-        sub: t('stats.topCountSub', { n: p.tops.length }),
-        estimated: false,
-      }
-  let third: { key: string; label: string; value: string; sub: string; bar?: string; estimated: boolean }
-  if (info?.spark) {
-    third = {
-      key: 'spark',
-      label: t('stats.spark'),
-      value: `${p.pity.bannerPulls} / ${info.spark}`,
-      sub: t('stats.sparkSub', { n: p.pity.bannerPulls }),
-      bar: pctOf(p.pity.bannerPulls, info.spark),
-      estimated: false,
-    }
-  } else if (info?.upWithin) {
-    const since = p.pity.sinceUp ?? 0
-    third = {
-      key: 'upWithin',
-      label: t('stats.upWithin', { n: info.upWithin }),
-      value: `${since} / ${info.upWithin}`,
-      sub: t('stats.upWithinSub', { n: since }),
-      bar: pctOf(since, info.upWithin),
-      estimated: p.estimatedCount > 0,
-    }
-  } else {
-    third = {
-      key: 'loss',
-      label: t('stats.lossRate'),
-      value: fmtPct(p.loss?.rate, locale.value),
-      sub: p.loss ? t('stats.lossFrac', { lost: p.loss.lost, total: p.loss.total }) : '—',
-      estimated: p.estimatedCount > 0,
-    }
-  }
-  return { second, third, lossReplaced: third.key !== 'loss' && !!p.loss }
-})
+const cards = computed(() => (current.value ? poolCards(current.value.stats, current.value.info, t, locale.value) : null))
 
 /** 出金历史：新的在上。颜色按与期望抽数的比值区分欧 / 平 / 非。 */
 const history = computed(() => {
@@ -357,7 +304,7 @@ const verdict = computed(() => {
               <div v-if="history.length === 0" class="muted">{{ t('stats.historyEmpty', { name: topName }) }}</div>
               <div v-else class="hist" data-test="history">
                 <div v-for="(h, i) in history" :key="i" class="hrow">
-                  <span class="islot" />
+                  <ItemIcon :game="game" :name="h.top.itemName" mode="slot" />
                   <div class="hname">
                     <span class="r-top">{{ h.top.itemName }}</span>
                     <span class="muted">{{ fmtDate(h.top.pulledAt, tz) }}</span>
